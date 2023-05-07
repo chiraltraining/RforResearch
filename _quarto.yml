@@ -20,7 +20,7 @@ website:
   open-graph: true
   twitter-card:
     creator: "@hossainlab"
-    image: "/images/banner.jpeg"
+    image: "/images/banner.jpg"
 
   page-footer:
     left: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
