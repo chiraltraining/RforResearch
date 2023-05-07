@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Analysis with R",
+    "section": "",
+    "text": "🗓December 2 & 3, 2022 | 8:00am - 12:00pm BDT\n🏨 Virtual Weekend Workshop\n💥 Register with Google Forms\n💥 Registration Fee: 300 BDT (for students), 500BDT (for professionals)\n📝 To register for the workshop, follow instructions in the email “Weekend Workshops” you received after registration."
+  },
+  {
+    "objectID": "index.html#what-is-r",
+    "href": "index.html#what-is-r",
+    "title": "Data Analysis with R",
+    "section": "What is R?",
+    "text": "What is R?\nR is an open source language and environment for statistical computing, data mining, modeling, and data graphics. It provides a wide variety of statistical and graphical techniques such as linear and non-linear modeling, statistical tests, time series analysis, classification, and clustering.\nR is one of the most used business analytics tools. For example, Facebook uses R for behavior analysis related to status updates and profile pictures. Google uses it to analyze advertising effectiveness and economic forecasting. Twitter leverages R for data visualization and semantic clustering. In the 2016 data science salary survey conducted by O’Reilly, R was ranked second in a category of programming languages for data science."
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Data Analysis with R",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy datas for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages."
+  },
+  {
+    "objectID": "index.html#purpose-of-statistical-programming-software",
+    "href": "index.html#purpose-of-statistical-programming-software",
+    "title": "Data Analysis with R",
+    "section": "Purpose of statistical programming software",
+    "text": "Purpose of statistical programming software\nUnlike spreadsheet applications (like Excel) or point-and-click statistical analysis software (SPSS), statistical programming software is based around a script-file where the user writes a series of commands to be performed,\nAdvantages of statistical programming software\n\nData analysis process is reproducible and transparent.\nDue to the open-ended nature of language-based programming, there is far more versatility and customizability in what you can do with data.\nTypically statistical programming software has a much more comprehensive range of built-in analysis functions than spreadsheets etc."
+  },
+  {
+    "objectID": "index.html#why-do-we-need-analytics",
+    "href": "index.html#why-do-we-need-analytics",
+    "title": "Data Analysis with R",
+    "section": "Why Do We Need Analytics?",
+    "text": "Why Do We Need Analytics?\nBefore an answer to above question, let us see some of the problems and their solutions in R in multiple domains.\n\nHealthcare\n\nProblem: Every year millions of people are admitted in hospital and billions are spent annually just in the admission process.\nSolution: Given the patient history and medical history, a predictive model can be built to identify who is at risk for hospitalization and to what extent the medical equipment should be scaled.\n\n\n\nInsurance\n\nProblem: Insurance extensively depends on forecasting. It is difficult to decide which policy to accept orreject.\nSolution: By using the continuous credit report as input, we can create a model in R that will not only assess risk appetite but also make a predictive forecast as well.\n\n\n\nBanking\n\nProblem: Large amount of customer data is generated every day in Banks. While dealing with millions of customers on regular basis, it becomes hard to track their mortgages.\nSolution: R builds a custom model that maintains the loans provided to every individual customer which helps us to decide the amount to be paid by the customer over time."
+  },
+  {
+    "objectID": "index.html#why-r",
+    "href": "index.html#why-r",
+    "title": "Data Analysis with R",
+    "section": "Why R?",
+    "text": "Why R?\n\nR is a programming and statistical language.\nR is used for data Analysis and Visualization.\nR is simple and easy to learn, read and write.\nR is an example of a FLOSS (Free Libre and Open Source Software) where one can freely distribute copies of this software, read its source code, modify it, etc."
+  },
+  {
+    "objectID": "index.html#who-uses-r",
+    "href": "index.html#who-uses-r",
+    "title": "Data Analysis with R",
+    "section": "Who uses R?",
+    "text": "Who uses R?\n\nThe Consumer Financial Protection Bureau uses R for data analysis\nStatisticians at John Deere use R for time series modeling and geospatial analysis in a reliable and reproducible way.\nBank of America uses R for reporting.\nR is part of technology stack behind Foursquare’s famed recommendation engine.\nANZ, the fourth largest bank in Australia, using R for credit risk analysis.\nGoogle uses R to predict Economic Activity.\nMozilla, the foundation responsible for the Firefox web browser, uses R to visualize Web activity"
+  },
+  {
+    "objectID": "index.html#evolution-of-r",
+    "href": "index.html#evolution-of-r",
+    "title": "Data Analysis with R",
+    "section": "Evolution of R",
+    "text": "Evolution of R\n\nR is an implementation of S programming language which was created by John Chambers at Bell Labs.\nR was initially written by Ross Ihaka and Robert Gentleman at the Department of Statistics of the University of Auckland in Auckland, New Zealand.\nR made its first public appearance in 1993.\nA large group of individuals has contributed to R by sending code and bug reports.Since mid-1997 there has been a core group (the “R Core Team”) who can modify the R source code archive.\nIn the year 2000 R 1.0.0 released.\nR 3.0.0 was released in 2013."
+  },
+  {
+    "objectID": "index.html#features-of-r",
+    "href": "index.html#features-of-r",
+    "title": "Data Analysis with R",
+    "section": "Features of R",
+    "text": "Features of R\n\nR supports procedural programming with functions and object-oriented programming with generic functions. Procedural programming includes procedure, records, modules, and procedure calls. While object-oriented programming languageincludes class, objects, and functions.\nPackages are part of R programming. Hence, they are useful in collecting sets of R functions into a single unit.\nR is a well-developed, simple and effective programming language which includes conditionals, loops, user defined recursive functions and input and output facilities.\nR has an effective data handling and storage facility,\nR provides a suite of operators for calculations on arrays, lists, vectors and matrices.\nR provides a large, coherent and integrated collection of tools for data analysis. It provides graphical facilities for data analysis and display either directly at the computer or printing at the papers.\nRs programming features include database input, exporting data, viewing data, variable labels, missing data, etc.\nR is an interpreted language. So we can access it through command line interpreter.\nR supports matrix arithmetic.\nR, SAS, and SPSS are three statistical languages. Of these three statistical languages, R is the only an open source."
+  },
+  {
+    "objectID": "index.html#comparison-to-other-statistical-programming-software",
+    "href": "index.html#comparison-to-other-statistical-programming-software",
+    "title": "Data Analysis with R",
+    "section": "Comparison to other statistical programming software",
+    "text": "Comparison to other statistical programming software\n\nStata: The traditional choice of (academic) economists.\n\nStata is more specifically econometrics focused and is much more command-oriented. Easier to use for standard applications, but if there’s not a Stata command for what you want to do, it’s harder to write something yourself.\n\nStata is also very different than R in that you can only ever work with one dataset at a time, while in R, it’s typical to have a number of data objects in the environment.\n\nSAS: Similar to Stata, but more commonly used in business & the private sector, in part because it’s typically more convenient for massive datasets. Otherwise, I think it’s seen as a bit older and less user-friendly.\nPython: Another option based more on programming from scratch and with less prewritten commands. Python isn’t specific to math & statistics, but instead is a general programming language used across a range of fields.\nProbably the most similar software choice to R at this point, with better general use (and programming ease) at the cost of less package development specific to econometrics/data analysis.\nMatlab: Popular in macroeconomics and theory work, not so much in empirical work. Matlab is powerful, but is much more based on programming “from scratch” using matrices and mathematical expressions."
+  },
+  {
+    "objectID": "index.html#useful-resources-for-learning-r",
+    "href": "index.html#useful-resources-for-learning-r",
+    "title": "Data Analysis with R",
+    "section": "Useful resources for learning R",
+    "text": "Useful resources for learning R\n\nDataCamp: interactive online lessons in R.\n\nSome of the courses are free (particularly community-written lessons like the one you’ll do today), but for paid courses, DataCamp costs about 300 SEK / mo.\n\nRStudio Cheat Sheets: Very helpful 1-2 page overviews of common tasks and packages in R.\nQuick-R: Website with short example-driven overviews of R functionality.\nStackOverflow: Part of the Stack Exchange network, StackOverflow is a Q&A community website for people who work in programming. Tons of incredibly good R users and developers interact on StackExchange, so it’s a great place to search for answers to your questions.\nR-Bloggers: Blog aggregagator for posts about R. Great place to learn really cool things you can do in R.\nR for Data Science: Online version of the book by Hadley Wickham, who has written many of the best packages for R, including the Tidyverse, which we will cover."
+  },
+  {
+    "objectID": "index.html#course-structure-and-meetings",
+    "href": "index.html#course-structure-and-meetings",
+    "title": "Data Analysis with R",
+    "section": "Course Structure and meetings",
+    "text": "Course Structure and meetings\n\nThis course is structured as a 6 week experience.\nThis is an 1/2 online and 1/2 face-to-face course.\nEach week is marked as an F2F or online week.\nIn person classes will take place on Tuesdays from 10:30am-11:50am\nThe online “lessons” allow you to work at your own pace through the assigned lessons that includes a video lecture, tutorial, demonstration, exercise and assignment."
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "Data Analysis with R",
+    "section": "Textbook",
+    "text": "Textbook\n\nWickham, H. & Grolemund, G. (2018). for Data Science. O’Reilly: New York. Available for free at http://r4ds.had.co.nz (FREE)\nSosulski, K. (2018). R Fundamentals. Bookdown: New York. Available at: http://becomingvisual.com/rfundamentals (FREE)"
+  },
+  {
+    "objectID": "index.html#required-software",
+    "href": "index.html#required-software",
+    "title": "Data Analysis with R",
+    "section": "Required software",
+    "text": "Required software\n\nR: http://www.r-project.org/ (FREE)\nRStudio (additional libraries required): http://www.rstudio.com/ (FREE)"
+  },
+  {
+    "objectID": "index.html#recording-of-classes",
+    "href": "index.html#recording-of-classes",
+    "title": "Data Analysis with R",
+    "section": "Recording of classes",
+    "text": "Recording of classes\nClass lectures will be recorded automatically using cloud. The links will be posted to CHIRAL Classes when they are available."
+  },
+  {
+    "objectID": "index.html#learning-resources",
+    "href": "index.html#learning-resources",
+    "title": "Data Analysis with R",
+    "section": "Learning resources",
+    "text": "Learning resources\n\nR Project: http://www.r-project.org/\nRStudio (additional libraries required): http://www.rstudio.com\nQuick-R http://www.statmethods.net/\nGoogle’s R Style Guide:http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml"
+  },
+  {
+    "objectID": "index.html#is-this-course-for-me",
+    "href": "index.html#is-this-course-for-me",
+    "title": "Data Analysis with R",
+    "section": "Is this course for me?",
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you make summary tables in R (data, survey data, regression models, time-to-event data, adverse event reports)?\nDo you want your workflow to be reproducible?\nAre you often frustrated with the immense amount of code required to create great-looking tables in R?\n\nThe workshop is designed for those with some experience in R. It will be expected that you can perform basic data manipulation. Experience with the {tidyverse} and the %>% operator is a plus, but not required."
+  },
+  {
+    "objectID": "index.html#prework",
+    "href": "index.html#prework",
+    "title": "Data Analysis with R",
+    "section": "Prework",
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of the gtsummary and other packages used in workshop.\ninstll_pkgs <- \n  c(\"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\", \n    \"causaldata\", \"fs\", \"skimr\", \"car\", \"emmeans\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+  },
+  {
+    "objectID": "index.html#zoom-working-virtually",
+    "href": "index.html#zoom-working-virtually",
+    "title": "Data Analysis with R",
+    "section": "Zoom + Working Virtually",
+    "text": "Zoom + Working Virtually\n\nZoom link will be emailed to students\nClass sessions will be recorded and later posted\nWe will have lectures as well as breakout room sessions to work on labs\nPlease be aware that there is the option to use closed captioning:"
+  },
+  {
+    "objectID": "index.html#instructors",
+    "href": "index.html#instructors",
+    "title": "Data Analysis with R",
+    "section": "Instructors",
+    "text": "Instructors\n\nMd. Jubayer Hossain\n\nMd. Jubayer Hossain is the Founder and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of the human around me by working at the intersection of education, technology, and health research. His research interests include health data science and machine learning in healthcare.\n\n\n\nMd. Wahidul Islam\n\nWahidul Islam is an undergraduate student in the Department of Microbiology at Jagannath University, Dhaka, Bangladesh. Bioinformatics, Immunology, Cell Biology, Biostatistics, Public health, and Microbiology are some of his research interests. Currently, he is working as a research assistant in Population Health Studies Division & Genomic Data Science Center at CHIRAL Bangladesh. He also leads the seminar and workshop team at CHIRAL Bangladesh.\n\n\n\nMuhibullah Shahjahan\n\nMuhibullah is an undergraduate student in the Department of Microbiology at Jagannath University and health data analysis, bioinformatics are some of his research interests. Currently, he is working as a research assistant at CHIRAL Bangladesh."
+  },
+  {
+    "objectID": "material.html",
+    "href": "material.html",
+    "title": "Material",
+    "section": "",
+    "text": "View slides in full screen"
+  },
+  {
+    "objectID": "material.html#recording",
+    "href": "material.html#recording",
+    "title": "Material",
+    "section": "Recording",
+    "text": "Recording\nThe recording of this workshop will be available after the session completed."
+  },
+  {
+    "objectID": "material.html#exercises",
+    "href": "material.html#exercises",
+    "title": "Material",
+    "section": "Exercises",
+    "text": "Exercises\n\nDownload zip file with exercises with this link.\nExtract the zip file locally and open in an RStudio project.\n\nSolutions available here."
+  },
+  {
+    "objectID": "sessions.html",
+    "href": "sessions.html",
+    "title": "Sessions",
+    "section": "",
+    "text": "View slides in Google Sheet"
+  }
+]

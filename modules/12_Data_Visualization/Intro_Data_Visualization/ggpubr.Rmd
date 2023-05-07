@@ -1,0 +1,22 @@
+---
+title: "Data Visualization with ggpubr"
+author: "Jubayer Hossain, [Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/)"
+institute: "Founder, CHIRAL Bangladesh"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true 
+    theme: flatly
+--- 
+
+## Lab
+
+🏠 [Class Website]()
+
+💻 [Lab]()
+
+# The end!
+

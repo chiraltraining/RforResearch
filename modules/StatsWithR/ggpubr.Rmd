@@ -1,0 +1,35 @@
+---
+title: "Interpreting Data Using Descriptive Statistics with R"
+author: "Jubayer Hossain, [Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/)"
+institute: "Founder, CHIRAL Bangladesh"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true
+    theme: flatly
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA)
+```
+
+
+# Introduction
+ggplot2, by Hadley Wickham, is an excellent and flexible package for elegant data visualization in R. However the default generated plots requires some formatting before we can send them for publication. Furthermore, to customize a ggplot, the syntax is opaque and this raises the level of difficulty for researchers with no advanced R programming skills.
+
+The `{ggpubr}` package provides some easy-to-use functions for creating and customizing ‘ggplot2’- based publication ready plots.
+
+Find out more at https://rpkgs.datanovia.com/ggpubr.
+
+
+## Why `{ggpubr}`? 
+- The syntax is simpler compared to ggplot2.
+- Creates publication ready plots with minimum code.
+- In the box plots and line plots, it automatically adds P and significance values.
+- Annotation is satisfying to watch.
+- You can easily play with colors and labels of the plot.
+

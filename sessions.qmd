@@ -1,0 +1,14 @@
+---
+title: "Sessions"
+editor: source
+---
+
+
+## Workshop Detailed Schedule 
+
+[View slides in Google Sheet](https://docs.google.com/spreadsheets/d/1N6ly81sK4IP85kakqE3h8Mjp_iP5P_IIxwoZewLi4ro/edit?usp=sharing)
+
+
+```{=html}
+<iframe class="slide-deck" src="https://docs.google.com/spreadsheets/d/1N6ly81sK4IP85kakqE3h8Mjp_iP5P_IIxwoZewLi4ro/edit?usp=sharing" height="620" width="1020" style="border: 1px solid #2e3846;"></iframe>
+```

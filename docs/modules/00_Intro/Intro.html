@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jubayer Hossain">
+<meta name="dcterms.date" content="2022-12-28">
+
+<title>Data Analysis with R - Introduction - Data Analysis with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Data Analysis with R - Introduction - Data Analysis with R">
+<meta property="og:description" content="[Photo by Belinda Fewings on Unsplash]">
+<meta property="og:site-name" content="Data Analysis with R">
+<meta name="twitter:title" content="Data Analysis with R - Introduction - Data Analysis with R">
+<meta name="twitter:description" content="[Photo by Belinda Fewings on Unsplash]">
+<meta name="twitter:image" content="https://chiraltraining.github.io/WW01_DataAnalysiswithR//images/two-hex-logo.png">
+<meta name="twitter:creator" content="@hossainlab">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction - Data Analysis with R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">Material</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">Sessions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">Workshop Q &amp; A</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#welcome-to-daa" id="toc-welcome-to-daa" class="nav-link active" data-scroll-target="#welcome-to-daa">Welcome to Daa!</a></li>
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">What is R?</a></li>
+  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
+  <li><a href="#why-not-r" id="toc-why-not-r" class="nav-link" data-scroll-target="#why-not-r">Why not R?</a></li>
+  <li><a href="#introductions" id="toc-introductions" class="nav-link" data-scroll-target="#introductions">Introductions</a></li>
+  <li><a href="#course-platforms" id="toc-course-platforms" class="nav-link" data-scroll-target="#course-platforms">Course Platforms</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#course-format" id="toc-course-format" class="nav-link" data-scroll-target="#course-format">Course Format</a></li>
+  <li><a href="#assignment-policy" id="toc-assignment-policy" class="nav-link" data-scroll-target="#assignment-policy">Assignment Policy</a></li>
+  <li><a href="#required-textbooks" id="toc-required-textbooks" class="nav-link" data-scroll-target="#required-textbooks">Required Textbooks</a></li>
+  <li><a href="#resources-r-books" id="toc-resources-r-books" class="nav-link" data-scroll-target="#resources-r-books">Resources: R Books</a></li>
+  <li><a href="#resources-blogs" id="toc-resources-blogs" class="nav-link" data-scroll-target="#resources-blogs">Resources: Blogs</a></li>
+  <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More Resources</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a>
+  <ul class="collapse">
+  <li><a href="#your-setup" id="toc-your-setup" class="nav-link" data-scroll-target="#your-setup">Your Setup</a></li>
+  <li><a href="#installing-r" id="toc-installing-r" class="nav-link" data-scroll-target="#installing-r">Installing R</a></li>
+  <li><a href="#basic-terms" id="toc-basic-terms" class="nav-link" data-scroll-target="#basic-terms">Basic terms</a></li>
+  <li><a href="#variable-and-sample" id="toc-variable-and-sample" class="nav-link" data-scroll-target="#variable-and-sample">Variable and Sample</a></li>
+  <li><a href="#columns-and-rows" id="toc-columns-and-rows" class="nav-link" data-scroll-target="#columns-and-rows">Columns and Rows</a></li>
+  <li><a href="#more-on-functions-and-packages" id="toc-more-on-functions-and-packages" class="nav-link" data-scroll-target="#more-on-functions-and-packages">More on Functions and Packages</a></li>
+  <li><a href="#using-packages" id="toc-using-packages" class="nav-link" data-scroll-target="#using-packages">Using Packages</a></li>
+  <li><a href="#tidyverse-and-base-r" id="toc-tidyverse-and-base-r" class="nav-link" data-scroll-target="#tidyverse-and-base-r">Tidyverse and Base R</a></li>
+  <li><a href="#collection-of-r-packages" id="toc-collection-of-r-packages" class="nav-link" data-scroll-target="#collection-of-r-packages">Collection of R packages</a></li>
+  </ul></li>
+  <li><a href="#installation-and-use" id="toc-installation-and-use" class="nav-link" data-scroll-target="#installation-and-use">Installation and use</a>
+  <ul class="collapse">
+  <li><a href="#core-tidyverse" id="toc-core-tidyverse" class="nav-link" data-scroll-target="#core-tidyverse">Core tidyverse</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">Wrangle</a></li>
+  <li><a href="#program" id="toc-program" class="nav-link" data-scroll-target="#program">Program</a></li>
+  <li><a href="#useful-mostly-free-resources" id="toc-useful-mostly-free-resources" class="nav-link" data-scroll-target="#useful-mostly-free-resources">Useful (+ mostly Free) Resources</a></li>
+  <li><a href="#useful-mostly-free-resources-1" id="toc-useful-mostly-free-resources-1" class="nav-link" data-scroll-target="#useful-mostly-free-resources-1">Useful (+ mostly Free) Resources</a></li>
+  <li><a href="#useful-mostly-free-resources-2" id="toc-useful-mostly-free-resources-2" class="nav-link" data-scroll-target="#useful-mostly-free-resources-2">Useful (+ mostly Free) Resources</a></li>
+  <li><a href="#useful-mostly-free-resources-3" id="toc-useful-mostly-free-resources-3" class="nav-link" data-scroll-target="#useful-mostly-free-resources-3">Useful (+ mostly Free) Resources</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#website-tour" id="toc-website-tour" class="nav-link" data-scroll-target="#website-tour">Website tour!</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/00_Intro/Intro.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Introduction - Data Analysis with R</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Jubayer Hossain 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://chiralbd.org/">Founder &amp; Instructor, CHIRAL Bangladesh</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 28, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="welcome-to-daa" class="level2">
+<h2 class="anchored" data-anchor-id="welcome-to-daa">Welcome to Daa!</h2>
+<ol type="1">
+<li>Introductions</li>
+<li>Class overview</li>
+<li>Getting R up and running</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/welcome.jpg" class="img-fluid figure-img" style="width:60.0%" alt="Welcome!"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><sub>[Photo by <a href="https://unsplash.com/@bel2000a?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Belinda Fewings</a> on <a href="https://unsplash.com/s/photos/welcome?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>]</sub></p>
+</section>
+<section id="what-is-r" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-r">What is R?</h2>
+<ul>
+<li><p>R is a language and environment for statistical computing and graphics developed in 1991</p></li>
+<li><p>R is the open source implementation of the <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S language</a>, which was developed by <a href="https://ca.slack-edge.com/T023TPZA8LF-U024EN26Q0L-113294823b2c-512">Bell laboratories</a> in the 70s.</p></li>
+<li><p>The aim of the S language, as expressed by John Chambers, is “to turn ideas into software, quickly and faithfully”</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bell_Laboratories_logo.svg/2880px-Bell_Laboratories_logo.svg.png" class="img-fluid figure-img" style="width:40.0%" alt="Bell Labs old logo"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>R</strong>oss Ihaka and <strong>R</strong>obert Gentleman at the University of Auckland, New Zealand developed R</p></li>
+<li><p>R is both <a href="https://en.wikipedia.org/wiki/Open_source">open source</a> and <a href="https://en.wikipedia.org/wiki/Open-source_software_development">open development</a></p></li>
+<li><p>R is a dialect of S(R is an implementation of the S programming language).</p></li>
+<li><p>R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is developed by the R Development Core Team.</p></li>
+<li><p>R is a programming language and environment commonly used in statistical computing, data analytics and scientific research.</p></li>
+<li><p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.</p></li>
+<li><p>The R language is widely used among statisticians and data miners for developing statistical software and data analysis.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.r-project.org/Rlogo.png" class="img-fluid figure-img" style="width:20.0%" alt="R logo"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="why-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
+<ul>
+<li><p>Free (open source)</p></li>
+<li><p>High level language designed for statistical computing</p></li>
+<li><p>Powerful and flexible - especially for data wrangling and visualization</p></li>
+<li><p>Extensive add-on software (packages)</p></li>
+<li><p>R is popular – and increasing in popularity.</p></li>
+<li><p>R runs on all platforms.(Windows, Linux and Mac)</p></li>
+<li><p>R is being used by the biggest tech giants(google, facebook, microsoft, twitter)</p></li>
+<li><p>Strong community</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.r-project.org/Rlogo.png" class="img-fluid figure-img" style="width:20.0%" alt="R logo"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="why-not-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-not-r">Why not R?</h2>
+<ul>
+<li><p>Little centralized support, relies on online community and package developers</p></li>
+<li><p>Annoying to update</p></li>
+<li><p>Slower, and more memory intensive, than the more traditional programming languages (C, Perl, Python)</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tortoise_hare.jpg" class="img-fluid figure-img" style="width:40.0%" alt="tortoise and hare"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><sub>[<a href="https://www.freepik.com/vectors/school">source -School vector created by nizovatina - www.freepik.com</a>]</sub></p>
+</section>
+<section id="introductions" class="level2">
+<h2 class="anchored" data-anchor-id="introductions">Introductions</h2>
+<ul>
+<li><p>What do you hope to get out of the workshop?</p></li>
+<li><p>Why do you want to use R?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hope.jpg" class="img-fluid figure-img" style="width:60.0%" alt="image of rocks with word hope painted on"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><sub>[Photo by <a href="https://unsplash.com/@jannerboy62?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Nick Fewings</a> on <a href="https://unsplash.com/s/photos/hope?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>]</sub></p>
+</section>
+<section id="course-platforms" class="level2">
+<h2 class="anchored" data-anchor-id="course-platforms">Course Platforms</h2>
+<ul>
+<li>Website: <a href="">https://chiraltraining.github.io/WW01_DataAnalysiswithR/</a></li>
+<li>Github: <a href="">https://github.com/chiraltraining/WW01_DataAnalysiswithR</a></li>
+</ul>
+<p>Materials will be uploaded the night before class. We are constantly trying to improve content! Please refresh/download materials before class.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Understanding basic programming syntax</li>
+<li>Reading data into R</li>
+<li>Recoding and manipulating data</li>
+<li>Using add-on packages (more on what this is soon!)</li>
+<li>Making exploratory plots</li>
+<li>Performing basic statistical tests</li>
+<li>Writing R functions</li>
+</ul>
+</section>
+<section id="course-format" class="level2">
+<h2 class="anchored" data-anchor-id="course-format">Course Format</h2>
+<ul>
+<li>Lecture with live coding (possibly “Interactive”)</li>
+<li>Lab/Practical experience</li>
+<li>Two 10 min breaks each session - timing may vary</li>
+</ul>
+</section>
+<section id="assignment-policy" class="level1">
+<h1>Assignment Policy</h1>
+<ul>
+<li>20% of your grade will be determinded by an assignment during normal class hours.</li>
+<li>40% of your grade will come from a 5-10 page report that explores in further detail one of the research areas in the class syllabus</li>
+<li>We expect that students will use orginal data collection, whether quantitative or qualitative analysis, to answer the questions posed.</li>
+<li>20% of your grade will be determinded by your attendance and participation in class.</li>
+<li>20% of your grade will come from 2 page research proposal writing that you must complete on two separate weeks of the class.</li>
+</ul>
+</section>
+<section id="required-textbooks" class="level1">
+<h1>Required Textbooks</h1>
+<p>The following books purchased and are avilable at the online book store. We have also a placed a copy of each on reserve at our online library. - Fundamentals of Biostatistics by Bernard Rosner, Harvard University - Applied Statistics by PennState Eberly College of Science - Applied Medical Statistics for Beginners by Dr.&nbsp;Mohamed Elsherif - Biostatistics by University of Florida - Introduction to R Programming by Dr.&nbsp;Roger D. Peng</p>
+</section>
+<section id="resources-r-books" class="level1">
+<h1>Resources: R Books</h1>
+<ul>
+<li><a href="https://bookdown.org/rdpeng/rprogdatascience/">R for Data Science by Roger D.Peng</a></li>
+<li><a href="https://rafalab.github.io/dsbook/">Introduction to Data Science by Rafael Irizarry</a></li>
+<li><a href="https://rafalab.github.io/pagesharvardx.html">Data Analysis for the Life Sciences by Rafael Irizarry</a></li>
+<li><a href="https://bookdown.org/rdpeng/rprogdatascience/">Exploratory Data Analysis with R by Roger D.Peng</a></li>
+</ul>
+</section>
+<section id="resources-blogs" class="level1">
+<h1>Resources: Blogs</h1>
+<ul>
+<li><a href="https://www.datamentor.io/r-programming/">https://www.datamentor.io/r-programming/</a></li>
+<li><a href="https://online.stat.psu.edu/stat484/">https://online.stat.psu.edu/stat484/</a></li>
+<li><a href="https://online.stat.psu.edu/stat484/">https://online.stat.psu.edu/stat484/</a></li>
+<li><a href="https://www.statmethods.net/index.html">https://www.statmethods.net/index.html</a></li>
+<li><a href="https://simplystatistics.org/">https://simplystatistics.org/</a></li>
+<li><a href="https://www.tutorialspoint.com/r/index.htm">https://www.tutorialspoint.com/r/index.htm</a></li>
+<li><a href="https://www.rforbiologists.org/">https://www.rforbiologists.org/</a></li>
+<li><a href="https://compgenomr.github.io/book/">https://compgenomr.github.io/book/</a></li>
+<li><a href="https://statsandr.com/">https://statsandr.com/</a></li>
+<li><a href="https://rafalab.github.io/pages/harvardx.html">https://rafalab.github.io/pages/harvardx.html</a></li>
+<li><a href="https://bolt.mph.ufl.edu/software/r-phc-6055/">https://bolt.mph.ufl.edu/software/r-phc-6055/</a></li>
+</ul>
+</section>
+<section id="more-resources" class="level1">
+<h1>More Resources</h1>
+<ul>
+<li><a href="https://www.datamentor.io/r-programming/">https://www.datamentor.io/r-programming/</a></li>
+<li><a href="https://online.stat.psu.edu/stat484/">https://online.stat.psu.edu/stat484/</a></li>
+<li><a href="https://online.stat.psu.edu/stat485/">https://online.stat.psu.edu/stat485/</a></li>
+<li><a href="https://www.statmethods.net/index.html">https://www.statmethods.net/index.html</a></li>
+<li><a href="https://simplystatistics.org/">https://simplystatistics.org/</a></li>
+<li><a href="https://www.tutorialspoint.com/r/index.htm">https://www.tutorialspoint.com/r/index.htm</a></li>
+<li><a href="https://www.rforbiologists.org/">https://www.rforbiologists.org/</a></li>
+<li><a href="https://compgenomr.github.io/book/">https://compgenomr.github.io/book/</a></li>
+<li><a href="https://statsandr.com/">https://statsandr.com/</a></li>
+<li><a href="https://rafalab.github.io/pages/harvardx.html">https://rafalab.github.io/pages/harvardx.html</a></li>
+<li><a href="https://bolt.mph.ufl.edu/software/r-phc-6055/">https://bolt.mph.ufl.edu/software/r-phc-6055/</a></li>
+</ul>
+</section>
+<section id="datasets" class="level1">
+<h1>Datasets</h1>
+<ul>
+<li><a href="https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Crude+suicide+rates.csv">Mental Health and Suicide Rates</a><sup>1</sup></li>
+<li><a href="https://www.kaggle.com/imdevskp/ebola-outbreak-20142016-complete-dataset">Western Africa Ebola Outbreak</a> <sup>2</sup></li>
+<li><a href="https://www.kaggle.com/imdevskp/mers-outbreak-dataset-20122019">MERS Outbreaks 2012-2019</a><sup>3</sup></li>
+<li><a href="https://www.kaggle.com/imdevskp/h1n1-swine-flu-2009-pandemic-dataset">H1N1 Swine Flu Pandemic 2009</a><sup>4</sup></li>
+<li><a href="https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset">SARS Outbreak 2003</a><sup>5</sup></li>
+</ul>
+<section id="your-setup" class="level2">
+<h2 class="anchored" data-anchor-id="your-setup">Your Setup</h2>
+<p>If you can, we suggest working virtually with a <strong>large monitor or two screens</strong>. This setup allows you to follow along on Zoom while also doing the hands-on coding.</p>
+</section>
+<section id="installing-r" class="level2">
+<h2 class="anchored" data-anchor-id="installing-r">Installing R</h2>
+<ul>
+<li><p>Install the latest version from: <a href="https://posit.co/">https://posit.co/</a></p></li>
+<li><p><a href="https://posit.co/download/rstudio-desktop/">Install RStudio</a></p></li>
+</ul>
+<p>RStudio is an <strong>integrated development environment</strong> (IDE) that makes it easier to work with R.</p>
+<p>More on that soon!</p>
+</section>
+<section id="basic-terms" class="level2">
+<h2 class="anchored" data-anchor-id="basic-terms">Basic terms</h2>
+<p>R jargon: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</p>
+<p><strong>Package</strong> - a package in R is a bundle or “package” of code (and or possibly data) that can be loaded together for easy repeated use or for <strong>sharing</strong> with others.</p>
+<p>Packages are sort of analogous to a software application like Microsoft Word on your computer. Your operating system allows you to use it, just like having R installed (and other required packages) allows you to use packages.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hex.png" class="img-fluid figure-img" style="width:35.0%" alt="R hex stickers for packages"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Function</strong> - a function is a particular piece of code that allows you to do something in R. You can write your own, use functions that come directly from installing R, or use functions from additional packages.</p>
+<p>A function might help you add numbers together, create a plot, or organize your data. More on that soon!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20235</code></pre>
+</div>
+</div>
+<p><strong>Argument</strong> - what you pass to a function</p>
+<ul>
+<li>can be data like the number 1 or 20234</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20235</code></pre>
+</div>
+</div>
+<ul>
+<li>can be options about how you want the function to work such as <code>digits</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.627</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.63</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.627</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+<p><strong>Object</strong> - an object is something that can be worked with in R - can be lots of different things!</p>
+<ul>
+<li>a matrix of numbers</li>
+<li>a plot</li>
+<li>a function</li>
+</ul>
+<p>… many more</p>
+</section>
+<section id="variable-and-sample" class="level2">
+<h2 class="anchored" data-anchor-id="variable-and-sample">Variable and Sample</h2>
+<ul>
+<li><strong>Variable</strong>: something measured or counted that is a characteristic about a sample</li>
+</ul>
+<p>examples: temperature, length, count, color, category</p>
+<ul>
+<li><strong>Sample</strong>: individuals that you have data about -</li>
+</ul>
+<p>examples: people, houses, viruses etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+</section>
+<section id="columns-and-rows" class="level2">
+<h2 class="anchored" data-anchor-id="columns-and-rows">Columns and Rows</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://keydifferences.com/wp-content/uploads/2016/09/rows-vs-column.jpg" class="img-fluid figure-img" style="width:50.0%" alt="R hex stickers for packages"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>[<a href="https://keydifferences.com/difference-between-rows-and-columns.html">source</a>]</p>
+<p>Sample = Row<br>
+Variable = Column</p>
+<p>Data objects that looks like this is often called a <strong>data frame</strong>.</p>
+<p>Fancier versions from the tidyverse are called <strong>tibbles</strong> (more on that soon!).</p>
+</section>
+<section id="more-on-functions-and-packages" class="level2">
+<h2 class="anchored" data-anchor-id="more-on-functions-and-packages">More on Functions and Packages</h2>
+<ul>
+<li>When you download R, it has a “base” set of functions/packages (<strong>base R</strong>)
+<ul>
+<li>You can install additional packages for your uses from <a href="https://cran.r-project.org/">CRAN</a> or <a href="https://github.com/">GitHub</a></li>
+<li>These additional packages are written by RStudio or R users/developers (like us)</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hex.png" class="img-fluid figure-img" style="width:30.0%" alt="Picture of R package stickers"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="using-packages" class="level2">
+<h2 class="anchored" data-anchor-id="using-packages">Using Packages</h2>
+<ul>
+<li>Not all packages available on CRAN or GitHub are trustworthy</li>
+<li>RStudio (the company) makes a lot of great packages</li>
+<li>Who wrote it? <strong>Hadley Wickham</strong> is a major authority on R (Employee and Developer at RStudio)</li>
+<li>How to <a href="http://simplystatistics.org/2015/11/06/how-i-decide-when-to-trust-an-r-package/">trust</a> an R package</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg" class="img-fluid figure-img" style="width:20.0%" alt="Picture of Hadley Wickham"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(source: https://twitter.com/hadleywickham)</p>
+</section>
+<section id="tidyverse-and-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-and-base-r">Tidyverse and Base R</h2>
+<p>We will mostly show you how to use tidyverse packages and functions.</p>
+<p>This is a newer set of packages designed for data science that can make your code more <strong>intuitive</strong> as compared to the original older Base R.</p>
+<p><strong>Tidyverse advantages</strong>:<br>
+- <strong>consistent structure</strong> - making it easier to learn how to use different packages<br>
+- particularly good for <strong>wrangling</strong> (manipulating, cleaning, joining) data<br>
+- more flexible for <strong>visualizing</strong> data</p>
+<p>Packages for the tidyverse are managed by a team of respected data scientists at RStudio.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://tidyverse.tidyverse.org/logo.png" class="img-fluid figure-img" style="width:10.0%" alt="Tidyverse hex sticker"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>See this <a href="https://tidyverse.tidyverse.org/articles/paper.html">article</a> for more info.</p>
+</section>
+<section id="collection-of-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="collection-of-r-packages">Collection of R packages</h2>
+</section>
+</section>
+<section id="installation-and-use" class="level1">
+<h1>Installation and use</h1>
+<ul>
+<li><p>Install all the packages in the tidyverse by running <code>install.packages("tidyverse")</code>.</p></li>
+<li><p>Run <code>library(tidyverse)</code> to load the core tidyverse and make it available in your current R session.</p></li>
+</ul>
+<p>Learn more about the tidyverse package at <a href="https://tidyverse.tidyverse.org" class="uri">https://tidyverse.tidyverse.org</a>.</p>
+<section id="core-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="core-tidyverse">Core tidyverse</h2>
+<p>The core tidyverse includes the packages that you’re likely to use in everyday data analyses. As of tidyverse 1.3.0, the following packages are included in the core tidyverse:</p>
+<p></p>
+<p>The tidyverse also includes many other packages with more specialised usage. They are not loaded automatically with <code>library(tidyverse)</code>, so you’ll need to load each one with its own call to <code>library()</code>.</p>
+</section>
+<section id="import" class="level2">
+<h2 class="anchored" data-anchor-id="import">Import</h2>
+<p>As well as <a href="https://readr.tidyverse.org">readr</a>, for reading flat files, the tidyverse package installs a number of other packages for reading data:</p>
+<ul>
+<li><p><a href="https://github.com/rstats-db/DBI">DBI</a> for relational databases. (Maintained by <a href="https://www.cynkra.com">Kirill Müller</a>.) You’ll need to pair DBI with a database specific backends like <a href="https://rsqlite.r-dbi.org">RSQLite</a>, <a href="https://rmariadb.r-dbi.org">RMariaDB</a>, <a href="https://rpostgres.r-dbi.org">RPostgres</a>, or <a href="https://github.com/r-dbi/odbc">odbc</a>. Learn more at <a href="https://db.rstudio.com" class="uri">https://db.rstudio.com</a>.</p></li>
+<li><p><a href="https://haven.tidyverse.org">haven</a> for SPSS, Stata, and SAS data.</p></li>
+<li><p><a href="https://github.com/r-lib/httr">httr</a> for web APIs.</p></li>
+<li><p><a href="https://readxl.tidyverse.org">readxl</a> for <code>.xls</code> and <code>.xlsx</code> sheets.</p></li>
+<li><p><a href="https://github.com/tidyverse/rvest">rvest</a> for web scraping.</p></li>
+<li><p><a href="https://github.com/jeroen/jsonlite#jsonlite">jsonlite</a> for JSON. (Maintained by <a href="https://github.com/jeroen">Jeroen Ooms</a>.)</p></li>
+<li><p><a href="https://github.com/r-lib/xml2">xml2</a> for XML.</p></li>
+</ul>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">Wrangle</h2>
+<p>In addition to <a href="https://tidyr.tidyverse.org">tidyr</a>, and <a href="https://dplyr.tidyverse.org">dplyr</a>, there are five packages (including <a href="https://stringr.tidyverse.org">stringr</a> and <a href="https://forcats.tidyverse.org">forcats</a>) which are designed to work with specific types of data:</p>
+<ul>
+<li><a href="https://lubridate.tidyverse.org">lubridate</a> for dates and date-times.</li>
+<li><a href="https://github.com/tidyverse/hms">hms</a> for time-of-day values.</li>
+<li><a href="https://github.com/tidyverse/blob">blob</a> for storing blob (binary) data.</li>
+</ul>
+</section>
+<section id="program" class="level2">
+<h2 class="anchored" data-anchor-id="program">Program</h2>
+<p>In addition to <a href="https://purrr.tidyverse.org">purrr</a>, which provides very consistent and natural methods for iterating on R objects, there are two additional tidyverse packages that help with general programming challenges:</p>
+<ul>
+<li><p><a href="https://magrittr.tidyverse.org">magrittr</a> provides the pipe, <code>%&gt;%</code> used throughout the tidyverse. It also provide a number of more specialised piping operators (like <code>%$%</code> and <code>%&lt;&gt;%</code>) that can be useful in other places.</p></li>
+<li><p><a href="https://github.com/tidyverse/glue">glue</a> provides an alternative to <code>paste()</code> that makes it easier to combine data and strings.</p></li>
+</ul>
+<p>Note it may take ~5-10 minutes to run.</p>
+</section>
+<section id="useful-mostly-free-resources" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources">Useful (+ mostly Free) Resources</h2>
+<p>Found on our website under the <code>Resources</code> tab: https://jhudatascience.org/intro_to_r/resources.html</p>
+<ul>
+<li>videos from previous offerings of the class</li>
+<li>cheatsheets from the class</li>
+</ul>
+</section>
+<section id="useful-mostly-free-resources-1" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources-1">Useful (+ mostly Free) Resources</h2>
+<p><strong>Want more?</strong></p>
+<ul>
+<li><p>Tidyverse Skills for Data Science Book: https://jhudatascience.org/tidyversecourse/ (more about the tidyverse, some modeling, and machine learning)</p></li>
+<li><p>Tidyverse Skills for Data Science Course: https://www.coursera.org/specializations/tidyverse-data-science-r<br>
+(same content with quizzes, can get certificate with $)</p></li>
+<li><p>R for Data Science: http://r4ds.had.co.nz/<br>
+(great general information)</p></li>
+<li><p>R basics by Rafael A. Irizarry: https://rafalab.github.io/dsbook/r-basics.html (great general information)</p></li>
+<li><p>Open Case Studies: https://www.opencasestudies.org/<br>
+(resource for specific public health cases with statistical implementation and interpretation)</p></li>
+<li><p>Dataquest: https://www.dataquest.io/<br>
+(general interactive resource)</p></li>
+</ul>
+</section>
+<section id="useful-mostly-free-resources-2" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources-2">Useful (+ mostly Free) Resources</h2>
+<p><strong>Need help?</strong></p>
+<ul>
+<li><p>Various “Cheat Sheets”: https://www.rstudio.com/resources/cheatsheets/</p></li>
+<li><p>R reference card: http://cran.r-project.org/doc/contrib/Short-refcard.pdf</p></li>
+<li><p>R jargon: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</p></li>
+<li><p>R vs Stata: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</p></li>
+<li><p>R terminology: https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf</p></li>
+</ul>
+</section>
+<section id="useful-mostly-free-resources-3" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources-3">Useful (+ mostly Free) Resources</h2>
+<p><strong>Interested in Reproducibility?</strong></p>
+<p>Check out Candace’s courses:</p>
+<ul>
+<li><p>Introduction: https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/</p></li>
+<li><p>Advanced: https://jhudatascience.org/Adv_Reproducibility_in_Cancer_Informatics/</p></li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>R is a powerful data visualization and analysis software language</li>
+<li>We will focus on <strong>packages</strong> (code shared among people) of the <code>tidyverse</code>, which helps make R more intuitive.</li>
+<li>We will also talk a bit about <strong>base R</strong> because some resources online and R users will use this.</li>
+<li><strong>Functions</strong> perform specific tasks in R and are found within packages.</li>
+<li><strong>Arguments</strong> within functions specify how a function is to be performed.</li>
+<li>Materials will be updated frequently as we improve it.</li>
+<li>Class <strong>surveys</strong> are available on CoursePlus so you can provide feedback!</li>
+<li>Lots of <strong>resources</strong> can be found on the website.</li>
+</ul>
+</section>
+<section id="website-tour" class="level2">
+<h2 class="anchored" data-anchor-id="website-tour">Website tour!</h2>
+<p>🏠 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Class Website</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-right">© Copyright 2022, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

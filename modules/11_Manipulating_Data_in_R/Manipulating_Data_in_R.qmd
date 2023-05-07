@@ -1,0 +1,546 @@
+---
+title: "Manipulating Data in R"
+author: "Jubayer Hossain"
+institute: "[Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/)"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true 
+    theme: flatly
+---
+
+```{r, echo = FALSE, include=FALSE}
+library(knitr)
+library(readr)
+opts_chunk$set(comment = "")
+library(tidyverse)
+```
+
+## Recap of Data Cleaning
+
+-   `is.na()`,`any(is.na())`, `count()`, and functions from `naniar`
+    like `gg_miss_var()` can help determine if we have `NA` values
+-   `filter()` automatically removes `NA` values - can't confirm or deny
+    if condition is met (need `| is.na()` to keep them)
+-   `drop_na()` can help you remove `NA` values from a variable or an
+    entire data frame
+-   `NA` values can change your calculation results
+-   think about what `NA` values represent
+
+## Recap of Data Cleaning
+
+-   `recode()` can help with simple recoding (not based on condition but simple swap)
+-   `case_when()` can recode **entire values** based on conditions
+    -   remember `case_when()` needs `TRUE ~ varaible` to keep values that aren't specified by conditions, otherwise will be `NA`
+-   `stringr` package has great functions for looking for specific **parts of values** especially `filter()` and `str_detect()` combined
+    -   also has other useful string manipulation functions like `str_replace()` and more!
+    - `separate()` can split columns into additional columns
+    - `unite()` can combine columns
+- [Day 5 Cheatsheet](https://jhudatascience.org/intro_to_r/modules/cheatsheets/Day-5.pdf)
+
+## Manipulating Data 
+
+In this module, we will show you how to:
+
+1. Reshape data from wide to long
+2. Reshape data from long to wide
+3. Merge Data/Joins
+
+## What is wide/long data?
+
+https://github.com/gadenbuie/tidyexplain/blob/main/images/tidyr-pivoting.gif
+
+```{r, fig.alt="A gif visualization of data going from wide to long form.", out.width = "40%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/tidyr_pivoting.gif")
+```
+
+## What is wide/long data?
+The pivot_longer() function from the tidyr package in R can be used to pivot a data frame from a wide format to a long format.
+
+This function uses the following basic syntax:
+
+
+```{r, eval=FALSE}
+df %>% pivot_longer(cols=c('var1', 'var2', ...),
+                    names_to='col1_name',
+                    values_to='col2_name') 
+```
+
+- cols: The names of the columns to pivot
+- names_to: The name for the new character column
+- values_to: The name for the new values column
+
+
+```{r, echo = FALSE}
+data.wide <- readr::read_csv("data/GDP_by_Country.csv", show_col_types = FALSE)
+```
+
+Wide: has many columns
+
+```{r, echo = FALSE}
+head(data.wide)
+```
+
+We can use the pivot_longer() function to pivot this data frame into a long format:
+```{r, echo = FALSE}
+# Use pivot_longer() in R
+ex_long <- pivot_longer(cols=2:5, names_to = "year", values_to = "GDP")
+```
+
+Long: column names become data
+
+```{r, echo = FALSE}
+ex_long
+```
+
+## What is wide/long data?
+
+```{r, echo = FALSE}
+ex_wide <- tibble(State = c("Alabama", "Alaska"),
+                 June_vacc_rate = c("37.2%", "47.5%"),
+                 May_vacc_rate = c("36.0%", "46.2%"),
+                 April_vacc_rate = c("32.4%", "41.7%")
+                     )
+ex_long <- pivot_longer(ex_wide, cols = !State)
+```
+
+Wide: multiple columns per individual, values spread across multiple columns 
+
+```{r, echo = FALSE}
+ex_wide
+```
+
+Long: multiple rows per observation, a single column contains the values
+
+```{r, echo = FALSE}
+ex_long
+```
+
+## What is wide/long data?
+
+
+
+```{r, fig.alt="Wide versus long data rearanges the position of column names and row content.", out.width = "60%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/pivot.jpg")
+```
+
+## Why do we need to switch between wide/long data?
+
+Wide: **Easier for humans to read**
+
+```{r, echo = FALSE}
+ex_wide
+```
+
+Long: **Easier for R to make plots & do analysis**
+
+```{r, echo = FALSE}
+ex_long
+```
+
+## Pivoting using `tidyr` package
+
+`tidyr` allows you to "tidy" your data.  We will be talking about:
+
+- `pivot_longer` - make multiple columns into variables, (wide to long)
+- `pivot_wider` - make a variable into multiple columns, (long to wide)
+- `separate` - string into multiple columns (review)
+
+The `reshape` command exists.  It is a **confusing** function.  Don't use it.
+
+You might see old functions `gather` and `spread` when googling. These are the old names for `pivot_longer` and `pivot_wider`, respectively.
+
+# `pivot_longer`...
+
+## Reshaping data from **wide to long** {.codesmall} 
+
+`pivot_longer()` - puts column data into rows (`tidyr` package)
+
+- First describe which columns we want to "pivot_longer"
+
+
+
+```{r, eval=FALSE}
+{long_data} <- {wide_data} %>% pivot_longer(cols = {columns to pivot})
+```
+</div>
+
+## Reshaping data from **wide to long**
+
+```{r, echo = FALSE}
+wide_data <- tibble(June_vacc_rate = "37.2%",
+                 May_vacc_rate = "36.0%",
+                 April_vacc_rate = "32.4%")
+```
+
+```{r}
+wide_data
+long_data <- wide_data %>% pivot_longer(cols = everything())
+long_data
+```
+
+## Reshaping data from **wide to long** 
+
+`pivot_longer()` - puts column data into rows (`tidyr` package)
+
+- First describe which columns we want to "pivot_longer"
+- `names_to =` gives a new name to the pivoted columns
+- `values_to =` gives a new name to the values that used to be in those columns
+
+```{r, eval=FALSE}
+{long_data} <- {wide_data} %>% pivot_longer(cols = {columns to pivot},
+                                        names_to = {New column name: contains old column names},
+                                        values_to = {New column name: contains cell values})
+```
+
+## Reshaping data from **wide to long**
+
+```{r, echo = FALSE}
+wide_data <- tibble(June_vacc_rate = "37.2%",
+                 May_vacc_rate = "36.0%",
+                 April_vacc_rate = "32.4%")
+```
+
+```{r}
+wide_data
+long_data <- wide_data %>% pivot_longer(cols = everything(),
+                                        names_to = "Month",
+                                        values_to = "Rate")
+long_data
+```
+
+## Data used: Charm City Circulator
+
+http://jhudatascience.org/intro_to_r/data/Charm_City_Circulator_Ridership.csv
+
+```{r, message = FALSE}
+library(jhur)
+circ <- read_circulator()
+head(circ, 5)
+```
+
+## Reshaping data from **wide to long**
+
+```{r}
+long <- circ %>% 
+  pivot_longer(starts_with(c("orange","purple","green","banner")))
+long
+```
+
+## Reshaping data from **wide to long**
+
+There are many ways to select the columns we want. Use `?tidyr_tidy_select` to look at more column selection options.
+
+```{r}
+long <- circ %>% 
+  pivot_longer( !c(day, date, daily))
+long
+```
+
+## Reshaping data from **wide to long**
+
+```{r}
+long %>% count(name)
+```
+
+## Cleaning up long data
+
+We will use `str_replace` from the `stringr` package to put `_` in the names
+
+```{r}
+long <- long %>% mutate(
+  name = str_replace(name, "Board", "_Board"),
+  name = str_replace(name, "Alight", "_Alight"),
+  name = str_replace(name, "Average", "_Average") 
+)
+long
+```
+
+## Cleaning up long data
+
+Now each `var` is Boardings, Averages, or Alightings.  We use "`into =`" to name the new columns and "`sep =`" to show where the separation should happen.
+
+```{r}
+long <- long %>% 
+  separate(name, into = c("line", "type"), sep = "_")
+long
+```
+
+# `pivot_wider`...
+
+## Reshaping data from **long to wide**
+
+`pivot_wider()` - spreads row data into columns (`tidyr` package)
+
+- `names_from =` the old column whose contents will be spread into multiple new column names.
+- `values_from =` the old column whose contents will fill in the values of those new columns.
+
+```{r, eval=FALSE}
+{wide_data} <- {long_data} %>% 
+  pivot_wider(names_from = {Old column name: contains new column names},
+              values_from = {Old column name: contains new cell values})
+```
+
+
+## Reshaping data from **long to wide**
+
+```{r}
+long_data
+wide_data <- long_data %>% pivot_wider(names_from = "Month", 
+                                       values_from = "Rate") 
+wide_data
+```
+
+## Reshaping Charm City Circulator
+
+```{r}
+long
+```
+
+## Reshaping Charm City Circulator
+
+```{r}
+wide <- long %>% pivot_wider(names_from = "type", 
+                             values_from = "value") 
+wide
+```
+
+## Summary
+
+- `tidyr` package helps us convert between wide and long data
+- `pivot_longer()` goes from wide -> long
+     - Specify columns you want to pivot
+     - Specify `names_to = ` and `values_to = ` for custom naming
+- `pivot_wider()` goes from long -> wide
+     - Specify `names_from =` and `values_from = `
+
+## Lab Part 1
+
+🏠 [Class Website]()
+
+💻 [Lab]()
+
+## Joining in `dplyr`
+
+* Merging/joining data sets together - usually on key variables, usually "id"
+* `?join` - see different types of joining for `dplyr`
+* `inner_join(x, y)` - only rows that match for `x` and `y` are kept
+* `full_join(x, y)` - all rows of `x` and `y` are kept 
+* `left_join(x, y)` - all rows of `x` are kept even if not merged with `y`
+* `right_join(x, y)` - all rows of `y` are kept even if not merged with `x`
+* `anti_join(x, y)` - all rows from `x` not in `y` keeping just columns from `x`.
+
+## Merging: Simple Data
+
+```{r echo=FALSE}
+data_As <- tibble(State = c("Alabama", "Alaska"),
+                 June_vacc_rate = c("37.2%", "47.5%"),
+                 May_vacc_rate = c("36.0%", "46.2%"))
+data_cold <- tibble(State = c("Maine", "Alaska"),
+                    April_vacc_rate = c("32.4%", "41.7%"))
+```
+
+```{r}
+data_As
+data_cold
+```
+
+## Inner Join
+
+https://github.com/gadenbuie/tidyexplain/blob/main/images/inner-join.gif
+
+```{r, fig.alt="A gif showing the inner joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/inner_join.gif")
+```
+
+## Inner Join
+
+```{r inner_join}
+ij = inner_join(data_As, data_cold)
+ij
+```
+
+## Left Join
+
+https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif
+
+```{r, fig.alt="A gif showing the left joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/left_join.gif")
+```
+
+## Left Join
+
+```{r left_join}
+lj = left_join(data_As, data_cold)
+lj
+```
+
+## Install `tidylog` package to log outputs
+
+```{r, include=FALSE}
+# install.packages("tidylog")
+library(tidylog)
+```
+
+```{r left_join_log}
+# install.packages("tidylog")
+library(tidylog)
+left_join(data_As, data_cold)
+```
+
+## Right Join
+
+https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif
+
+```{r, fig.alt="A gif showing the right joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/right_join.gif")
+```
+
+## Right Join
+
+```{r right_join}
+rj <- right_join(data_As, data_cold)
+rj
+```
+
+## Left Join: Switching arguments
+
+```{r right_join2}
+lj2 <- left_join(data_cold, data_As)
+lj2
+```
+
+## Full Join
+
+https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/full-join.gif
+
+```{r, fig.alt="A gif showing the full joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/full_join.gif")
+```
+
+## Full Join
+
+```{r}
+fj <- full_join(data_As, data_cold)
+fj
+```
+
+## Watch out for "`includes duplicates`"
+
+```{r echo=FALSE}
+data_As <- tibble(State = c("Alabama", "Alaska"),
+                 state_bird = c("wild turkey", "willow ptarmigan"))
+data_cold <- tibble(State = c("Maine", "Alaska", "Alaska"),
+                    vacc_rate = c("32.4%", "41.7%", "46.2%"),
+                    month = c("April", "April", "May"))
+```
+
+```{r}
+data_As
+data_cold
+```
+
+## Watch out for "`includes duplicates`"
+
+```{r}
+lj <- left_join(data_As, data_cold)
+```
+
+## Watch out for "`includes duplicates`"
+
+Data including the joining column ("State") has been duplicated.
+
+```{r}
+lj
+```
+
+<br>
+
+Note that "Alaska willow ptarmigan" appears twice.
+
+## Watch out for "`includes duplicates`"
+
+https://github.com/gadenbuie/tidyexplain/blob/main/images/left-join-extra.gif
+
+```{r, fig.alt="A gif showing how data can be duplicated from one dataset when joining two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/left_join_extra.gif")
+```
+
+## Stop `tidylog`
+
+```{r}
+unloadNamespace("tidylog")
+```
+
+## Duplicated
+
+- The `duplicated` function can give you indications if there are duplicates in a **vector**:
+
+```{r}
+duplicated(1:5)
+duplicated(c(1:5, 1))
+lj %>% mutate(dup_State = duplicated(State))
+```
+
+## Using the `by` argument
+
+By default joins use the intersection of column names. If `by` is specified, it uses that.
+
+```{r use_by}
+full_join(data_As, data_cold, by = "State")
+```
+
+## Using the `by` argument
+
+You can join based on multiple columns by using something like `by = c(col1, col2)`.
+
+If the datasets have two different names for the same data, use:
+
+```{r eval=FALSE}
+full_join(x, y, by = c("a" = "b"))
+```
+
+## Using "`setdiff`"
+
+We might want to determine what indexes ARE in the first dataset that AREN'T in the second:
+
+```{r}
+data_As
+data_cold
+```
+
+## Using "`setdiff`"
+
+Use `setdiff` to determine what indexes ARE in the first dataset that AREN'T in the second:
+
+```{r}
+A_states <- data_As %>% pull(State)
+cold_states <- data_cold %>% pull(State)
+```
+
+```{r}
+setdiff(A_states, cold_states)
+setdiff(cold_states, A_states)
+```
+
+## Summary
+
+* Merging/joining data sets together - assumes all column names that overlap
+     - use the `by = c("a" = "b")` if they differ
+* `inner_join(x, y)` - only rows that match for `x` and `y` are kept
+* `full_join(x, y)` - all rows of `x` and `y` are kept 
+* `left_join(x, y)` - all rows of `x` are kept even if not merged with `y`
+* `right_join(x, y)` - all rows of `y` are kept even if not merged with `x`
+* Use the `tidylog` package for a detailed summary
+* `setdiff(x, y)` shows what in `x` is missing from `y`
+
+## Lab Part 2
+
+🏠 [Class Website](https://chiraltraining.github.io/WW01_DataAnalysiswithR/)
+
+💻 [Lab](https://chiraltraining.github.io/WW01_DataAnalysiswithR/)
+
+# The end!

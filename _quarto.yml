@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    #- "*.Rmd"
+    #- "!exercises/exercises.Rmd"
+    #- "!slides/[0-9]*.qmd"
+
+website:
+  page-navigation: true
+  title: "Data Analysis with R"
+  description: "Homepage for  Data Analysis with R"
+  site-url: "https://chiraltraining.github.io/RforResearch/"
+  favicon: "images/logo.png"
+  
+  repo-url: https://github.com/chiraltraining/RforResearch
+  repo-actions: [edit, issue]
+
+  open-graph: true
+  twitter-card:
+    creator: "@hossainlab"
+    image: "/images/two-hex-logo.png"
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    right: "&copy; Copyright 2022, Md. Jubayer Hossain"
+    background: "#708090"
+
+  sidebar:
+    background: "#708090"
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/hossainlab/
+        text: GitHub
+        
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Home
+     - href: material.qmd
+     - href: sessions.qmd
+     - href: q-and-a.qmd
+       text: Workshop Q & A
+     - href: license.qmd
+       text: License
+
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: "Atkinson Hyperlegible"
+    highlight-style: a11y
+
+editor: source
+

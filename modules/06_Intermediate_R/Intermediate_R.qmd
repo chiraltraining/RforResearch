@@ -1,0 +1,652 @@
+ 
+title: "Functions"
+author: "Jubayer Hossain)"
+institute: "[Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true 
+    theme: flatly
+ 
+
+```{r, echo = FALSE, message = FALSE}
+library(dplyr)
+library(jhur)
+library(knitr)
+library(stringr)
+library(tidyr)
+library(emo)
+opts_chunk$set(comment = "")
+```
+
+
+# Control Structures
+ 
+# `if` statement
+```r
+if(condition) {
+  # do something 
+}
+```
+ 
+# `if` statement
+```{r, out.width = "40%", out.height="15%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-if-statement.jpg")
+```
+ 
+
+# Write a program to check a number is a positive
+
+```{r}
+num = 10
+if (num > 0) {
+    print("positive number")
+}
+```
+ 
+
+# `if..else` statement
+```r
+if(condition) {
+  # do something 
+} else {
+  # do something 
+}
+```
+ 
+# `if..else` statement
+```{r, out.width = "40%", out.height="40%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-if-else-statement.jpg")
+```
+ 
+# Write a program to check a number is a positive or negative
+
+```{r}
+num = 10
+if (num > 0) {
+    print("positive number")
+} else {
+    print("Negative number")
+}
+```
+ 
+
+# `if..else if...else` statement 
+```r
+if(condition-1) {
+  # do something 
+} else if(condition-2){
+  # do something 
+} else if(condition-3) {
+  # do something 
+} else {
+  # do something 
+}
+```
+ 
+# Write a program to check your bmi and health condition
+```{r}
+bmi = 18.5
+if(bmi < 18.5) {
+  print("underweight")
+} else if(bmi >= 18.5 && bmi < 25){
+  print("normal")
+} else if(bmi <= 25 && bmi < 30 ){
+  print("overweight")
+} else {
+  print("obese")
+}
+```
+ 
+
+# `ifelse` function
+- Vectors form the basic building block of R programming. 
+- Most of the functions in R take vector as input and output resultant vector. 
+- This vectorization of code, will be much faster than applying the same function to each element of the vector indivodually. 
+- Similar concept, there is a vector equivalent form of the `if...else` statement in R, the `ifelse()` function. 
+
+```r
+ifelse(condition, x, y)
+```
+ 
+# Check even and odd with ifelse function
+```{r}
+a = 10 
+ifelse(a %% 2 == 0, "even", "odd")
+```
+ 
+# Check even or odd on a sequence of object
+```{r}
+b = c(22, 12, 23, 24, 21, 28)
+ifelse(b %% 2 == 0, "even", "odd")
+```
+ 
+# `for` loop 
+```r
+for (val in sequence){
+  # do something 
+}
+```
+ 
+# `for` loop
+```{r, out.width = "20%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-for-loop.jpg")
+```
+ 
+
+# Print first 10 (1 to 10) natural numbers
+```{r}
+for (i in 1:10) {
+    print(i)
+}
+```
+ 
+
+# Print first 10 (1 to 10) natural numbers in reverse order
+```{r}
+for (i in 10:1) {
+    print(i) 
+}
+```
+ 
+# Iteration of a sequence
+```{r}
+L = c(2, 1, 4, 5, 6, 7)
+for (val in L) {
+    print(val)
+}
+```
+ 
+# Iteration of a sequence with condition
+```{r}
+L = c(2, 1, 4, 5, 6, 7)
+for (val in L) {
+    if(val %% 2 == 0) {
+        print(val)
+    }
+}
+```
+ 
+
+# `while` loop 
+```r
+while(condition){
+  # do something 
+}
+```
+ 
+# `while` loop
+```{r, out.width = "20%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-while-loop.jpg")
+```
+ 
+# Print first 10 natural numbers
+```{r}
+i = 1 
+while (i <= 10) {
+    print(i) 
+    i = i + 1 
+}
+
+```
+ 
+
+# Print first 10 natural numbers in reverse order
+```{r}
+i = 10 
+while(i > 0) {
+    print(i) 
+    i = i -1 
+}
+```
+ 
+
+# `break` statement
+```r
+if(condition){
+  break 
+}
+```
+ 
+# `break` statement
+```{r, out.width = "40%", out.height="15%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-break-flowchart.jpg")
+```
+ 
+
+# Example of break statement using for loop
+```{r}
+x <- 1:10 
+for (i in x) {
+    if(i == 5) {
+        break      
+    }
+    print(i)
+}
+```
+ 
+
+# Example of break statement using while loop
+```{r}
+i = 0 
+while (i <= 10) {
+    i = i + 1 
+    if(i == 5) {
+        break
+    }
+    print(i)
+}
+```
+ 
+
+# `next` statement
+```r
+if(condition){
+  next  
+}
+```
+ 
+# `next` statement
+```{r, out.width = "40%", out.height="15%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-next-flowchart.png")
+```
+ 
+
+# Example of next statement using for loop
+```{r}
+for (val in 1:10) {
+    if (val == 5) {
+        next 
+    }
+    print(val)
+}
+
+```
+ 
+# Example of next statement using while loop
+```{r}
+i = 0 
+while(i <= 5) {
+    i = i + 1 
+    if(i == 2) {
+        next
+    }
+    print(i)
+}
+```
+ 
+
+
+# `repeat` loop
+```r
+repeat {
+  # do something 
+}
+```
+ 
+# `repeat` loop
+```{r, out.width = "40%", out.height="15%", echo=FALSE, fig.align='center', fig.cap="https://www.datamentor.io/r-programming/if-else-statement/"}
+knitr::include_graphics("img/r-repeat-loop.jpg")
+```
+ 
+
+# Example of repeat loop
+```{r}
+x <- 1
+repeat {
+print(x)
+x = x+1
+if (x == 6){
+break
+}
+}
+```
+ 
+
+# Functions 
+ 
+# Functions in R
+- A function is a set of statements organized together to perform a specific task. 
+- R has a large number of in-built functions and the user can create their own functions. 
+- In R, a function is an object so the R interpreter is able to pass control to the function, along with arguments that may be necessary for the function to accomplish the actions. 
+- The function in turn performs its task and returns control to the interpreter as well as any result which may be stored in other objects.
+ 
+# Two Types of Function in R
+- Built-in: R has many in-built functions which can be directly called in the program without defining them first.
+- User Defined: We can also create and use our own functions referred as user defined functions.
+- Simple examples of in-built functions are `seq()`, `mean()`, `max()`, `sum()` and paste(...) etc. They are directly called by user written programs.
+ 
+
+# Creating Functions in R
+```{r}
+f <- function() {
+  # empty function
+}
+# Function have their own class 
+
+class(f) 
+
+# Execute / Call this function
+f()
+```
+ 
+# Create a Hello World Function
+```{r}
+# Create a function with no arguments 
+say_hello <- function() {
+    cat("Hello World\n") 
+}
+# Call 
+say_hello()
+```
+ 
+
+# Create a function for printitng Hello World 3 times
+```{r}
+say_hello <- function(num) {
+    for(i in seq_len(num)) {
+        cat("Hello World!\n")
+    }
+}
+
+# Call function with arguments 
+say_hello(3)
+
+```
+
+
+
+## Writing your own functions
+
+So far we've seen many functions, like `c()`, `class()`, `filter()`, `dim()` ...
+
+**Why create your own functions?**
+
+- Cut down on repetitive code (easier to fix things!)
+- Organize code into manageable chunks
+- Avoid running code unintentionally
+- Use names that make sense to you
+
+## Writing your own functions
+
+Here we will write a function that multiplies some number (x) by 2:
+
+```{r comment=""}
+times_2 <- function(x) x * 2
+```
+
+When you run the line of code above, you make it ready to use (no output yet!). Let's test it!
+
+```{r comment=""}
+times_2(x = 10)
+```
+
+## Writing your own functions: `{ }`
+
+Adding the curly brackets - `{}` - allows you to use functions spanning multiple lines:
+
+```{r comment=""}
+times_2 <- function(x) {
+  x * 2
+}
+times_2(x = 10)
+```
+
+## Writing your own functions: `return`
+
+If we want something specific for the function's output, we use `return()`:
+
+```{r comment=""}
+times_2 <- function(x) {
+  output <- x * 2
+  return(output)
+}
+times_2(x = 10)
+```
+
+## Writing your own functions
+
+The general syntax for a function is: 
+
+```
+functionName <- function(inputs) {
+ <function body>
+return(value)
+}
+```
+
+## Writing your own functions: multiple inputs
+
+Functions can take multiple inputs:
+
+```{r comment=""}
+times_2_plus_y <- function(x, y) x * 2 + y
+times_2_plus_y(x = 10, y = 3)
+```
+
+## Writing your own functions: defaults
+
+Functions can have "default" arguments. This lets us use the function without using an argument later:
+
+```{r comment=""}
+times_2_plus_y <- function(x = 10, y = 3) x * 2 + y
+times_2_plus_y()
+```
+
+## Writing another simple function
+
+Let's write a function, `sqdif`, that:
+
+1. takes two numbers `x` and `y` with default values of 2 and 3.
+2. takes the difference
+3. squares this difference
+4. then returns the final value 
+
+## Writing another simple function
+
+```{r comment=""}
+sqdif <- function(x = 2, y = 3) (x - y)^2
+
+sqdif()
+sqdif(x = 10, y = 5)
+sqdif(10, 5)
+```
+
+## Writing your own functions: characters
+
+Functions can have any kind of input. Here is a function with characters:
+
+```{r comment=""}
+loud <- function(word) {
+  output <- rep(toupper(word), 5)
+  return(output)
+}
+loud(word = "hooray!")
+```
+
+## Functions for tibbles
+
+We can use `filter(row_number()==n)` to extract a row of a tibble:
+
+```{r message=FALSE}
+cars <- read_kaggle()
+
+get_row <- function(dat, row) dat %>% filter(row_number() == row)
+```
+
+```{r echo=FALSE}
+# So extra columns don't clutter the slide
+cars <- cars %>% select(1:10)
+```
+
+```{r}
+get_row(dat = cars, row = 10)
+```
+
+```{r echo=FALSE}
+# Restore dataset
+cars <- read_kaggle()
+```
+
+## Functions for tibbles
+
+`select(n)` will choose column `n`:
+
+```{r message=FALSE}
+get_index <- function(dat, row, col) {
+  dat %>%
+    filter(row_number() == row) %>%
+    select(col)
+}
+
+get_index(dat = cars, row = 10, col = 8)
+```
+
+## Functions for tibbles
+
+Including default values for arguments:
+
+```{r message=FALSE}
+get_top <- function(dat, row = 1, col = 1) {
+  dat %>%
+    filter(row_number() == row) %>%
+    select(col)
+}
+
+get_top(dat = cars)
+```
+
+## Using your custom functions: `sapply()`
+
+Now that you've made a function... You can "apply" functions easily with `sapply()`!
+
+These functions take the form:
+
+```   
+sapply(<a vector or list>, some_function)
+```
+
+## Using your custom functions: `sapply()`
+
+`r emo::ji("rotating_light")` There are no parentheses on the functions! `r emo::ji("rotating_light")`
+
+```{r comment=""}
+sapply(cars, class)
+```
+
+## Using your custom functions: `sapply()`
+
+```{r}
+sapply(pull(cars, VehOdo), times_2_plus_y)
+```
+
+## Using your custom functions "on the fly" to iterate
+
+```{r comment=""}
+sapply(pull(cars, VehOdo), function(x) x / 1000)
+```
+
+## Applying functions with `across` from `dplyr`
+
+`across()` makes it easy to apply the same transformation to multiple columns. Usually used with `summarize()`.
+
+```
+across( .cols = <columns>, .fns = function, ... )
+```
+
+- List columns first : `.cols = `
+- List function next: `.fns = `
+- Then list any arguments for the function
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Combining with `summarize()`:
+
+```{r warning=FALSE}
+cars_dbl <- cars %>% select(Make, Model, where(is.double))
+
+cars_dbl %>%
+  group_by(Make) %>%
+  summarize(across(.cols = everything(), .fns = mean))
+```
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Combining with `summarize()`:
+
+```{r warning=FALSE}
+# Adding arguments to the end!
+#
+cars_dbl %>%
+  group_by(Make) %>%
+  summarize(across(.cols = everything(), .fns = mean, na.rm = TRUE))
+```
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Using different `tidyselect()` options:
+
+```{r warning=FALSE}
+cars_dbl %>%
+  group_by(Make) %>%
+  summarize(across(.cols = starts_with("Veh"), .fns = mean))
+```
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Combining with `mutate()`:
+
+```{r}
+cars_dbl %>%
+  mutate(across(.cols = starts_with("Veh"), .fns = round, digits = -3))
+```
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Combining with `mutate()`:
+
+```{r}
+cars_dbl %>%
+  mutate(across(
+    .cols = everything(),
+    .fns = str_replace_all,
+    pattern = "A",
+    replacement = "a"
+  ))
+```
+
+## Applying functions with `across` from `dplyr`.{.codesmall}
+
+Combining with `mutate()`:
+
+```{r warning=FALSE, message=FALSE}
+# Child mortality data
+mort <- read_mortality() %>% rename(country = `...1`)
+
+mort %>%
+  select(country, starts_with("194")) %>%
+  mutate(across(
+    .cols = c(`1943`, `1944`, `1945`),
+    .fns = replace_na,
+    replace = 0
+  ))
+```
+
+## Summary
+
+- Simple functions take the form:
+  - `NEW_FUNCTION <- function(x, y) x + y ..`
+  - Can specify defaults like `function(x = 1, y = 2)`
+- Apply your functions with `sapply(<a vector or list>, some_function)`
+- Use `across()` to apply functions across multiple columns of data
+
+## Website
+
+🏠 [Class Website](https://chiraltraining.github.io/WW01_DataAnalysiswithR/)  
+
+💻 [Lab](https://chiraltraining.github.io/WW01_DataAnalysiswithR/)
+
+The end!

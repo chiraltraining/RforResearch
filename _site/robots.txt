@@ -1,0 +1,1 @@
+Sitemap: https://chiraltraining.github.io/WW01_DataAnalysiswithR/sitemap.xml

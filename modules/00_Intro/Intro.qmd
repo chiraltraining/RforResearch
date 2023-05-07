@@ -1,0 +1,480 @@
+---
+title: "Introduction - Data Analysis with R"
+author: "Jubayer Hossain"
+institute: "[Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/)"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true 
+    theme: cosmo
+--- 
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(comment = "")
+```
+
+## Welcome to Daa!
+
+1. Introductions
+2. Class overview
+3. Getting R up and running
+
+
+```{r, fig.alt="Welcome!", out.width = "60%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/welcome.jpg")
+```
+
+<sub>[Photo by <a href="https://unsplash.com/@bel2000a?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Belinda Fewings</a> on <a href="https://unsplash.com/s/photos/welcome?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]</sub>
+  
+  
+
+
+## What is R?
+
+- R is a language and environment for statistical computing and graphics developed in 1991
+
+- R is the open source implementation of the [S language](https://en.wikipedia.org/wiki/S_(programming_language)), which was developed by [Bell laboratories](https://ca.slack-edge.com/T023TPZA8LF-U024EN26Q0L-113294823b2c-512) in the 70s.
+
+- The aim of the S language, as expressed by John Chambers, is "to turn ideas into software, quickly and faithfully"
+
+```{r, fig.alt="Bell Labs old logo", out.width = "40%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bell_Laboratories_logo.svg/2880px-Bell_Laboratories_logo.svg.png")
+```
+
+
+
+- **R**oss Ihaka and **R**obert Gentleman at the University of Auckland, New Zealand developed R
+
+
+- R is both [open source](https://en.wikipedia.org/wiki/Open_source) and [open development](https://en.wikipedia.org/wiki/Open-source_software_development)
+
+- R is a dialect of S(R is an implementation of the S programming language).  
+
+- R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New
+Zealand, and is developed by the R Development Core Team. 
+
+- R is a programming language and environment commonly used in statistical computing, data analytics and scientific research. 
+
+- R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. 
+
+- The R language is widely used among statisticians and data miners for developing statistical software and data analysis.
+
+
+
+```{r, fig.alt="R logo", out.width = "20%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://www.r-project.org/Rlogo.png")
+```
+
+
+
+## Why R?
+
+* Free (open source)
+
+* High level language designed for statistical computing
+
+* Powerful and flexible - especially for data wrangling and visualization
+
+* Extensive add-on software (packages)
+* R is popular – and increasing in popularity. 
+* R runs on all platforms.(Windows, Linux and Mac) 
+* R is being used by the biggest tech giants(google, facebook, microsoft, twitter)
+* Strong community 
+
+
+
+```{r, fig.alt="R logo", out.width = "20%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://www.r-project.org/Rlogo.png")
+```
+
+
+## Why not R?
+    
+* Little centralized support, relies on online community and package developers
+
+* Annoying to update
+
+* Slower, and more memory intensive, than the more traditional programming languages (C, Perl, Python)
+
+```{r, fig.alt="tortoise and hare", out.width = "40%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/tortoise_hare.jpg")
+```
+
+<sub>[[source -School vector created by nizovatina - www.freepik.com](https://www.freepik.com/vectors/school)]</sub>
+
+
+## Introductions
+
+* What do you hope to get out of the workshop?
+
+* Why do you want to use R?
+
+```{r, fig.alt="image of rocks with word hope painted on", out.width = "60%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/hope.jpg")
+``` 
+
+<sub>[Photo by <a href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nick Fewings</a> on <a href="https://unsplash.com/s/photos/hope?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]</sub>
+  
+
+## Course Platforms
+
+* Website: [https://chiraltraining.github.io/WW01_DataAnalysiswithR/]()
+* Github: [https://github.com/chiraltraining/WW01_DataAnalysiswithR]() 
+
+Materials will be uploaded the night before class. We are constantly trying to improve content! Please refresh/download materials before class.
+
+
+## Learning Objectives
+
+- Understanding basic programming syntax
+- Reading data into R
+- Recoding and manipulating data
+- Using add-on packages (more on what this is soon!)
+- Making exploratory plots
+- Performing basic statistical tests
+- Writing R functions
+
+## Course Format
+
+ * Lecture with live coding (possibly "Interactive")
+ * Lab/Practical experience
+ * Two 10 min breaks each session - timing may vary
+
+# Assignment Policy
+- 20% of your grade will be determinded by an assignment during normal class hours.
+- 40% of your grade will come from a 5-10 page report that explores in further detail one of the research areas in the class syllabus
+- We expect that students will use orginal data collection, whether quantitative or qualitative analysis, to answer the questions posed.
+- 20% of your grade will be determinded by your attendance and participation in class.
+- 20% of your grade will come from 2 page research proposal writing that you must complete on two separate weeks of the class.
+
+# Required Textbooks
+The following books purchased and are avilable at the online book store. We have also a placed a copy of each on reserve at our online library.
+- Fundamentals of Biostatistics by Bernard Rosner, Harvard University
+- Applied Statistics by PennState Eberly College of Science
+- Applied Medical Statistics for Beginners by Dr. Mohamed Elsherif
+- Biostatistics by University of Florida
+- Introduction to R Programming by Dr. Roger D. Peng
+
+# Resources: R Books
+* [R for Data Science by Roger D.Peng ](https://bookdown.org/rdpeng/rprogdatascience/)
+* [Introduction to Data Science by Rafael Irizarry](https://rafalab.github.io/dsbook/)
+* [Data Analysis for the Life Sciences by Rafael Irizarry](https://rafalab.github.io/pagesharvardx.html)
+* [Exploratory Data Analysis with R by Roger D.Peng ](https://bookdown.org/rdpeng/rprogdatascience/)
+
+
+# Resources: Blogs
+- [https://www.datamentor.io/r-programming/](https://www.datamentor.io/r-programming/)
+- [https://online.stat.psu.edu/stat484/](https://online.stat.psu.edu/stat484/)
+- [https://online.stat.psu.edu/stat484/](https://online.stat.psu.edu/stat484/)
+- [https://www.statmethods.net/index.html](https://www.statmethods.net/index.html)
+- [https://simplystatistics.org/](https://simplystatistics.org/)
+- [https://www.tutorialspoint.com/r/index.htm](https://www.tutorialspoint.com/r/index.htm)
+- [https://www.rforbiologists.org/](https://www.rforbiologists.org/)
+- [https://compgenomr.github.io/book/](https://compgenomr.github.io/book/)
+- [https://statsandr.com/](https://statsandr.com/)
+- [https://rafalab.github.io/pages/harvardx.html](https://rafalab.github.io/pages/harvardx.html)
+- [https://bolt.mph.ufl.edu/software/r-phc-6055/](https://bolt.mph.ufl.edu/software/r-phc-6055/)
+
+
+# More Resources 
+- [https://www.datamentor.io/r-programming/](https://www.datamentor.io/r-programming/)
+- [https://online.stat.psu.edu/stat484/](https://online.stat.psu.edu/stat484/)
+- [https://online.stat.psu.edu/stat485/](https://online.stat.psu.edu/stat485/)
+- [https://www.statmethods.net/index.html](https://www.statmethods.net/index.html)
+- [https://simplystatistics.org/](https://simplystatistics.org/)
+- [https://www.tutorialspoint.com/r/index.htm](https://www.tutorialspoint.com/r/index.htm)
+- [https://www.rforbiologists.org/](https://www.rforbiologists.org/)
+- [https://compgenomr.github.io/book/](https://compgenomr.github.io/book/)
+- [https://statsandr.com/](https://statsandr.com/)
+- [https://rafalab.github.io/pages/harvardx.html](https://rafalab.github.io/pages/harvardx.html)
+- [https://bolt.mph.ufl.edu/software/r-phc-6055/](https://bolt.mph.ufl.edu/software/r-phc-6055/)
+
+# Datasets 
+- [Mental Health and Suicide Rates](https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Crude+suicide+rates.csv)<sup>1</sup> 
+- [Western Africa Ebola Outbreak](https://www.kaggle.com/imdevskp/ebola-outbreak-20142016-complete-dataset) <sup>2</sup> 
+- [MERS Outbreaks 2012-2019](https://www.kaggle.com/imdevskp/mers-outbreak-dataset-20122019)<sup>3</sup>
+- [H1N1 Swine Flu Pandemic 2009](https://www.kaggle.com/imdevskp/h1n1-swine-flu-2009-pandemic-dataset)<sup>4</sup>
+- [SARS Outbreak 2003](https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset)<sup>5</sup>
+
+
+## Your Setup
+
+If you can, we suggest working virtually with a **large monitor or two screens**. This setup allows you to follow along on Zoom while also doing the hands-on coding.
+
+## Installing R
+
+* Install the latest version from: [https://posit.co/](https://posit.co/)
+
+* [Install RStudio](https://posit.co/download/rstudio-desktop/)
+
+RStudio is an **integrated development environment** (IDE) that makes it easier to work with R.
+
+More on that soon!
+
+
+## Basic terms
+
+R jargon: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf
+
+**Package** - a package in R is a bundle or "package" of code (and or possibly data) that can be loaded together for easy repeated use or for **sharing** with others.
+
+Packages are sort of analogous to a software application like Microsoft Word on your computer. Your operating system allows you to use it, just like having R installed (and other required packages) allows you to use packages.
+
+```{r, fig.alt="R hex stickers for packages", out.width = "35%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/hex.png")
+```
+
+
+**Function** - a function is a particular piece of code that allows you to do something in R. You can write your own, use functions that come directly from installing R, or use functions from additional packages.
+
+A function might help you add numbers together, create a plot, or organize your data. More on that soon!
+
+```{r}
+sum(1, 20234)
+```
+
+
+
+ **Argument** - what you pass to a function
+
+- can be data like the number 1 or 20234 
+
+```{r}
+sum(1, 20234)
+```
+
+- can be options about how you want the function to work such as `digits`
+
+```{r}
+round(0.627, digits = 2)
+round(0.627, digits = 1)
+```
+
+
+**Object** - an object is something that can be worked with in R - can be lots of different things!
+
+- a matrix of numbers
+- a plot
+- a function
+
+... many more
+
+## Variable and Sample
+
+- **Variable**: something measured or counted that is a characteristic about a sample
+
+examples: temperature, length, count, color, category
+
+- **Sample**: individuals that you have data about -
+
+examples: people, houses, viruses etc.
+
+```{r}
+head(iris)
+```
+
+
+## Columns and Rows
+
+```{r, fig.alt="R hex stickers for packages", out.width = "50%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://keydifferences.com/wp-content/uploads/2016/09/rows-vs-column.jpg")
+```
+[[source](https://keydifferences.com/difference-between-rows-and-columns.html)]
+
+Sample = Row  
+Variable = Column
+
+Data objects that looks like this is often called a **data frame**.
+
+Fancier versions from the tidyverse are called **tibbles** (more on that soon!).
+
+
+## More on Functions and Packages
+
+* When you download R, it has a "base" set of functions/packages (**base R**)  
+    * You can install additional packages for your uses from [CRAN](https://cran.r-project.org/) or [GitHub](https://github.com/) 
+    * These additional packages are written by RStudio or R users/developers (like us)  
+    
+```{r, fig.alt="Picture of R package stickers", out.width = "30%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/hex.png")
+```
+
+
+## Using Packages
+
+* Not all packages available on CRAN or GitHub are trustworthy
+* RStudio (the company) makes a lot of great packages
+* Who wrote it? **Hadley Wickham** is a major authority on R (Employee and Developer at RStudio)
+* How to [trust](http://simplystatistics.org/2015/11/06/how-i-decide-when-to-trust-an-r-package/) an R package
+
+
+```{r, fig.alt="Picture of Hadley Wickham", out.width = "20%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://pbs.twimg.com/profile_images/905186381995147264/7zKAG5sY_400x400.jpg")
+```
+(source: https://twitter.com/hadleywickham)
+
+## Tidyverse and Base R
+
+We will mostly show you how to use tidyverse packages and functions. 
+
+This is a newer set of packages designed for data science that can make your code more **intuitive** as compared to the original older Base R.
+
+**Tidyverse advantages**:  
+ - **consistent structure** - making it easier to learn how to use different packages  
+ - particularly good for **wrangling** (manipulating, cleaning, joining) data  
+ - more flexible for **visualizing** data  
+
+Packages for the tidyverse are managed by a team of respected data scientists at RStudio.
+
+```{r, fig.alt="Tidyverse hex sticker", out.width = "10%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://tidyverse.tidyverse.org/logo.png")
+```
+
+See this [article](https://tidyverse.tidyverse.org/articles/paper.html) for more info.
+
+
+## Collection of R packages
+
+
+# Installation and use
+
+* Install all the packages in the tidyverse by running `install.packages("tidyverse")`.
+
+* Run `library(tidyverse)` to load the core tidyverse and make it available
+  in your current R session.
+
+Learn more about the tidyverse package at <https://tidyverse.tidyverse.org>.
+
+## Core tidyverse
+
+The core tidyverse includes the packages that you're likely to use in everyday data analyses. As of tidyverse 1.3.0, the following packages are included in the core tidyverse:
+
+{{< packages-hex >}}
+
+The tidyverse also includes many other packages with more specialised usage. They are not loaded automatically with `library(tidyverse)`, so you'll need to load each one with its own call to `library()`.
+
+## Import
+
+As well as [readr](https://readr.tidyverse.org), for reading flat files, the tidyverse package installs a number of other packages for reading data:
+
+* [DBI](https://github.com/rstats-db/DBI) for relational databases.
+  (Maintained by [Kirill Müller](https://www.cynkra.com).)
+  You'll need to pair DBI with a database specific backends like 
+  [RSQLite](https://rsqlite.r-dbi.org), 
+  [RMariaDB](https://rmariadb.r-dbi.org),
+  [RPostgres](https://rpostgres.r-dbi.org), or 
+  [odbc](https://github.com/r-dbi/odbc). 
+  Learn more at <https://db.rstudio.com>.
+
+* [haven](https://haven.tidyverse.org) for SPSS, Stata, and SAS data.
+
+* [httr](https://github.com/r-lib/httr) for web APIs.
+
+* [readxl](https://readxl.tidyverse.org) for `.xls` and `.xlsx` sheets.
+
+* [rvest](https://github.com/tidyverse/rvest) for web scraping.
+
+* [jsonlite](https://github.com/jeroen/jsonlite#jsonlite)
+  for JSON. (Maintained by [Jeroen Ooms](https://github.com/jeroen).)
+
+* [xml2](https://github.com/r-lib/xml2) for XML.
+
+## Wrangle
+
+In addition to [tidyr](https://tidyr.tidyverse.org), and [dplyr](https://dplyr.tidyverse.org), there are five packages (including [stringr](https://stringr.tidyverse.org) and [forcats](https://forcats.tidyverse.org)) which are designed to work with specific types of data:
+
+* [lubridate](https://lubridate.tidyverse.org) for dates and date-times.
+* [hms](https://github.com/tidyverse/hms) for time-of-day values.
+* [blob](https://github.com/tidyverse/blob) for storing blob (binary) data.
+
+## Program
+
+In addition to [purrr](https://purrr.tidyverse.org), which provides very consistent and natural methods for iterating on R objects, there are two additional tidyverse packages that help with general programming challenges:
+
+* [magrittr](https://magrittr.tidyverse.org) provides the pipe, `%>%` used
+  throughout the tidyverse. It also provide a number of more specialised
+  piping operators (like `%$%` and `%<>%`) that can be useful in other places.
+
+* [glue](https://github.com/tidyverse/glue) provides an alternative to
+  `paste()` that makes it easier to combine data and strings.
+
+
+
+
+
+
+Note it may take ~5-10 minutes to run.
+
+## Useful (+ mostly Free) Resources
+
+Found on our website under the `Resources` tab:
+https://jhudatascience.org/intro_to_r/resources.html
+
+-  videos from previous offerings of the class
+-  cheatsheets from the class 
+
+## Useful (+ mostly Free) Resources
+
+**Want more?**  
+
+- Tidyverse Skills for Data Science Book: https://jhudatascience.org/tidyversecourse/ 
+(more about the tidyverse, some modeling, and machine learning)
+
+- Tidyverse Skills for Data Science Course: https://www.coursera.org/specializations/tidyverse-data-science-r  
+(same content with quizzes, can get certificate with $)
+
+- R for Data Science: http://r4ds.had.co.nz/  
+(great general information)
+
+- R basics by Rafael A. Irizarry: https://rafalab.github.io/dsbook/r-basics.html
+(great general information)
+ 
+- Open Case Studies: https://www.opencasestudies.org/  
+(resource for specific public health cases with statistical implementation and interpretation)
+
+- Dataquest: https://www.dataquest.io/  
+(general interactive resource)
+
+## Useful (+ mostly Free) Resources
+
+**Need help?** 
+
+- Various "Cheat Sheets": https://www.rstudio.com/resources/cheatsheets/   
+
+- R reference card: http://cran.r-project.org/doc/contrib/Short-refcard.pdf  
+
+- R jargon: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf  
+
+- R vs Stata: https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf  
+
+- R terminology: https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf
+
+## Useful (+ mostly Free) Resources
+
+**Interested in Reproducibility?**
+
+Check out Candace's courses:
+
+- Introduction: https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/
+
+- Advanced: https://jhudatascience.org/Adv_Reproducibility_in_Cancer_Informatics/
+
+## Summary
+
+- R is a powerful data visualization and analysis software language
+- We will focus on **packages** (code shared among people) of the `tidyverse`, which helps make R more intuitive.
+- We will also talk a bit about **base R** because some resources online and R users will use this.
+- **Functions** perform specific tasks in R and are found within packages.
+- **Arguments** within functions specify how a function is to be performed.
+- Materials will be updated frequently as we improve it.
+- Class **surveys** are available on CoursePlus so you can provide feedback!
+- Lots of **resources** can be found on the website.
+
+
+## Website tour!
+
+🏠 [Class Website](https://chiraltraining.github.io/WW01_DataAnalysiswithR/)

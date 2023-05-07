@@ -1,0 +1,319 @@
+---
+title: "Publication-ready Summary Tables with `{gtsummary}`"
+author: "Jubayer Hossain, [Founder & Instructor, CHIRAL Bangladesh](https://chiralbd.org/)"
+institute: "Founder, CHIRAL Bangladesh"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    #number_sections: true
+    toc_depth: 6
+    toc_float: true  
+    theme: flatly
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA, warning = FALSE, message = FALSE, fig.align = "center", fig.retina = 5, fig.height = 5, fig.width = 5)
+```
+
+# Introduction
+The `{gtsummary}` package provides an elegant and flexible way to create publication-ready analytical and summary tables using the R programming language. The `{gtsummary}` package summarizes data sets, regression models, and more, using sensible defaults with highly customizable capabilities.
+
+## `{gtsummary}` Overview
+- Create tabular summaries with sensible defaults but highly customizable
+- Types of summaries:
+  - One-way tables
+  - Tow-way tables
+  - Cross-tabulation
+  - Regression models
+  - Survival data
+  - Survey data
+  - Custom tables
+- Report statistics from {gtsummary} tables inline in R Markdown
+- Stack and/or merge any table type
+- Use themes to standardize across tables
+- Choose from different print engines
+
+
+## Getting Started 
+```{r, eval=FALSE}
+# Installation
+install.packages("gtsummary")
+
+# Install the development version of {gtsummary}
+remotes::install_github("ddsjoberg/gtsummary")
+```
+
+## Load Packages 
+```{r, packages}
+# Load packages 
+library(tidyverse)
+library(gtsummary)
+library(kableExtra)
+library(gt)
+```
+
+
+```{r}
+lungcap <- read.csv("data/LungCapData.csv")
+lungcap %>% 
+  head() %>% 
+  gt() 
+```
+
+
+
+
+
+# Basic Summary Tables using `tbl_summary()`
+- Four types of summaries: continuous, continuous2, categorical, and dichotomous
+- Statistics are median (IQR) for continuous, n (%) for categorical/dichotomous
+- Variables coded 0/1, TRUE/FALSE, Yes/No treated as dichotomous
+- Lists NA values under "Unknown"
+- Label attributes are printed automatically
+
+## Summary Tables 
+```{r}
+# Create a basic summary table 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary()
+```
+
+
+```{r}
+# Split table by group 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt)
+```
+
+```{r}
+# Skip missing data separately 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no")
+```
+
+```{r}
+# Add column with total number of non-missing observations  
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n()
+```
+
+
+```{r}
+# Test for a difference between groups
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p()
+```
+
+```{r}
+# Update the column header 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**")
+```
+
+```{r}
+# Text formatting: Bold labels 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels()
+```
+
+
+```{r}
+# Text formatting: Italicize Levels
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels() %>% 
+  italicize_levels()
+```
+```{r}
+# Table formatting: Pretty print with gt() function
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels() %>% 
+  italicize_levels() %>% 
+  as_gt() 
+```
+      
+```{r}
+# Table formatting: Add title 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels() %>% 
+  italicize_levels() %>% 
+  as_gt() %>% 
+  gt::tab_header(title = "Table 1. Summary table of 200 patients who received Drug A or Drug B")
+```
+
+      
+```{r}
+# Table formatting: Add Markdown & Bold Title 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels() %>% 
+  italicize_levels() %>% 
+  as_gt() %>% 
+  gt::tab_header(title = gt::md("**Table 1. Summary table of 200 patients who received Drug A or Drug B**")) 
+```
+
+
+      
+```{r}
+# Table formatting: Add Markdown & Italic Title 
+trial %>% 
+  select(trt, age, grade, response) %>% 
+  tbl_summary(by = trt, missing = "no") %>% 
+  add_n() %>% 
+  add_p() %>% 
+  modify_header(label = "**Variables**") %>% 
+  bold_labels() %>% 
+  italicize_levels() %>% 
+  as_gt() %>% 
+  gt::tab_header(title = gt::md("*Table 1. Summary table of 200 patients who received Drug A or Drug B*")) 
+```
+
+
+```{r}
+# Import LungCap Dataset 
+pulse_data <- read.csv("data/pulse_data.csv")
+pulse_data %>% 
+  head() %>% 
+  gt() 
+```
+
+## Categorical Variable Summary 
+
+```{r}
+# Create summary tables
+pulse_data %>% 
+  select(Gender, Smokes, Alcohol, Exercise, Ran, BMICat) %>% 
+  tbl_summary() %>% 
+  as_gt()
+```
+
+```{r}
+# type: specifies the summary type
+pulse_data %>% 
+  select(Gender, Smokes, Alcohol, Exercise, Ran, BMICat) %>% 
+  tbl_summary(type = list(c(Smokes, Alcohol, Exercise, Ran) ~ "categorical")) %>% 
+  as_gt()
+```
+
+
+## Numerical Variable Summary Table 
+```{r}
+pulse_data %>% 
+  select(Age, Height, Weight, Pulse1, Pulse2, BMI) %>% 
+  tbl_summary(missing = "no", 
+              type = everything() ~ "continuous", 
+              statistic = all_continuous() ~ "{mean} ± {sd}", 
+              digits = all_continuous() ~ 2 
+             ) %>% 
+  as_gt() 
+```
+
+## T-test 
+
+```{r}
+pulse_data %>% 
+  select(Gender, Age, Height, Weight, Pulse1, Pulse2, BMI) %>% 
+  tbl_summary(by = Gender, 
+              missing = "no", 
+              type = everything() ~ "continuous", 
+              statistic = all_continuous() ~ "{mean} ± {sd}", 
+              digits = all_continuous() ~ 2 
+             ) %>% 
+   add_p(
+      # perform t-test for all variables
+      test = everything() ~ "t.test",
+      # assume equal variance in the t-test
+      test.args = all_tests("t.test") ~ list(var.equal = TRUE)) %>% 
+      modify_header(label = "**Variables**") %>% 
+      bold_labels() %>%
+      italicize_levels() %>% 
+      as_gt() %>% 
+      gt::tab_header(
+      title = gt::md("**T-test Table**")
+)
+  
+```
+
+
+## ANOVA 
+
+```{r}
+pulse_data %>% 
+  select(BMICat, Age, Height, Weight, Pulse1, Pulse2, BMI) %>% 
+  tbl_summary(by = BMICat, 
+              missing = "no", 
+              type = everything() ~ "continuous", 
+              statistic = all_continuous() ~ "{mean} ± {sd}", 
+              digits = all_continuous() ~ 2 
+             ) %>% 
+   # Perform One-way ANOVA 
+   add_p(test = everything() ~ "aov") %>% 
+      modify_header(label = "**Variables**") %>% 
+      bold_labels() %>%
+      italicize_levels() %>% 
+      as_gt() %>% 
+  gt::tab_header(
+      title = gt::md("**ANOVA Table**")
+)
+```
+
+
+## Univariate Regression
+
+```{r}
+trial %>%
+  select(response, age, grade) %>%
+  tbl_uvregression(
+    method = glm,
+    y = response,
+    method.args = list(family = binomial),
+    exponentiate = TRUE,
+    pvalue_fun = ~style_pvalue(.x, digits = 2)
+  ) %>%
+  add_global_p() %>%  # add global p-value 
+  add_nevent() %>%    # add number of events of the outcome
+  add_q() %>%         # adjusts global p-values for multiple testing
+  bold_p() %>%        # bold p-values under a given threshold (default 0.05)
+  bold_p(t = 0.10, q = TRUE) %>% # now bold q-values under the threshold of 0.10
+  bold_labels()
+```
+
+
+
+

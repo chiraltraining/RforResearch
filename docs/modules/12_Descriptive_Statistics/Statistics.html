@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jubayer Hossain, Founder &amp; Instructor, CHIRAL Bangladesh">
+<meta name="dcterms.date" content="2022-12-28">
+
+<title>Data Analysis with R - Descriptive Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Data Analysis with R - Descriptive Statistics">
+<meta property="og:description" content="We will cover how to use R to compute some of basic statistics and fit some basic statistical models.">
+<meta property="og:site-name" content="Data Analysis with R">
+<meta name="twitter:title" content="Data Analysis with R - Descriptive Statistics">
+<meta name="twitter:description" content="We will cover how to use R to compute some of basic statistics and fit some basic statistical models.">
+<meta name="twitter:image" content="https://chiraltraining.github.io/WW01_DataAnalysiswithR//images/two-hex-logo.png">
+<meta name="twitter:creator" content="@hossainlab">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Descriptive Statistics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">Material</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">Sessions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">Workshop Q &amp; A</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">Summary</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1">Overview</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a>
+  <ul class="collapse">
+  <li><a href="#correlation-1" id="toc-correlation-1" class="nav-link" data-scroll-target="#correlation-1">Correlation</a></li>
+  <li><a href="#correlation-2" id="toc-correlation-2" class="nav-link" data-scroll-target="#correlation-2">Correlation</a></li>
+  <li><a href="#correlation-for-two-vectors" id="toc-correlation-for-two-vectors" class="nav-link" data-scroll-target="#correlation-for-two-vectors">Correlation for two vectors</a></li>
+  <li><a href="#correlation-for-two-vectors-with-plot" id="toc-correlation-for-two-vectors-with-plot" class="nav-link" data-scroll-target="#correlation-for-two-vectors-with-plot">Correlation for two vectors with plot</a></li>
+  <li><a href="#correlation-for-data-frame-columns" id="toc-correlation-for-data-frame-columns" class="nav-link" data-scroll-target="#correlation-for-data-frame-columns">Correlation for data frame columns</a></li>
+  <li><a href="#correlation-for-data-frame-columns-with-plot" id="toc-correlation-for-data-frame-columns-with-plot" class="nav-link" data-scroll-target="#correlation-for-data-frame-columns-with-plot">Correlation for data frame columns with plot</a></li>
+  </ul></li>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test">T-test</a>
+  <ul class="collapse">
+  <li><a href="#t-test-1" id="toc-t-test-1" class="nav-link" data-scroll-target="#t-test-1">T-test</a></li>
+  <li><a href="#running-one-sample-t-test" id="toc-running-one-sample-t-test" class="nav-link" data-scroll-target="#running-one-sample-t-test">Running one-sample t-test</a></li>
+  <li><a href="#running-two-sample-t-test" id="toc-running-two-sample-t-test" class="nav-link" data-scroll-target="#running-two-sample-t-test">Running two-sample t-test</a></li>
+  <li><a href="#t-test-retrieving-information-from-the-result-with-broom-package" id="toc-t-test-retrieving-information-from-the-result-with-broom-package" class="nav-link" data-scroll-target="#t-test-retrieving-information-from-the-result-with-broom-package">T-test: retrieving information from the result with <code>broom</code> package</a></li>
+  <li><a href="#p-value-adjustment" id="toc-p-value-adjustment" class="nav-link" data-scroll-target="#p-value-adjustment">P-value adjustment</a></li>
+  <li><a href="#some-other-statistical-tests" id="toc-some-other-statistical-tests" class="nav-link" data-scroll-target="#some-other-statistical-tests">Some other statistical tests</a></li>
+  <li><a href="#lab-part-1" id="toc-lab-part-1" class="nav-link" data-scroll-target="#lab-part-1">Lab Part 1</a></li>
+  </ul></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a>
+  <ul class="collapse">
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear regression</a></li>
+  <li><a href="#linear-regression-1" id="toc-linear-regression-1" class="nav-link" data-scroll-target="#linear-regression-1">Linear regression</a></li>
+  <li><a href="#linear-regression-2" id="toc-linear-regression-2" class="nav-link" data-scroll-target="#linear-regression-2">Linear regression</a></li>
+  <li><a href="#linear-regression-fit-in-r" id="toc-linear-regression-fit-in-r" class="nav-link" data-scroll-target="#linear-regression-fit-in-r">Linear regression fit in R</a></li>
+  <li><a href="#linear-regression-fit-in-r-model-formula" id="toc-linear-regression-fit-in-r-model-formula" class="nav-link" data-scroll-target="#linear-regression-fit-in-r-model-formula">Linear regression fit in R: model formula</a></li>
+  <li><a href="#linear-regression-fit-in-r-model-formula-1" id="toc-linear-regression-fit-in-r-model-formula-1" class="nav-link" data-scroll-target="#linear-regression-fit-in-r-model-formula-1">Linear regression fit in R: model formula</a></li>
+  <li><a href="#linear-regression-fit-in-r-model-formula-2" id="toc-linear-regression-fit-in-r-model-formula-2" class="nav-link" data-scroll-target="#linear-regression-fit-in-r-model-formula-2">Linear regression fit in R: model formula</a></li>
+  <li><a href="#linear-regression-3" id="toc-linear-regression-3" class="nav-link" data-scroll-target="#linear-regression-3">Linear regression</a></li>
+  <li><a href="#linear-regression-model-fitting" id="toc-linear-regression-model-fitting" class="nav-link" data-scroll-target="#linear-regression-model-fitting">Linear regression: model fitting</a></li>
+  <li><a href="#linear-regression-model-summary" id="toc-linear-regression-model-summary" class="nav-link" data-scroll-target="#linear-regression-model-summary">Linear regression: model summary</a></li>
+  <li><a href="#linear-regression-multiple-predictors" id="toc-linear-regression-multiple-predictors" class="nav-link" data-scroll-target="#linear-regression-multiple-predictors">Linear regression: multiple predictors</a></li>
+  <li><a href="#linear-regression-factors" id="toc-linear-regression-factors" class="nav-link" data-scroll-target="#linear-regression-factors">Linear regression: factors</a></li>
+  <li><a href="#linear-regression-factors-1" id="toc-linear-regression-factors-1" class="nav-link" data-scroll-target="#linear-regression-factors-1">Linear regression: factors</a></li>
+  <li><a href="#generalized-linear-models-glms" id="toc-generalized-linear-models-glms" class="nav-link" data-scroll-target="#generalized-linear-models-glms">Generalized Linear Models (GLMs)</a></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a></li>
+  <li><a href="#logistic-regression-1" id="toc-logistic-regression-1" class="nav-link" data-scroll-target="#logistic-regression-1">Logistic regression</a></li>
+  <li><a href="#odds-ratios" id="toc-odds-ratios" class="nav-link" data-scroll-target="#odds-ratios">Odds ratios</a></li>
+  <li><a href="#odds-ratios-1" id="toc-odds-ratios-1" class="nav-link" data-scroll-target="#odds-ratios-1">Odds ratios</a></li>
+  <li><a href="#final-note" id="toc-final-note" class="nav-link" data-scroll-target="#final-note">Final note</a></li>
+  <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2">Summary</a></li>
+  <li><a href="#lab-part-2" id="toc-lab-part-2" class="nav-link" data-scroll-target="#lab-part-2">Lab Part 2</a></li>
+  </ul></li>
+  <li><a href="#extra-slides" id="toc-extra-slides" class="nav-link" data-scroll-target="#extra-slides">Extra Slides</a>
+  <ul class="collapse">
+  <li><a href="#adding-correlation-value-to-a-plot" id="toc-adding-correlation-value-to-a-plot" class="nav-link" data-scroll-target="#adding-correlation-value-to-a-plot">Adding correlation value to a plot</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/12_Descriptive_Statistics/Statistics.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Descriptive Statistics</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Jubayer Hossain, <a href="https://chiralbd.org/">Founder &amp; Instructor, CHIRAL Bangladesh</a> 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Founder, CHIRAL Bangladesh
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 28, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><code>ggplot()</code> specifies what data use and what variables will be mapped to where</li>
+<li>inside <code>ggplot()</code>, <code>mapping = aes(x = , y = , color =)</code> specify what variables correspond to what aspects of the plot in general</li>
+<li>layers of plots can be combined using the <code>+</code> at the <strong>end</strong> of lines</li>
+<li>use <code>geom_line()</code> and <code>geom_point()</code> to add lines and points</li>
+<li>sometimes you need to add a <code>group</code> element to <code>mapping = aes()</code> if your plot looks strange</li>
+<li>make sure you are plotting what you think you are by checking the numbers!</li>
+<li><code>facet_grid(~ variable)</code> and <code>facet_wrap(~variable)</code> can be helpful to quickly split up your plot</li>
+</ul>
+</section>
+<section id="summary-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-1">Summary</h2>
+<ul>
+<li>the factor class allows us to have a different order from alphanumeric for categorical data</li>
+<li>we can change data to be a factor variable using <code>mutate</code> , the <code>as_factor()</code> (of <code>forcats</code> package) or <code>factor()</code> function and specifying the levels with the <code>levels</code> argument</li>
+<li>the <code>fct_reorder({variable_to_reorder}, {variable_to_order_by})</code> helps us reorder a variable by the values of another variable</li>
+<li>arranging, tabulating, and plotting the data will reflect the new order</li>
+</ul>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>We will cover how to use R to compute some of basic statistics and fit some basic statistical models.</p>
+<ul>
+<li>Correlation</li>
+<li>T-test</li>
+<li>Linear Regression / Logistic Regression</li>
+</ul>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://c.tenor.com/O3x8ywLm380AAAAd/chevy-chase.gif" class="img-fluid figure-img" style="width:35.0%" alt="I was told there would be no math"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="overview-1" class="level2">
+<h2 class="anchored" data-anchor-id="overview-1">Overview</h2>
+<div style="color: red;">
+<p>🚨 We will focus on how to use R software to do these. We will be glossing over the statistical theory and “formulas” for these tests. Moreover, we do not claim the data we use for demonstration meet assumptions of the methods. 🚨</p>
+</div>
+<p>There are plenty of resources online for learning more about these methods, as well as dedicated Biostatistics series (at different advancement levels) at the JHU School of Public Health.</p>
+<p>Check out <a href="https://www.opencasestudies.org/">www.opencasestudies.org</a> for deep dives on some of the concepts covered here.</p>
+</section>
+<section id="correlation" class="level1">
+<h1>Correlation</h1>
+<section id="correlation-1" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-1">Correlation</h2>
+<p>Function <code>cor()</code> computes correlation in R</p>
+<pre><code>cor(x, y = NULL, use = "everything",
+    method = c("pearson", "kendall", "spearman"))</code></pre>
+<ul>
+<li>provide two numeric vectors (arguments <code>x</code>, <code>y</code>), or</li>
+<li>provide a data.frame / tibble with numeric columns only</li>
+<li>by default, Pearson correlation coefficient is computed</li>
+</ul>
+</section>
+<section id="correlation-2" class="level2 small">
+<h2 class="small anchored" data-anchor-id="correlation-2">Correlation</h2>
+<p>https://jhudatascience.org/intro_to_r/data/Charm_City_Circulator_Ridership.csv</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jhur)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>circ <span class="ot">&lt;-</span> <span class="fu">read_circulator</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(circ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 15
+  day      date  orang…¹ orang…² orang…³ purpl…⁴ purpl…⁵ purpl…⁶ green…⁷ green…⁸
+  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Monday   01/1…     877    1027    952       NA      NA      NA      NA      NA
+2 Tuesday  01/1…     777     815    796       NA      NA      NA      NA      NA
+3 Wednesd… 01/1…    1203    1220   1212.      NA      NA      NA      NA      NA
+4 Thursday 01/1…    1194    1233   1214.      NA      NA      NA      NA      NA
+5 Friday   01/1…    1645    1643   1644       NA      NA      NA      NA      NA
+6 Saturday 01/1…    1457    1524   1490.      NA      NA      NA      NA      NA
+# … with 5 more variables: greenAverage &lt;dbl&gt;, bannerBoardings &lt;dbl&gt;,
+#   bannerAlightings &lt;dbl&gt;, bannerAverage &lt;dbl&gt;, daily &lt;dbl&gt;, and abbreviated
+#   variable names ¹​orangeBoardings, ²​orangeAlightings, ³​orangeAverage,
+#   ⁴​purpleBoardings, ⁵​purpleAlightings, ⁶​purpleAverage, ⁷​greenBoardings,
+#   ⁸​greenAlightings</code></pre>
+</div>
+</div>
+</section>
+<section id="correlation-for-two-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-for-two-vectors">Correlation for two vectors</h2>
+<p>First, we compute correlation by providing two vectors.</p>
+<p>Like other functions, if there are <code>NA</code>s, you get <code>NA</code> as the result. But if you specify use only the complete observations, then it will give you correlation using the non-missing data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">pull</span>(orangeAverage)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">pull</span>(purpleAverage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9195356</code></pre>
+</div>
+</div>
+</section>
+<section id="correlation-for-two-vectors-with-plot" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-for-two-vectors-with-plot">Correlation for two vectors with plot</h2>
+<p>In plot form…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>circ <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> orangeAverage, <span class="at">y =</span> purpleAverage)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Statistics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+</section>
+<section id="correlation-for-data-frame-columns" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-for-data-frame-columns">Correlation for data frame columns</h2>
+<p>We can compute correlation for all pairs of columns of a data frame / matrix. We typically just say, <em>“compute correlation matrix”</em>.</p>
+<p>Columns must be all numeric!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>circ_subset_Average <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"Average"</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(circ_subset_Average)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1146    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(circ_subset_Average, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cor_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              orangeAverage purpleAverage greenAverage bannerAverage
+orangeAverage     1.0000000     0.9078826    0.8395806     0.5447031
+purpleAverage     0.9078826     1.0000000    0.8665630     0.5213462
+greenAverage      0.8395806     0.8665630    1.0000000     0.4533421
+bannerAverage     0.5447031     0.5213462    0.4533421     1.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="correlation-for-data-frame-columns-with-plot" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-for-data-frame-columns-with-plot">Correlation for data frame columns with plot</h2>
+<ul>
+<li>Google, <em>“r correlation matrix plot”</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(cor_mat, <span class="at">type =</span> <span class="st">"upper"</span>, <span class="at">order =</span> <span class="st">"hclust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Statistics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="384"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="t-test" class="level1">
+<h1>T-test</h1>
+<section id="t-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="t-test-1">T-test</h2>
+<p>The commonly used are:</p>
+<ul>
+<li><strong>one-sample t-test</strong> – used to test mean of a variable in one group</li>
+<li><strong>two-sample t-test</strong> – used to test difference in means of a variable between two groups (if the “two groups” are data of the <em>same</em> individuals collected at 2 time points, we say it is two-sample paired t-test)</li>
+</ul>
+<p>The <code>t.test()</code> function in R is one to address the above.</p>
+<pre><code>t.test(x, y = NULL,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, paired = FALSE, var.equal = FALSE,
+       conf.level = 0.95, ...)</code></pre>
+</section>
+<section id="running-one-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="running-one-sample-t-test">Running one-sample t-test</h2>
+<p>It tests mean of a variable in one group. By default (i.e., without us explicitly specifying values of other arguments):</p>
+<ul>
+<li>tests whether a mean of a variable is equal to 0 (<code>mu=0</code>)</li>
+<li>uses “two sided” alternative (<code>alternative = "two.sided"</code>)</li>
+<li>returns result assuming confidence level 0.95 (<code>conf.level = 0.95</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">pull</span>(orangeAverage)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  x
+t = 83.279, df = 1135, p-value &lt; 0.00000000000000022
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 2961.700 3104.622
+sample estimates:
+mean of x 
+ 3033.161 </code></pre>
+</div>
+</div>
+</section>
+<section id="running-two-sample-t-test" class="level2 small">
+<h2 class="small anchored" data-anchor-id="running-two-sample-t-test">Running two-sample t-test</h2>
+<p>It tests test difference in means of a variable between two groups. By default:</p>
+<ul>
+<li>tests whether difference in means of a variable is equal to 0 (<code>mu=0</code>)</li>
+<li>uses “two sided” alternative (<code>alternative = "two.sided"</code>)</li>
+<li>returns result assuming confidence level 0.95 (<code>conf.level = 0.95</code>)</li>
+<li>assumes data are not paired (<code>paired = FALSE</code>)</li>
+<li>assumes true variance in the two groups is not equal (<code>var.equal = FALSE</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">pull</span>(orangeAverage)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> <span class="fu">pull</span>(purpleAverage)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  x and y
+t = -17.076, df = 1984, p-value &lt; 0.00000000000000022
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1096.7602  -870.7867
+sample estimates:
+mean of x mean of y 
+ 3033.161  4016.935 </code></pre>
+</div>
+</div>
+</section>
+<section id="t-test-retrieving-information-from-the-result-with-broom-package" class="level2">
+<h2 class="anchored" data-anchor-id="t-test-retrieving-information-from-the-result-with-broom-package">T-test: retrieving information from the result with <code>broom</code> package</h2>
+<p>The <code>broom</code> package has a <code>tidy()</code> function that can organize results into a data frame so that they are easily manipulated (or nicely printed)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>result_tidy <span class="ot">&lt;-</span> <span class="fu">tidy</span>(result)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>result_tidy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 10
+  estimate estimate1 estimate2 statistic  p.value param…¹ conf.…² conf.…³ method
+     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; 
+1    -984.     3033.     4017.     -17.1 4.20e-61   1984.  -1097.   -871. Welch…
+# … with 1 more variable: alternative &lt;chr&gt;, and abbreviated variable names
+#   ¹​parameter, ²​conf.low, ³​conf.high</code></pre>
+</div>
+</div>
+</section>
+<section id="p-value-adjustment" class="level2">
+<h2 class="anchored" data-anchor-id="p-value-adjustment">P-value adjustment</h2>
+<p>🚨 You run an increased risk of Type I errors (a “false positive”) when multiple hypotheses are tested simultaneously.</p>
+<p>Use the <code>p.adjust()</code> function on a vector of p values. Use <code>method =</code> to specify the adjustment method:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>my_pvalues <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.049</span>, <span class="fl">0.001</span>, <span class="fl">0.31</span>, <span class="fl">0.00001</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">p.adjust</span>(my_pvalues, <span class="at">method =</span> <span class="st">"BH"</span>) <span class="co"># Benjamini Hochberg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06533333 0.00200000 0.31000000 0.00004000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p.adjust</span>(my_pvalues, <span class="at">method =</span> <span class="st">"bonferroni"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.19600 0.00400 1.00000 0.00004</code></pre>
+</div>
+</div>
+</section>
+<section id="some-other-statistical-tests" class="level2">
+<h2 class="anchored" data-anchor-id="some-other-statistical-tests">Some other statistical tests</h2>
+<ul>
+<li><code>wilcox.test()</code> – Wilcoxon signed rank test, Wilcoxon rank sum test</li>
+<li><code>shapiro.test()</code> – Shapiro test</li>
+<li><code>ks.test()</code> – Kolmogorov-Smirnov test</li>
+<li><code>var.test()</code>– Fisher’s F-Test</li>
+<li><code>chisq.test()</code> – Chi-squared test</li>
+<li><code>aov()</code> – Analysis of Variance (ANOVA)</li>
+</ul>
+</section>
+<section id="lab-part-1" class="level2">
+<h2 class="anchored" data-anchor-id="lab-part-1">Lab Part 1</h2>
+<p>🏠 <a href="https://jhudatascience.org/intro_to_r/">Class Website</a></p>
+<p>💻 <a href="https://jhudatascience.org/intro_to_r/modules/Statistics/lab/Statistics_Lab.Rmd">Lab</a></p>
+</section>
+</section>
+<section id="regression" class="level1">
+<h1>Regression</h1>
+<section id="linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression">Linear regression</h2>
+<p>Linear regression is a method to model the relationship between a response and one or more explanatory variables.</p>
+<p>We provide a little notation here so some of the commands are easier to put in the proper context.</p>
+<p><span class="math display">\[
+y_i = \alpha + \beta x_{i} + \varepsilon_i
+\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> is the outcome for person i</li>
+<li><span class="math inline">\(\alpha\)</span> is the intercept</li>
+<li><span class="math inline">\(\beta\)</span> is the slope</li>
+<li><span class="math inline">\(x_i\)</span> is the predictor for person i</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> is the residual variation for person i</li>
+</ul>
+</section>
+<section id="linear-regression-1" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-1">Linear regression</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Statistics_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="linear-regression-2" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-2">Linear regression</h2>
+<p>Linear regression is a method to model the relationship between a response and one or more explanatory variables.</p>
+<p>We provide a little notation here so some of the commands are easier to put in the proper context.</p>
+<p><span class="math display">\[
+y_i = \alpha + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \varepsilon_i
+\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> is the outcome for person i</li>
+<li><span class="math inline">\(\alpha\)</span> is the intercept</li>
+<li><span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, <span class="math inline">\(\beta_2\)</span> are the slopes for variables <span class="math inline">\(x_{i1}\)</span>, <span class="math inline">\(x_{i2}\)</span>, <span class="math inline">\(x_{i3}\)</span></li>
+<li><span class="math inline">\(x_{i1}\)</span>, <span class="math inline">\(x_{i2}\)</span>, <span class="math inline">\(x_{i3}\)</span> are the predictors for person i</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> is the residual variation for person i</li>
+</ul>
+</section>
+<section id="linear-regression-fit-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-fit-in-r">Linear regression fit in R</h2>
+<p>To fit regression models in R, we use the function <code>glm()</code> (Generalized Linear Model).</p>
+<p>We typically provide two arguments:</p>
+<ul>
+<li><code>formula</code> – model formula written using names of columns in our data</li>
+<li><code>data</code> – our data frame</li>
+</ul>
+</section>
+<section id="linear-regression-fit-in-r-model-formula" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-fit-in-r-model-formula">Linear regression fit in R: model formula</h2>
+<p>Model formula <span class="math display">\[
+y_i = \alpha + \beta x_{i} + \varepsilon_i
+\]</span> In R translates to</p>
+<div class="cell">
+
+</div>
+<p style="text-align: center;">
+<code>y ~ x</code>
+</p>
+</section>
+<section id="linear-regression-fit-in-r-model-formula-1" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-fit-in-r-model-formula-1">Linear regression fit in R: model formula</h2>
+<p>Model formula <span class="math display">\[
+y_i = \alpha + \beta x_{i} + \varepsilon_i
+\]</span> In R translates to</p>
+<p style="text-align: center;">
+<code>y ~ x</code>
+</p>
+<p>In practice, <code>y</code> and <code>x</code> are replaced with the <strong>names of columns from our data set</strong>.</p>
+<p>For example, if we want to fit a regression model where outcome is <code>income</code> and predictor is <code>years_of_education</code>, our formula would be:</p>
+<p style="text-align: center;">
+<code>income ~ years_of_education</code>
+</p>
+</section>
+<section id="linear-regression-fit-in-r-model-formula-2" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-fit-in-r-model-formula-2">Linear regression fit in R: model formula</h2>
+<p>Model formula <span class="math display">\[
+y_i = \alpha + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \varepsilon_i
+\]</span> In R translates to</p>
+<p style="text-align: center;">
+<code>y ~ x1 + x2 + x3</code>
+</p>
+<p>In practice, <code>y</code> and <code>x1</code>, <code>x2</code>, <code>x3</code> are replaced with the <strong>names of columns from our data set</strong>.</p>
+<p>For example, if we want to fit a regression model where outcome is <code>income</code> and predictors are <code>years_of_education</code>, <code>age</code>, <code>location</code> then our formula would be:</p>
+<p style="text-align: center;">
+<code>income ~ years_of_education + age + location</code>
+</p>
+</section>
+<section id="linear-regression-3" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-3">Linear regression</h2>
+<p>We will use data about emergency room doctor complaints.</p>
+<p>“Data was recorded on 44 doctors working in an emergency service at a hospital to study the factors affecting the number of complaints received.”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("faraway")</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faraway)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(esdcomp)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>esdcomp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   visits complaints residency gender revenue   hours
+1    2014          2         Y      F  263.03 1287.25
+2    3091          3         N      M  334.94 1588.00
+3     879          1         Y      M  206.42  705.25
+4    1780          1         N      M  226.32 1005.50
+5    3646         11         N      M  288.91 1667.25
+6    2690          1         N      M  275.94 1517.75
+7    1864          2         Y      M  295.71  967.00
+8    2782          6         N      M  224.91 1609.25
+9    3071          9         N      F  249.32 1747.75
+10   1502          3         Y      M  269.00  906.25
+11   2438          2         N      F  225.61 1787.75
+12   2278          2         N      M  212.43 1480.50
+13   2458          5         N      M  211.05 1733.50
+14   2269          2         N      F  213.23 1847.25
+15   2431          7         N      M  257.30 1433.00
+16   3010          2         Y      M  326.49 1520.00
+17   2234          5         Y      M  290.53 1404.75
+18   2906          4         N      M  268.73 1608.50
+19   2043          2         Y      M  231.61 1220.00
+20   3022          7         N      M  241.04 1917.25
+21   2123          5         N      F  238.65 1506.25
+22   1029          1         Y      F  287.76  589.00
+23   3003          3         Y      F  280.52 1552.75
+24   2178          2         N      M  237.31 1518.00
+25   2504          1         Y      F  218.70 1793.75
+26   2211          1         N      F  250.01 1548.00
+27   2338          6         Y      M  251.54 1446.00
+28   3060          2         Y      M  270.52 1858.25
+29   2302          1         N      M  247.31 1486.25
+30   1486          1         Y      F  277.78  933.75
+31   1863          1         Y      M  259.68 1168.25
+32   1661          0         N      M  260.92  877.25
+33   2008          2         N      M  240.22 1387.25
+34   2138          2         N      M  217.49 1312.00
+35   2556          5         N      M  250.31 1551.50
+36   1451          3         Y      F  229.43  973.75
+37   3328          3         Y      M  313.48 1638.25
+38   2927          8         N      M  293.47 1668.25
+39   2701          8         N      M  275.40 1652.75
+40   2046          1         Y      M  289.56 1029.75
+41   2548          2         Y      M  305.67 1127.00
+42   2592          1         N      M  252.35 1547.25
+43   2741          1         Y      F  276.86 1499.25
+44   3763         10         Y      M  308.84 1747.50</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-regression-model-fitting" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-model-fitting">Linear regression: model fitting</h2>
+<p>We fit linear regression model with the number of patient visits (<code>visits</code>) as an outcome and total number of hours worked (<code>hours</code>) as a predictor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits <span class="sc">~</span> hours, <span class="at">data =</span> esdcomp)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:  glm(formula = visits ~ hours, data = esdcomp)
+
+Coefficients:
+(Intercept)        hours  
+    140.288        1.584  
+
+Degrees of Freedom: 43 Total (i.e. Null);  42 Residual
+Null Deviance:      16920000 
+Residual Deviance: 5383000  AIC: 646.3</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-regression-model-summary" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-model-summary">Linear regression: model summary</h2>
+<p>The <code>summary()</code> function returns a list that shows us some more detail</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = visits ~ hours, data = esdcomp)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-797.48  -196.35   -43.15   169.58   864.65  
+
+Coefficients:
+            Estimate Std. Error t value         Pr(&gt;|t|)    
+(Intercept)  140.288    242.723   0.578            0.566    
+hours          1.584      0.167   9.488 0.00000000000526 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 128155.3)
+
+    Null deviance: 16919101  on 43  degrees of freedom
+Residual deviance:  5382524  on 42  degrees of freedom
+AIC: 646.3
+
+Number of Fisher Scoring iterations: 2</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-regression-multiple-predictors" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="linear-regression-multiple-predictors">Linear regression: multiple predictors</h2>
+<p>Let’s try adding another explanatory variable to our model, dollars per hour earned by the doctor (`revenue``).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits <span class="sc">~</span> hours <span class="sc">+</span> revenue, <span class="at">data =</span> esdcomp)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = visits ~ hours + revenue, data = esdcomp)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-420.57  -166.87   -17.45   140.79   616.20  
+
+Coefficients:
+              Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept) -2078.1369   327.9157  -6.337        0.00000014326 ***
+hours           1.6179     0.1081  14.968 &lt; 0.0000000000000002 ***
+revenue         8.3437     1.0828   7.706        0.00000000169 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 53620.97)
+
+    Null deviance: 16919101  on 43  degrees of freedom
+Residual deviance:  2198460  on 41  degrees of freedom
+AIC: 608.91
+
+Number of Fisher Scoring iterations: 2</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-regression-factors" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-factors">Linear regression: factors</h2>
+<p>Factors get special treatment in regression models - lowest level of the factor is the comparison group, and all other factors are relative to its values.</p>
+<p><code>residency</code> takes values Y or N to indicate whether the doctor is a resident.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>esdcomp <span class="sc">%&gt;%</span> <span class="fu">count</span>(residency)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  residency  n
+1         N 24
+2         Y 20</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-regression-factors-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="linear-regression-factors-1">Linear regression: factors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fit_3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits <span class="sc">~</span> residency, <span class="at">data =</span> esdcomp)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = visits ~ residency, data = esdcomp)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-1356.30   -371.55    -62.79    400.46   1527.70  
+
+Coefficients:
+            Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)   2510.8      126.3   19.87 &lt;0.0000000000000002 ***
+residencyY    -275.5      187.4   -1.47               0.149    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 383122.6)
+
+    Null deviance: 16919101  on 43  degrees of freedom
+Residual deviance: 16091148  on 42  degrees of freedom
+AIC: 694.49
+
+Number of Fisher Scoring iterations: 2</code></pre>
+</div>
+</div>
+</section>
+<section id="generalized-linear-models-glms" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-linear-models-glms">Generalized Linear Models (GLMs)</h2>
+<p>Generalized Linear Models (GLMs) allow for fitting regressions for non-continuous/normal outcomes. Examples include: logistic regression, Poisson regression.</p>
+<p>Add the <code>family</code> argument – a description of the error distribution and link function to be used in the model. These include:</p>
+<ul>
+<li><code>binomial(link = "logit")</code></li>
+<li><code>poisson(link = "log")</code>, and other.</li>
+</ul>
+<p>See <code>?family</code> documentation for details of family functions.</p>
+</section>
+<section id="logistic-regression" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="logistic-regression">Logistic regression</h2>
+<p>We will use data about breast cancer tumors.</p>
+<p>“The purpose of this study was to determine whether a new procedure called fine needle aspiration which draws only a small sample of tissue could be effective in determining tumor status.”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wbca)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>wbca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Class Adhes BNucl Chrom Epith Mitos NNucl Thick UShap USize
+1       1     1     1     3     2     1     1     5     1     1
+2       1     5    10     3     7     1     2     5     4     4
+3       1     1     2     3     2     1     1     3     1     1
+4       1     1     4     3     3     1     7     6     8     8
+5       1     3     1     3     2     1     1     4     1     1
+6       0     8    10     9     7     1     7     8    10    10
+7       1     1    10     3     2     1     1     1     1     1
+8       1     1     1     3     2     1     1     2     2     1
+9       1     1     1     1     2     5     1     2     1     1
+10      1     1     1     2     2     1     1     4     1     2
+11      1     1     1     3     1     1     1     1     1     1
+12      1     1     1     2     2     1     1     2     1     1
+13      0     3     3     4     2     1     4     5     3     3
+14      1     1     3     3     2     1     1     1     1     1
+15      0    10     9     5     7     4     5     8     5     7
+16      0     4     1     4     6     1     3     7     6     4
+17      1     1     1     2     2     1     1     4     1     1
+18      1     1     1     3     2     1     1     4     1     1
+19      0     6    10     4     4     2     1    10     7     7
+20      1     1     1     3     2     1     1     6     1     1
+21      0    10    10     5     5     4     4     7     2     3
+22      0     3     7     7     6     1    10    10     5     5
+23      1     1     1     2     2     1     1     3     1     1
+24      1     1     1     3     2     1     1     1     1     1
+25      0     4     7     3     2     1     6     5     3     2
+26      1     1     1     2     1     1     1     3     1     2
+27      1     1     1     2     2     1     1     5     1     1
+28      1     1     1     2     2     1     1     2     1     1
+29      1     1     1     1     2     1     1     1     3     1
+30      1     1     1     2     1     1     1     3     1     1
+31      1     1     1     3     2     1     1     2     1     1
+32      0     3     5     7     8     3     4    10     7     7
+33      1     2     1     3     2     1     1     2     1     1
+34      1     1     1     2     2     1     1     3     2     1
+35      1     1     1     2     2     1     1     2     1     1
+36      0     8     1     8     6     1     9    10    10    10
+37      1     1     1     7     1     1     1     6     1     2
+38      0     9    10     5     2     1     6     5     4     4
+39      0     3     7     7     6     1     5     2     3     5
+40      0     1     3     6     3     2     5    10     3     4
+41      0     2    10     7     8     3     3     6    10    10
+42      0     6     1     3    10     1     1     5     5     6
+43      0     4     1     8     8     1    10    10    10    10
+44      1     1     1     2     2     2     1     1     1     1
+45      0     4     9     4     4     1     8     3     7     7
+46      1     1     1     2     2     1     1     1     1     1
+47      1     3     1     3     2     1     1     4     1     1
+48      0     2     8     3     4     2     8     7     7     8
+49      0     1     3     2     2     5     1     9     8     5
+50      0     4     4     3     2     1     4     5     3     3
+51      0     2     5     4     3     2    10    10     6     3
+52      0     8     8     7    10     7     3     5     5     5
+53      0     6     8     7     8     1     1    10     5     5
+54      0     3     5     3     4     1     6    10     6     6
+55      0     1     6     3     3     1     9     8    10    10
+56      0     1     1     5     5     4     4     8     4     2
+57      0     1    10     5     6     1     1     5     3     2
+58      0     2     2     5     2     1     1     9     5     5
+59      0     5     3     4     3     1    10     5     5     3
+60      1     1     2     2     2     1     1     1     1     1
+61      0     1     8     3    10     1     3     9    10    10
+62      0     1     2     3     5     1     9     6     4     3
+63      1     1     1     2     2     1     1     1     1     1
+64      0     1     2     4     3    10     3    10     2     4
+65      1     1     1     3     2     1     1     4     1     1
+66      0     1    10     4     8     1     9     5     4     3
+67      0     3     9     8     4     8     9     8     8     3
+68      1     1     1     3     2     1     2     1     1     1
+69      1     1     1     2     2     1     1     5     3     1
+70      0     8     2     7    10    10     8     6     2    10
+71      1     2     1     7     2     1     2     1     3     3
+72      0    10    10     4     6     1     8     9     5     4
+73      0     1     4     3     3     3     2    10     4     6
+74      1     1     2     4     2     1     2     1     2     1
+75      1     1     1     2     2     1     1     1     4     1
+76      1     2     1     2     2     1     1     5     1     3
+77      1     1     3     3     2     1     1     3     1     1
+78      1     1     1     2     3     1     1     2     1     1
+79      1     1     1     7     1     1     1     2     2     2
+80      1     2     1     2     2     1     1     4     1     1
+81      1     1     1     3     2     1     1     5     1     2
+82      1     1     2     7     2     1     1     3     1     1
+83      0     8     9     7     8     7    10     3     7     5
+84      0     1     4     4    10    10    10     5     6    10
+85      0     4     8     4     5     1     4     3     6     3
+86      0     6    10     6     5     3     8     3     6     6
+87      1     1     1     3     2     1     1     4     1     1
+88      1     2     1     2     3     1     1     2     1     1
+89      1     1     1     3     2     1     1     1     1     1
+90      1     2     1     1     2     1     1     3     1     1
+91      1     1     1     3     2     1     1     4     1     1
+92      1     1     1     2     2     1     1     1     1     1
+93      1     1     1     3     2     1     1     2     1     1
+94      1     1     1     3     2     1     1     1     1     1
+95      1     2     1     1     2     1     1     2     1     1
+96      1     1     1     3     2     1     1     5     1     1
+97      0     2     6     2    10    10     9     9     9     6
+98      0    10    10     7     5     4     9     7     6     5
+99      0     1     5     3    10     2    10    10     5     3
+100     0     4     5     2     2     1     5     2     4     3
+101     1     1     1     3     2     1     1     4     2     1
+102     0     1     3     7     6     1     1     8     3     2
+103     0    10     1     8    10     8     8    10    10    10
+104     0     4     3     3     3     7     2     7     4     3
+105     0     8    10     4     2     1     1    10    10    10
+106     0    10    10     5     8     1     7     1     8     6
+107     1     1     1     2     2     1     3     1     1     1
+108     0     4     9     7     3     3     8     6     4     5
+109     1     2     2     5     2     2     3     1     1     3
+110     0     3     9     3     5     1     1     8     4     6
+111     0    10    10     7     2     3     3    10     3     3
+112     0     3     8     8    10     1     1    10    10    10
+113     1     1     3     3     2     1     1     3     2     3
+114     1     1     5     1     2     1     1     1     1     1
+115     1     1     2     3     2     1     2     8     3     3
+116     0    10    10     7     4     8     5     4     5     5
+117     1     1     3     1     4     1     1     1     1     1
+118     1     1     2     3     2     1     1     3     1     2
+119     1     2     1     3     2     1     1     1     2     1
+120     1     1     2     3     2     1     1     4     1     2
+121     0     2    10     5    10     3     3    10    10    10
+122     0     1    10     5     8     1     3     5     5     3
+123     0     7     7     8     9     1    10     5     6     4
+124     1     1     1     2     2     1     1     1     1     1
+125     0     7    10     7     4     5     5     7     3     5
+126     1     1     1     3     2     1     1     3     1     1
+127     0     4    10     1     5     2     6     8     5     3
+128     1     1     1     1    10     1     1     1     1     1
+129     1     1     1     2     2     1     1     5     3     1
+130     1     1     1     3     2     1     1     2     1     1
+131     0    10    10     3     8     3     6     5     8    10
+132     1     1     1     2     2     1     2     3     1     1
+133     1     1     1     2     3     1     1     3     1     1
+134     1     1     2     3     2     1     3     5     1     1
+135     1     1     1     2     2     1     1     4     1     1
+136     1     1     1     1     2     1     1     3     1     1
+137     1     1     1     2     2     1     1     4     2     1
+138     1     1     1     1     2     1     1     3     1     1
+139     1     1     1     1     2     1     1     2     1     1
+140     0     4     5     4     4     3     3     9     5     5
+141     1     1     5     1     2     1     1     1     1     1
+142     1     1     1     2     2     1     1     2     1     1
+143     0     2     8     4     6     1     1     3     5     4
+144     1     1     2     2     3     1     1     1     1     1
+145     1     3     1     5     8     1     8     3     1     1
+146     0     4    10     7    10     7     8     8     7     8
+147     1     1     1     3     1     1     1     1     1     1
+148     0     1    10     5     6     3     4     7     4     2
+149     0     6     5     8     4     1    10    10     8    10
+150     1     1     3     1     2     1     1     4     1     1
+151     1     1     1     1     2     1     1     1     1     1
+152     0     6    10     3     3     1     1     5     5     5
+153     1     1     1     2     2     1     1     1     2     2
+154     1     1     1     3     2     1     1     2     1     1
+155     0     3    10     7     6     6    10     9    10     9
+156     0     4    10     5     5     2     7    10     7     7
+157     1     1     1     3     2     1     2     4     1     1
+158     1     1     1     3     2     1     1     3     1     1
+159     1     2     3     1     1     7     1     1     1     1
+160     1     1     2     3     2     1     2     4     1     1
+161     0     8    10     3     8     3    10     5     7     6
+162     0    10     1     3     6    10     1    10    10     8
+163     1     1     1     3     2     1     1     3     1     1
+164     1     2     1     1     1     1     1     1     1     1
+165     1     1     1     1     2     1     1     3     1     1
+166     1     1     1     3     2     1     1     1     1     1
+167     1     1     1     2     2     1     1     1     1     1
+168     0    10    10    10     8     7    10     6    10    10
+169     0     4    10     6     3     1     1     8     5     6
+170     0     7    10     5    10     1     7     5     7     8
+171     1     1     1     3     2     1     1     2     1     1
+172     0     3     1     5     8     3    10     5    10    10
+173     1     1     1     3     2     1     1     4     1     1
+174     0     3    10     3     6     1     1     5     3     3
+175     1     1     1     3     1     1     1     1     1     1
+176     1     1     1     1     2     1     1     1     1     1
+177     1     1     1     3     2     1     1     6     1     1
+178     0     8    10     7     5     1     8     5     8     8
+179     0     4    10     5     4     1     1     8     6     7
+180     1     1     1     3     1     1     1     2     1     1
+181     0     6     8     7     5     1    10     1     8     5
+182     0    10    10     7     6    10     7    10     6     5
+183     0    10     8     9     5     1    10     5     4     8
+184     1     1     1     3     2     1     1     1     3     2
+185     0     8     8     7     6     1    10    10    10    10
+186     0    10    10     4    10     3    10     7    10     5
+187     1     1     1     2     2     1     1     5     1     1
+188     1     1     1     3     2     1     1     1     1     1
+189     1     1     1     3     2     1     1     3     1     1
+190     1     1     1     3     2     1     1     4     1     1
+191     1     4     1     3     2     1     1     5     1     1
+192     1     1     1     1     2     1     1     1     1     1
+193     1     1     1     2     2     1     1     3     1     1
+194     0     5    10     7     5     3     8     9     7     7
+195     0     4    10     8    10     1     1    10     8     8
+196     1     1     1     3     2     1     1     1     1     1
+197     1     1     1     3     2     1     1     5     1     1
+198     1     1     1     3     2     1     1     1     1     1
+199     0     9    10     7     6     5    10     5    10    10
+200     0     3     5     3     7     1     5    10     9    10
+201     1     1     1     3     1     1     1     1     1     1
+202     1     1     1     3     1     1     1     1     1     1
+203     1     1     1     3     1     1     1     5     1     1
+204     0    10    10     8     5     6    10     8    10    10
+205     0     8     8     7     4     1     7     8     8    10
+206     1     1     1     3     2     1     1     1     1     1
+207     0    10    10     7     7     4    10    10    10    10
+208     0    10    10    10     3     1     6    10    10    10
+209     0     7     5     5     5     2    10     8     8     7
+210     1     1     1     2     2     1     1     1     1     1
+211     1     1     1     3     2     1     1     1     1     1
+212     0     7     4     8     6     2    10     6     7    10
+213     1     1     1     3     2     1     1     6     3     1
+214     1     2     1     3     2     1     1     1     1     1
+215     0     3    10     9    10     1    10    10     4     6
+216     0     3     5     2     1     1     1     4     1     1
+217     0     3     8     7     3     1     4     7     6     5
+218     0     6    10     7     3     2     9    10     5     5
+219     1     1     1     2     2     1     1     1     1     1
+220     0     4    10     8     4     1     9    10     7     5
+221     0     5     5     7     3     1     7     8     9     9
+222     1     1     1     3     1     1     1     1     1     1
+223     0     3    10     9    10     1    10    10    10    10
+224     0     4     7     7     3     1     6     7     7     4
+225     0     5     8     8     6     2     9     6     7     8
+226     1     3     1     4     3     1     3     8     6     4
+227     0     5    10     4     5     1     1    10     5     4
+228     1     1     1     3     3     1     6     3     2     3
+229     0     2    10     4     8    10     8    10     8     8
+230     0     5     2     4     6     4    10     9     8     8
+231     0     8     9     3     6    10    10     8    10    10
+232     0     2    10     5     3     2     3    10     3     4
+233     1     3     2     2     2     1     3     5     3     1
+234     1     3     1     3     1     1     1     3     1     1
+235     1     1     1     3     2     1     1     2     1     1
+236     1     1     5     5     2     1     1     1     1     1
+237     1     1     1     3     2     1     1     1     1     1
+238     1     2     2     3     2     1     1     5     1     1
+239     0     8    10     7     5     1     8     8    10    10
+240     0     1     9     3     2     1     3     8     4     4
+241     1     1     1     3     2     1     6     4     1     1
+242     1     1     1     1     2     1     1     1     2     2
+243     0    10    10     5     2     3     3    10     4     4
+244     1     5    10     3     3     3     5     6     3     3
+245     0     2    10     7     8     3     3     6    10    10
+246     0     1     8     3    10     1     3     9    10    10
+247     0     2    10     3     4     1     6     5     6     6
+248     1     1     1     1     2     1     1     3     1     1
+249     1     1     1     2     2     1     1     3     1     1
+250     1     1     1     3     2     1     1     3     1     1
+251     1     1     8     3     5     1     4     5     7     7
+252     0    10    10     5     3     3     1    10     8     5
+253     0     6    10    10    10     5     6     5    10    10
+254     0     4    10     7     5     1     8     8     9     8
+255     0    10    10     5     6     1     5    10     4     4
+256     0    10     3     5    10     3     3     7     4     9
+257     1     1     1     3     2     1     2     5     4     1
+258     0     3    10     4     3     2     3    10     6    10
+259     0     2    10     7     3     1     1     3     5     3
+260     0     2     4     8     3     8     7    10     8     8
+261     1     1     1     3     2     1     1     1     1     1
+262     0     1    10     3     3     2     9     8     7     4
+263     1     1     1     3     2     1     1     5     1     1
+264     0     2    10     7     3     1     1     3     5     3
+265     0     1     4     3     3     1     3     7     4     2
+266     1     1     1     3     2     1     2     3     1     1
+267     1     1     1     2     2     1     1     3     1     1
+268     1     1     1     2     2     1     1     1     1     1
+269     1     1     1     3     2     1     1     1     1     1
+270     0     3     7     3     3     8     3    10     7     5
+271     1     1     1     3     2     1     1     3     1     1
+272     1     2     1     3     2     1     1     2     1     1
+273     0    10    10     5     4     1     6     1     3     4
+274     0     1    10     5     2     1     3    10     6     4
+275     0    10    10     3     2     2     8     7     5     4
+276     0    10    10    10     8     3     7     8    10    10
+277     0    10    10     4    10    10    10    10    10    10
+278     1     1     1     2     3     1     1     3     1     1
+279     0     1     5     5     4     1    10     6     3     1
+280     0     8    10     4     6     4    10     5     6     6
+281     1     1     1     1     2     1     1     1     1     1
+282     1     1     1     3     2     1     1     1     1     1
+283     0     6    10     2     2     1     3    10     4     4
+284     0     8    10     7     6     1     4     5     7     5
+285     1     3     5     4     4     1     7     5     4     3
+286     1     1     1     1     5     1     1     8     1     2
+287     0     6    10     7     4     2     7     9     2     1
+288     0     5     4     7     4     1    10     8    10     4
+289     1     1     1     3     2     1     1     1     1     1
+290     0     7    10     7     9    10    10    10    10    10
+291     1     1     1     3     2     1     1     1     1     1
+292     0     9    10     3     3     1     3     8     4     3
+293     0     4    10     3     4     4    10    10     4     8
+294     1     1     1     3     2     1     1     1     1     1
+295     1     1     1     3     2     1     1     1     1     1
+296     0     6     3     8     4     4     8     7     7     8
+297     1     1     5     5     2     1     1     3     1     1
+298     1     1     1     2     3     1     1     2     1     1
+299     1     1     1     1     2     1     1     1     1     1
+300     0    10     1     3    10     1     5     8     4     6
+301     1     1     1     1     2     1     1     1     1     1
+302     1     1     1     2     1     1     1     1     1     1
+303     0     2    10     4     5     1     3     5     5     5
+304     0     8     8     8     6     1     9     6     7     8
+305     1     1     1     3     5     1     1     1     1     1
+306     1     4     5     7     6     1     3     4     4     4
+307     0     2    10     7     5     6     4     7     3     6
+308     1     1     1     3     2     1     1     3     1     1
+309     0    10    10     4     2     1     1     5     6     4
+310     1     1     1     3     2     1     1     1     1     1
+311     1     1     1     2     2     1     3     3     2     2
+312     0     1    10     5     2     1     4    10     1     1
+313     1     1     1     2     2     1     1     1     1     1
+314     0     2     4     3     6     1    10     8     3    10
+315     0     4    10     7     5     1     1    10     6     4
+316     0     2     8     6     2     1     1    10     7     4
+317     1     1     1     3     2     2     1     5     1     1
+318     1     2     1     2     2     1     2     5     2     2
+319     0     6    10     4     4     1     3     5     6     4
+320     0     3    10     3     3     2     4     8     7     6
+321     1     1     1     1     2     1     1     1     1     1
+322     0     8    10     3     4     1     4     6     5     5
+323     1     1     1     3     2     1     1     1     1     1
+324     1     1     1     2     1     1     1     1     1     1
+325     0     5    10     4     2     1     3     8     5     5
+326     0     1    10     7     2     1     6    10     3     3
+327     1     1     1     3     2     1     1     1     1     1
+328     1     1     1     1     2     1     1     2     1     1
+329     1     1     1     1     2     1     1     1     1     1
+330     0     8    10     9    10     3     5     7     4     6
+331     1     1     1     1     2     1     1     1     1     1
+332     1     2     1     1     3     1     3     5     2     2
+333     1     1     1     1     1     1     3     1     1     1
+334     0    10     1     3     5     1     3     3     4     4
+335     0     5     8     7     3     1     6     4     3     2
+336     1     3     1     1     2     1     1     5     1     1
+337     1     1     1     3     2     1     1     2     1     1
+338     1     3     3     4     7     1     6     3     5     4
+339     0    10    10     4     7     4     9     2    10     7
+340     1     1     1     2     2     1     1     1     1     1
+341     1     1     1     2     3     1     2     4     1     1
+342     0     1     3     3     3     3     3     5     3     3
+343     0     7    10     7    10     8     3     8    10    10
+344     0     3     4     4     8     3    10     8     5    10
+345     0     4     7     3     3     3     5    10     5     3
+346     0    10    10     8    10    10    10     6    10    10
+347     0    10    10     5     6     4     1     3     3    10
+348     1     1     3     2     4     1     1     3     2     2
+349     1     2     3     2     2     1     1     4     4     4
+350     1     1     1     3     2     1     1     2     1     1
+351     1     1     1     2     2     1     1     2     1     1
+352     0    10    10     7     8     7    10     6    10    10
+353     0    10    10     8     5     3    10     5     8     8
+354     1     1     1     1     2     1     1     1     3     1
+355     1     1     1     2     1     1     1     1     3     1
+356     1     1     1     2     3     1     1     4     2     3
+357     1     1     1     1     2     1     1     1     3     1
+358     1     1     1     2     2     1     1     4     2     1
+359     1     2     1     2     2     1     1     5     1     1
+360     1     1     1     2     2     1     1     3     2     1
+361     1     1     1     1     2     1     1     1     1     1
+362     1     1     1     2     2     1     1     1     1     1
+363     1     1     1     2     1     1     1     1     1     1
+364     1     4     1     2     3     1     2     3     1     1
+365     1     1     1     3     4     1     1     5     4     3
+366     1     1     1     1     2     1     1     1     1     1
+367     0     6    10     7     4     4     8    10     3     6
+368     1     2     1     3     2     1     2     3     2     2
+369     1     1     1     1     2     1     1     2     1     1
+370     1     1     1     1     2     1     1     2     1     1
+371     1     2     1     1     3     3     2     3     2     3
+372     0     3    10     7     2     1     1     7     6     6
+373     1     2     1     3     3     1     1     5     3     3
+374     1     1     1     2     2     1     2     2     1     1
+375     1     1     2     2     3     1     2     5     1     1
+376     1     2     1     2     2     1     1     1     1     1
+377     0     4    10     7     3     1     9    10     7     8
+378     1     1     1     2     2     1     1     3     1     1
+379     1     1     1     1     1     1     1     1     1     1
+380     1     1     1     2     2     1     1     1     3     2
+381     1     1     1     2     2     1     1     3     1     1
+382     1     1     1     3     2     1     1     3     1     1
+383     1     1     1     1     2     1     1     4     1     1
+384     1     1     1     2     2     1     2     3     1     2
+385     1     1     1     1     2     1     1     1     3     2
+386     0     7     9     9     6     8     3     3     8    10
+387     1     1     1     1     2     1     1     3     1     1
+388     1     1     1     2     2     1     1     5     3     3
+389     1     1     4     1     2     1     1     3     1     1
+390     1     3     1     1     2     1     2     1     1     2
+391     1     1     1     2     2     1     1     1     1     1
+392     1     1     1     2     2     1     1     4     2     2
+393     1     1     1     2     2     1     1     1     1     1
+394     1     2     2     3     2     1     1     2     2     3
+395     1     1     1     2     2     1     1     3     2     1
+396     1     1     1     2     2     1     1     1     1     1
+397     0     6     4     8     8     1     5    10    10    10
+398     1     1     1     3     2     1     1     5     2     1
+399     0     2    10     6     3     1     6     8     6     5
+400     1     6     3     3     3     1     5     3     2     3
+401     0     5    10     7    10     1     2     8     8     7
+402     1     1     1     2     2     1     1     1     1     1
+403     1     2     2     3     2     2     2     5     2     2
+404     1     1     1     1     5     1     1     2     1     3
+405     1     3     3     3     2     1     1     3     2     2
+406     0     7    10     8    10     1     2    10    10    10
+407     1     1     1     3     2     1     3     4     3     3
+408     1     1     1     2     2     1     1     5     3     1
+409     1     1     1     1     2     1     1     3     1     1
+410     0    10    10    10    10     1    10     9    10    10
+411     1     1     1     1     2     1     1     5     6     3
+412     0     2     2     5     4     1    10     8     8     7
+413     1     1     1     2     2     1     1     1     1     1
+414     1     1     1     2     2     1     1     2     1     1
+415     1     1     1     2     2     1     2     1     1     3
+416     1     3     1     3     4     1     2     5     1     1
+417     1     1     1     2     2     1     2     5     1     1
+418     1     3     1     1     2     1     1     3     2     2
+419     1     5     8     4     5     1     2     6     7     9
+420     0     1    10     5     3     1     1    10    10     8
+421     0     1     1     2     6     1     8    10    10    10
+422     1     1     1     1     2     1     1     4     1     1
+423     1     3     1     1     2     1     1     4     3     1
+424     1     1     1     1     2     1     1     5     1     1
+425     0    10    10    10     4     1     1    10     3     4
+426     1     4     4     1     2     1     1     5     2     2
+427     1     3     3     1     2     1     1     1     1     1
+428     1     1     2     1     2     1     1     1     1     1
+429     1     6     1     2     3     1     1     5     1     1
+430     1     1     1     1     2     1     1     2     1     1
+431     1     1     1     1     2     1     1     1     1     1
+432     1     1     1     1     2     1     1     5     1     1
+433     1     1     1     1     1     1     1     1     1     1
+434     0     8    10     8     6     1    10     5     9     7
+435     1     3     1     2     1     1     1     4     1     1
+436     1     1     1     1     2     1     1     5     1     1
+437     1     3     1     1     2     1     1     3     1     1
+438     0     8    10    10     6     1     7     4     5     5
+439     1     1     1     1     3     1     1     2     1     3
+440     0     1     6     1     2     2     1    10     2     2
+441     0     8    10     8     5     1     6    10     5     6
+442     0     6     3    10     6     1    10     8     9     8
+443     1     1     1     1     2     1     1     5     2     1
+444     1     1     1     1     2     1     1     5     3     1
+445     1     3     1     1     2     1     1     5     1     1
+446     1     1     5     1     2     1     1     3     1     1
+447     1     3     1     1     2     1     1     6     1     1
+448     1     1     1     1     2     1     2     4     1     1
+449     1     1     1     1     2     1     1     4     1     1
+450     0     7     4     7     6     3    10    10     8     9
+451     0     2    10     9     4     1     7    10     6     6
+452     0     5    10     7     4     2     6     6     6     6
+453     1     1     1     1     2     1     1     4     1     1
+454     1     1     1     2     2     1     1     1     2     1
+455     1     1     1     2     1     1     1     3     1     1
+456     1     3     1     1     2     1     1     6     1     1
+457     1     1     1     1     1     1     1     6     1     1
+458     1     1     1     1     2     1     1     4     1     1
+459     1     1     1     1     2     1     1     5     1     1
+460     1     1     1     1     2     1     1     3     1     1
+461     1     1     1     1     2     1     1     4     2     1
+462     1     1     1     1     2     1     1     4     1     1
+463     1     1     1     1     2     1     1     5     1     2
+464     0    10    10     7     4     1     5     4     7     8
+465     1     1     1     1     1     1     1     5     1     1
+466     1     4     1     1     2     1     1     5     2     3
+467     0    10     5    10    10    10    10     9    10    10
+468     0     5    10     9     5     1    10     8     8     7
+469     1     1     1     1     2     1     1     5     2     1
+470     1     3     3     1     1     1     1     1     1     1
+471     1     1     1     2     1     1     1     3     1     1
+472     0    10    10     8     6     5     1    10    10    10
+473     0    10     3     3     3     1     4     3     4     6
+474     0     1     4     4     3     1     1     6     2     3
+475     1     1     1     1     2     1     1     1     1     1
+476     0     4    10     7     3     1     1     5     9     8
+477     1     1     1     2     1     1     1     4     1     1
+478     0    10    10     6     6     2     5     5    10    10
+479     1    10     5     2     4     1     1     5     2     1
+480     1     1     1     2     1     1     1     3     1     1
+481     1     1     1     1     1     1     1     1     1     1
+482     1     1     1     1     2     1     1     4     1     2
+483     1     1     1     2     2     1     1     4     1     1
+484     1     1     1     2     2     1     1     4     1     1
+485     1     1     1     3     2     1     1     6     1     1
+486     1     1     1     2     2     1     1     4     1     1
+487     1     2     1     2     2     1     1     4     1     1
+488     1     1     1     3     2     1     1     4     1     1
+489     1     1     1     1     2     1     1     1     1     1
+490     1     1     1     1     2     1     1     3     1     3
+491     0    10     5     4     7     7     8     8    10    10
+492     1     1     4     1     2     1     1     1     1     1
+493     1     1     1     1     2     1     1     5     1     1
+494     1     1     1     1     2     1     1     2     1     1
+495     1     1     1     1     2     1     1     1     1     1
+496     1     1     1     2     2     1     1     5     1     1
+497     1     1     1     1     2     1     1     5     1     1
+498     1     1     1     2     1     1     1     3     1     1
+499     0    10    10     8     3     2    10     6     7     6
+500     0     7    10     9     3     1    10     4     4    10
+501     1     1     1     1     1     1     1     1     1     1
+502     1     1     1     2     1     1     1     1     1     1
+503     1     2     1     1     2     1     1     3     2     1
+504     0     3    10     9     4     1     1     4     8     7
+505     1     1     1     1     3     1     1     1     1     1
+506     1     1     1     1     3     1     1     4     1     1
+507     0     4     5     7     3     1     3    10     5     4
+508     0    10    10     5     4     1     3     7     6     5
+509     1     1     1     2     2     1     1     3     1     1
+510     1     2     1     1     2     1     1     3     1     1
+511     1     1     1     1     2     1     1     4     1     1
+512     1     1     1     3     2     1     1     4     1     1
+513     1     2     1     1     2     1     1     6     3     1
+514     1     1     1     2     1     1     1     4     1     1
+515     0     3    10     6     4     1     9     7     4     4
+516     1     1     1     2     2     1     1     4     2     2
+517     1     1     1     3     1     1     1     1     1     1
+518     1     1     1     2     2     1     1     3     1     1
+519     1     1     1     2     2     1     1     2     1     1
+520     1     2     1     3     2     1     1     1     3     1
+521     1     1     1     3     2     1     1     5     1     1
+522     1     1     1     3     2     1     1     5     2     1
+523     1     1     1     2     2     1     1     4     1     1
+524     1     1     1     2     2     1     1     6     1     1
+525     1     1     2     2     2     1     1     5     1     1
+526     1     1     1     1     2     1     1     3     1     1
+527     1     1     1     1     2     1     1     5     1     3
+528     1     1     1     2     2     1     1     4     1     1
+529     1     2     1     2     2     1     1     2     3     1
+530     1     1     1     2     2     1     1     5     1     1
+531     0    10    10     7     4     1    10     6    10    10
+532     1     1     1     1     1     1     1     2     1     1
+533     1     1     1     1     1     1     1     3     1     1
+534     0     7     5     7     4     2     8     7     3     8
+535     1     1     1     2     2     1     1     3     1     1
+536     1     1     1     3     2     1     1     1     1     1
+537     1     2     1     4     2     1     2     3     2     2
+538     1     1     5     2     2     2     1     4     2     4
+539     1     1     1     1     2     1     1     3     1     1
+540     1     1     1     4     2     1     8     4     1     3
+541     1     2     1     2     1     1     1     5     2     2
+542     1     3     1     1     2     1     1     5     1     1
+543     1     1     1     2     2     1     1     2     1     1
+544     1     1     1     2     2     1     1     5     1     1
+545     1     1     1     3     2     1     1     5     1     1
+546     1     1     1     3     2     1     1     5     1     1
+547     1     1     1     3     2     1     1     1     1     1
+548     1     1     1     2     2     1     1     3     1     1
+549     1     1     1     3     2     1     2     4     1     1
+550     0    10    10    10     5     1    10     5    10     7
+551     1     1     1     3     2     1     1     3     2     1
+552     1     1     3     2     2     1     1     4     1     1
+553     0     1    10     2     6     2     5     8     4     4
+554     0    10     5    10     6     1     3    10     8    10
+555     0     4    10     8     8     1     2     8     4    10
+556     0     5    10     9     3     2    10     7    10     6
+557     1     1     1     2     2     1     1     3     1     1
+558     1     1     1     2     2     1     1     1     1     1
+559     0     3     2     7     4     1     7    10     7     9
+560     1     1     1     3     2     1     1     5     2     1
+561     1     1     1     2     2     1     1     5     1     1
+562     1     1     1     2     2     1     1     1     1     1
+563     1     1     1     2     2     1     1     1     1     1
+564     1     1     1     3     2     1     1     1     1     1
+565     1     1     1     2     2     1     1     5     2     1
+566     0     6    10     7     5     1     5     5    10     7
+567     0     5    10     6     4     1    10     6     5    10
+568     1     1     1     1     2     1     1     3     1     1
+569     1     6     1     1     3     1     1     5     1     1
+570     1     1     1     1     2     1     1     1     1     1
+571     0    10    10    10     6     1    10     8    10    10
+572     1     1     1     2     2     1     2     5     1     1
+573     0     9     3     4     6     1     1     9     8     8
+574     1     1     1     1     2     1     1     5     1     1
+575     0     5     1    10     4     1     1     4     8    10
+576     0     6    10     7     4     1     6     2     7     5
+577     0     5    10     4     3     1     1    10     4     3
+578     1     1     1     1     2     1     1     5     2     1
+579     0     3    10     7     4     1     1     4     6     8
+580     1     1     1     2     2     1     1     5     1     1
+581     1     1     1     2     2     1     1     4     2     1
+582     1     1     1     3     2     1     1     5     3     1
+583     1     1     1     2     2     1     1     3     1     1
+584     1     1     1     1     1     1     1     5     4     2
+585     1     1     1     2     2     1     1     3     1     1
+586     1     1     1     2     1     1     1     1     1     1
+587     1     1     1     2     2     1     1     4     1     1
+588     0     8     1     8     4     1    10     5     6     4
+589     0     8    10     8     5     2     1     5     2     3
+590     0     3     8     7     5     3     8    10    10     5
+591     1     2     1     1     2     1     1     4     1     1
+592     1     1     1     1     2     1     1     1     1     1
+593     0    10    10    10    10     1     1     5    10    10
+594     1     1     1     1     2     1     1     5     1     1
+595     0    10    10     7     3     2     1    10     3     4
+596     0    10    10    10     6    10    10     8    10    10
+597     1     1     1     2     2     1     1     2     1     3
+598     1     1     1     2     1     1     1     2     1     1
+599     1     1     1     2     2     1     1     4     3     1
+600     1     1     1     2     2     1     1     3     1     1
+601     1     1     1     2     2     1     1     4     1     1
+602     1     1     1     2     2     1     1     5     1     1
+603     1     1     1     2     2     1     1     3     1     1
+604     1     3     2     6     3     1     1     6     3     3
+605     1     3     1     2     2     1     1     7     2     1
+606     1     1     1     1     2     1     1     1     1     1
+607     1     2     1     2     1     1     1     5     1     1
+608     1     1     4     1     3     1     1     3     3     1
+609     0     5     6     7     7     3     7     4     6     6
+610     1     1     5     1     2     1     1     2     1     1
+611     1     1     1     1     2     1     1     2     1     1
+612     1     1     1     1     2     1     1     4     1     1
+613     1     1     1     1     2     1     1     6     3     2
+614     1     1     1     2     2     1     1     5     1     1
+615     1     1     1     1     2     1     1     1     1     1
+616     0     4     3     5     5     1    10     8     4     7
+617     1     1     1     1     2     1     1     3     1     1
+618     1     1     1     1     2     1     1     3     4     1
+619     0     8     1    10     7     3    10    10     7    10
+620     1     3     2     2     2     1     1     4     4     2
+621     1     1     1     1     2     1     1     4     1     1
+622     1     3     1     1     2     1     1     5     1     1
+623     1     3     1     1     2     1     1     4     1     1
+624     1     1     1     2     2     1     1     3     1     1
+625     1     1     1     2     2     1     1     3     1     1
+626     1     1     1     1     2     1     1     1     1     1
+627     1     1     1     1     2     1     1     2     1     1
+628     1     1     1     2     2     1     1     3     1     1
+629     1     1     1     1     2     1     1     1     2     2
+630     1     3     1     1     2     1     1     1     1     1
+631     0    10     2    10    10    10    10     5    10    10
+632     1     1     1     2     2     1     1     3     1     1
+633     1     2     4     1     3     1     1     3     1     1
+634     1     3     1     2     2     1     1     1     1     2
+635     1     1     1     2     2     1     2     5     1     1
+636     1     1     1     2     2     1     1     4     1     1
+637     1     1     1     3     2     1     1     3     1     1
+638     1     1     1     2     2     1     1     3     1     1
+639     1     1     1     2     2     1     1     5     1     1
+640     1     1     1     3     8     1     6     5     5     4
+641     0     7    10     7     3     3     2     7     8     8
+642     1     1     1     1     2     1     1     1     1     1
+643     1     1     1     2     2     1     1     1     1     1
+644     1     1     1     3     2     1     1     4     1     1
+645     1     1     1     2     2     1     1     1     3     1
+646     1     1     1     2     2     1     1     1     3     1
+647     1     3     1     2     2     1     1     3     1     1
+648     1     1     1     1     2     1     1     1     1     1
+649     1     2     1     1     2     2     1     5     2     2
+650     1     1     1     3     2     1     1     3     1     1
+651     0     1     1     7     6     3    10     5     4     7
+652     0     8     5     7     5     1    10     5    10    10
+653     0     8     8     7     5     1     4     3     7    10
+654     1     2     1     3     2     1     1     3     1     2
+655     1     1     1     3     2     1     1     2     1     1
+656     1     1     1     1     3     1     1     5     2     3
+657     1     1     1     2     2     1     1     1     1     1
+658     1     1     1     1     2     1     1     4     4     1
+659     1     1     1     2     2     1     1     1     2     1
+660     1     1     1     1     2     1     1     5     1     1
+661     1     1     1     1     2     1     1     1     1     1
+662     1     1     1     1     2     1     1     2     1     1
+663     0    10    10    10     5     7    10    10    10    10
+664     0    10    10     5     4     3     6     5    10    10
+665     1     1     1     3     2     1     2     5     1     1
+666     1     1     1     1     2     1     1     1     1     1
+667     1     1     1     1     2     1     1     1     1     1
+668     1     1     1     1     2     1     1     1     1     1
+669     1     1     1     1     2     1     1     1     1     1
+670     1     1     1     2     2     1     3     3     1     1
+671     1     1     1     1     2     1     1     4     1     1
+672     1     1     1     1     2     8     1     1     1     1
+673     1     3     1     1     2     1     1     1     1     1
+674     0     5     5     4     4     1     4     5    10    10
+675     1     1     1     1     2     1     1     3     1     1
+676     1     1     1     2     2     2     1     3     1     1
+677     1     1     2     1     3     1     1     3     1     1
+678     1     1     1     1     2     1     1     2     1     1
+679     0     3     3     8     7     2    10     5    10    10
+680     0     4     4    10     3     1     6     4     6     8
+681     0     5     5    10     4     1     4     4     8     8</code></pre>
+</div>
+</div>
+</section>
+<section id="logistic-regression-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="logistic-regression-1">Logistic regression</h2>
+<p><code>Class</code> is a 0/1-valued variable indicating if the tumor was malignant (0 if malignant, 1 if benign).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>binom_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Class <span class="sc">~</span> UShap <span class="sc">+</span> USize, <span class="at">data =</span> wbca, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(binom_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = Class ~ UShap + USize, family = binomial(), data = wbca)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.8262  -0.0171   0.1929   0.1929   4.0082  
+
+Coefficients:
+            Estimate Std. Error z value             Pr(&gt;|z|)    
+(Intercept)   5.6868     0.4359  13.047 &lt; 0.0000000000000002 ***
+UShap        -0.8431     0.1593  -5.292          0.000000121 ***
+USize        -0.8686     0.1690  -5.139          0.000000277 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 881.39  on 680  degrees of freedom
+Residual deviance: 218.28  on 678  degrees of freedom
+AIC: 224.28
+
+Number of Fisher Scoring iterations: 7</code></pre>
+</div>
+</div>
+</section>
+<section id="odds-ratios" class="level2">
+<h2 class="anchored" data-anchor-id="odds-ratios">Odds ratios</h2>
+<div class="cell">
+
+</div>
+<p>This data shows whether people became ill after eating ice cream in the 1940s.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ice_cream)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ill vanilla.ice.cream
+1   1                 1
+2   1                 1
+3   1                 1
+4   1                 1
+5   1                 1
+6   1                 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ice_cream <span class="sc">%&gt;%</span> <span class="fu">count</span>(ill, vanilla.ice.cream)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ill vanilla.ice.cream  n
+1   0                 0 18
+2   0                 1 11
+3   1                 0  3
+4   1                 1 43</code></pre>
+</div>
+</div>
+</section>
+<section id="odds-ratios-1" class="level2">
+<h2 class="anchored" data-anchor-id="odds-ratios-1">Odds ratios</h2>
+<p>Use <code>oddsratio(x, y)</code> from the <code>epitools()</code> package to calculate</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epitools)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> ice_cream <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ill)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>predictor <span class="ot">&lt;-</span> ice_cream <span class="sc">%&gt;%</span> <span class="fu">pull</span>(vanilla.ice.cream)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">oddsratio</span>(predictor, response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$data
+         Outcome
+Predictor  0  1 Total
+    0     18  3    21
+    1     11 43    54
+    Total 29 46    75
+
+$measure
+         odds ratio with 95% C.I.
+Predictor estimate    lower    upper
+        0  1.00000       NA       NA
+        1 21.40719 5.927963 109.4384
+
+$p.value
+         two-sided
+Predictor      midp.exact    fisher.exact      chi.square
+        0              NA              NA              NA
+        1 0.0000002698215 0.0000002597451 0.0000001813314
+
+$correction
+[1] FALSE
+
+attr(,"method")
+[1] "median-unbiased estimate &amp; mid-p exact CI"</code></pre>
+</div>
+</div>
+</section>
+<section id="final-note" class="level2">
+<h2 class="anchored" data-anchor-id="final-note">Final note</h2>
+<p>Some final notes:</p>
+<ul>
+<li><p>Researcher’s responsibility to <strong>understand the statistical method</strong> they use – underlying assumptions, correct interpretation of method results</p></li>
+<li><p>Researcher’s responsibility to <strong>understand the R software</strong> they use – meaning of function’s arguments and meaning of function’s output elements</p></li>
+</ul>
+</section>
+<section id="summary-2" class="level2">
+<h2 class="anchored" data-anchor-id="summary-2">Summary</h2>
+<ul>
+<li>Use <code>cor()</code> to calculate correlation between two vectors. <code>corrplot()</code> is nice for a quick visualization!</li>
+<li><code>t.test()</code> tests the difference in means between two vectors</li>
+<li><code>glm()</code> fits regression models:
+<ul>
+<li>Use the <code>formula =</code> argument to specify the model (e.g., <code>y ~ x</code> or <code>y ~ x1 + x2</code> using column names)</li>
+<li>Use <code>data =</code> to indicate the dataset</li>
+<li>Use <code>family = binomial()</code> to do a logistic regression</li>
+<li><code>summary()</code> gives useful statistics</li>
+</ul></li>
+<li><code>oddsratio()</code> from the <code>epitools</code> package can calculate odds ratios</li>
+<li>this is just the tip of the iceberg!</li>
+</ul>
+</section>
+<section id="lab-part-2" class="level2">
+<h2 class="anchored" data-anchor-id="lab-part-2">Lab Part 2</h2>
+<p>🏠 <a href="https://jhudatascience.org/intro_to_r/">Class Website</a></p>
+<p>💻 <a href="https://jhudatascience.org/intro_to_r/modules/Statistics/lab/Statistics_Lab.Rmd">Lab</a></p>
+<p>The end!</p>
+</section>
+</section>
+<section id="extra-slides" class="level1">
+<h1>Extra Slides</h1>
+<section id="adding-correlation-value-to-a-plot" class="level2">
+<h2 class="anchored" data-anchor-id="adding-correlation-value-to-a-plot">Adding correlation value to a plot</h2>
+<p>Note that you can add the correlation value to a plot, via the <code>annotate()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cor_val <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>cor_val_label <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"r = "</span>, <span class="fu">round</span>(cor_val, <span class="dv">3</span>))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>circ <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> orangeAverage, <span class="at">y =</span> purpleAverage)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">2000</span>, <span class="at">y =</span> <span class="dv">7500</span>, <span class="at">label =</span> cor_val_label, <span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Statistics_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="288"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-right">© Copyright 2022, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

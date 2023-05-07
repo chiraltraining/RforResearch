@@ -1,0 +1,293 @@
+---
+title: "R for Research - A Step by Step Guide for Beginners "
+subtitle: "[Center for Health Innovation, Research, Action and Learning – Bangladesh](https://www.chiralbd.org/) "
+editor: source
+---
+
+<!-- https://github.com/rstudio-conf-2022/teach-ds -->
+
+------------------------------------------------------------------------
+
+🗓June 1 & 2,  2023 \| 8:00am - 5:00pm (Bangladesh Time)
+
+🏨 Venue - Will Announce Soon
+
+💥 **Register** with [Google Forms]() 
+
+💥 **Registration Fee**: [] BDT (for students), [] BDT (for professionals)
+
+📝 To register for the workshop, follow instructions in the email "*Workshops*" you received after registration. 
+
+------------------------------------------------------------------------
+
+# Overview
+
+The purpose of this course is to provide a practical introduction to the programming language R for researchers in any field. We are convinced that R is a powerful tool that can ultimately make your life easier by enabling efficient solutions to your data analytical problems. Also, R is completely free. Who doesn't like that?
+
+This course aims to facilitate the participant's first steps in R and equip them with the tools and understanding to expand their technical know-how according to the needs of their specific research. It is neither a computer science nor a methodological course, but aimed at the practical needs of empirically working researchers.
+
+You might think of R as an overly complicated status symbol for ambitious quantitative researchers. This is not quite true anymore as R has become much more user-friendly over the last years. Think of R is your friend and helper if you are interested in doing: insightful graphs, regression analysis, QCA, quantitative text analysis, web-scraping, data visualization, systematic hand-coding of documents, formal modelling, etc.
+
+While this course is most likely to attract people with solid statistical training who usually use Stata or SPSS, it can easily be attended by a broader audience. All you really need to know is \[I\] the structure of a typical dataset in the social sciences (rows are observations, columns are variables) and \[II\] the logic of dependent and independent variables.
+
+You will learn how to use R to handle your data, describe it, analyse it (regressions), and transform it into beautiful graphs. At the end, you will have an idea of what R can do, and the resources to teach yourself more where needed.
+
+## What is R?
+R is an open source language and environment for statistical computing, data mining, modeling, and data graphics. It provides a wide variety of statistical and graphical techniques such as linear and non-linear modeling, statistical tests, time series analysis, classification, and clustering. 
+
+R is one of the most used business analytics tools. For example, Facebook uses R for behavior analysis related to status updates and profile pictures. Google uses it to analyze advertising effectiveness and economic forecasting. Twitter leverages R for data visualization and semantic clustering. In the 2016 data science salary survey conducted by O'Reilly, R was ranked second in a category of programming languages for data science. 
+
+
+## Learning outcomes 
+
+By the end of the course students you shall be confident and equipped with all the
+knowledge required to perform analytical activities in R. Specifically, 
+
+- Understand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.
+- Apply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples
+- Import a variety of data formats into R using RStudio
+- Prepare or tidy datas for in preparation for analysis
+- Query data using SQL and R
+- Analyze a data set in R and present findings using the appropriate R packages
+- Visualize data attributes using ggplot2 and other R packages. 
+
+
+
+## Purpose of statistical programming software
+
+Unlike spreadsheet applications (like Excel) or point-and-click statistical analysis software (SPSS), statistical programming software is based around a script-file where the user writes a series of commands to be performed,
+
+**Advantages of statistical programming software**
+
+-   Data analysis process is reproducible and transparent.
+
+-   Due to the open-ended nature of language-based programming, there is far more versatility and customizability in what you can do with data.
+
+-   *Typically* statistical programming software has a much more comprehensive range of built-in analysis functions than spreadsheets etc.
+
+## Why Do We Need Analytics?
+
+Before an answer to above question, let us see some of the problems and their solutions in R in multiple domains.
+
+### Healthcare
+
+-   **Problem:** Every year millions of people are admitted in hospital and billions are spent annually just in the admission process.
+
+-   **Solution:** Given the patient history and medical history, a predictive model can be built to identify who is at risk for hospitalization and to what extent the medical equipment should be scaled.
+
+### Insurance
+
+-   **Problem:** Insurance extensively depends on forecasting. It is difficult to decide which policy to accept orreject.
+
+-   **Solution:** By using the continuous credit report as input, we can create a model in R that will not only assess risk appetite but also make a predictive forecast as well.
+
+### Banking
+
+-   **Problem:** Large amount of customer data is generated every day in Banks. While dealing with millions of customers on regular basis, it becomes hard to track their mortgages.
+
+-   **Solution:** R builds a custom model that maintains the loans provided to every individual customer which helps us to decide the amount to be paid by the customer over time.
+
+## Why R?
+
+-   R is a programming and statistical language.
+-   R is used for data Analysis and Visualization.
+-   R is simple and easy to learn, read and write.
+-   R is an example of a FLOSS (Free Libre and Open Source Software) where one can freely distribute copies of this software, read its source code, modify it, etc.
+
+## Who uses R?
+
+-   The Consumer Financial Protection Bureau uses R for data analysis
+-   Statisticians at John Deere use R for time series modeling and geospatial analysis in a reliable and reproducible way.
+-   Bank of America uses R for reporting.
+-   R is part of technology stack behind Foursquare's famed recommendation engine.
+-   ANZ, the fourth largest bank in Australia, using R for credit risk analysis.
+-   Google uses R to predict Economic Activity.
+-   Mozilla, the foundation responsible for the Firefox web browser, uses R to visualize Web activity
+
+## Evolution of R
+
+-   R is an implementation of S programming language which was created by John Chambers at Bell Labs.
+-   R was initially written by Ross Ihaka and Robert Gentleman at the Department of Statistics of the University of Auckland in Auckland, New Zealand.
+-   R made its first public appearance in 1993.
+-   A large group of individuals has contributed to R by sending code and bug reports.Since mid-1997 there has been a core group (the "R Core Team") who can modify the R source code archive.
+-   In the year 2000 R 1.0.0 released.
+-   R 3.0.0 was released in 2013.
+
+## Features of R
+
+-   R supports procedural programming with functions and object-oriented programming with generic functions. Procedural programming includes procedure, records, modules, and procedure calls. While object-oriented programming languageincludes class, objects, and functions.
+-   Packages are part of R programming. Hence, they are useful in collecting sets of R functions into a single unit.
+-   R is a well-developed, simple and effective programming language which includes conditionals, loops, user defined recursive functions and input and output facilities.
+-   R has an effective data handling and storage facility,
+-   R provides a suite of operators for calculations on arrays, lists, vectors and matrices.
+-   R provides a large, coherent and integrated collection of tools for data analysis. It provides graphical facilities for data analysis and display either directly at the computer or printing at the papers.
+-   Rs programming features include database input, exporting data, viewing data, variable labels, missing data, etc.
+-   R is an interpreted language. So we can access it through command line interpreter.
+-   R supports matrix arithmetic.
+-   R, SAS, and SPSS are three statistical languages. Of these three statistical languages, R is the only an open source.
+
+## Comparison to other statistical programming software
+
+-   **Stata**: The traditional choice of (academic) economists.
+
+    -   Stata is more specifically econometrics focused and is much more command-oriented. Easier to use for standard applications, but if there's not a Stata command for what you want to do, it's harder to write something yourself.\
+    -   Stata is also very different than R in that you can only ever work with one dataset at a time, while in R, it's typical to have a number of data objects in the environment.
+
+-   **SAS**: Similar to Stata, but more commonly used in business & the private sector, in part because it's typically more convenient for massive datasets. Otherwise, I think it's seen as a bit older and less user-friendly.
+
+-   **Python**: Another option based more on programming from scratch and with less prewritten commands. Python isn't specific to math & statistics, but instead is a general programming language used across a range of fields.\
+    Probably the most similar software choice to R at this point, with better general use (and programming ease) at the cost of less package development specific to econometrics/data analysis.
+
+-   **Matlab**: Popular in macroeconomics and theory work, not so much in empirical work. Matlab is powerful, but is much more based on programming "from scratch" using matrices and mathematical expressions.
+
+
+## What you will learn? 
+
+## Publication-ready Figures
+The `{ggpubr}` package provides some easy-to-use functions for creating and customizing ‘ggplot2’- based publication ready plots. ggplot2, by Hadley Wickham, is an excellent and flexible package for elegant data visualization in R. However the default generated plots requires some formatting before we can send them for publication. Furthermore, to customize a ggplot, the syntax is opaque and this raises the level of difficulty for researchers with no advanced R programming skills.
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/ggpubr.png")
+```
+
+## Publication-ready Tables 
+The `{gtsummary}` package provides an elegant and flexible way to create publication-ready analytical and summary tables using the R programming language. The {gtsummary} package summarizes data sets, regression models, and more, using sensible defaults with highly customizable capabilities. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/gtsummary.gif")
+```
+
+## Analysis and Visualization Likert Items
+The `{Likert}` is an R package designed to help analyzing and visualizing Likert type items. It has been developped by Jason Bryer and Kim Speerschneider. This barplot comes from the demo page and has been sent by Carlos Ortega. It allows to analyse the reading attitudes from a panel of people.
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/likert.png")
+```
+
+## Reproducible Academic Writing with Rmarkdown 
+R Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL.
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/rmarkdown.png")
+```
+
+## Useful resources for learning R
+
+-   **DataCamp:** interactive online lessons in R.
+
+    -   Some of the courses are free (particularly community-written lessons like the one you'll do today), but for paid courses, DataCamp costs about 300 SEK / mo.
+
+-   **RStudio Cheat Sheets:** Very helpful 1-2 page overviews of common tasks and packages in R.
+
+-   **Quick-R:** Website with short example-driven overviews of R functionality.
+
+-   **StackOverflow:** Part of the Stack Exchange network, StackOverflow is a Q&A community website for people who work in programming. Tons of incredibly good R users and developers interact on StackExchange, so it's a great place to search for answers to your questions.
+
+-   **R-Bloggers:** Blog aggregagator for posts about R. Great place to learn really cool things you can do in R.
+
+-   **R for Data Science:** Online version of the book by Hadley Wickham, who has written many of the best packages for R, including the Tidyverse, which we will cover. 
+
+
+# Required Textbooks
+The following books purchased and are avilable at the online book store. We have also a placed a copy of each on reserve at our online library.
+
+- [Fundamentals of Biostatistics by Bernard Rosner, Harvard University]()
+- [Applied Statistics by PennState Eberly College of Science]()
+- [Applied Medical Statistics for Beginners by Dr. Mohamed Elsherif]()
+- [Biostatistics by University of Florida]()
+- [Introduction to R Programming by Dr. Roger D. Peng]() 
+- [R for Data Science by Roger D.Peng](https://bookdown.org/rdpeng/rprogdatascience/)
+- [Introduction to Data Science by Rafael Irizarry](https://rafalab.github.io/dsbook/)
+- [Data Analysis for the Life Sciences by Rafael Irizarry](https://rafalab.github.io/pagesharvardx.html)
+- [Exploratory Data Analysis with R by Roger D.Peng ](https://bookdown.org/rdpeng/rprogdatascience/)
+
+
+## Blogs for R Programming, Statistics, and Data Analyis 
+- Programiz - [https://www.datamentor.io/r-programming/](https://www.datamentor.io/r-programming/)
+- PennState STAT 484 - [https://online.stat.psu.edu/stat484/](https://online.stat.psu.edu/stat484/)
+- PennState Topics in R Statistical Language - 
+ [https://online.stat.psu.edu/stat484/](https://online.stat.psu.edu/stat484/)
+- Simply Statistics - [https://simplystatistics.org/](https://simplystatistics.org/)
+- TutorialPoint - [https://www.tutorialspoint.com/r/index.htm](https://www.tutorialspoint.com/r/index.htm)
+- R for Biologists - [https://www.rforbiologists.org/](https://www.rforbiologists.org/)
+- Computational Genomics with R -  [https://compgenomr.github.io/book/](https://compgenomr.github.io/book/)
+- Stat and R - [https://statsandr.com/](https://statsandr.com/)
+- Rafa Lab - [https://rafalab.github.io/pages/harvardx.html](https://rafalab.github.io/pages/harvardx.html)
+- University of Florida - [https://bolt.mph.ufl.edu/software/r-phc-6055/](https://bolt.mph.ufl.edu/software/r-phc-6055/)
+
+## Datasets 
+- [Mental Health and Suicide Rates](https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Crude+suicide+rates.csv)
+- [Western Africa Ebola Outbreak](https://www.kaggle.com/imdevskp/ebola-outbreak-20142016-complete-dataset) 
+- [MERS Outbreaks 2012-2019](https://www.kaggle.com/imdevskp/mers-outbreak-dataset-20122019)
+- [H1N1 Swine Flu Pandemic 2009](https://www.kaggle.com/imdevskp/h1n1-swine-flu-2009-pandemic-dataset)
+- [SARS Outbreak 2003](https://www.kaggle.com/imdevskp/sars-outbreak-2003-complete-dataset)
+
+
+
+## Required software
+- R: <http://www.r-project.org/> (FREE)
+- RStudio (additional libraries required): <http://www.rstudio.com/> (FREE)
+
+
+## Recording of classes
+Class lectures will be recorded automatically using cloud. The links will be posted to CHIRAL Classes when they are available. 
+
+
+## Is this course for me?
+
+If your answer to any of the following questions is "yes", then this is the right workshop for you.
+
+-   Do you make summary tables in R (data, survey data, regression models, time-to-event data, adverse event reports)?
+
+-   Do you want your workflow to be reproducible?
+
+-   Are you often frustrated with the immense amount of code required to create great-looking tables in R?
+
+The workshop is designed for those with some experience in R. It will be expected that you can perform basic data manipulation. Experience with the {tidyverse} and the `%>%` operator is a plus, but not required.
+
+## Prework
+
+Before attending the workshop please have the following installed and configured on your machine.
+
+-   Recent version of **R**
+
+-   Recent version of **RStudio**
+
+-   Most recent release of the [**gtsummary**](https://www.danieldsjoberg.com/gtsummary/) and other packages used in workshop.
+
+    ``` r
+    instll_pkgs <- 
+      c("gtsummary", "tidyverse", "gapminder", "ggpubr", 
+        "likert", "skimr", "car")
+    install.packages(instll_pkgs)
+    ```
+
+-   Ensure you can knit R markdown documents
+
+    -   Open RStudio and create a new Rmarkdown document
+    -   Save the document and check you are able to knit it.
+
+
+
+## Instructors
+
+#### Md. Jubayer Hossain
+
+![](images/JHossain.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Jubayer" width="200"}
+
+[Md. Jubayer Hossain]() is the Founder and Data Analyst at [CHIRAL Bangladesh](). CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of the human around me by working at the intersection of education, technology, and health research. His research interests include health data science and machine learning in healthcare.
+
+<br/>
+
+#### Md. Wahidul Islam
+
+![](images/wahidul.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Wahidul" width="200"}
+
+Wahidul Islam is an undergraduate student in the Department of Microbiology at Jagannath University, Dhaka, Bangladesh. Bioinformatics, Immunology, Cell Biology, Biostatistics, Public health, and Microbiology are some of his research interests. Currently, he is working as a research assistant in Population Health Studies Division & Genomic Data Science Center at CHIRAL Bangladesh. He also leads the seminar and workshop team at CHIRAL Bangladesh.
+
+<br/>
+
+#### Muhibullah Shahjahan
+
+![](images/muhibullah.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of muhibullah" width="200"} 
+
+Muhibullah is an undergraduate student in the Department of Microbiology at Jagannath University and health data analysis, bioinformatics are some of his research interests. Currently, he is working as a research assistant at CHIRAL Bangladesh.

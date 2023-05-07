@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jubayer Hossain">
+<meta name="dcterms.date" content="2022-12-29">
+
+<title>Data Analysis with R - Data Input/Output</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Data Analysis with R - Data Input/Output">
+<meta property="og:description" content="Let’s make an R Project so we can stay organized in the next steps.">
+<meta property="og:site-name" content="Data Analysis with R">
+<meta name="twitter:title" content="Data Analysis with R - Data Input/Output">
+<meta name="twitter:description" content="Let’s make an R Project so we can stay organized in the next steps.">
+<meta name="twitter:image" content="https://chiraltraining.github.io/WW01_DataAnalysiswithR//images/two-hex-logo.png">
+<meta name="twitter:creator" content="@hossainlab">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Data Input/Output</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">Material</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">Sessions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">Workshop Q &amp; A</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#new-r-project" id="toc-new-r-project" class="nav-link" data-scroll-target="#new-r-project">New R Project</a></li>
+  <li><a href="#new-r-project-1" id="toc-new-r-project-1" class="nav-link" data-scroll-target="#new-r-project-1">New R Project</a></li>
+  <li><a href="#new-r-project-2" id="toc-new-r-project-2" class="nav-link" data-scroll-target="#new-r-project-2">New R Project</a></li>
+  <li><a href="#new-r-project-3" id="toc-new-r-project-3" class="nav-link" data-scroll-target="#new-r-project-3">New R Project</a></li>
+  <li><a href="#new-r-project-4" id="toc-new-r-project-4" class="nav-link" data-scroll-target="#new-r-project-4">New R Project</a></li>
+  <li><a href="#data-we-use" id="toc-data-we-use" class="nav-link" data-scroll-target="#data-we-use">Data We Use</a></li>
+  <li><a href="#data-input" id="toc-data-input" class="nav-link" data-scroll-target="#data-input">Data Input</a></li>
+  <li><a href="#data-input-1" id="toc-data-input-1" class="nav-link" data-scroll-target="#data-input-1">Data Input</a></li>
+  <li><a href="#data-input-dataset-location" id="toc-data-input-dataset-location" class="nav-link" data-scroll-target="#data-input-dataset-location">Data Input: Dataset Location</a></li>
+  <li><a href="#data-input-read-in-directly" id="toc-data-input-read-in-directly" class="nav-link" data-scroll-target="#data-input-read-in-directly">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-1" id="toc-data-input-read-in-directly-1" class="nav-link" data-scroll-target="#data-input-read-in-directly-1">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-2" id="toc-data-input-read-in-directly-2" class="nav-link" data-scroll-target="#data-input-read-in-directly-2">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-3" id="toc-data-input-read-in-directly-3" class="nav-link" data-scroll-target="#data-input-read-in-directly-3">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-4" id="toc-data-input-read-in-directly-4" class="nav-link" data-scroll-target="#data-input-read-in-directly-4">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-5" id="toc-data-input-read-in-directly-5" class="nav-link" data-scroll-target="#data-input-read-in-directly-5">Data Input: Read in Directly</a></li>
+  <li><a href="#data-input-read-in-directly-from-file-path" id="toc-data-input-read-in-directly-from-file-path" class="nav-link" data-scroll-target="#data-input-read-in-directly-from-file-path">Data Input: Read in Directly From File Path</a></li>
+  <li><a href="#common-new-user-mistakes-we-have-seen" id="toc-common-new-user-mistakes-we-have-seen" class="nav-link" data-scroll-target="#common-new-user-mistakes-we-have-seen">Common new user mistakes we have seen</a></li>
+  <li><a href="#data-input-checking-the-data" id="toc-data-input-checking-the-data" class="nav-link" data-scroll-target="#data-input-checking-the-data">Data Input: Checking the data</a></li>
+  <li><a href="#data-input-checking-for-problems" id="toc-data-input-checking-for-problems" class="nav-link" data-scroll-target="#data-input-checking-for-problems">Data Input: Checking for problems</a></li>
+  <li><a href="#data-input-checking-for-problems-1" id="toc-data-input-checking-for-problems-1" class="nav-link" data-scroll-target="#data-input-checking-for-problems-1">Data Input: Checking for problems</a></li>
+  <li><a href="#data-input-checking-for-problems-2" id="toc-data-input-checking-for-problems-2" class="nav-link" data-scroll-target="#data-input-checking-for-problems-2">Data Input: Checking for problems</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
+  <li><a href="#data-input-read-in-from-rstudio-toolbar" id="toc-data-input-read-in-from-rstudio-toolbar" class="nav-link" data-scroll-target="#data-input-read-in-from-rstudio-toolbar">Data Input: Read in From RStudio Toolbar</a></li>
+  <li><a href="#data-input-read-in-from-rstudio-toolbar-1" id="toc-data-input-read-in-from-rstudio-toolbar-1" class="nav-link" data-scroll-target="#data-input-read-in-from-rstudio-toolbar-1">Data Input: Read in From RStudio Toolbar</a></li>
+  <li><a href="#data-input-base-r" id="toc-data-input-base-r" class="nav-link" data-scroll-target="#data-input-base-r">Data Input: base R</a></li>
+  <li><a href="#data-input-readr-highlights" id="toc-data-input-readr-highlights" class="nav-link" data-scroll-target="#data-input-readr-highlights">Data input: <code>readr</code> highlights</a></li>
+  <li><a href="#data-input-other-file-types" id="toc-data-input-other-file-types" class="nav-link" data-scroll-target="#data-input-other-file-types">Data input: other file types</a></li>
+  <li><a href="#data-input-other-file-types-1" id="toc-data-input-other-file-types-1" class="nav-link" data-scroll-target="#data-input-other-file-types-1">Data input: other file types</a></li>
+  <li><a href="#lab-part-1" id="toc-lab-part-1" class="nav-link" data-scroll-target="#lab-part-1">Lab Part 1</a></li>
+  <li><a href="#working-directories" id="toc-working-directories" class="nav-link" data-scroll-target="#working-directories">Working Directories</a></li>
+  <li><a href="#working-directories-1" id="toc-working-directories-1" class="nav-link" data-scroll-target="#working-directories-1">Working Directories</a></li>
+  <li><a href="#working-directories-2" id="toc-working-directories-2" class="nav-link" data-scroll-target="#working-directories-2">Working Directories</a></li>
+  <li><a href="#data-output" id="toc-data-output" class="nav-link" data-scroll-target="#data-output">Data Output</a></li>
+  <li><a href="#data-output-1" id="toc-data-output-1" class="nav-link" data-scroll-target="#data-output-1">Data Output</a></li>
+  <li><a href="#r-binary-file" id="toc-r-binary-file" class="nav-link" data-scroll-target="#r-binary-file">R binary file</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/07_Data_IO/Data_IO.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Data Input/Output</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Jubayer Hossain 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://chiralbd.org/">Founder &amp; Instructor, CHIRAL Bangladesh</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 29, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li>Part 0: A little bit of set up!</li>
+<li>Part 1: reading CSV file, common new user mistakes in data reading, checking for problems in the read data</li>
+<li>Part 2: data input overview, working directories, relative vs.&nbsp;absolute paths, reading XLSX file (Excel file), other data inputs</li>
+<li>Part 3: writing CSV file</li>
+<li>Part 4: reading and saving R objects</li>
+</ul>
+</section>
+<section id="new-r-project" class="level2">
+<h2 class="anchored" data-anchor-id="new-r-project">New R Project</h2>
+<p>Let’s make an R Project so we can stay organized in the next steps.</p>
+<p>Click the new R Project button at the top left of RStudio:</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_Rproject.png" class="img-fluid" style="width:40.0%" alt="The New R Project button is highlighted."></p>
+</div>
+</div>
+</section>
+<section id="new-r-project-1" class="level2">
+<h2 class="anchored" data-anchor-id="new-r-project-1">New R Project</h2>
+<p>In the New Project Wizard, click “New Directory”:</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_new_directory.png" class="img-fluid" style="width:60.0%" alt="In the New Project Wizard, the 'New Directory' option is highlighted."></p>
+</div>
+</div>
+</section>
+<section id="new-r-project-2" class="level2">
+<h2 class="anchored" data-anchor-id="new-r-project-2">New R Project</h2>
+<p>Click “New Project”:</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_new_project.png" class="img-fluid" style="width:60.0%" alt="In the New Project Wizard, the 'New Project' option is highlighted."></p>
+</div>
+</div>
+</section>
+<section id="new-r-project-3" class="level2">
+<h2 class="anchored" data-anchor-id="new-r-project-3">New R Project</h2>
+<p>Type in a name for your new folder.</p>
+<p>Store it somewhere easy to find, such as your Desktop:</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_new_project_details.png" class="img-fluid" style="width:60.0%" alt="In the New Project Wizard, the new project has been given a name and is going to be stored in the Desktop directory. The 'Create Project' button is highlighted."></p>
+</div>
+</div>
+</section>
+<section id="new-r-project-4" class="level2">
+<h2 class="anchored" data-anchor-id="new-r-project-4">New R Project</h2>
+<p>You now have a new R Project folder on your Desktop!</p>
+<p>Make sure you add any scripts or data files to this folder as we go through today’s lesson. This will make sure R is able to “find” your files.</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_new_desktop.png" class="img-fluid" style="width:60.0%" alt="The image shows an image of an arrow pointing to the newly created R project repository."></p>
+</div>
+</div>
+</section>
+<section id="data-we-use" class="level2">
+<h2 class="anchored" data-anchor-id="data-we-use">Data We Use</h2>
+<ul>
+<li>Everything we do in class will be using real publicly available data</li>
+<li>Open Data and Data.gov will be sources for the first few days</li>
+</ul>
+</section>
+<section id="data-input" class="level2">
+<h2 class="anchored" data-anchor-id="data-input">Data Input</h2>
+<ul>
+<li>‘Reading in’ data is the first step of any real project/analysis</li>
+<li>R can read almost any file format, especially via add-on packages</li>
+<li>We are going to focus on simple delimited files first
+<ul>
+<li>comma separated (e.g.&nbsp;‘.csv’)</li>
+<li>tab delimited (e.g.&nbsp;‘.txt’)</li>
+<li>Microsoft Excel (e.g.&nbsp;‘.xlsx’)</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-input-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-1">Data Input</h2>
+<p>Youth Tobacco Survey (YTS) dataset:</p>
+<p>“The YTS was developed to provide states with comprehensive data on both middle school and high school students regarding tobacco use, exposure to environmental tobacco smoke, smoking cessation, school curriculum, minors’ ability to purchase or otherwise obtain tobacco products, knowledge and attitudes about tobacco, and familiarity with pro-tobacco and anti-tobacco media messages.”</p>
+<ul>
+<li>Check out the data at: https://catalog.data.gov/dataset/youth-tobacco-survey-yts-data</li>
+</ul>
+</section>
+<section id="data-input-dataset-location" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-dataset-location">Data Input: Dataset Location</h2>
+<p>Dataset is located at <a href="https://github.com/chiraltraining/WW01_DataAnalysiswithR/blob/main/modules/07_Data_IO/YouthTobacco_newNames.csv">https://github.com/chiraltraining/WW01_DataAnalysiswithR/blob/main/modules/07_Data_IO/YouthTobacco_newNames.csv</a></p>
+<ul>
+<li><p>Download data by clicking the above link</p>
+<ul>
+<li>Google Chrome - if a file loads in your browser, choose File –&gt; Save As, select, Format “Page Source” and save</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-input-read-in-directly" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly">Data Input: Read in Directly</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load library `readr` that contains function `read_csv`</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Youth_Tobacco_Survey_YTS_Data.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># `head` displays first few rows of a data frame</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 31
+   YEAR Locati…¹ Locat…² Topic…³ Topic…⁴ Measu…⁵ DataS…⁶ Respo…⁷ Data_…⁸ Data_…⁹
+  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+1  2015 AZ       Arizona Tobacc… Cessat… Percen… YTS     &lt;NA&gt;    %       Percen…
+2  2015 AZ       Arizona Tobacc… Cessat… Percen… YTS     &lt;NA&gt;    %       Percen…
+3  2015 AZ       Arizona Tobacc… Cessat… Percen… YTS     &lt;NA&gt;    %       Percen…
+4  2015 AZ       Arizona Tobacc… Cessat… Quit A… YTS     &lt;NA&gt;    %       Percen…
+5  2015 AZ       Arizona Tobacc… Cessat… Quit A… YTS     &lt;NA&gt;    %       Percen…
+# … with 21 more variables: Data_Value &lt;dbl&gt;, Data_Value_Footnote_Symbol &lt;chr&gt;,
+#   Data_Value_Footnote &lt;chr&gt;, Data_Value_Std_Err &lt;dbl&gt;,
+#   Low_Confidence_Limit &lt;dbl&gt;, High_Confidence_Limit &lt;dbl&gt;, Sample_Size &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, Race &lt;chr&gt;, Age &lt;chr&gt;, Education &lt;chr&gt;, GeoLocation &lt;chr&gt;,
+#   TopicTypeId &lt;chr&gt;, TopicId &lt;chr&gt;, MeasureId &lt;chr&gt;, StratificationID1 &lt;chr&gt;,
+#   StratificationID2 &lt;chr&gt;, StratificationID3 &lt;chr&gt;, StratificationID4 &lt;chr&gt;,
+#   SubMeasureID &lt;chr&gt;, DisplayOrder &lt;dbl&gt;, and abbreviated variable names …</code></pre>
+</div>
+</div>
+</section>
+<section id="data-input-read-in-directly-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-1">Data Input: Read in Directly</h2>
+<p>So what is going on “behind the scenes”?</p>
+<p><code>read_csv()</code> parses a “flat” text file (.csv) and turns it into a <strong>tibble</strong> – a rectangular data frame, where data are split into rows and columns</p>
+<ul>
+<li><p>First, a flat file is parsed into a rectangular matrix of strings</p></li>
+<li><p>Second, the type of each column is determined (heuristic-based guess)</p></li>
+</ul>
+</section>
+<section id="data-input-read-in-directly-2" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-2">Data Input: Read in Directly</h2>
+<p><code>read_csv()</code> needs the path to your file. It will return a tibble</p>
+<pre><code>read_csv(file, col_names = TRUE, col_types = NULL,
+  locale = default_locale(), na = c("", "NA"),
+  quoted_na = TRUE, quote = "\"", comment = "", trim_ws = TRUE,
+  skip = 0, n_max = Inf, guess_max = min(1000, n_max),
+  progress = show_progress(), skip_empty_rows = TRUE
+)</code></pre>
+<ul>
+<li><code>file</code> is the path to your file, in quotes</li>
+<li>can be path in your local computer – absolute file path or relative file path</li>
+<li>can be path to a file on a website</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Examples</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"F:/VirtualWeekendWorkshops/VWW01_DataAnalysiswithR/modules/07_Data_IO/data"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"Youth_Tobacco_Survey_YTS_Data.csv"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"www.someurl.com/table1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-input-read-in-directly-3" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-3">Data Input: Read in Directly</h2>
+<p>Great, but what is my “path”?</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_where_are_the_files.gif" class="img-fluid" style="width:40.0%" alt="GIF with text. PC: *autosaves file* Me: Cool, so where did the file save? PC: shows image of Power Rangers shrugging."></p>
+</div>
+</div>
+</section>
+<section id="data-input-read-in-directly-4" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-4">Data Input: Read in Directly</h2>
+<p>Luckily, we already set up an R Project!</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_file_move.png" class="img-fluid" style="width:40.0%" alt="Image showing the csv dataset being moved to the R Project directory created earlier."></p>
+</div>
+</div>
+<p>If we add the Youth_Tobacco_Survey_YTS_Data.csv file to the intro_to_r folder, we can use the relative path:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"Youth_Tobacco_Survey_YTS_Data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-input-read-in-directly-5" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-5">Data Input: Read in Directly</h2>
+<p><code>read_csv()</code> is a special case of <code>read_delim()</code> – a general function to read a delimited file into a data frame</p>
+<p><code>read_delim()</code> needs path to your file and file’s delimiter, will return a tibble</p>
+<pre><code>read_delim(file, delim, quote = "\"", escape_backslash = FALSE, 
+  escape_double = TRUE, col_names = TRUE,  col_types = NULL, 
+  locale = default_locale(),na = c("", "NA"),  quoted_na = TRUE, 
+  comment = "", trim_ws = FALSE, skip = 0, 
+  n_max = Inf,  guess_max = min(1000, n_max), 
+  progress = show_progress(), skip_empty_rows = TRUE
+)</code></pre>
+<ul>
+<li><code>file</code> is the path to your file, in quotes</li>
+<li><code>delim</code> is what separates the fields within a record</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Examples</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">"Youth_Tobacco_Survey_YTS_Data.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">"www.someurl.com/table1.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-input-read-in-directly-from-file-path" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-directly-from-file-path">Data Input: Read in Directly From File Path</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/Youth_Tobacco_Survey_YTS_Data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 9794 Columns: 31
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (24): LocationAbbr, LocationDesc, TopicType, TopicDesc, MeasureDesc, Dat...
+dbl  (7): YEAR, Data_Value, Data_Value_Std_Err, Low_Confidence_Limit, High_C...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>The data is now successfully read into your R workspace. Column specification of first few columns is printed to the console.</p>
+</section>
+<section id="common-new-user-mistakes-we-have-seen" class="level2">
+<h2 class="anchored" data-anchor-id="common-new-user-mistakes-we-have-seen">Common new user mistakes we have seen</h2>
+<ol type="1">
+<li><strong>Working directory problems: trying to read files that R “can’t find”</strong>
+<ul>
+<li>Path misspecification</li>
+<li>more on this shortly!</li>
+</ul></li>
+<li>Typos (R is <strong>case sensitive</strong>, <code>x</code> and <code>X</code> are different)
+<ul>
+<li>RStudio helps with “tab completion”</li>
+</ul></li>
+<li>Data type problems (is that a string or a number?)</li>
+<li>Open ended quotes, parentheses, and brackets<br>
+</li>
+<li>Different versions of software</li>
+</ol>
+</section>
+<section id="data-input-checking-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-checking-the-data">Data Input: Checking the data</h2>
+<ul>
+<li>the <code>View()</code> function shows your data in a new tab, in spreadsheet format</li>
+<li>be careful if your data is big!</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_View_data.png" class="img-fluid" style="width:80.0%" alt="Screenshot of the RStudio console. 'View(dat)' has been typed and the data appears in table format."></p>
+</div>
+</div>
+</section>
+<section id="data-input-checking-for-problems" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-checking-for-problems">Data Input: Checking for problems</h2>
+<p>The <code>spec()</code> function shows you the specification of how the data was read in.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dat &lt;- read_csv("data/Youth_Tobacco_Survey_YTS_Data.csv")</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cols(
+  YEAR = col_double(),
+  LocationAbbr = col_character(),
+  LocationDesc = col_character(),
+  TopicType = col_character(),
+  TopicDesc = col_character(),
+  MeasureDesc = col_character(),
+  DataSource = col_character(),
+  Response = col_character(),
+  Data_Value_Unit = col_character(),
+  Data_Value_Type = col_character(),
+  Data_Value = col_double(),
+  Data_Value_Footnote_Symbol = col_character(),
+  Data_Value_Footnote = col_character(),
+  Data_Value_Std_Err = col_double(),
+  Low_Confidence_Limit = col_double(),
+  High_Confidence_Limit = col_double(),
+  Sample_Size = col_double(),
+  Gender = col_character(),
+  Race = col_character(),
+  Age = col_character(),
+  Education = col_character(),
+  GeoLocation = col_character(),
+  TopicTypeId = col_character(),
+  TopicId = col_character(),
+  MeasureId = col_character(),
+  StratificationID1 = col_character(),
+  StratificationID2 = col_character(),
+  StratificationID3 = col_character(),
+  StratificationID4 = col_character(),
+  SubMeasureID = col_character(),
+  DisplayOrder = col_double()
+)</code></pre>
+</div>
+</div>
+</section>
+<section id="data-input-checking-for-problems-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-checking-for-problems-1">Data Input: Checking for problems</h2>
+<p>The <code>problems()</code> function shows you if there were any obvious issues when the data was read in.</p>
+<p>The output of <code>problems()</code> is a tibble showing each line with a concern.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">problems</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 5
+# … with 5 variables: row &lt;int&gt;, col &lt;int&gt;, expected &lt;chr&gt;, actual &lt;chr&gt;,
+#   file &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="data-input-checking-for-problems-2" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-checking-for-problems-2">Data Input: Checking for problems</h2>
+<p><code>dat</code> looks good so far. What do you see on a messy dataset?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ufo_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"https://github.com/SISBID/Data-Wrangling/blob/gh-pages/data/ufo/ufo_data_complete.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">problems</span>(ufo_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 67 × 5
+     row   col expected  actual      file 
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;
+ 1    16   367 1 columns 367 columns ""   
+ 2    58     3 1 columns 3 columns   ""   
+ 3    79     3 1 columns 3 columns   ""   
+ 4   115     3 1 columns 3 columns   ""   
+ 5   123     6 1 columns 6 columns   ""   
+ 6   151     4 1 columns 4 columns   ""   
+ 7   161     4 1 columns 4 columns   ""   
+ 8   171     4 1 columns 4 columns   ""   
+ 9   181     4 1 columns 4 columns   ""   
+10   191     4 1 columns 4 columns   ""   
+# … with 57 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="help" class="level2">
+<h2 class="anchored" data-anchor-id="help">Help</h2>
+<p>For any function, you can write <code>?FUNCTION_NAME</code>, or <code>help("FUNCTION_NAME")</code> to look at the help file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>?read_delim</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="st">"read_delim"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_read_delim.png" class="img-fluid" style="width:60.0%" alt="Screenshot of the RStudio console. '?read_delim' has been typed and the help page has appeared in the help pane on the right."></p>
+</div>
+</div>
+</section>
+<section id="data-input-read-in-from-rstudio-toolbar" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-from-rstudio-toolbar">Data Input: Read in From RStudio Toolbar</h2>
+<p>R Studio features some nice “drop-down” support, where you can run some tasks by selecting them from the toolbar.</p>
+<p>For example, you can easily import text datasets using the <code>File --&gt; Import Dataset --&gt; From Text (readr)</code> command. Selecting this will bring up a new screen that lets you specify the formatting of your text file.</p>
+<p>After importing a dataset, the corresponding R command appears in the console.</p>
+</section>
+<section id="data-input-read-in-from-rstudio-toolbar-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-read-in-from-rstudio-toolbar-1">Data Input: Read in From RStudio Toolbar</h2>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_import_dataset.gif" class="img-fluid" style="width:80.0%" alt="Gif showing the process of importing a dataset via readr."></p>
+</div>
+</div>
+</section>
+<section id="data-input-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-base-r">Data Input: base R</h2>
+<p>There are also data importing functions provided in base R (rather than the <code>readr</code> package), like <code>read.delim()</code> and <code>read.csv()</code>.</p>
+<p>These functions have slightly different syntax for reading in data (e.g.&nbsp;<code>header</code> argument).</p>
+<p>However, while many online resources use the base R tools, the latest version of RStudio switched to use these new <code>readr</code> data import tools, so we will use them in the class for slides. They are also up to two times faster for reading in large datasets, and have a progress bar which is nice.</p>
+</section>
+<section id="data-input-readr-highlights" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-readr-highlights">Data input: <code>readr</code> highlights</h2>
+<ul>
+<li>Modern, improved tools from <code>readr</code> R package: <code>read_delim()</code>, <code>read_csv()</code>
+<ul>
+<li>needs a file path to be provided</li>
+<li>parses the file into rows/columns, determines column type</li>
+<li>returns a data frame</li>
+</ul></li>
+<li>Some functions to look at a data frame:
+<ul>
+<li><code>head()</code> shows first few rows</li>
+<li><code>tail()</code> shows the last few rows</li>
+<li><code>View()</code> shows the data as a spreadsheet</li>
+<li><code>spec()</code> gives specification of column types</li>
+</ul></li>
+</ul>
+</section>
+<section id="data-input-other-file-types" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-other-file-types">Data input: other file types</h2>
+<ul>
+<li>From <code>readr</code> package:
+<ul>
+<li><code>read_delim()</code>: general delimited files</li>
+<li><code>read_csv()</code>: comma separated (CSV) files</li>
+<li><code>read_tsv()</code>: tab separated files</li>
+<li>others</li>
+</ul></li>
+<li>For reading Excel files, you can do one of:
+<ul>
+<li>use <code>read_excel()</code> function from <code>readxl</code> package</li>
+<li>use other packages: <code>xlsx</code>, <code>openxlsx</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-input-other-file-types-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-input-other-file-types-1">Data input: other file types</h2>
+<ul>
+<li><code>haven</code> package has functions to read SAS, SPSS, Stata formats</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SAS</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sas</span>(<span class="at">file =</span> <span class="st">"mtcars.sas7bdat"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># SPSS</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sav</span>(<span class="at">file =</span> <span class="st">"mtcars.sav"</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stata</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">read_dta</span>(<span class="at">file =</span> <span class="st">"mtcars.dta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lab-part-1" class="level2">
+<h2 class="anchored" data-anchor-id="lab-part-1">Lab Part 1</h2>
+<p>💻 <a href="">Data I/O Lab</a></p>
+</section>
+<section id="working-directories" class="level2">
+<h2 class="anchored" data-anchor-id="working-directories">Working Directories</h2>
+<p>Working directory is a directory that R assumes “you are working in”. It’s where R looks for files.</p>
+<p>“Setting working directory” means specifying the path to the directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the working directory</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set the working directory</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/avahoffman/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>R uses working directory as a starting place when searching for files.</p>
+</section>
+<section id="working-directories-1" class="level2">
+<h2 class="anchored" data-anchor-id="working-directories-1">Working Directories</h2>
+<p>R uses working directory as a starting place when searching for files:</p>
+<ul>
+<li><p>if you use <code>read_csv("Bike_Lanes_Long.csv")</code>, R assumes that the file is <strong>in</strong> the working directory</p></li>
+<li><p>if you use <code>read_csv("data/Bike_Lanes_Long.csv")</code>, R assumes that <code>data</code> directory is <strong>in</strong> the working directory</p></li>
+<li><p>if you use an absolute path, e.g.&nbsp;<code>read_csv("/Users/avahoffman/data/Bike_Lanes_Long.csv")</code>, the working directory information is not used</p></li>
+</ul>
+</section>
+<section id="working-directories-2" class="level2">
+<h2 class="anchored" data-anchor-id="working-directories-2">Working Directories</h2>
+<p>Setting up an R Project can avoid headaches by telling R that the working directory is wherever the <code>.Rproj</code> file is.</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/Data_IO_Rproj_file.png" class="img-fluid" style="width:80.0%" alt="Image showing the RStudio console. There is an arrow pointing to the .Rproj file. The top right corner shows that the 'Intro_to_r' project has been selected."></p>
+</div>
+</div>
+</section>
+<section id="data-output" class="level2">
+<h2 class="anchored" data-anchor-id="data-output">Data Output</h2>
+<p>While its nice to be able to read in a variety of data formats, it’s equally important to be able to output data somewhere.</p>
+<p>The <code>readr</code> package provides data exporting functions which have the pattern <code>write_*</code>:</p>
+<ul>
+<li><code>write_csv()</code>,</li>
+<li><code>write_delim()</code>, others.</li>
+</ul>
+<p>From <code>write_csv()</code> documentation:</p>
+<pre><code>write_csv(x, file, 
+  na = "NA", append = FALSE, 
+  col_names = !append, quote_escape = "double",
+  eol = "\n", path = deprecated()
+)</code></pre>
+</section>
+<section id="data-output-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-output-1">Data Output</h2>
+<p><code>x</code>: data frame you want to write</p>
+<p><code>file</code>: file path where you want to R object written; it can be:</p>
+<ul>
+<li>an absolute path,</li>
+<li>a relative path (relative to your working directory),</li>
+<li>a file name only (which writes the file to your working directory)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(dat, <span class="at">file =</span> <span class="st">"YouthTobacco_newNames.csv"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_delim</span>(dat, <span class="at">file =</span> <span class="st">"YouthTobacco_newNames.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-binary-file" class="level2">
+<h2 class="anchored" data-anchor-id="r-binary-file">R binary file</h2>
+<p><code>.rds</code> is an extension for R native file format.</p>
+<p><code>write_rds()</code> and <code>read_rds()</code> from <code>readr</code> package can be used to write/read a single R object to/from file.</p>
+<p>Saving datasets in <code>.rds</code> format can save time if you have to read it back in later.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write an object: a data frame "dat"</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(dat, <span class="at">file =</span> <span class="st">"yts_dataset.rds"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write an object: vector "x"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(x, <span class="at">file =</span> <span class="st">"my_vector.rds"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># read an object from file and assign to a new object named "y"</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"my_vector.rds"</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 3</code></pre>
+</div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>R Projects are a good way to keep your files organized and reduce headaches</li>
+<li>Use <code>read_csv()</code> and <code>read_delim()</code> from the <code>readr</code> package to read in your data</li>
+<li>Don’t forget to use <code>&lt;-</code> to assign your data to an object!</li>
+<li>Use <code>spec()</code> to understand objects</li>
+<li>Use <code>head()</code> and <code>tail()</code> to preview the first and last lines of the data</li>
+<li>Use <code>write_csv()</code> and <code>write_delim()</code> from the <code>readr</code> package to write your (modified) data</li>
+</ul>
+<p>🏠 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Class Website</a></p>
+<p>💻 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Data I/O Lab</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-right">© Copyright 2022, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jubayer Hossain">
+<meta name="dcterms.date" content="2022-12-28">
+
+<title>Data Analysis with R - RStudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Data Analysis with R - RStudio">
+<meta property="og:description" content="RStudio is an Integrated Development Environment (IDE) for R">
+<meta property="og:site-name" content="Data Analysis with R">
+<meta name="twitter:title" content="Data Analysis with R - RStudio">
+<meta name="twitter:description" content="RStudio is an Integrated Development Environment (IDE) for R">
+<meta name="twitter:image" content="https://chiraltraining.github.io/WW01_DataAnalysiswithR//images/two-hex-logo.png">
+<meta name="twitter:creator" content="@hossainlab">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">RStudio</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">Material</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">Sessions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">Workshop Q &amp; A</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#working-with-r-rstudio" id="toc-working-with-r-rstudio" class="nav-link active" data-scroll-target="#working-with-r-rstudio">Working with R – RStudio</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#rstudio-1" id="toc-rstudio-1" class="nav-link" data-scroll-target="#rstudio-1">RStudio</a></li>
+  <li><a href="#getting-the-editor" id="toc-getting-the-editor" class="nav-link" data-scroll-target="#getting-the-editor">Getting the editor</a></li>
+  <li><a href="#working-with-r-in-r-studio---2-major-panes" id="toc-working-with-r-in-r-studio---2-major-panes" class="nav-link" data-scroll-target="#working-with-r-in-r-studio---2-major-panes">Working with R in R Studio - 2 major panes:</a></li>
+  <li><a href="#source-editor" id="toc-source-editor" class="nav-link" data-scroll-target="#source-editor">Source / Editor</a></li>
+  <li><a href="#r-console" id="toc-r-console" class="nav-link" data-scroll-target="#r-console">R Console</a></li>
+  <li><a href="#rstudio-2" id="toc-rstudio-2" class="nav-link" data-scroll-target="#rstudio-2">RStudio</a></li>
+  <li><a href="#rstudio-layout" id="toc-rstudio-layout" class="nav-link" data-scroll-target="#rstudio-layout">RStudio layout</a></li>
+  <li><a href="#rstudio-layout-1" id="toc-rstudio-layout-1" class="nav-link" data-scroll-target="#rstudio-layout-1">RStudio Layout</a></li>
+  <li><a href="#workspaceenvironment" id="toc-workspaceenvironment" class="nav-link" data-scroll-target="#workspaceenvironment">Workspace/Environment</a></li>
+  <li><a href="#workspaceenvironment-1" id="toc-workspaceenvironment-1" class="nav-link" data-scroll-target="#workspaceenvironment-1">Workspace/Environment</a></li>
+  <li><a href="#other-panes" id="toc-other-panes" class="nav-link" data-scroll-target="#other-panes">Other Panes</a></li>
+  <li><a href="#lets-take-a-look-at-r-studio-ourselves" id="toc-lets-take-a-look-at-r-studio-ourselves" class="nav-link" data-scroll-target="#lets-take-a-look-at-r-studio-ourselves">Let’s take a look at R Studio ourselves!</a>
+  <ul class="collapse">
+  <li><a href="#lab-starting-with-r-and-rmarkdown" id="toc-lab-starting-with-r-and-rmarkdown" class="nav-link" data-scroll-target="#lab-starting-with-r-and-rmarkdown">Lab: Starting with R and RMarkdown</a></li>
+  <li><a href="#r-markdown-file" id="toc-r-markdown-file" class="nav-link" data-scroll-target="#r-markdown-file">R Markdown file</a></li>
+  <li><a href="#create-an-r-markdown-file" id="toc-create-an-r-markdown-file" class="nav-link" data-scroll-target="#create-an-r-markdown-file">Create an R Markdown file</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
+  <li><a href="#create-chunks" id="toc-create-chunks" class="nav-link" data-scroll-target="#create-chunks">Create Chunks</a></li>
+  <li><a href="#run-previous-chunks-button" id="toc-run-previous-chunks-button" class="nav-link" data-scroll-target="#run-previous-chunks-button">Run previous chunks button</a></li>
+  <li><a href="#chunk-settings" id="toc-chunk-settings" class="nav-link" data-scroll-target="#chunk-settings">Chunk settings</a></li>
+  <li><a href="#chunk-settings-1" id="toc-chunk-settings-1" class="nav-link" data-scroll-target="#chunk-settings-1">Chunk settings</a></li>
+  <li><a href="#knit-file-to-html" id="toc-knit-file-to-html" class="nav-link" data-scroll-target="#knit-file-to-html">Knit file to html</a></li>
+  <li><a href="#useful-r-studio-shortcuts" id="toc-useful-r-studio-shortcuts" class="nav-link" data-scroll-target="#useful-r-studio-shortcuts">Useful R Studio Shortcuts</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/02_RStudio/RStudio.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">RStudio</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Jubayer Hossain 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://chiralbd.org/">Founder &amp; Instructor, CHIRAL Bangladesh</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 28, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="working-with-r-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-r-rstudio">Working with R – RStudio</h2>
+<p>RStudio is an Integrated Development Environment (IDE) for R</p>
+<ul>
+<li>It helps the user effectively use R</li>
+<li>Makes things easier</li>
+<li>Is NOT a dropdown statistical tool (such as Stata)
+<ul>
+<li>See <a href="https://cran.r-project.org/web/packages/Rcmdr/index.html">Rcmdr</a> or <a href="http://vnijs.github.io/radiant/">Radiant</a></li>
+</ul></li>
+<li>All R Studio snapshots are taken from <a href="http://ayeimanol-r.net/2013/04/21/289/" class="uri">http://ayeimanol-r.net/2013/04/21/289/</a></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" class="img-fluid figure-img" style="width:30.0%" alt="RStudio logo"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><sub>[<a href="https://www.rstudio.com/">source</a>]</sub></p>
+</section>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
+<p>Easier working with R</p>
+<ul>
+<li>Syntax highlighting, code completion, and smart indentation</li>
+<li>Easily manage multiple working directories and projects</li>
+</ul>
+<p>More information</p>
+<ul>
+<li>Workspace browser and data viewer</li>
+<li>Plot history, zooming, and flexible image and file export</li>
+<li>Integrated R help and documentation</li>
+<li>Searchable command history</li>
+</ul>
+</section>
+<section id="rstudio-1" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-1">RStudio</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ayeimanolr.files.wordpress.com/2013/04/r-rstudio-1-1.png?w=640&amp;h=382" class="img-fluid figure-img" style="width:80.0%" alt="RStudio"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ## RStudio/R Console ![Console](images/r-rstudio-1-3-console.png) -->
+</section>
+<section id="getting-the-editor" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-editor">Getting the editor</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/both.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+</section>
+<section id="working-with-r-in-r-studio---2-major-panes" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-r-in-r-studio---2-major-panes">Working with R in R Studio - 2 major panes:</h2>
+<ol type="1">
+<li>The <strong>Source/Editor</strong>: “Analysis” Script + Interactive Exploration
+<ul>
+<li>Static copy of what you did (reproducibility)</li>
+<li>Top by default</li>
+</ul></li>
+<li>The <strong>R Console</strong>: “interprets” whatever you type
+<ul>
+<li>Calculator</li>
+<li>Try things out interactively, then add to your editor</li>
+<li>Bottom by default</li>
+</ul></li>
+</ol>
+</section>
+<section id="source-editor" class="level2">
+<h2 class="anchored" data-anchor-id="source-editor">Source / Editor</h2>
+<ul>
+<li>Where files open to</li>
+<li>Have R code and comments in them</li>
+<li>Can highlight and press (CMD+Enter (Mac) or Ctrl+Enter (Windows)) to run the code</li>
+</ul>
+<p>In a .R file (we call a script), code is saved on your disk</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/rstudio_script.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<!-- ## Workspace/Environment ![Workspace](images/r-rstudio-1-ggplot-point-2.png) -->
+</section>
+<section id="r-console" class="level2">
+<h2 class="anchored" data-anchor-id="r-console">R Console</h2>
+<!-- ![Console](images/rstudio_console.png) -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rstudio_console.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Where code is executed (where things happen)</li>
+<li>You can type here for things interactively</li>
+<li>Code is <strong>not saved</strong> on your disk</li>
+</ul>
+</section>
+<section id="rstudio-2" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-2">RStudio</h2>
+<p>Super useful “cheat sheet”: <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf</a></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rstudio_sheet.png" class="img-fluid figure-img" style="width:65.0%" alt="RStudio"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rstudio-layout" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-layout">RStudio layout</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/first_markdown.png" class="img-fluid figure-img" style="width:100.0%" alt="RStudio layout"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rstudio-layout-1" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-layout-1">RStudio Layout</h2>
+<p>If RStudio doesn’t look the way you want (or like our RStudio), then do:</p>
+<p>RStudio –&gt; Preferences –&gt; Pane Layout</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pane_layout.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ## Source/Editor ![Script](images/r-rstudio-1-3-script.png) -->
+</section>
+<section id="workspaceenvironment" class="level2">
+<h2 class="anchored" data-anchor-id="workspaceenvironment">Workspace/Environment</h2>
+<!-- ![Workspace](images/rstudio_environment.png) -->
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="images/rstudio_environment.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+</section>
+<section id="workspaceenvironment-1" class="level2">
+<h2 class="anchored" data-anchor-id="workspaceenvironment-1">Workspace/Environment</h2>
+<ul>
+<li>Tells you what <strong>objects</strong> are in R</li>
+<li>What exists in memory/what is loaded?/what did I read in?</li>
+</ul>
+<p><strong>History</strong></p>
+<ul>
+<li>Shows previous commands. Good to look at for debugging, but <strong>don’t rely</strong> on it.<br>
+Instead use RMarkdown!</li>
+<li>Also type the “up” key in the Console to scroll through previous commands</li>
+</ul>
+</section>
+<section id="other-panes" class="level2">
+<h2 class="anchored" data-anchor-id="other-panes">Other Panes</h2>
+<ul>
+<li><strong>Files</strong> - shows the files on your computer of the directory you are working in</li>
+<li><strong>Viewer</strong> - can view data or R objects</li>
+<li><strong>Help</strong> - shows help of R commands</li>
+<li><strong>Plots</strong> - pictures and figures</li>
+<li><strong>Packages</strong> - list of R packages that are loaded in memory</li>
+</ul>
+</section>
+<section id="lets-take-a-look-at-r-studio-ourselves" class="level1">
+<h1>Let’s take a look at R Studio ourselves!</h1>
+<section id="lab-starting-with-r-and-rmarkdown" class="level2">
+<h2 class="anchored" data-anchor-id="lab-starting-with-r-and-rmarkdown">Lab: Starting with R and RMarkdown</h2>
+<p>💻 <a href="https://jhudatascience.org/intro_to_r/modules/RStudio/lab/RStudio_Lab.Rmd">RStudio Lab</a></p>
+<p>To do this lab we need to:</p>
+<ol type="1">
+<li>Download the file at the link above by clicking on the link or typing in: <code>https://jhudatascience.org/intro_to_r/modules/RStudio/lab/RStudio_Lab.Rmd</code> (Also on the <a href="https://jhudatascience.org/intro_to_r/materials_schedule.html">website</a> schedule page - Lab for day 1)</li>
+<li>Find the downloaded file on your computer</li>
+<li>Open the file in RStudio</li>
+</ol>
+<p>This may require finding your downloads on your computer.</p>
+<p>Recall that these videos can help:</p>
+<p>If you have a PC: https://youtu.be/we6vwB7DsNU</p>
+<p>If you have a Mac: https://www.youtube.com/watch?v=Ao9e0cDzMrE</p>
+</section>
+<section id="r-markdown-file" class="level2">
+<h2 class="anchored" data-anchor-id="r-markdown-file">R Markdown file</h2>
+<p>R Markdown files (.Rmd) help generate reports that include your code and output. Think of them as fancier scripts.</p>
+<ol type="1">
+<li>Helps you describe your code</li>
+<li>Allows you to check the output</li>
+<li>Can create many different file types</li>
+</ol>
+</section>
+<section id="create-an-r-markdown-file" class="level2">
+<h2 class="anchored" data-anchor-id="create-an-r-markdown-file">Create an R Markdown file</h2>
+<p>Go to File → New File → R Markdown</p>
+<p>Call your file “first_markdown”</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RMarkdown.png" class="img-fluid figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="code-chunks" class="level2">
+<h2 class="anchored" data-anchor-id="code-chunks">Code chunks</h2>
+<p>Within R Markdown files are code “chunks”</p>
+<p>This is where you can type R code and run it!</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chunk.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="create-chunks" class="level2">
+<h2 class="anchored" data-anchor-id="create-chunks">Create Chunks</h2>
+<p>To create a new R code chunk:</p>
+<p>Copy paste an existing chunk in the R Markdown file and replace the code <strong>OR</strong></p>
+<ol type="1">
+<li>Use the insert code chunk button at the top of RStudio.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insert_chunk.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Select R as the language:</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/select_R.png" class="img-fluid figure-img" style="width:13.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="run-previous-chunks-button" class="level2">
+<h2 class="anchored" data-anchor-id="run-previous-chunks-button">Run previous chunks button</h2>
+<p>You can run all chunks above a specific chunk using this button:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/previous_chunks.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chunk-settings" class="level2">
+<h2 class="anchored" data-anchor-id="chunk-settings">Chunk settings</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chunk_settings.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chunk-settings-1" class="level2">
+<h2 class="anchored" data-anchor-id="chunk-settings-1">Chunk settings</h2>
+<p>You can specify if a chunk will be seen in the report or not.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chunk_settings2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="knit-file-to-html" class="level2">
+<h2 class="anchored" data-anchor-id="knit-file-to-html">Knit file to html</h2>
+<p>This will create a report from the R Markdown document!</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/knit.png" class="img-fluid figure-img" style="width:100.0%" alt="knit"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="useful-r-studio-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="useful-r-studio-shortcuts">Useful R Studio Shortcuts</h2>
+<ul>
+<li><code>Ctrl + Enter</code> in your script evaluates that line of code
+<ul>
+<li>It’s like copying and pasting the code into the console for it to run.</li>
+</ul></li>
+<li><code>Ctrl+1</code> takes you to the script page</li>
+<li><code>Ctrl+2</code> takes you to the console</li>
+<li><a href="http://www.rstudio.com/ide/docs/using/keyboard_shortcuts" class="uri">http://www.rstudio.com/ide/docs/using/keyboard_shortcuts</a></li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>RStudio makes working in R easier</li>
+<li>the Editor is for static code like scripts or R Markdown documents</li>
+<li>The console is for testing code</li>
+<li>R markdown documents are really helpful for lots of reasons!</li>
+<li>R code goes within what is called a chunk</li>
+<li>Code chunks can be modified so that they show differently in reports</li>
+</ul>
+<p>🏠 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Class Website</a></p>
+<p>💻 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Lab</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-right">© Copyright 2022, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

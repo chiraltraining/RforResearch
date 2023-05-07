@@ -1,0 +1,110 @@
+---
+title: "Basic R Lab Key"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+In this lab you can use the interactive console to explore or **Knit** the document. 
+Remember anything you type here can be "sent" to the console with Cmd-Enter (OS-X) or Ctrl-Enter (Windows/Linux) in an R code chunk.
+
+
+# Part 1
+
+1. Create a new object called `my.num` that contains 6 numbers.
+```{r}
+my.num <- c(5, 4, 7, 8, 12, 14) # These can be any real numbers
+```
+
+
+2. Multiply `my.num` by 4.
+```{r}
+my.num * 4
+```
+
+
+3. Create a second object called `my.char` that contains 5 character strings.
+```{r}
+my.char <- c("banana", "garlic", "pickles", "hot chocolate", "7-Up") # Again,these can be anything
+```
+
+
+4. Combine the two objects `my.num` and `my.char` into an object called `both`.
+```{r}
+both <- c(my.num, my.char)
+```
+
+
+5. What is the length of `both`?
+```{r}
+length(both)
+```
+
+
+6. What class is `both`?
+```{r}
+class(both)
+```
+
+
+Bonus: Create a vector that contains 4 sets of the numbers 1, 2, 3, and 4.
+```{r}
+vec_1 <- c(1, 2, 3, 4)
+vec_2 <- c(vec_1, vec_1, vec_1, vec_1)
+
+# OR!
+rep(vec_1, 4)
+```
+
+
+# Part 2
+
+7. Divide `both` by 3, what happens?
+```{r, error=TRUE}
+both / 3
+```
+
+
+8. Create a vector with elements 1 2 3 4 5 6 and call it `x`.
+```{r}
+x <- c(1, 2, 3, 4, 5, 6)
+```
+
+
+9. Create another vector with elements 10 20 30 40 50 and call it `y`.
+```{r}
+y <- c(10, 20, 30, 40, 50)
+```
+
+
+10. What happens when you add `x` and `y` together?
+```{r}
+x + y
+# R "auto replicates" the shorter vector when the vectors aren't the same length - this is not what we want!
+# In this case, it reads y as c(10, 20, 30, 40, 50, 10)!
+```
+
+
+12. Append the value 60 onto the vector `y` (hint: you can use the c() function).
+```{r}
+y <- c(y, 60)
+```
+
+
+13. Add `x` and `y` together.
+```{r}
+x + y
+```
+
+
+Bonus: Multiply `x` and `y` together. How is this similar to the way R performs addition in #13 ?
+```{r}
+x * y
+# R adds together the first element of each vector, then the second, and so on. This order also applies when multiplying!
+```

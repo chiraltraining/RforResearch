@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jubayer Hossain">
+<meta name="dcterms.date" content="2022-12-28">
+
+<title>Data Analysis with R - Manipulating Data in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="Data Analysis with R - Manipulating Data in R">
+<meta property="og:description" content="In this module, we will show you how to:">
+<meta property="og:site-name" content="Data Analysis with R">
+<meta name="twitter:title" content="Data Analysis with R - Manipulating Data in R">
+<meta name="twitter:description" content="In this module, we will show you how to:">
+<meta name="twitter:image" content="https://chiraltraining.github.io/WW01_DataAnalysiswithR//images/two-hex-logo.png">
+<meta name="twitter:creator" content="@hossainlab">
+<meta name="twitter:image-height" content="1080">
+<meta name="twitter:image-width" content="1920">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Manipulating Data in R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">Material</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">Sessions</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">Workshop Q &amp; A</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap-of-data-cleaning" id="toc-recap-of-data-cleaning" class="nav-link active" data-scroll-target="#recap-of-data-cleaning">Recap of Data Cleaning</a></li>
+  <li><a href="#recap-of-data-cleaning-1" id="toc-recap-of-data-cleaning-1" class="nav-link" data-scroll-target="#recap-of-data-cleaning-1">Recap of Data Cleaning</a></li>
+  <li><a href="#manipulating-data" id="toc-manipulating-data" class="nav-link" data-scroll-target="#manipulating-data">Manipulating Data</a></li>
+  <li><a href="#what-is-widelong-data" id="toc-what-is-widelong-data" class="nav-link" data-scroll-target="#what-is-widelong-data">What is wide/long data?</a></li>
+  <li><a href="#what-is-widelong-data-1" id="toc-what-is-widelong-data-1" class="nav-link" data-scroll-target="#what-is-widelong-data-1">What is wide/long data?</a></li>
+  <li><a href="#what-is-widelong-data-2" id="toc-what-is-widelong-data-2" class="nav-link" data-scroll-target="#what-is-widelong-data-2">What is wide/long data?</a></li>
+  <li><a href="#what-is-widelong-data-3" id="toc-what-is-widelong-data-3" class="nav-link" data-scroll-target="#what-is-widelong-data-3">What is wide/long data?</a></li>
+  <li><a href="#why-do-we-need-to-switch-between-widelong-data" id="toc-why-do-we-need-to-switch-between-widelong-data" class="nav-link" data-scroll-target="#why-do-we-need-to-switch-between-widelong-data">Why do we need to switch between wide/long data?</a></li>
+  <li><a href="#pivoting-using-tidyr-package" id="toc-pivoting-using-tidyr-package" class="nav-link" data-scroll-target="#pivoting-using-tidyr-package">Pivoting using <code>tidyr</code> package</a></li>
+  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer"><code>pivot_longer</code>…</a>
+  <ul class="collapse">
+  <li><a href="#reshaping-data-from-wide-to-long" id="toc-reshaping-data-from-wide-to-long" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-1" id="toc-reshaping-data-from-wide-to-long-1" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-1">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-2" id="toc-reshaping-data-from-wide-to-long-2" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-2">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-3" id="toc-reshaping-data-from-wide-to-long-3" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-3">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#data-used-charm-city-circulator" id="toc-data-used-charm-city-circulator" class="nav-link" data-scroll-target="#data-used-charm-city-circulator">Data used: Charm City Circulator</a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-4" id="toc-reshaping-data-from-wide-to-long-4" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-4">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-5" id="toc-reshaping-data-from-wide-to-long-5" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-5">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#reshaping-data-from-wide-to-long-6" id="toc-reshaping-data-from-wide-to-long-6" class="nav-link" data-scroll-target="#reshaping-data-from-wide-to-long-6">Reshaping data from <strong>wide to long</strong></a></li>
+  <li><a href="#cleaning-up-long-data" id="toc-cleaning-up-long-data" class="nav-link" data-scroll-target="#cleaning-up-long-data">Cleaning up long data</a></li>
+  <li><a href="#cleaning-up-long-data-1" id="toc-cleaning-up-long-data-1" class="nav-link" data-scroll-target="#cleaning-up-long-data-1">Cleaning up long data</a></li>
+  </ul></li>
+  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider"><code>pivot_wider</code>…</a>
+  <ul class="collapse">
+  <li><a href="#reshaping-data-from-long-to-wide" id="toc-reshaping-data-from-long-to-wide" class="nav-link" data-scroll-target="#reshaping-data-from-long-to-wide">Reshaping data from <strong>long to wide</strong></a></li>
+  <li><a href="#reshaping-data-from-long-to-wide-1" id="toc-reshaping-data-from-long-to-wide-1" class="nav-link" data-scroll-target="#reshaping-data-from-long-to-wide-1">Reshaping data from <strong>long to wide</strong></a></li>
+  <li><a href="#reshaping-charm-city-circulator" id="toc-reshaping-charm-city-circulator" class="nav-link" data-scroll-target="#reshaping-charm-city-circulator">Reshaping Charm City Circulator</a></li>
+  <li><a href="#reshaping-charm-city-circulator-1" id="toc-reshaping-charm-city-circulator-1" class="nav-link" data-scroll-target="#reshaping-charm-city-circulator-1">Reshaping Charm City Circulator</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#lab-part-1" id="toc-lab-part-1" class="nav-link" data-scroll-target="#lab-part-1">Lab Part 1</a></li>
+  <li><a href="#joining-in-dplyr" id="toc-joining-in-dplyr" class="nav-link" data-scroll-target="#joining-in-dplyr">Joining in <code>dplyr</code></a></li>
+  <li><a href="#merging-simple-data" id="toc-merging-simple-data" class="nav-link" data-scroll-target="#merging-simple-data">Merging: Simple Data</a></li>
+  <li><a href="#inner-join" id="toc-inner-join" class="nav-link" data-scroll-target="#inner-join">Inner Join</a></li>
+  <li><a href="#inner-join-1" id="toc-inner-join-1" class="nav-link" data-scroll-target="#inner-join-1">Inner Join</a></li>
+  <li><a href="#left-join" id="toc-left-join" class="nav-link" data-scroll-target="#left-join">Left Join</a></li>
+  <li><a href="#left-join-1" id="toc-left-join-1" class="nav-link" data-scroll-target="#left-join-1">Left Join</a></li>
+  <li><a href="#install-tidylog-package-to-log-outputs" id="toc-install-tidylog-package-to-log-outputs" class="nav-link" data-scroll-target="#install-tidylog-package-to-log-outputs">Install <code>tidylog</code> package to log outputs</a></li>
+  <li><a href="#right-join" id="toc-right-join" class="nav-link" data-scroll-target="#right-join">Right Join</a></li>
+  <li><a href="#right-join-1" id="toc-right-join-1" class="nav-link" data-scroll-target="#right-join-1">Right Join</a></li>
+  <li><a href="#left-join-switching-arguments" id="toc-left-join-switching-arguments" class="nav-link" data-scroll-target="#left-join-switching-arguments">Left Join: Switching arguments</a></li>
+  <li><a href="#full-join" id="toc-full-join" class="nav-link" data-scroll-target="#full-join">Full Join</a></li>
+  <li><a href="#full-join-1" id="toc-full-join-1" class="nav-link" data-scroll-target="#full-join-1">Full Join</a></li>
+  <li><a href="#watch-out-for-includes-duplicates" id="toc-watch-out-for-includes-duplicates" class="nav-link" data-scroll-target="#watch-out-for-includes-duplicates">Watch out for “<code>includes duplicates</code>”</a></li>
+  <li><a href="#watch-out-for-includes-duplicates-1" id="toc-watch-out-for-includes-duplicates-1" class="nav-link" data-scroll-target="#watch-out-for-includes-duplicates-1">Watch out for “<code>includes duplicates</code>”</a></li>
+  <li><a href="#watch-out-for-includes-duplicates-2" id="toc-watch-out-for-includes-duplicates-2" class="nav-link" data-scroll-target="#watch-out-for-includes-duplicates-2">Watch out for “<code>includes duplicates</code>”</a></li>
+  <li><a href="#watch-out-for-includes-duplicates-3" id="toc-watch-out-for-includes-duplicates-3" class="nav-link" data-scroll-target="#watch-out-for-includes-duplicates-3">Watch out for “<code>includes duplicates</code>”</a></li>
+  <li><a href="#stop-tidylog" id="toc-stop-tidylog" class="nav-link" data-scroll-target="#stop-tidylog">Stop <code>tidylog</code></a></li>
+  <li><a href="#duplicated" id="toc-duplicated" class="nav-link" data-scroll-target="#duplicated">Duplicated</a></li>
+  <li><a href="#using-the-by-argument" id="toc-using-the-by-argument" class="nav-link" data-scroll-target="#using-the-by-argument">Using the <code>by</code> argument</a></li>
+  <li><a href="#using-the-by-argument-1" id="toc-using-the-by-argument-1" class="nav-link" data-scroll-target="#using-the-by-argument-1">Using the <code>by</code> argument</a></li>
+  <li><a href="#using-setdiff" id="toc-using-setdiff" class="nav-link" data-scroll-target="#using-setdiff">Using “<code>setdiff</code>”</a></li>
+  <li><a href="#using-setdiff-1" id="toc-using-setdiff-1" class="nav-link" data-scroll-target="#using-setdiff-1">Using “<code>setdiff</code>”</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">Summary</a></li>
+  <li><a href="#lab-part-2" id="toc-lab-part-2" class="nav-link" data-scroll-target="#lab-part-2">Lab Part 2</a></li>
+  </ul></li>
+  <li><a href="#the-end" id="toc-the-end" class="nav-link" data-scroll-target="#the-end">The end!</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/08_Manipulating_Data_in_R/Manipulating_Data_in_R.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Manipulating Data in R</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Jubayer Hossain 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://chiralbd.org/">Founder &amp; Instructor, CHIRAL Bangladesh</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 28, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recap-of-data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="recap-of-data-cleaning">Recap of Data Cleaning</h2>
+<ul>
+<li><code>is.na()</code>,<code>any(is.na())</code>, <code>count()</code>, and functions from <code>naniar</code> like <code>gg_miss_var()</code> can help determine if we have <code>NA</code> values</li>
+<li><code>filter()</code> automatically removes <code>NA</code> values - can’t confirm or deny if condition is met (need <code>| is.na()</code> to keep them)</li>
+<li><code>drop_na()</code> can help you remove <code>NA</code> values from a variable or an entire data frame</li>
+<li><code>NA</code> values can change your calculation results</li>
+<li>think about what <code>NA</code> values represent</li>
+</ul>
+</section>
+<section id="recap-of-data-cleaning-1" class="level2">
+<h2 class="anchored" data-anchor-id="recap-of-data-cleaning-1">Recap of Data Cleaning</h2>
+<ul>
+<li><code>recode()</code> can help with simple recoding (not based on condition but simple swap)</li>
+<li><code>case_when()</code> can recode <strong>entire values</strong> based on conditions
+<ul>
+<li>remember <code>case_when()</code> needs <code>TRUE ~ varaible</code> to keep values that aren’t specified by conditions, otherwise will be <code>NA</code></li>
+</ul></li>
+<li><code>stringr</code> package has great functions for looking for specific <strong>parts of values</strong> especially <code>filter()</code> and <code>str_detect()</code> combined
+<ul>
+<li>also has other useful string manipulation functions like <code>str_replace()</code> and more!</li>
+<li><code>separate()</code> can split columns into additional columns</li>
+<li><code>unite()</code> can combine columns</li>
+</ul></li>
+<li><a href="https://jhudatascience.org/intro_to_r/modules/cheatsheets/Day-5.pdf">Day 5 Cheatsheet</a></li>
+</ul>
+</section>
+<section id="manipulating-data" class="level2">
+<h2 class="anchored" data-anchor-id="manipulating-data">Manipulating Data</h2>
+<p>In this module, we will show you how to:</p>
+<ol type="1">
+<li>Reshape data from wide to long</li>
+<li>Reshape data from long to wide</li>
+<li>Merge Data/Joins</li>
+</ol>
+</section>
+<section id="what-is-widelong-data" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-widelong-data">What is wide/long data?</h2>
+<p>https://github.com/gadenbuie/tidyexplain/blob/main/images/tidyr-pivoting.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/tidyr_pivoting.gif" class="img-fluid" style="width:40.0%" alt="A gif visualization of data going from wide to long form."></p>
+</div>
+</div>
+</section>
+<section id="what-is-widelong-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-widelong-data-1">What is wide/long data?</h2>
+<p>Data is stored <em>differently</em> in the tibble.</p>
+<div class="cell">
+
+</div>
+<p>Wide: has many columns</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         32.4%          </code></pre>
+</div>
+</div>
+<p>Long: column names become data</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  State   name            value
+  &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;
+1 Alabama June_vacc_rate  37.2%
+2 Alabama May_vacc_rate   36.0%
+3 Alabama April_vacc_rate 32.4%</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-widelong-data-2" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-widelong-data-2">What is wide/long data?</h2>
+<div class="cell">
+
+</div>
+<p>Wide: multiple columns per individual, values spread across multiple columns</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         32.4%          
+2 Alaska  47.5%          46.2%         41.7%          </code></pre>
+</div>
+</div>
+<p>Long: multiple rows per observation, a single column contains the values</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  State   name            value
+  &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;
+1 Alabama June_vacc_rate  37.2%
+2 Alabama May_vacc_rate   36.0%
+3 Alabama April_vacc_rate 32.4%
+4 Alaska  June_vacc_rate  47.5%
+5 Alaska  May_vacc_rate   46.2%
+6 Alaska  April_vacc_rate 41.7%</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-widelong-data-3" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-widelong-data-3">What is wide/long data?</h2>
+<div style="font-size:40pt">
+<p>Data is wide or long <strong>with respect</strong> to certain variables.</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pivot.jpg" class="img-fluid figure-img" style="width:60.0%" alt="Wide versus long data rearanges the position of column names and row content."></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="why-do-we-need-to-switch-between-widelong-data" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-to-switch-between-widelong-data">Why do we need to switch between wide/long data?</h2>
+<p>Wide: <strong>Easier for humans to read</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         32.4%          
+2 Alaska  47.5%          46.2%         41.7%          </code></pre>
+</div>
+</div>
+<p>Long: <strong>Easier for R to make plots &amp; do analysis</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  State   name            value
+  &lt;chr&gt;   &lt;chr&gt;           &lt;chr&gt;
+1 Alabama June_vacc_rate  37.2%
+2 Alabama May_vacc_rate   36.0%
+3 Alabama April_vacc_rate 32.4%
+4 Alaska  June_vacc_rate  47.5%
+5 Alaska  May_vacc_rate   46.2%
+6 Alaska  April_vacc_rate 41.7%</code></pre>
+</div>
+</div>
+</section>
+<section id="pivoting-using-tidyr-package" class="level2">
+<h2 class="anchored" data-anchor-id="pivoting-using-tidyr-package">Pivoting using <code>tidyr</code> package</h2>
+<p><code>tidyr</code> allows you to “tidy” your data. We will be talking about:</p>
+<ul>
+<li><code>pivot_longer</code> - make multiple columns into variables, (wide to long)</li>
+<li><code>pivot_wider</code> - make a variable into multiple columns, (long to wide)</li>
+<li><code>separate</code> - string into multiple columns (review)</li>
+</ul>
+<p>The <code>reshape</code> command exists. It is a <strong>confusing</strong> function. Don’t use it.</p>
+<p>You might see old functions <code>gather</code> and <code>spread</code> when googling. These are the old names for <code>pivot_longer</code> and <code>pivot_wider</code>, respectively.</p>
+</section>
+<section id="pivot_longer" class="level1">
+<h1><code>pivot_longer</code>…</h1>
+<section id="reshaping-data-from-wide-to-long" class="level2 codesmall">
+<h2 class="codesmall anchored" data-anchor-id="reshaping-data-from-wide-to-long">Reshaping data from <strong>wide to long</strong></h2>
+<p><code>pivot_longer()</code> - puts column data into rows (<code>tidyr</code> package)</p>
+<ul>
+<li>First describe which columns we want to “pivot_longer”</li>
+</ul>
+<div class="codeexample">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{long_data} <span class="ot">&lt;-</span> {wide_data} <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> {columns to pivot})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-1" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-wide-to-long-1">Reshaping data from <strong>wide to long</strong></h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wide_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 37.2%          36.0%         32.4%          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>())</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>long_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  name            value
+  &lt;chr&gt;           &lt;chr&gt;
+1 June_vacc_rate  37.2%
+2 May_vacc_rate   36.0%
+3 April_vacc_rate 32.4%</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-2" class="level2 codesmall">
+<h2 class="codesmall anchored" data-anchor-id="reshaping-data-from-wide-to-long-2">Reshaping data from <strong>wide to long</strong></h2>
+<p><code>pivot_longer()</code> - puts column data into rows (<code>tidyr</code> package)</p>
+<ul>
+<li>First describe which columns we want to “pivot_longer”</li>
+<li><code>names_to =</code> gives a new name to the pivoted columns</li>
+<li><code>values_to =</code> gives a new name to the values that used to be in those columns</li>
+</ul>
+<div class="codeexample">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>{long_data} <span class="ot">&lt;-</span> {wide_data} <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> {columns to pivot},</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">names_to =</span> {New column name<span class="sc">:</span> contains old column names},</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">values_to =</span> {New column name<span class="sc">:</span> contains cell values})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-3" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-wide-to-long-3">Reshaping data from <strong>wide to long</strong></h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wide_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 37.2%          36.0%         32.4%          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> wide_data <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">names_to =</span> <span class="st">"Month"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">values_to =</span> <span class="st">"Rate"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>long_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Month           Rate 
+  &lt;chr&gt;           &lt;chr&gt;
+1 June_vacc_rate  37.2%
+2 May_vacc_rate   36.0%
+3 April_vacc_rate 32.4%</code></pre>
+</div>
+</div>
+</section>
+<section id="data-used-charm-city-circulator" class="level2">
+<h2 class="anchored" data-anchor-id="data-used-charm-city-circulator">Data used: Charm City Circulator</h2>
+<p>http://jhudatascience.org/intro_to_r/data/Charm_City_Circulator_Ridership.csv</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jhur)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>circ <span class="ot">&lt;-</span> <span class="fu">read_circulator</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(circ, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 15
+  day      date  orang…¹ orang…² orang…³ purpl…⁴ purpl…⁵ purpl…⁶ green…⁷ green…⁸
+  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Monday   01/1…     877    1027    952       NA      NA      NA      NA      NA
+2 Tuesday  01/1…     777     815    796       NA      NA      NA      NA      NA
+3 Wednesd… 01/1…    1203    1220   1212.      NA      NA      NA      NA      NA
+4 Thursday 01/1…    1194    1233   1214.      NA      NA      NA      NA      NA
+5 Friday   01/1…    1645    1643   1644       NA      NA      NA      NA      NA
+# … with 5 more variables: greenAverage &lt;dbl&gt;, bannerBoardings &lt;dbl&gt;,
+#   bannerAlightings &lt;dbl&gt;, bannerAverage &lt;dbl&gt;, daily &lt;dbl&gt;, and abbreviated
+#   variable names ¹​orangeBoardings, ²​orangeAlightings, ³​orangeAverage,
+#   ⁴​purpleBoardings, ⁵​purpleAlightings, ⁶​purpleAverage, ⁷​greenBoardings,
+#   ⁸​greenAlightings</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-4" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-wide-to-long-4">Reshaping data from <strong>wide to long</strong></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"orange"</span>,<span class="st">"purple"</span>,<span class="st">"green"</span>,<span class="st">"banner"</span>)))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,752 × 5
+   day    date       daily name             value
+   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 Monday 01/11/2010   952 orangeBoardings    877
+ 2 Monday 01/11/2010   952 orangeAlightings  1027
+ 3 Monday 01/11/2010   952 orangeAverage      952
+ 4 Monday 01/11/2010   952 purpleBoardings     NA
+ 5 Monday 01/11/2010   952 purpleAlightings    NA
+ 6 Monday 01/11/2010   952 purpleAverage       NA
+ 7 Monday 01/11/2010   952 greenBoardings      NA
+ 8 Monday 01/11/2010   952 greenAlightings     NA
+ 9 Monday 01/11/2010   952 greenAverage        NA
+10 Monday 01/11/2010   952 bannerBoardings     NA
+# … with 13,742 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-5" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-wide-to-long-5">Reshaping data from <strong>wide to long</strong></h2>
+<p>There are many ways to select the columns we want. Use <code>?tidyr_tidy_select</code> to look at more column selection options.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> circ <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>( <span class="sc">!</span><span class="fu">c</span>(day, date, daily))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,752 × 5
+   day    date       daily name             value
+   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 Monday 01/11/2010   952 orangeBoardings    877
+ 2 Monday 01/11/2010   952 orangeAlightings  1027
+ 3 Monday 01/11/2010   952 orangeAverage      952
+ 4 Monday 01/11/2010   952 purpleBoardings     NA
+ 5 Monday 01/11/2010   952 purpleAlightings    NA
+ 6 Monday 01/11/2010   952 purpleAverage       NA
+ 7 Monday 01/11/2010   952 greenBoardings      NA
+ 8 Monday 01/11/2010   952 greenAlightings     NA
+ 9 Monday 01/11/2010   952 greenAverage        NA
+10 Monday 01/11/2010   952 bannerBoardings     NA
+# … with 13,742 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-wide-to-long-6" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-wide-to-long-6">Reshaping data from <strong>wide to long</strong></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>long <span class="sc">%&gt;%</span> <span class="fu">count</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 2
+   name                 n
+   &lt;chr&gt;            &lt;int&gt;
+ 1 bannerAlightings  1146
+ 2 bannerAverage     1146
+ 3 bannerBoardings   1146
+ 4 greenAlightings   1146
+ 5 greenAverage      1146
+ 6 greenBoardings    1146
+ 7 orangeAlightings  1146
+ 8 orangeAverage     1146
+ 9 orangeBoardings   1146
+10 purpleAlightings  1146
+11 purpleAverage     1146
+12 purpleBoardings   1146</code></pre>
+</div>
+</div>
+</section>
+<section id="cleaning-up-long-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-up-long-data">Cleaning up long data</h2>
+<p>We will use <code>str_replace</code> from the <code>stringr</code> package to put <code>_</code> in the names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> long <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Board"</span>, <span class="st">"_Board"</span>),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Alight"</span>, <span class="st">"_Alight"</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Average"</span>, <span class="st">"_Average"</span>) </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,752 × 5
+   day    date       daily name              value
+   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;
+ 1 Monday 01/11/2010   952 orange_Boardings    877
+ 2 Monday 01/11/2010   952 orange_Alightings  1027
+ 3 Monday 01/11/2010   952 orange_Average      952
+ 4 Monday 01/11/2010   952 purple_Boardings     NA
+ 5 Monday 01/11/2010   952 purple_Alightings    NA
+ 6 Monday 01/11/2010   952 purple_Average       NA
+ 7 Monday 01/11/2010   952 green_Boardings      NA
+ 8 Monday 01/11/2010   952 green_Alightings     NA
+ 9 Monday 01/11/2010   952 green_Average        NA
+10 Monday 01/11/2010   952 banner_Boardings     NA
+# … with 13,742 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="cleaning-up-long-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-up-long-data-1">Cleaning up long data</h2>
+<p>Now each <code>var</code> is Boardings, Averages, or Alightings. We use “<code>into =</code>” to name the new columns and “<code>sep =</code>” to show where the separation should happen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> long <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(name, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"line"</span>, <span class="st">"type"</span>), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,752 × 6
+   day    date       daily line   type       value
+   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;
+ 1 Monday 01/11/2010   952 orange Boardings    877
+ 2 Monday 01/11/2010   952 orange Alightings  1027
+ 3 Monday 01/11/2010   952 orange Average      952
+ 4 Monday 01/11/2010   952 purple Boardings     NA
+ 5 Monday 01/11/2010   952 purple Alightings    NA
+ 6 Monday 01/11/2010   952 purple Average       NA
+ 7 Monday 01/11/2010   952 green  Boardings     NA
+ 8 Monday 01/11/2010   952 green  Alightings    NA
+ 9 Monday 01/11/2010   952 green  Average       NA
+10 Monday 01/11/2010   952 banner Boardings     NA
+# … with 13,742 more rows</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pivot_wider" class="level1">
+<h1><code>pivot_wider</code>…</h1>
+<section id="reshaping-data-from-long-to-wide" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-long-to-wide">Reshaping data from <strong>long to wide</strong></h2>
+<p><code>pivot_wider()</code> - spreads row data into columns (<code>tidyr</code> package)</p>
+<ul>
+<li><code>names_from =</code> the old column whose contents will be spread into multiple new column names.</li>
+<li><code>values_from =</code> the old column whose contents will fill in the values of those new columns.</li>
+</ul>
+<div class="codeexample">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>{wide_data} <span class="ot">&lt;-</span> {long_data} <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> {Old column name<span class="sc">:</span> contains new column names},</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> {Old column name<span class="sc">:</span> contains new cell values})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="reshaping-data-from-long-to-wide-1" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-from-long-to-wide-1">Reshaping data from <strong>long to wide</strong></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>long_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Month           Rate 
+  &lt;chr&gt;           &lt;chr&gt;
+1 June_vacc_rate  37.2%
+2 May_vacc_rate   36.0%
+3 April_vacc_rate 32.4%</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Month"</span>, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">values_from =</span> <span class="st">"Rate"</span>) </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>wide_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 37.2%          36.0%         32.4%          </code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-charm-city-circulator" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-charm-city-circulator">Reshaping Charm City Circulator</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13,752 × 6
+   day    date       daily line   type       value
+   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;
+ 1 Monday 01/11/2010   952 orange Boardings    877
+ 2 Monday 01/11/2010   952 orange Alightings  1027
+ 3 Monday 01/11/2010   952 orange Average      952
+ 4 Monday 01/11/2010   952 purple Boardings     NA
+ 5 Monday 01/11/2010   952 purple Alightings    NA
+ 6 Monday 01/11/2010   952 purple Average       NA
+ 7 Monday 01/11/2010   952 green  Boardings     NA
+ 8 Monday 01/11/2010   952 green  Alightings    NA
+ 9 Monday 01/11/2010   952 green  Average       NA
+10 Monday 01/11/2010   952 banner Boardings     NA
+# … with 13,742 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping-charm-city-circulator-1" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-charm-city-circulator-1">Reshaping Charm City Circulator</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>wide <span class="ot">&lt;-</span> long <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"type"</span>, </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">values_from =</span> <span class="st">"value"</span>) </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,584 × 7
+   day       date       daily line   Boardings Alightings Average
+   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Monday    01/11/2010  952  orange       877       1027    952 
+ 2 Monday    01/11/2010  952  purple        NA         NA     NA 
+ 3 Monday    01/11/2010  952  green         NA         NA     NA 
+ 4 Monday    01/11/2010  952  banner        NA         NA     NA 
+ 5 Tuesday   01/12/2010  796  orange       777        815    796 
+ 6 Tuesday   01/12/2010  796  purple        NA         NA     NA 
+ 7 Tuesday   01/12/2010  796  green         NA         NA     NA 
+ 8 Tuesday   01/12/2010  796  banner        NA         NA     NA 
+ 9 Wednesday 01/13/2010 1212. orange      1203       1220   1212.
+10 Wednesday 01/13/2010 1212. purple        NA         NA     NA 
+# … with 4,574 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><code>tidyr</code> package helps us convert between wide and long data</li>
+<li><code>pivot_longer()</code> goes from wide -&gt; long
+<ul>
+<li>Specify columns you want to pivot</li>
+<li>Specify <code>names_to =</code> and <code>values_to =</code> for custom naming</li>
+</ul></li>
+<li><code>pivot_wider()</code> goes from long -&gt; wide
+<ul>
+<li>Specify <code>names_from =</code> and <code>values_from =</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="lab-part-1" class="level2">
+<h2 class="anchored" data-anchor-id="lab-part-1">Lab Part 1</h2>
+<p>🏠 <a href="https://jhudatascience.org/intro_to_r/">Class Website</a></p>
+<p>💻 <a href="https://jhudatascience.org/intro_to_r/modules/Manipulating_Data_in_R/lab/Manipulating_Data_in_R_Lab.Rmd">Lab</a></p>
+</section>
+<section id="joining-in-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="joining-in-dplyr">Joining in <code>dplyr</code></h2>
+<ul>
+<li>Merging/joining data sets together - usually on key variables, usually “id”</li>
+<li><code>?join</code> - see different types of joining for <code>dplyr</code></li>
+<li><code>inner_join(x, y)</code> - only rows that match for <code>x</code> and <code>y</code> are kept</li>
+<li><code>full_join(x, y)</code> - all rows of <code>x</code> and <code>y</code> are kept</li>
+<li><code>left_join(x, y)</code> - all rows of <code>x</code> are kept even if not merged with <code>y</code></li>
+<li><code>right_join(x, y)</code> - all rows of <code>y</code> are kept even if not merged with <code>x</code></li>
+<li><code>anti_join(x, y)</code> - all rows from <code>x</code> not in <code>y</code> keeping just columns from <code>x</code>.</li>
+</ul>
+</section>
+<section id="merging-simple-data" class="level2">
+<h2 class="anchored" data-anchor-id="merging-simple-data">Merging: Simple Data</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data_As</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  State   June_vacc_rate May_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;        
+1 Alabama 37.2%          36.0%        
+2 Alaska  47.5%          46.2%        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data_cold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  State  April_vacc_rate
+  &lt;chr&gt;  &lt;chr&gt;          
+1 Maine  32.4%          
+2 Alaska 41.7%          </code></pre>
+</div>
+</div>
+</section>
+<section id="inner-join" class="level2">
+<h2 class="anchored" data-anchor-id="inner-join">Inner Join</h2>
+<p>https://github.com/gadenbuie/tidyexplain/blob/main/images/inner-join.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/inner_join.gif" class="img-fluid" style="width:70.0%" alt="A gif showing the inner joining of two simple datasets."></p>
+</div>
+</div>
+</section>
+<section id="inner-join-1" class="level2">
+<h2 class="anchored" data-anchor-id="inner-join-1">Inner Join</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>ij <span class="ot">=</span> <span class="fu">inner_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ij</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  State  June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alaska 47.5%          46.2%         41.7%          </code></pre>
+</div>
+</div>
+</section>
+<section id="left-join" class="level2">
+<h2 class="anchored" data-anchor-id="left-join">Left Join</h2>
+<p>https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/left_join.gif" class="img-fluid" style="width:70.0%" alt="A gif showing the left joining of two simple datasets."></p>
+</div>
+</div>
+</section>
+<section id="left-join-1" class="level2">
+<h2 class="anchored" data-anchor-id="left-join-1">Left Join</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lj <span class="ot">=</span> <span class="fu">left_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>lj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         &lt;NA&gt;           
+2 Alaska  47.5%          46.2%         41.7%          </code></pre>
+</div>
+</div>
+</section>
+<section id="install-tidylog-package-to-log-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="install-tidylog-package-to-log-outputs">Install <code>tidylog</code> package to log outputs</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidylog")</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidylog)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"
+left_join: added one column (April_vacc_rate)
+&gt; rows only in x 1
+&gt; rows only in y (1)
+&gt; matched rows 1
+&gt; ===
+&gt; rows total 2</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         &lt;NA&gt;           
+2 Alaska  47.5%          46.2%         41.7%          </code></pre>
+</div>
+</div>
+</section>
+<section id="right-join" class="level2">
+<h2 class="anchored" data-anchor-id="right-join">Right Join</h2>
+<p>https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/right_join.gif" class="img-fluid" style="width:70.0%" alt="A gif showing the right joining of two simple datasets."></p>
+</div>
+</div>
+</section>
+<section id="right-join-1" class="level2">
+<h2 class="anchored" data-anchor-id="right-join-1">Right Join</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>rj <span class="ot">&lt;-</span> <span class="fu">right_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"
+right_join: added one column (April_vacc_rate)
+&gt; rows only in x (1)
+&gt; rows only in y 1
+&gt; matched rows 1
+&gt; ===
+&gt; rows total 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>rj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State  June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alaska 47.5%          46.2%         41.7%          
+2 Maine  &lt;NA&gt;           &lt;NA&gt;          32.4%          </code></pre>
+</div>
+</div>
+</section>
+<section id="left-join-switching-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="left-join-switching-arguments">Left Join: Switching arguments</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>lj2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_cold, data_As)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"
+left_join: added 2 columns (June_vacc_rate, May_vacc_rate)
+&gt; rows only in x 1
+&gt; rows only in y (1)
+&gt; matched rows 1
+&gt; ===
+&gt; rows total 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>lj2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  State  April_vacc_rate June_vacc_rate May_vacc_rate
+  &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;        
+1 Maine  32.4%           &lt;NA&gt;           &lt;NA&gt;         
+2 Alaska 41.7%           47.5%          46.2%        </code></pre>
+</div>
+</div>
+</section>
+<section id="full-join" class="level2">
+<h2 class="anchored" data-anchor-id="full-join">Full Join</h2>
+<p>https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/full-join.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/full_join.gif" class="img-fluid" style="width:70.0%" alt="A gif showing the full joining of two simple datasets."></p>
+</div>
+</div>
+</section>
+<section id="full-join-1" class="level2">
+<h2 class="anchored" data-anchor-id="full-join-1">Full Join</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>fj <span class="ot">&lt;-</span> <span class="fu">full_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"
+full_join: added one column (April_vacc_rate)
+&gt; rows only in x 1
+&gt; rows only in y 1
+&gt; matched rows 1
+&gt; ===
+&gt; rows total 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>fj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  State   June_vacc_rate May_vacc_rate April_vacc_rate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;         &lt;chr&gt;          
+1 Alabama 37.2%          36.0%         &lt;NA&gt;           
+2 Alaska  47.5%          46.2%         41.7%          
+3 Maine   &lt;NA&gt;           &lt;NA&gt;          32.4%          </code></pre>
+</div>
+</div>
+</section>
+<section id="watch-out-for-includes-duplicates" class="level2">
+<h2 class="anchored" data-anchor-id="watch-out-for-includes-duplicates">Watch out for “<code>includes duplicates</code>”</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>data_As</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  State   state_bird      
+  &lt;chr&gt;   &lt;chr&gt;           
+1 Alabama wild turkey     
+2 Alaska  willow ptarmigan</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>data_cold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  State  vacc_rate month
+  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;
+1 Maine  32.4%     April
+2 Alaska 41.7%     April
+3 Alaska 46.2%     May  </code></pre>
+</div>
+</div>
+</section>
+<section id="watch-out-for-includes-duplicates-1" class="level2">
+<h2 class="anchored" data-anchor-id="watch-out-for-includes-duplicates-1">Watch out for “<code>includes duplicates</code>”</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>lj <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_As, data_cold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "State"
+left_join: added 2 columns (vacc_rate, month)
+&gt; rows only in x 1
+&gt; rows only in y (1)
+&gt; matched rows 2 (includes duplicates)
+&gt; ===
+&gt; rows total 3</code></pre>
+</div>
+</div>
+</section>
+<section id="watch-out-for-includes-duplicates-2" class="level2">
+<h2 class="anchored" data-anchor-id="watch-out-for-includes-duplicates-2">Watch out for “<code>includes duplicates</code>”</h2>
+<p>Data including the joining column (“State”) has been duplicated.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>lj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  State   state_bird       vacc_rate month
+  &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt;
+1 Alabama wild turkey      &lt;NA&gt;      &lt;NA&gt; 
+2 Alaska  willow ptarmigan 41.7%     April
+3 Alaska  willow ptarmigan 46.2%     May  </code></pre>
+</div>
+</div>
+<p><br></p>
+<p>Note that “Alaska willow ptarmigan” appears twice.</p>
+</section>
+<section id="watch-out-for-includes-duplicates-3" class="level2">
+<h2 class="anchored" data-anchor-id="watch-out-for-includes-duplicates-3">Watch out for “<code>includes duplicates</code>”</h2>
+<p>https://github.com/gadenbuie/tidyexplain/blob/main/images/left-join-extra.gif</p>
+<div class="cell" data-align="center">
+<div class="cell-output-display">
+<p><img src="images/left_join_extra.gif" class="img-fluid" style="width:70.0%" alt="A gif showing how data can be duplicated from one dataset when joining two simple datasets."></p>
+</div>
+</div>
+</section>
+<section id="stop-tidylog" class="level2">
+<h2 class="anchored" data-anchor-id="stop-tidylog">Stop <code>tidylog</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unloadNamespace</span>(<span class="st">"tidylog"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="duplicated" class="level2">
+<h2 class="anchored" data-anchor-id="duplicated">Duplicated</h2>
+<ul>
+<li>The <code>duplicated</code> function can give you indications if there are duplicates in a <strong>vector</strong>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>lj <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">dup_State =</span> <span class="fu">duplicated</span>(State))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  State   state_bird       vacc_rate month dup_State
+  &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt; &lt;lgl&gt;    
+1 Alabama wild turkey      &lt;NA&gt;      &lt;NA&gt;  FALSE    
+2 Alaska  willow ptarmigan 41.7%     April FALSE    
+3 Alaska  willow ptarmigan 46.2%     May   TRUE     </code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-by-argument" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-by-argument">Using the <code>by</code> argument</h2>
+<p>By default joins use the intersection of column names. If <code>by</code> is specified, it uses that.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(data_As, data_cold, <span class="at">by =</span> <span class="st">"State"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  State   state_bird       vacc_rate month
+  &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt;
+1 Alabama wild turkey      &lt;NA&gt;      &lt;NA&gt; 
+2 Alaska  willow ptarmigan 41.7%     April
+3 Alaska  willow ptarmigan 46.2%     May  
+4 Maine   &lt;NA&gt;             32.4%     April</code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-by-argument-1" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-by-argument-1">Using the <code>by</code> argument</h2>
+<p>You can join based on multiple columns by using something like <code>by = c(col1, col2)</code>.</p>
+<p>If the datasets have two different names for the same data, use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(x, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="st">"b"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-setdiff" class="level2">
+<h2 class="anchored" data-anchor-id="using-setdiff">Using “<code>setdiff</code>”</h2>
+<p>We might want to determine what indexes ARE in the first dataset that AREN’T in the second:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>data_As</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  State   state_bird      
+  &lt;chr&gt;   &lt;chr&gt;           
+1 Alabama wild turkey     
+2 Alaska  willow ptarmigan</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>data_cold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  State  vacc_rate month
+  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;
+1 Maine  32.4%     April
+2 Alaska 41.7%     April
+3 Alaska 46.2%     May  </code></pre>
+</div>
+</div>
+</section>
+<section id="using-setdiff-1" class="level2">
+<h2 class="anchored" data-anchor-id="using-setdiff-1">Using “<code>setdiff</code>”</h2>
+<p>Use <code>setdiff</code> to determine what indexes ARE in the first dataset that AREN’T in the second:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>A_states <span class="ot">&lt;-</span> data_As <span class="sc">%&gt;%</span> <span class="fu">pull</span>(State)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>cold_states <span class="ot">&lt;-</span> data_cold <span class="sc">%&gt;%</span> <span class="fu">pull</span>(State)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(A_states, cold_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alabama"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(cold_states, A_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Maine"</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-1">Summary</h2>
+<ul>
+<li>Merging/joining data sets together - assumes all column names that overlap
+<ul>
+<li>use the <code>by = c("a" = "b")</code> if they differ</li>
+</ul></li>
+<li><code>inner_join(x, y)</code> - only rows that match for <code>x</code> and <code>y</code> are kept</li>
+<li><code>full_join(x, y)</code> - all rows of <code>x</code> and <code>y</code> are kept</li>
+<li><code>left_join(x, y)</code> - all rows of <code>x</code> are kept even if not merged with <code>y</code></li>
+<li><code>right_join(x, y)</code> - all rows of <code>y</code> are kept even if not merged with <code>x</code></li>
+<li>Use the <code>tidylog</code> package for a detailed summary</li>
+<li><code>setdiff(x, y)</code> shows what in <code>x</code> is missing from <code>y</code></li>
+</ul>
+</section>
+<section id="lab-part-2" class="level2">
+<h2 class="anchored" data-anchor-id="lab-part-2">Lab Part 2</h2>
+<p>🏠 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Class Website</a></p>
+<p>💻 <a href="https://chiraltraining.github.io/WW01_DataAnalysiswithR/">Lab</a></p>
+</section>
+</section>
+<section id="the-end" class="level1">
+<h1>The end!</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-right">© Copyright 2022, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

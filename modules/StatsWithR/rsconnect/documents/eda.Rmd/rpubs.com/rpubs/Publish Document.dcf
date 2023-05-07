@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/909190/d86fccda88204affab25da4e2ccbe1b1
+bundleId: https://api.rpubs.com/api/v1/document/909190/d86fccda88204affab25da4e2ccbe1b1
+url: http://rpubs.com/jhossain/909190
+when: 1654274546.48463
+lastSyncTime: 1654274546.48466
