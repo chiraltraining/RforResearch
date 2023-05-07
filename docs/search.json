@@ -4933,5 +4933,47 @@
     "title": "FAQs - R for Research",
     "section": "",
     "text": "Q1: Q1: I have no prior programming experience. Can I still take this course?\nAbsolutely! This course is designed specifically for beginners with no prior programming experience. We will start from the basics and guide you through step by step, providing a solid foundation in R programming for research purposes.\nQ2: I usually work with statistical software like SPSS or Stata. Why should I learn R?\nR offers a wide range of advantages for researchers. It is a powerful and flexible programming language specifically designed for data analysis. It has a vast collection of packages and tools for statistical analysis, data visualization, and advanced techniques. Additionally, R is an open-source software, which means it is completely free and has a vibrant community for support and resources.\nQ3: Can I apply what I learn in this course to my specific field of research?\nAbsolutely! This course is designed to be applicable to researchers in any field. While the examples and exercises may be general, the skills and techniques you learn can be applied to your specific research domain. R is widely used across various disciplines, and the course will equip you with the tools and understanding to adapt R to meet the needs of your research.\nQ4: Will this course cover advanced statistical methods and techniques?\nWhile this course is aimed at beginners, it does introduce some advanced techniques in later modules. You will learn about regression analysis, data mining, text analysis, and web scraping. These topics will provide you with a solid foundation, and you can further explore advanced statistical methods in R based on your specific research interests.\nQ5: Will I receive any course materials or resources?\nYes, you will have access to comprehensive course materials, including lecture notes, code examples, and exercises. These materials will serve as a valuable resource for your learning and can be referred to even after completing the course. Additionally, we will provide a list of recommended books, websites, and online tutorials for further learning and exploration.\nQ6: Is there any support available if I encounter difficulties during the course?\nAbsolutely! We understand that learning a new programming language can be challenging. You will have access to a support forum where you can ask questions, seek clarification, and interact with the instructor and other participants. The instructor will also provide guidance and assistance throughout the course to ensure your learning experience is smooth and enjoyable."
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Install R and RStudio",
+    "section": "",
+    "text": "R is a powerful analytical language and contains a number of useful packages for analyzing data.\nRStudio is a free and open-source integrated development environment (IDE) for R. RStudio provides comprehensive facilities to R programmers and is highly recommended in this class."
+  },
+  {
+    "objectID": "setup.html#installing-r",
+    "href": "setup.html#installing-r",
+    "title": "Install R and RStudio",
+    "section": "Installing R",
+    "text": "Installing R\nWe recommend installing the most recent version or R – 4.2.3 as of March 18, 2023 If you have had installed R already some time ago, we recommend updating/reinstalling it to the most recent version. Use a link below to launch download of R installers (if the download does not start, a fix may be to copy-paste the below link to your browser):\n\nFor Mac users: https://cran.r-project.org/bin/macosx/\nFor Windows users: https://cran.r-project.org/bin/windows/base/R-4.2.3-win.exe\nFor Ubuntu users: https://cran.r-project.org/bin/linux/ubuntu/\n\nFor other operating systems, or if you prefer to access the download link from the official website, visit http://cran.us.r-project.org and select Download R for Linux, Download R for macOS or Download R for Windows based on which device you have.\nOnce the proper installation package has been selected, run the package and follow the on-screen directions. This installation includes the R language and a graphical user interface (GUI). Rather using the GUI, we recommend installing RStudio - an integrated development environment (IDE) that lets you interact with R with some added benefits."
+  },
+  {
+    "objectID": "setup.html#installing-rstudio",
+    "href": "setup.html#installing-rstudio",
+    "title": "Install R and RStudio",
+    "section": "Installing RStudio",
+    "text": "Installing RStudio\nTo install RStudio, visit https://posit.co/download/rstudio-desktop/. Once on the website, select DOWNLOAD tab (upper left corner), scroll down and click Download under the RStudio Desktop – Free version (1st out of 4 columns), and select the proper installation file for your platform (Windows or Mac).\nWhen you open up RStudio, it should look like this:\n\nClick the top left button to create a new script:\n\nRStudio, should now look like this:\n\nThere are four main windows.\n\nThe console is the lower-left window where you can run lines of code and see the output.\nThe script window is the upper-left window where you can edit and write scripts or markdown documents. From the script window, you can run the current line of code in your script (or multiple lines if you highlight multiple rows) by pressing\n\nCMD + Return on Mac\nCTRL + Enter on Windows\n\nThe workspace is the upper-right window where you can manage your data and variables and see previous commands entered (under the history tab).\nThe plots window allows you to see the output of plots. On the other tabs, you can also look at directories, install packages, and look at help files for various R commands.\n\nYou can customize the look of your RStudio IDE in Tools > Global Options...."
+  },
+  {
+    "objectID": "setup.html#r-packages",
+    "href": "setup.html#r-packages",
+    "title": "Install R and RStudio",
+    "section": "R Packages",
+    "text": "R Packages\nPackages are the fundamental units of reproducible R code. They are collections of R code that typically share some common purpose. Examples:\n\ndplyr - package of functions for fast data set manipulation (subsetting, summarizing, rearranging, and joining together data sets);\nggplot2 - “R’s famous package for making beautiful graphics”; allows to build multiple-layers, highly customizable plots."
+  },
+  {
+    "objectID": "setup.html#installing-r-package",
+    "href": "setup.html#installing-r-package",
+    "title": "Install R and RStudio",
+    "section": "Installing and Loading R Packages",
+    "text": "Installing and Loading R Packages\n\nTo install an R package, type in the RStudio console\ninstall.packages(\"replace_with_package_name\")\nand press enter to execute the command.\nOnce a package is installed, to use its contents in current R session, we run in the RStudio console the command\nlibrary(replace_with_package_name)\n\n(Note the difference in presence of the quotation mark in the two above commands.)"
+  },
+  {
+    "objectID": "setup.html#installing-and-loading-r-packages",
+    "href": "setup.html#installing-and-loading-r-packages",
+    "title": "Install R and RStudio",
+    "section": "Installing and Loading R Packages",
+    "text": "Installing and Loading R Packages\n\nTo install an R package, type in the RStudio console\ninstall.packages(\"replace_with_package_name\")\nand press enter to execute the command.\nOnce a package is installed, to use its contents in current R session, we run in the RStudio console the command\nlibrary(replace_with_package_name)\n\n(Note the difference in presence of the quotation mark in the two above commands.)"
   }
 ]

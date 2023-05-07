@@ -34,13 +34,24 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/hossainlab/
+        href: https://github.com/chiraltraining/
         text: GitHub
+      - icon: facebook
+        href: https://www.facebook.com/chiralbd.org
+        text: Facebook
+      - icon: twitter
+        href: https://twitter.com/chiralbd
+        text: Twitter
+      - icon: linkedin
+        href: https://www.linkedin.com/company/chiral-bangladesh/mycompany/?viewAsMember=true
+        text: LinkedIn
         
     style: docked
     contents:
      - href: index.qmd
        text: Home
+     - href: setup.qmd
+       text: Setup
      - href: material.qmd
      - href: sessions.qmd
      - href: q-and-a.qmd
