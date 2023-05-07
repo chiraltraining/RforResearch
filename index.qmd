@@ -1,5 +1,5 @@
 ---
-title: "R for Research - A Step by Step Guide for Beginners"
+title: "R for Research: Beginner's Guide"
 subtitle: "[Center for Health Innovation, Research, Action and Learning – Bangladesh](https://www.chiralbd.org/) "
 editor: source
 ---
