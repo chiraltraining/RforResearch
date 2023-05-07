@@ -40,11 +40,10 @@ knowledge required to perform analytical activities in R. Specifically,
 - Understand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.
 - Apply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples
 - Import a variety of data formats into R using RStudio
-- Prepare or tidy datas for in preparation for analysis
+- Prepare or tidy data for in preparation for analysis
 - Query data using SQL and R
 - Analyze a data set in R and present findings using the appropriate R packages
 - Visualize data attributes using ggplot2 and other R packages. 
-
 
 
 ## Purpose of statistical programming software

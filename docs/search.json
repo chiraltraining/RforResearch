@@ -46,7 +46,7 @@
     "href": "index.html#learning-outcomes",
     "title": "R for Research - A Step by Step Guide for Beginners",
     "section": "Learning outcomes",
-    "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy datas for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages."
+    "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy data for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages."
   },
   {
     "objectID": "index.html#purpose-of-statistical-programming-software",
