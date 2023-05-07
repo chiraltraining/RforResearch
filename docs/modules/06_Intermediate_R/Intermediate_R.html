@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -92,7 +92,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/trans - gt.png" rel="icon" type="image/png">
+<link href="../../images/logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/Rlogo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://github.com/hossainlab/" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
@@ -259,14 +259,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#website" id="toc-website" class="nav-link" data-scroll-target="#website">Website</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/edit/main/modules/06_Intermediate_R/Intermediate_R.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/hossainlab/clinical-reporting-gtsummary-rmed/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/chiraltraining/RforResearch/edit/main/modules/06_Intermediate_R/Intermediate_R.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/chiraltraining/RforResearch/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<p>title: “Functions” author: “Jubayer Hossain)” institute: “[Founder &amp; Instructor, CHIRAL Bangladesh](https://chiralbd.org/” date: “28 December 2022” output: html_document: toc: true #number_sections: true toc_depth: 6 toc_float: true theme: flatly</p>
+<p>title: “Functions” author: “Jubayer Hossain)” institute: “[Founder &amp; Instructor, CHIRAL Bangladesh](https://chiralbd.org/” date: “07 May 2023” output: html_document: toc: true #number_sections: true toc_depth: 6 toc_float: true theme: flatly</p>
 <div class="cell">
 
 </div>
@@ -920,10 +920,9 @@ return(value)
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_row</span>(<span class="at">dat =</span> cars, <span class="at">row =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 10
-  RefId IsBadBuy PurchDate Auction VehYear VehicleAge Make  Model  Trim  SubMo…¹
-  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  
-1    10        0 12/7/2009 ADESA      2007          2 FORD  FIVE … SEL   4D SED…
-# … with abbreviated variable name ¹​SubModel</code></pre>
+  RefId IsBadBuy PurchDate Auction VehYear VehicleAge Make  Model Trim  SubModel
+  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   
+1    10        0 12/7/2009 ADESA      2007          2 FORD  FIVE… SEL   4D SEDA…</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -16474,20 +16473,20 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
 <span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">everything</span>(), <span class="at">.fns =</span> mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 12
-   Make      Model  RefId IsBadBuy VehYear Vehicl…¹ VehOdo  BYRNO VNZIP1 VehBC…²
-   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 ACURA        NA 36021.   0.273    2003.     6.52 81732. 21851. 61217.   9039.
- 2 BUICK        NA 35431.   0.157    2004.     5.65 76238. 19755. 51298.   6169.
- 3 CADILLAC     NA 34173.   0.152    2004.     5.24 73770. 20383. 50775.  10958.
- 4 CHEVROLET    NA 35417.   0.0975   2006.     3.97 73390. 26912. 58874.   6835.
- 5 CHRYSLER     NA 37614.   0.129    2006.     3.65 66814. 31268. 58562.   6507.
- 6 DODGE        NA 36851.   0.103    2006.     3.75 68261. 36094. 58788.   7047.
- 7 FORD         NA 36866.   0.154    2005.     4.75 76749. 19887. 59427.   6403.
- 8 GMC          NA 35245.   0.116    2004.     5.61 79273. 18802. 58113.   8342.
- 9 HONDA        NA 35109.   0.109    2004.     5.33 77877. 24161. 52659.   8350.
-10 HUMMER       NA 19533    0        2006      3    70809  21053  95673   11920 
-# … with 23 more rows, 2 more variables: IsOnlineSale &lt;dbl&gt;,
-#   WarrantyCost &lt;dbl&gt;, and abbreviated variable names ¹​VehicleAge, ²​VehBCost</code></pre>
+   Make   Model  RefId IsBadBuy VehYear VehicleAge VehOdo  BYRNO VNZIP1 VehBCost
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1 ACURA     NA 36021.   0.273    2003.       6.52 81732. 21851. 61217.    9039.
+ 2 BUICK     NA 35431.   0.157    2004.       5.65 76238. 19755. 51298.    6169.
+ 3 CADIL…    NA 34173.   0.152    2004.       5.24 73770. 20383. 50775.   10958.
+ 4 CHEVR…    NA 35417.   0.0975   2006.       3.97 73390. 26912. 58874.    6835.
+ 5 CHRYS…    NA 37614.   0.129    2006.       3.65 66814. 31268. 58562.    6507.
+ 6 DODGE     NA 36851.   0.103    2006.       3.75 68261. 36094. 58788.    7047.
+ 7 FORD      NA 36866.   0.154    2005.       4.75 76749. 19887. 59427.    6403.
+ 8 GMC       NA 35245.   0.116    2004.       5.61 79273. 18802. 58113.    8342.
+ 9 HONDA     NA 35109.   0.109    2004.       5.33 77877. 24161. 52659.    8350.
+10 HUMMER    NA 19533    0        2006        3    70809  21053  95673    11920 
+# ℹ 23 more rows
+# ℹ 2 more variables: IsOnlineSale &lt;dbl&gt;, WarrantyCost &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -16502,20 +16501,20 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
 <span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">everything</span>(), <span class="at">.fns =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 12
-   Make      Model  RefId IsBadBuy VehYear Vehicl…¹ VehOdo  BYRNO VNZIP1 VehBC…²
-   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 ACURA        NA 36021.   0.273    2003.     6.52 81732. 21851. 61217.   9039.
- 2 BUICK        NA 35431.   0.157    2004.     5.65 76238. 19755. 51298.   6169.
- 3 CADILLAC     NA 34173.   0.152    2004.     5.24 73770. 20383. 50775.  10958.
- 4 CHEVROLET    NA 35417.   0.0975   2006.     3.97 73390. 26912. 58874.   6835.
- 5 CHRYSLER     NA 37614.   0.129    2006.     3.65 66814. 31268. 58562.   6507.
- 6 DODGE        NA 36851.   0.103    2006.     3.75 68261. 36094. 58788.   7047.
- 7 FORD         NA 36866.   0.154    2005.     4.75 76749. 19887. 59427.   6403.
- 8 GMC          NA 35245.   0.116    2004.     5.61 79273. 18802. 58113.   8342.
- 9 HONDA        NA 35109.   0.109    2004.     5.33 77877. 24161. 52659.   8350.
-10 HUMMER       NA 19533    0        2006      3    70809  21053  95673   11920 
-# … with 23 more rows, 2 more variables: IsOnlineSale &lt;dbl&gt;,
-#   WarrantyCost &lt;dbl&gt;, and abbreviated variable names ¹​VehicleAge, ²​VehBCost</code></pre>
+   Make   Model  RefId IsBadBuy VehYear VehicleAge VehOdo  BYRNO VNZIP1 VehBCost
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1 ACURA     NA 36021.   0.273    2003.       6.52 81732. 21851. 61217.    9039.
+ 2 BUICK     NA 35431.   0.157    2004.       5.65 76238. 19755. 51298.    6169.
+ 3 CADIL…    NA 34173.   0.152    2004.       5.24 73770. 20383. 50775.   10958.
+ 4 CHEVR…    NA 35417.   0.0975   2006.       3.97 73390. 26912. 58874.    6835.
+ 5 CHRYS…    NA 37614.   0.129    2006.       3.65 66814. 31268. 58562.    6507.
+ 6 DODGE     NA 36851.   0.103    2006.       3.75 68261. 36094. 58788.    7047.
+ 7 FORD      NA 36866.   0.154    2005.       4.75 76749. 19887. 59427.    6403.
+ 8 GMC       NA 35245.   0.116    2004.       5.61 79273. 18802. 58113.    8342.
+ 9 HONDA     NA 35109.   0.109    2004.       5.33 77877. 24161. 52659.    8350.
+10 HUMMER    NA 19533    0        2006        3    70809  21053  95673    11920 
+# ℹ 23 more rows
+# ℹ 2 more variables: IsOnlineSale &lt;dbl&gt;, WarrantyCost &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -16540,7 +16539,7 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
  8 GMC         2004.       5.61 79273.    8342.
  9 HONDA       2004.       5.33 77877.    8350.
 10 HUMMER      2006        3    70809    11920 
-# … with 23 more rows</code></pre>
+# ℹ 23 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -16552,20 +16551,20 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"Veh"</span>), <span class="at">.fns =</span> round, <span class="at">digits =</span> <span class="sc">-</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 72,983 × 12
-   Make  Model RefId IsBad…¹ VehYear Vehic…² VehOdo BYRNO VNZIP1 VehBC…³ IsOnl…⁴
-   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 MAZDA MAZD…     1       0    2000       0  89000 21973  33619    7000       0
- 2 DODGE 1500…     2       0    2000       0  94000 19638  33619    8000       0
- 3 DODGE STRA…     3       0    2000       0  74000 19638  33619    5000       0
- 4 DODGE NEON      4       0    2000       0  66000 19638  33619    4000       0
- 5 FORD  FOCUS     5       0    2000       0  69000 19638  33619    4000       0
- 6 MITS… GALA…     6       0    2000       0  81000 19638  33619    6000       0
- 7 KIA   SPEC…     7       0    2000       0  65000 19638  33619    4000       0
- 8 FORD  TAUR…     8       0    2000       0  66000 19638  33619    4000       0
- 9 KIA   SPEC…     9       0    2000       0  50000 21973  33619    6000       0
-10 FORD  FIVE…    10       0    2000       0  85000 21973  33619    8000       0
-# … with 72,973 more rows, 1 more variable: WarrantyCost &lt;dbl&gt;, and abbreviated
-#   variable names ¹​IsBadBuy, ²​VehicleAge, ³​VehBCost, ⁴​IsOnlineSale</code></pre>
+   Make     Model RefId IsBadBuy VehYear VehicleAge VehOdo BYRNO VNZIP1 VehBCost
+   &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1 MAZDA    MAZD…     1        0    2000          0  89000 21973  33619     7000
+ 2 DODGE    1500…     2        0    2000          0  94000 19638  33619     8000
+ 3 DODGE    STRA…     3        0    2000          0  74000 19638  33619     5000
+ 4 DODGE    NEON      4        0    2000          0  66000 19638  33619     4000
+ 5 FORD     FOCUS     5        0    2000          0  69000 19638  33619     4000
+ 6 MITSUBI… GALA…     6        0    2000          0  81000 19638  33619     6000
+ 7 KIA      SPEC…     7        0    2000          0  65000 19638  33619     4000
+ 8 FORD     TAUR…     8        0    2000          0  66000 19638  33619     4000
+ 9 KIA      SPEC…     9        0    2000          0  50000 21973  33619     6000
+10 FORD     FIVE…    10        0    2000          0  85000 21973  33619     8000
+# ℹ 72,973 more rows
+# ℹ 2 more variables: IsOnlineSale &lt;dbl&gt;, WarrantyCost &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -16582,20 +16581,20 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
 <span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 72,983 × 12
-   Make  Model RefId IsBad…¹ VehYear Vehic…² VehOdo BYRNO VNZIP1 VehBC…³ IsOnl…⁴
-   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  
- 1 MaZDa MaZD… 1     0       2006    3       89046  21973 33619  7100    0      
- 2 DODGE 1500… 2     0       2004    5       93593  19638 33619  7600    0      
- 3 DODGE STRa… 3     0       2005    4       73807  19638 33619  4900    0      
- 4 DODGE NEON  4     0       2004    5       65617  19638 33619  4100    0      
- 5 FORD  FOCUS 5     0       2005    4       69367  19638 33619  4000    0      
- 6 MITS… GaLa… 6     0       2004    5       81054  19638 33619  5600    0      
- 7 KIa   SPEC… 7     0       2004    5       65328  19638 33619  4200    0      
- 8 FORD  TaUR… 8     0       2005    4       65805  19638 33619  4500    0      
- 9 KIa   SPEC… 9     0       2007    2       49921  21973 33619  5600    0      
-10 FORD  FIVE… 10    0       2007    2       84872  21973 33619  7700    0      
-# … with 72,973 more rows, 1 more variable: WarrantyCost &lt;chr&gt;, and abbreviated
-#   variable names ¹​IsBadBuy, ²​VehicleAge, ³​VehBCost, ⁴​IsOnlineSale</code></pre>
+   Make     Model RefId IsBadBuy VehYear VehicleAge VehOdo BYRNO VNZIP1 VehBCost
+   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   
+ 1 MaZDa    MaZD… 1     0        2006    3          89046  21973 33619  7100    
+ 2 DODGE    1500… 2     0        2004    5          93593  19638 33619  7600    
+ 3 DODGE    STRa… 3     0        2005    4          73807  19638 33619  4900    
+ 4 DODGE    NEON  4     0        2004    5          65617  19638 33619  4100    
+ 5 FORD     FOCUS 5     0        2005    4          69367  19638 33619  4000    
+ 6 MITSUBI… GaLa… 6     0        2004    5          81054  19638 33619  5600    
+ 7 KIa      SPEC… 7     0        2004    5          65328  19638 33619  4200    
+ 8 FORD     TaUR… 8     0        2005    4          65805  19638 33619  4500    
+ 9 KIa      SPEC… 9     0        2007    2          49921  21973 33619  5600    
+10 FORD     FIVE… 10    0        2007    2          84872  21973 33619  7700    
+# ℹ 72,973 more rows
+# ℹ 2 more variables: IsOnlineSale &lt;chr&gt;, WarrantyCost &lt;chr&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -16627,7 +16626,7 @@ MMRAcquisitionAuctionAveragePrice   MMRAcquisitionAuctionCleanPrice
  8 Austra…  0.263  0.275  0.276  0.299  0.260  0.271  0.295  0.279  0.271  0.271
  9 Austria  0.504  0.474  0.417  0.389  0.360  0.311  0.311  0.312  0.274  0.274
 10 Azerba… NA     NA     NA      0      0      0     NA     NA     NA     NA    
-# … with 187 more rows</code></pre>
+# ℹ 187 more rows</code></pre>
 </div>
 </div>
 </section>

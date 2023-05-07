@@ -1,6 +1,6 @@
 ---
-title: "Q & A for Data Analysis with R"
-subtitle: "Workshop Date: December 2, 2022"
+title: "Q & A for R for Research"
+subtitle: ""
 editor: source
 ---
 
@@ -16,44 +16,33 @@ theme_gtsummary_compact()
 ```
 
 
+
 ## FAQs
 
-1.  **Q:** Why is this course relevant today?
+1. **Q:** Q1: I have no prior programming experience. Can I still take this course?
 
-Learning the skills we teach you in this workshop will put you in the 
-forefront of the Analytics movement. Not only will you learn to 
-master the technical skills required to handle critical data 
-manipulation and visualization using R, but you will also learn more 
-advanced statistical methods. You will even learn to build basic 
-predictive models. Ultimately, you will build an analytics toolkit 
-and a mindset that is 100% transferable to the job you have today, 
-and the job you deserve tomorrow.
+Absolutely! This course is designed specifically for beginners with no prior programming experience. We will start from the basics and guide you through step by step, providing a solid foundation in R programming for research purposes.
 
-2.  **Q:** What is R?
-R is the world’s premier programming language for analytics 
-and data visualization. It is 100% free and open source with an 
-incredible user community that is constantly adding to its 
-library of free packages. The power of R is applied everyday at 
-the world’s leading companies including Google, Facebook, 
-Uber, and Microsoft.
 
-3.  **Q:** Do I need to pass an exam to finish the workshop?
-No. we’ll monitor your progress along the way and intervene if necessary. 
-You’ll end the course by completing a practical assignment that will help 
-you bring your newly developed skills into practice.
+2.**Q:** I usually work with statistical software like SPSS or Stata. Why should I learn R?
 
-4.  **Q:** Is this course the right fit for me?
-If you’re not sure this course is the right fit, please visit our 
-website and schedule a call (+8801771083855) with one of our advisors.
+R offers a wide range of advantages for researchers. It is a powerful and flexible programming language specifically designed for data analysis. It has a vast collection of packages and tools for statistical analysis, data visualization, and advanced techniques. Additionally, R is an open-source software, which means it is completely free and has a vibrant community for support and resources.
 
-5.  **Q:** After completion
-After completing the course, you will receive a certificate 
-which is signed by your instructor and will be sent to you by 
-post. The certificate number enables you to add your experience 
-to the education section of your LinkedIn profile.
+3. **Q:** Can I apply what I learn in this course to my specific field of research?
 
-6.  **Q:** Are there any prerequisites?
-No. 
+Absolutely! This course is designed to be applicable to researchers in any field. While the examples and exercises may be general, the skills and techniques you learn can be applied to your specific research domain. R is widely used across various disciplines, and the course will equip you with the tools and understanding to adapt R to meet the needs of your research.
+
+4.  **Q:** Will this course cover advanced statistical methods and techniques?
+
+While this course is aimed at beginners, it does introduce some advanced techniques in later modules. You will learn about regression analysis, data mining, text analysis, and web scraping. These topics will provide you with a solid foundation, and you can further explore advanced statistical methods in R based on your specific research interests.
+
+5.  **Q:** Will I receive any course materials or resources?
+
+Yes, you will have access to comprehensive course materials, including lecture notes, code examples, and exercises. These materials will serve as a valuable resource for your learning and can be referred to even after completing the course. Additionally, we will provide a list of recommended books, websites, and online tutorials for further learning and exploration.
+
+6.  **Q:** Is there any support available if I encounter difficulties during the course?
+
+Absolutely! We understand that learning a new programming language can be challenging. You will have access to a support forum where you can ask questions, seek clarification, and interact with the instructor and other participants. The instructor will also provide guidance and assistance throughout the course to ensure your learning experience is smooth and enjoyable. 
 
 
 ## Answered Questions
