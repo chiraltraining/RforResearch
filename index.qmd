@@ -1,5 +1,5 @@
 ---
-title: "R for Research: Beginner's Guide"
+title: "R for Research: A Beginner's Guide"
 subtitle: "[Center for Health Innovation, Research, Action and Learning – Bangladesh](https://www.chiralbd.org/) "
 editor: source
 ---
@@ -200,26 +200,18 @@ Before attending the workshop please have the following installed and configured
 
  
 
-## Instructors
+## Instructor
 
-#### Md. Jubayer Hossain
+#### Bio
 
 ![](images/JHossain.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Jubayer" width="200"}
+[Md. Jubayer Hossain](https://hossainlab.github.io/) is the Founder, Management Lead and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health,  and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his [website.](https://hossainlab.github.io/)  
 
-[Md. Jubayer Hossain]() is the Founder and Data Analyst at [CHIRAL Bangladesh](). CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of the human around me by working at the intersection of education, technology, and health research. His research interests include health data science and machine learning in healthcare.
+#### Skills 
+- **Programming Languages:** Python, R, SQL, Julia, JavaScript; **Data Science:** scikit-learn, PyCaret, Dask, PySpark; **GIS & Remote Sensing:** ArcGIS, Geopandas, Xarray, Giovani; **Analytics Softwares:** SPSS, PowerBI, Microsoft Excel; **Survey Tools:** RedCap, KoboToolBox, EpiCollect, Google Forms; **Academic Writing Tools:** Microsoft Word, LaTeX, Mendeley; **Bioinformatics:** BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; **Miscellaneous Skills:** UNIX, Version Control(Git), Web Scraping, APIs. 
 
-<br/>
+#### Publications 
 
-#### Md. Wahidul Islam
-
-![](images/wahidul.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Wahidul" width="200"}
-
-Wahidul Islam is an undergraduate student in the Department of Microbiology at Jagannath University, Dhaka, Bangladesh. Bioinformatics, Immunology, Cell Biology, Biostatistics, Public health, and Microbiology are some of his research interests. Currently, he is working as a research assistant in Population Health Studies Division & Genomic Data Science Center at CHIRAL Bangladesh. He also leads the seminar and workshop team at CHIRAL Bangladesh.
-
-<br/>
-
-#### Muhibullah Shahjahan
-
-![](images/muhibullah.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of muhibullah" width="200"} 
-
-Muhibullah is an undergraduate student in the Department of Microbiology at Jagannath University and health data analysis, bioinformatics are some of his research interests. Currently, he is working as a research assistant at CHIRAL Bangladesh.
+1. **Hossain, M.J.**, Islam, M.W., Munni, U.R. et al. Health-related quality of life among thalassemia patients in Bangladesh using the SF-36 questionnaire. Scientific Reports 13, 7734 (2023). <https://doi.org/10.1038/s41598-023-34205-9>
+2. Towhid, S. T., **Hossain, M. J.**, Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community-Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. <https://doi.org/10.24018/ejbio.2022.3.3.341>
+3. **Hossain, M.J.**, Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). *Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh*. Microbial Bioactives, 5(2), <https://doi.org/10.25163/microbbioacts.526325>.
