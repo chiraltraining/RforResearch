@@ -4,7 +4,6 @@ subtitle: "[Center for Health Innovation, Research, Action and Learning – Bang
 editor: source
 ---
 
-<!-- https://github.com/rstudio-conf-2022/teach-ds -->
 
 ------------------------------------------------------------------------
 
