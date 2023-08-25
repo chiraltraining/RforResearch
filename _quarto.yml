@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     #- "*.Rmd"
     #- "!exercises/exercises.Rmd"
-    #- "!slides/[0-9]*.qmd"
+    - "!slides/"
 
 website:
   page-navigation: true

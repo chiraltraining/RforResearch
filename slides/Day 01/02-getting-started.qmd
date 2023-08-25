@@ -1,0 +1,237 @@
+# Getting Started With R
+
+## Your Setup
+
+If you can, we suggest working virtually with a **large monitor or two screens**. This setup allows you to follow along on Zoom while also doing the hands-on coding.
+
+* Install the latest version from: <https://posit.co/>
+
+* Install RStudio from : <https://posit.co/download/rstudio-desktop/>
+
+RStudio is an **integrated development environment** (IDE) that makes it easier to work with R.
+
+More on that soon!
+
+## RStudio - Major concepts
+
+- **RStudio** - an Integrated Development Environment (IDE) for R - makes it easier to use R.
+- **Source/Editor** - “Analysis” Script + Interactive Exploration - In a .R file (we call a script), code is saved on your disk
+- **R Console** - Where code is executed (where things happen) - Code is not saved on your disk
+- **Workspace/Environment** - Tells you what objects are in R. What exists in memory/what is loaded?/what did I read in?
+- **R Markdown** - Files (.Rmd) help generate reports that include your code and
+output.
+
+## RStudio 
+- **Quarto** - An open-source scientific and technical publishing system. Files (.qmd) help generate reports that include your code and output. <https://quarto.org/> 
+- **R Project** - Helps you organize your work. Helps with working directories (discussed later). Allows you to easily know which project you’re on.
+
+- **Quarto Project** - Quarto projects are directories that provide: A way to render all or some of the files in a directory with a single command (e.g. quarto render myproject).
+
+- RStudio Keyboard shortcuts: <http://www.rstudio.com/ide/docs/using/keyboard_shortcuts>
+
+## What is Reproducibility? 
+
+- **Reproducibility** - A different analyst re-performs the analysis with the same code and the same data and obtains the same
+result.
+- **Repeatable** - keeping everything the same but repeating the analysis - do we get the same results
+- **Reproducible** - using the same data and analysis but in the hands of another researcher - do we get the same results?
+- **Replicable** - with new data do we obtain the same inferences?
+
+## Running Your First R Program
+* Now that you have installed R and RStudio successfully, let's try to create your first R program. We will try to create a simple Hello World program.
+
+* A Hello World program is a simple program that simply prints a `Hello World` message on the screen. It's generally used to introduce a new language to learners.
+
+```{r, hello-world-1}
+message <-"Hello World!"
+print(message)  
+```
+
+## Running Your First R Program
+
+```{r, hello-world-2}
+message <-"Hello World!"
+print(message)  
+```
+* Here, we have created a simple variable called `message.` We have initialized this variable with a simple message string called `"Hello World!"`. On execution, this program prints the message stored inside the variable.
+
+* Every output in R is preceded by a number (say n) in square brackets. This number means that the displayed value is the nth element printed.
+
+## R as a Calculator
+```{r calcDemo}
+2 + 2
+2 * 4
+2^3
+```
+
+*Note:* when you type your command, R inherently thinks you want to print the result. 
+
+## R as a Calculator
+
+- The R console is a full calculator
+- Try to play around with it:
+    - +, -, /, * are add, subtract, divide and multiply
+    - ^ or ** is power
+    - parentheses -- ( and ) -- work with order of operations 
+    - %% finds the remainder
+
+## R as a Calculator
+```{r calcDemo2}
+2 + (2 * 3)^2
+(1 + 3) / 2 + 45
+6 / 2 * (1 + 2)
+```
+
+## R as a Calculator
+Try evaluating the following:
+
+- `2 + 2 * 3 / 4 -3`
+- `2 * 3 / 4 * 2`
+- `2^4 - 1`
+
+## Variables (Identifiers) in R
+* Variables are used to store data, whose value can be changed according to our need.
+* A variable is a name given to a memory location, which is used to store values in a computer program.
+* Variables in R programming can be used to store numbers (real and complex), words, matrices, and even tables.
+* R is a dynamically programmed language which means that unlike other programming languages, we do not have to declare the data type of a variable before we can use it in our program.
+* Unique name given to variable (function and objects as well) is identifier.
+
+
+## Rules for writing Identifiers in R
+* Identifiers can be a combination of letters, digits, period (.) and underscore (_).
+* It must start with a letter or a period. If it starts with a period, it cannot be followed by a digit.
+* It should not start with a number (e.g: 2x)
+* It should not start with a dot followed by a number (e.g: .2x)
+* It should not start with an underscore (e.g: _x)
+* Reserved words in R cannot be used as identifiers(e.g: TRUE, FALSE)
+
+## Basically, there are 5 naming conventions 
+- alllowercase: e.g. `myname`
+- period.separated: e.g. `new.name`
+- underscore_separated: e.g. `my_name`
+- lowerCamelCase: e.g. `myName`
+- UpperCamelCase: e.g. `MyName`
+
+
+## Assigning Values to Objects
+
+- You can create objects from within the R environment and from files on your computer
+- R uses `<-` to assign values to an object name (you might also see `=` used, but this is not best practice)
+- Object names are case-sensitive, i.e. X and x are different
+
+```{r assign}
+x <- 2
+x
+x * 4
+x + 2
+```
+
+## Creating Variables
+
+Using equal(`=`) operator
+
+```{r echo=TRUE}
+x = 10 
+```
+
+Using leftward(`<-`) operator 
+
+```{r echo=TRUE}
+y <- 15  
+```
+
+##  Reserved Keaywords in R
+- Don’t use any reserved keyword as variable name. List all of reserved words in R by using (?Reserved). 
+
+```{r, eval=FALSE}
+?Reserved
+```
+
+## Entering Input
+At the R prompt/console we type expressions. 
+
+```{r echo=TRUE}
+num <- 10
+```
+
+The `<-` symbol is the **assignment** operator. 
+The grammar of the language determines whether an expression is complete or not.
+
+## Evaluation
+When a complete expression is entered at the R console, it is evaluated and the result of evaluated expression is returned. The result may be auto-printed. 
+
+```{r}
+x <- 10
+x
+```
+
+```{r}
+x <- 10
+print(x)
+```
+
+```{r}
+x <- 10
+cat(x)
+```
+
+## R Comments
+Comments are portions of a computer program that are used to describe a piece of code. For example,
+
+```{r, comments}
+# declare variable
+age = 24
+
+# print variable
+print(age)
+```
+
+## Types of Comments in R
+
+In general, all programming languages have the following types of comments:
+
+* single-line comments
+* multi-line comments
+
+However, in R programming, there is no functionality for multi-line comments. Thus, you can only write single-line comments in R.
+
+## R Single-Line Comments
+```{r, single-comment}
+# this code prints Hello World
+print("Hello World") 
+
+# check type of variables
+age <- 30 
+class(age)
+```
+
+## R Multi-Line Comments
+* As already mentioned, R does not have any syntax to create multi-line comments.
+
+* However, you can use consecutive single-line comments to create a multi-line comment in R. For example,
+
+```{r, multi-line-comments}
+# this is a print statement
+# it prints Hello World
+
+print("Hello World") 
+```
+
+## Purpose of Comments
+As discussed above, R comments are used to just document pieces of code. This can help others to understand the working of our code.
+
+**Here are a few purposes of commenting on an R code:**
+
+* It increases readability of the program for users other than the developers.
+* Comments in R provide metadata of the code or the overall project.
+* Comments are generally used by programmers to ignore some pieces of code during testing.
+* They are used to write a simple pseudo-code of the program.
+
+## How to Create Better Comments?
+
+You should always keep in mind the following points while writing comments.
+
+- Use comments only to describe what a particular block of code does, not how it does.
+- Don't overuse comments. Try to make your code self-explanatory.
+- Try to create comments that are as precise as possible.
+- Don't use redundant comments.

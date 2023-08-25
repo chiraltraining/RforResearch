@@ -1,0 +1,31 @@
+---
+title: "R for Research"
+subtitle: "Data Manipulation: Part 1"
+author: "Md. Jubayer Hossain <br/>Founder & Management Lead <br/>CHIRAL Bangladesh"
+footer: "R for Research  | &copy; 2023 Md. Jubayer Hossain, CHIRAL Bangladesh"
+editor: source
+format: 
+  revealjs: 
+    logo: images/chirallogo.jpg 
+    css: slides.scss
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: false
+execute:
+  echo: true
+  output: asis
+  freeze: auto
+cache: true
+---
+
+{{< include 00-introduction-data-wrangling.qmd >}} 
+{{< include 01-data-io.qmd  >}} 
+{{< include 02-exploring-data.qmd  >}} 
+{{< include 03-subset-rows.qmd  >}}
+{{< include 04-subset-columns.qmd  >}}
+{{< include 05-make-new-variables.qmd  >}}
+{{< include 06-summarize-data.qmd  >}}
+{{< include 07-group-data.qmd  >}}
+{{< include 08-reshape-data.qmd  >}}
+{{< include 09-combine-data.qmd  >}}

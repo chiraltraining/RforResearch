@@ -1,0 +1,75 @@
+# Loop Functions 
+
+## Loop Functions - Apply Family
+- The `apply` family of functions in R provides a convenient way to apply a function to subsets of data structures such as vectors, matrices, and data frames.
+- These functions eliminate the need for explicit looping and can significantly simplify code.
+
+## `apply()`
+- apply() function applies a function over margins of an array or matrix.
+- Syntax: apply(X, MARGIN, FUN, ...)
+- X: The input data structure (array or matrix).
+- MARGIN: The dimension or dimensions along which the function should be applied.
+- FUN: The function to be applied.
+- ...: Additional arguments to be passed to the function.
+
+```{r}
+# Apply sum function to rows of a matrix
+mat <- matrix(1:9, nrow = 3)
+result <- apply(mat, 1, sum)
+result
+```
+
+## `lapply()`
+- lapply() function applies a function to each element of a list or vector.
+- Syntax: lapply(X, FUN, ...)
+- X: The input list or vector.
+- FUN: The function to be applied.
+- ...: Additional arguments to be passed to the function.
+
+```{r}
+# Apply sqrt function to each element of a list
+numbers <- list(a = 4, b = 9, c = 16)
+result <- lapply(numbers, sqrt)
+```
+
+## `sapply()`
+- sapply() function is similar to lapply() but simplifies the result into a vector, matrix, or array if possible.
+- Syntax: sapply(X, FUN, ...)
+- X: The input list or vector.
+- FUN: The function to be applied.
+- ...: Additional arguments to be passed to the function.
+
+```{r}
+# Apply sum function to each element of a list and simplify the result
+numbers <- list(a = 4, b = 9, c = 16)
+result <- sapply(numbers, sum)
+```
+
+## `vapply()`
+- vapply() function is similar to sapply() but allows specifying the output type and shape explicitly.
+- Syntax: vapply(X, FUN, FUN.VALUE, ...)
+- X: The input list or vector.
+- FUN: The function to be applied.
+- FUN.VALUE: The desired output type and shape.
+- ...: Additional arguments to be passed to the function.
+
+```{r}
+# Apply sum function to each element of a list and specify the output type
+numbers <- list(a = 4, b = 9, c = 16)
+result <- vapply(numbers, sum, FUN.VALUE = numeric(1))
+```
+
+## `mapply()`
+- mapply() function applies a function to multiple vectors or lists in parallel.
+- Syntax: mapply(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE)
+- FUN: The function to be applied.
+- ...: Multiple input vectors or lists.
+- MoreArgs: Additional arguments to be passed to the function.
+- SIMPLIFY: Whether to simplify the result if possible.
+
+```{r}
+# Apply a function to multiple vectors in parallel
+vector1 <- c(1, 2, 3)
+vector2 <- c(4, 5, 10)
+```
+

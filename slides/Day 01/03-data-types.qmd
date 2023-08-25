@@ -1,0 +1,162 @@
+# Data Types in R
+
+## R Data Types
+
+* A variable can store different types of values such as numbers, characters etc. 
+
+* These different types of data that we can use in our code are called data types. For example,
+
+```{r, dtype-1}
+x <- 123L
+```
+
+* Here, `123L` is an integer data. So the data type of the variable `x` is `integer.`
+
+## R Data Types
+We can verify this by printing the class of `x` using `class()` function. 
+
+```{r, dtype-2}
+x <- 123L
+# print value of x
+x
+
+# print type of x
+class(x)
+```
+
+
+## Different Types of Data Types
+
+| Data Type | Example        | Description                                                                                            |
+|------------|------------|------------------------------------------------|
+| Logical   | True, False    | It is a special data type for data with only two possible values which can be construed as true/false. |
+| Numeric   | 12,32,112,5432 | Decimal value is called numeric in R, and it is the default computational data type.                   |
+| Integer   | 3L, 66L, 2346L | Here, L tells R to store the value as an integer,                                                      |
+
+## Different Types of Data Types
+
+| Data Type | Example| Description|
+|--------------|--------------|--------------------------------------------|
+| Complex   | Z=1+2i, t=7+3i                | A complex value in R is defined as the pure imaginary value i.                                                                                         |
+| Character | 'a', '"good'", "TRUE", '35.4' | In R programming, a character is used to represent string values. We convert objects into character values with the help of `as.character()` function. |
+| Raw       |                               | A raw data type is used to holds raw bytes.|
+
+## Logical Data Type
+The `logical` data type in R is also known as `boolean` data type. It can only have two values: `TRUE` and `FALSE.` For example,
+
+```{r}
+bool1 <- TRUE
+# print bool1
+bool1
+# print type of bool1
+class(bool1)
+
+# print bool2
+bool2 <- FALSE
+bool2
+
+# print type of bool2
+class(bool2)
+```
+
+## Logical Data Type
+You can also define `logical` variables with a single letter - `T` for `TRUE` or `F` for `FALSE.` For example,
+
+```{r}
+is_weekend <- F
+class(is_weekend)  # "logical"
+
+is_weekday <- T
+class(is_weekday)  # "logical"
+```
+
+
+## Numeric Data Type
+In R, the `numeric` data type represents all real numbers with or without decimal values. For example,
+
+```{r}
+# floating point values
+weight <- 63.5
+weight
+# check variable types 
+class(weight)
+
+# real numbers
+height <- 182
+height
+# check variable types 
+class(height)
+```
+
+## Integer Data Type
+The integer data type specifies real values without decimal points. We use the suffix L to specify integer data. For example,
+
+```{r}
+integer_variable <- 186L
+integer_variable
+
+# check variable types 
+class(integer_variable)
+```
+
+## Complex Data Type
+The `complex` data type is used to specify purely imaginary values in R. We use the suffix `i` to specify the imaginary part. For example,
+
+```{r}
+# 2i represents imaginary part
+complex_value <- 3 + 2i
+
+# print class of complex_value
+class(complex_value)
+```
+
+## Character Data Type
+* The `character` data type is used to specify character or string values in a variable.
+
+* In programming, a string is a set of characters. For example, `'A'` is a single character and `"Apple"` is a string.
+
+* You can use single quotes `''` or double quotes `""` to represent strings. In general, we use:
+
+  * `''` for character variables
+  * `""` for string variables
+
+## Character Data Type
+For example,
+
+```{r}
+# create a string variable
+fruit <- "Apple"
+class(fruit)
+
+# create a character variable
+my_char <- 'A'
+class(my_char)
+```
+
+## Raw Data Type
+A `raw` data type specifies values as raw bytes. You can use the following methods to convert character data types to a raw data type and vice-versa:
+  
+  * `charToRaw()` - converts character data to raw data
+  * `rawToChar()` - converts raw data to character data
+
+
+## Raw Data Type
+For example,
+
+```{r}
+# convert character to raw
+raw_variable <- charToRaw("Welcome to Programiz")
+
+print(raw_variable)
+print(class(raw_variable))
+
+# convert raw to character
+char_variable <- rawToChar(raw_variable)
+
+print(char_variable)
+print(class(char_variable))
+
+```
+
+
+

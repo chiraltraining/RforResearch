@@ -1,0 +1,7 @@
+# Group Data
+
+## Grouping Data 
+- Grouping data is a fundamental operation in data analysis that allows you to split a dataset into subsets based on one or more variables. 
+- The dplyr package in R provides functions to perform grouping operations on dataframes.
+- The `group_by()` function is used to create groups based on one or more variables in a dataframe.
+- Syntax: `group_by(data, grouping_vars)`

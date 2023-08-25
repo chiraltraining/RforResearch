@@ -1,0 +1,103 @@
+# Functions 
+
+## Functions in R
+
+- Functions in R are blocks of reusable code that perform specific tasks.
+- They provide modularity and allow for the organization and reuse of code.
+- Functions can accept input arguments, perform computations, and return output values.
+
+## Types of Functions in R 
+- Built-in Functions
+- User-Defined Functions
+- Recursive Functions
+- Anonymous Functions (Lambda Functions)
+- Higher-Order Functions
+
+## Built-in Functions
+- R comes with a wide range of built-in functions that are available for immediate use.
+- Examples: `mean()`, `sum()`, `max()`, `min()`, `sqrt()`, `length()`, etc.
+- These functions are part of the R language and provide basic operations and computations.
+
+## User-Defined Functions
+- Users can define their own functions in R to perform specific tasks.
+- These functions are created using the function keyword followed by the function name, arguments, and function body.
+- Examples: Custom functions created by users to solve specific problems.
+
+## Recursive Functions
+- Recursive functions are functions that call themselves during their execution.
+- They are useful for solving problems that can be broken down into smaller, similar sub-problems.
+- Examples: Functions that calculate factorials, Fibonacci series, or perform tree traversal.
+
+## Anonymous Functions (Lambda Functions)
+- Anonymous functions, also known as lambda functions, are functions without a formal name.
+- They are typically used for one-time or short computations and are defined using the function keyword without assigning them to a variable.
+- Examples: Functions used with higher-order functions like `apply()`, `lapply()`, `sapply()`, etc.
+
+## Higher-Order Functions
+- Higher-order functions take other functions as arguments or return functions as their output.
+- They allow for functional programming paradigms in R.
+- Examples: `apply()` family of functions, `map()` functions from the purrr package.
+
+## Creating a Function
+- To create a function in R, use the function keyword followed by the function name and parentheses for the input arguments.
+- The function body is enclosed in curly braces {} and contains the code to be executed.
+
+```{r, eval=FALSE}
+f <- function() {
+  # empty function
+}
+# Function have their own class 
+
+class(f) 
+
+# Execute / Call this function
+f()
+```
+
+## Creating a Function
+
+```{r}
+# Function definition
+my_function <- function(arg1, arg2) {
+  # Code block
+  # Perform computations
+  result <- arg1 + arg2
+  return(result)
+}
+```
+
+## Calling a Function
+- To call a function in R, use the function name followed by parentheses, passing the required input arguments.
+- The function executes the code within its body and returns the specified output.
+
+```{r}
+# Function call
+result <- my_function(3, 5)
+print(result)
+```
+
+## Function with Default Arguments
+- Functions in R can have default values assigned to their arguments, which are used when the arguments are not explicitly provided during function call.
+- Default arguments are defined using the assignment operator (=) within the function definition.
+
+```{r}
+# Function definition with default argument
+greet <- function(name = "Guest") {
+  message <- paste("Hello,", name)
+  print(message)
+}
+```
+
+## Function with Variable Arguments
+- In R, functions can accept variable arguments using the `...` notation.
+- Variable arguments allow for flexibility in the number of inputs passed to the function.
+
+```{r}
+# Function definition with variable arguments
+calculate_sum <- function(...) {
+  numbers <- list(...)
+  total <- sum(numbers)
+  return(total)
+}
+```
+

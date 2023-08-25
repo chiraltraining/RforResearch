@@ -1,0 +1,257 @@
+# Data Cleaning in R 
+
+## Dealing with Missing Data
+One of the most important aspects of data cleaning is missing values.
+Types of "missing" data:
+
+- `NA` - general missing data
+- `NaN` - stands for "**N**ot **a** **N**umber", happens when you do
+    0/0.
+- `Inf` and `-Inf` - Infinity, happens when you divide a positive number (or negative number) by 0.
+
+## Finding Missing data 
+-   `is.na` - looks for `NAN` and `NA`
+-   `is.nan`- looks for `NAN`
+-   `is.infinite` - looks for Inf or -Inf
+
+```{r, eval=FALSE}
+test<-c(0,NA, -1)
+test/0
+test <-test/0
+is.na(test)
+is.nan(test)
+is.infinite(test)
+```
+
+## Useful Checking Functions 
+
+- `any` will be `TRUE` if ANY are true
+- `any(is.na(x))` 
+- do we have any `NA`'s in `x`?
+
+```{r isna, eval=FALSE}
+A = c(1, 2, 4, NA)
+B = c(1, 2, 3, 4)
+any(is.na(A)) # are there any NAs - YES/TRUE
+any(is.na(B)) # are there any NAs- NO/FALSE
+```
+
+## Finding `NA` Values with `count()`
+Check the values for your variables, are they what you expect?
+
+`count()` is a great option because it gives you:
+
+- The unique values
+- The amount of these values
+
+Check if rare values make sense.
+
+## `naniar`
+
+- Sometimes you need to look at lots of data though... the [`naniar`
+package](https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html) is a good option.
+
+- The `pct_complete()` function shows the percentage that is complete for a given data object.
+
+```{r, error=FALSE, eval=FALSE}
+#install.packages("naniar")
+library(naniar)
+
+# monkeypox data 
+monkeypox <- read.csv("data/owid-monkeypox-data.csv")
+naniar::pct_complete(monkeypox)
+
+# mental health survey data 
+mental_health <- read.csv("data/mental_health_survey.csv")
+naniar::pct_complete(mental_health) # doesn't count infinite values as missing
+```
+
+## Air quality data
+
+The `airquality` dataset comes with R about air quality in New York in 1973.
+
+```{r, message=FALSE, eval=FALSE}
+?airquality # use this to find out more about the data
+airqual <-tibble(airquality)
+airqual
+```
+
+
+## naniar: `pct_complete()`
+
+```{r, eval=FALSE}
+pct_complete(airquality)
+```
+
+## `naniar` plots
+
+The `gg_miss_var()` function creates a nice plot about the number of
+missing values for each variable.
+
+```{r, fig.height=4, warning=FALSE, fig.align='center', eval=FALSE}
+naniar::gg_miss_var(airqual)
+```
+
+## Missing Data Issues
+
+Recall that mathematical operations with `NA` often result in `NA`s.
+
+```{r, eval=FALSE}
+sum(c(1,2,3,NA))
+mean(c(2,4,NA))
+median(c(1,2,3,NA))
+```
+
+```{r, echo = FALSE, eval=FALSE}
+red_blue <- tibble(color = rep(c("red", "blue", NA), 3))
+red_blue <- red_blue %>% count(color)
+red_blue <- rename(red_blue, col_count = n)
+```
+
+## Missing Data Issues
+
+This is also true for logical data. Recall that `TRUE` is evaluated as 1 and `FALSE` is evaluated as 0.
+
+```{r, eval=FALSE}
+x = c(TRUE, TRUE, TRUE, TRUE, FALSE, NA)
+sum(x)
+sum(x, na.rm = TRUE)
+```
+
+
+## filter() and missing data
+
+Be careful with missing data using subsetting:
+
+**`filter()` removes missing values by default.** Because R can't tell
+for sure if an `NA` value meets the condition. To keep them need to add `is.na()` conditional.
+
+```{r, echo = FALSE, eval=FALSE}
+airqual %>% 
+  filter(Ozone > 30)
+```
+
+```{r, eval=FALSE}
+airqual %>% 
+  filter(Ozone < 30)
+```
+
+```{r, eval=FALSE}
+airqual %>% 
+  filter(Ozone < 30 | is.na(Ozone))
+```
+
+## To remove rows with `NA` values for a variable use `drop_na()`
+A function from the `tidyr` package.
+
+```{r, eval=FALSE}
+airqual %>% 
+  drop_na(Ozone)
+```
+
+## To remove rows with `NA` values for a data frame use `drop_na()`
+
+This function of the `tidyr` package drops rows with **any** missing data in **any** column when used on a df.
+
+```{r, eval=FALSE}
+airqual %>% 
+  drop_na()
+```
+
+## Drop **columns** with any missing values 
+
+Use the `miss_var_which()` function from `naniar`
+
+```{r, eval=FALSE}
+miss_var_which(airqual) # which columns have missing values
+```
+
+## Drop **columns** with any missing values
+
+```{r, eval=FALSE}
+airqual %>% 
+  select(!miss_var_which(airqual))
+```
+
+## Removing columns with threshold of percent missing row values
+
+```{r, eval=FALSE}
+is.na(airqual) %>% 
+  head()
+```
+
+```{r, eval=FALSE}
+colMeans(is.na(airqual)) #TRUE and FALSE treated like 0 and 1
+
+airqual %>% 
+  select(which(colMeans(is.na(df)) < 0.1))# remove if over 20% missing
+```
+
+## Change a value to be `NA` 
+
+The `na_if()` function of `dplyr` can be helpful for this. Let's say we think that all 0 values should be `NA`.
+
+```{r, eval=FALSE}
+airqual %>% 
+  head(n = 3)
+```
+
+```{r, eval=FALSE}
+airqual %>% 
+  mutate(Ozone = na_if(Ozone, 0))
+```
+
+
+
+## Think about `NA`
+
+- Sometimes removing `NA` values leads to distorted math - be careful!
+Think about what your `NA` means for your data (are you sure ?).
+
+- Is an `NA` for values so low they could not be reported? Or is it this
+and also if there was a different issue?
+
+- If it is something more like a zero then you might want it included in
+your data like a zero.
+
+- Example: - survey reports `NA` if student has never tried cigarettes survey reports 0 if student has tried cigarettes but did not smoke that week. 
+
+- You might want to keep the `NA` values so that you know the original
+sample size.
+
+## Word of caution  
+
+Calculating percentages will give you a different result depending on
+your choice to include NA values.
+
+```{r, eval=FALSE}
+red_blue
+red_blue %>% mutate(percent = 
+                      col_count/sum(pull(red_blue, col_count)))
+```
+
+
+## Word of caution
+
+```{r,eval=FALSE}
+red_blue %>% mutate(percent = 
+                      col_count/sum(pull(drop_na(red_blue), col_count)))
+
+```
+
+- Should you be dividing by 9 or 6?   
+- It depends on your data and what `NA` might mean.   
+- Pay attention to your data and your `NA` values!
+
+
+## Summary
+
+- `is.na()`,`any(is.na())`, `count()`, and functions from `naniar`
+    like `gg_miss_var()` can help determine if we have `NA` values
+- `filter()` automatically removes `NA` values - can't confirm or deny
+    if condition is met (need `| is.na()` to keep them)
+- `drop_na()` can help you remove `NA` values from a variable or an
+    entire data frame
+- `NA` values can change your calculation results
+- Think about what `NA` values represent
+

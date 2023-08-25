@@ -1,0 +1,73 @@
+## Agenda 
+- Reshaping Data 
+- Combine Data 
+- Recoding Variables 
+- Working with Strings 
+
+
+# Reshaping Data
+
+```{r, include=FALSE}
+# packages 
+library(tidyverse)
+library(readxl)
+```
+
+## Reshaping Data - Change the Layout of a Dataset 
+
+- Reshaping data involves changing the layout of a dataset to make it more suitable for analysis or presentation. 
+- This typically includes transforming data between wide and long formats or converting between different types of data structures.
+
+1. Reshape data from wide to long
+2. Reshape data from long to wide
+
+
+## What is wide/long data?
+
+```{r, fig.alt="A gif visualization of data going from wide to long form.", out.width = "40%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/tidyr_pivoting.gif")
+```
+
+## Reshaping from Wide to Long Format
+- Wide: has many columns
+- `pivot_longer()`: Similar to `gather()`, it transforms wide data into long format but provides more flexibility and options.
+- `names_to =` gives a new name to the pivoted columns
+- `values_to =` gives a new name to the values that used to be in those columns
+
+```{r, eval=FALSE}
+# syntax
+{long_data} <- {wide_data} %>% pivot_longer(cols = {columns to pivot},
+                                        names_to = {New column name: contains old column names},
+                                        values_to = {New column name: contains cell values})
+```
+
+
+```{r, wide-long, eval=FALSE}
+wide_data <- read_excel("data/Life_Expectancy_Wide.xlsx")
+
+# convert into long 
+long_data <- wide_data %>% 
+  tidyr::pivot_longer(cols = 2:75, names_to = "Year", values_to = "LifeExp")
+head(long_data)
+```
+
+## Reshaping from Long to Wide Format
+- Long: column names become data
+- `pivot_wider()`: Similar to spread(), it transforms long data into wide format but provides more flexibility and options.
+- `names_from =` the old column whose contents will be spread into multiple new column names.
+- `values_from =` the old column whose contents will fill in the values of those new columns.
+
+
+```{r, eval=FALSE}
+# syntax 
+{wide_data} <- {long_data} %>% 
+  pivot_wider(names_from = {Old column name: contains new column names},
+              values_from = {Old column name: contains new cell values})
+```
+
+```{r, long-wide, eval=FALSE}
+# convert into wide 
+wide_data <- long_data %>% 
+  pivot_wider(names_from = "Year", values_from = "LifeExp")
+head(wide_data)
+```

@@ -1,0 +1,26 @@
+---
+title: "R for Research"
+subtitle: "Fundamentals of R: Part 1"
+author: "Md. Jubayer Hossain <br/>Founder & Management Lead <br/>CHIRAL Bangladesh"
+footer: "R for Research  | &copy; 2023 Md. Jubayer Hossain, CHIRAL Bangladesh"
+editor: source
+format: 
+  revealjs: 
+    logo: images/chirallogo.jpg 
+    css: slides.scss
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: false
+execute:
+  echo: true
+  output: asis
+  freeze: auto
+cache: true
+---
+
+{{< include 00-intro.qmd >}} 
+{{< include 01-background.qmd >}} 
+{{< include 02-getting-started.qmd >}} 
+{{< include 03-data-types.qmd >}}
+{{< include 04-operators.qmd >}}

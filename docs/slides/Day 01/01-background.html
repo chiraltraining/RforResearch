@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R for Research - A Step by Step Guide for Beginners – background</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/chiraltraining/" rel="" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://www.facebook.com/chiralbd.org" rel="" title="Facebook" class="quarto-navigation-tool px-1" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://twitter.com/chiralbd" rel="" title="Twitter" class="quarto-navigation-tool px-1" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://www.linkedin.com/company/chiral-bangladesh/mycompany/?viewAsMember=true" rel="" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../material.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Material</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../sessions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../q-and-a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop Q &amp; A</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">What is R?</a></li>
+  <li><a href="#more-on-r-programming" id="toc-more-on-r-programming" class="nav-link" data-scroll-target="#more-on-r-programming">More on R Programming</a></li>
+  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
+  <li><a href="#reproducibility-crisis" id="toc-reproducibility-crisis" class="nav-link" data-scroll-target="#reproducibility-crisis">Reproducibility Crisis</a></li>
+  </ul></li>
+  <li><a href="#basic-terms" id="toc-basic-terms" class="nav-link" data-scroll-target="#basic-terms">Basic Terms</a>
+  <ul class="collapse">
+  <li><a href="#variable-and-sample" id="toc-variable-and-sample" class="nav-link" data-scroll-target="#variable-and-sample">Variable and Sample</a></li>
+  <li><a href="#object" id="toc-object" class="nav-link" data-scroll-target="#object">Object</a></li>
+  <li><a href="#columns-and-rows" id="toc-columns-and-rows" class="nav-link" data-scroll-target="#columns-and-rows">Columns and Rows</a></li>
+  <li><a href="#function" id="toc-function" class="nav-link" data-scroll-target="#function">Function</a></li>
+  <li><a href="#argumentparameter" id="toc-argumentparameter" class="nav-link" data-scroll-target="#argumentparameter">Argument/Parameter</a></li>
+  <li><a href="#package" id="toc-package" class="nav-link" data-scroll-target="#package">Package</a></li>
+  <li><a href="#more-on-functions-and-packages" id="toc-more-on-functions-and-packages" class="nav-link" data-scroll-target="#more-on-functions-and-packages">More on Functions and Packages</a></li>
+  <li><a href="#using-packages" id="toc-using-packages" class="nav-link" data-scroll-target="#using-packages">Using Packages</a></li>
+  <li><a href="#tidyverse-ecosystem-and-base-r" id="toc-tidyverse-ecosystem-and-base-r" class="nav-link" data-scroll-target="#tidyverse-ecosystem-and-base-r">Tidyverse Ecosystem and Base R</a></li>
+  <li><a href="#installation-and-use" id="toc-installation-and-use" class="nav-link" data-scroll-target="#installation-and-use">Installation and Use</a></li>
+  <li><a href="#core-tidyverse" id="toc-core-tidyverse" class="nav-link" data-scroll-target="#core-tidyverse">Core tidyverse</a></li>
+  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import">Data Import</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a></li>
+  <li><a href="#program" id="toc-program" class="nav-link" data-scroll-target="#program">Program</a></li>
+  <li><a href="#useful-mostly-free-resources" id="toc-useful-mostly-free-resources" class="nav-link" data-scroll-target="#useful-mostly-free-resources">Useful (+ mostly Free) Resources</a></li>
+  <li><a href="#useful-mostly-free-resources-1" id="toc-useful-mostly-free-resources-1" class="nav-link" data-scroll-target="#useful-mostly-free-resources-1">Useful (+ mostly Free) Resources</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/chiraltraining/RforResearch/edit/main/slides/Day 01/01-background.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/chiraltraining/RforResearch/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="background" class="level1">
+<h1>Background</h1>
+<section id="what-is-r" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-r">What is R?</h2>
+<ul>
+<li><p>R is a language and environment for statistical computing and graphics developed in 1991.</p></li>
+<li><p>R is the open source implementation of the <a href="https://en.wikipedia.org/wiki/S_(programming_language)">S language</a>, which was developed by <a href="https://ca.slack-edge.com/T023TPZA8LF-U024EN26Q0L-113294823b2c-512">Bell laboratories</a> in the 70s.</p></li>
+<li><p>The aim of the S language, as expressed by John Chambers, is “to turn ideas into software, quickly and faithfully”</p></li>
+<li><p>R is both <a href="https://en.wikipedia.org/wiki/Open_source">open source</a> and <a href="https://en.wikipedia.org/wiki/Open-source_software_development">open development</a>.</p></li>
+<li><p>The aim of the S language, as expressed by John Chambers, is “to turn ideas into software, quickly and faithfully”</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bell_Laboratories_logo.svg/2880px-Bell_Laboratories_logo.svg.png" class="img-fluid figure-img" style="width:20.0%" alt="Bell Labs old logo"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="more-on-r-programming" class="level2">
+<h2 class="anchored" data-anchor-id="more-on-r-programming">More on R Programming</h2>
+<ul>
+<li><p>R is a dialect of S(R is an implementation of the S programming language).</p></li>
+<li><p>R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is developed by the R Development Core Team.</p></li>
+<li><p>R is a programming language and environment commonly used in statistical computing, data analytics and scientific research.</p></li>
+<li><p>R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing.</p></li>
+<li><p>The R language is widely used among statisticians and data miners for developing statistical software and data analysis.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.r-project.org/Rlogo.png" class="img-fluid figure-img" style="width:20.0%" alt="R logo"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="why-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
+<ul>
+<li><p>Free (open source)</p></li>
+<li><p>High level language designed for statistical computing</p></li>
+<li><p>Powerful and flexible - especially for data wrangling and visualization</p></li>
+<li><p>Extensive add-on software (packages)</p></li>
+<li><p>R is popular – and increasing in popularity.</p></li>
+<li><p>R runs on all platforms.(Windows, Linux and Mac)</p></li>
+<li><p>R is being used by the biggest tech giants(google, facebook, microsoft, twitter)</p></li>
+<li><p>Strong community</p></li>
+</ul>
+</section>
+<section id="reproducibility-crisis" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-crisis">Reproducibility Crisis</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>Quality of medical research is often low</p></li>
+<li><p><span class="emphasis">Low quality code</span> in medical research part of the problem</p></li>
+<li><p>Low quality code is more <span class="emphasis">likely to contain errors</span></p></li>
+<li><p>Reproducibility is often <span class="emphasis">cumbersome</span> and <span class="emphasis">time-consuming</span></p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img src="images/reproducibility-graphic-online1.jpeg" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="basic-terms" class="level1">
+<h1>Basic Terms</h1>
+<section id="variable-and-sample" class="level2">
+<h2 class="anchored" data-anchor-id="variable-and-sample">Variable and Sample</h2>
+<ul>
+<li><p><strong>Variable</strong>: something measured or counted that is a characteristic about a sample</p>
+<ul>
+<li><em>Examples:</em> temperature, length, count, color, category</li>
+</ul></li>
+<li><p><strong>Sample</strong>: individuals that you have data about.</p>
+<ul>
+<li><em>Examples:</em> people, houses, viruses etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="object" class="level2">
+<h2 class="anchored" data-anchor-id="object">Object</h2>
+<p><strong>Object</strong> - an object is something that can be worked with in R - can be lots of different things!</p>
+<ul>
+<li>a matrix of numbers</li>
+<li>a plot</li>
+<li>a function</li>
+</ul>
+<p>… many more</p>
+</section>
+<section id="columns-and-rows" class="level2">
+<h2 class="anchored" data-anchor-id="columns-and-rows">Columns and Rows</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="amltqoytxr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#amltqoytxr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#amltqoytxr thead, #amltqoytxr tbody, #amltqoytxr tfoot, #amltqoytxr tr, #amltqoytxr td, #amltqoytxr th {
+  border-style: none;
+}
+
+#amltqoytxr p {
+  margin: 0;
+  padding: 0;
+}
+
+#amltqoytxr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#amltqoytxr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#amltqoytxr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#amltqoytxr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#amltqoytxr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#amltqoytxr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#amltqoytxr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#amltqoytxr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#amltqoytxr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#amltqoytxr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#amltqoytxr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#amltqoytxr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#amltqoytxr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#amltqoytxr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#amltqoytxr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltqoytxr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#amltqoytxr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#amltqoytxr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#amltqoytxr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltqoytxr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#amltqoytxr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltqoytxr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#amltqoytxr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltqoytxr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#amltqoytxr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#amltqoytxr .gt_left {
+  text-align: left;
+}
+
+#amltqoytxr .gt_center {
+  text-align: center;
+}
+
+#amltqoytxr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#amltqoytxr .gt_font_normal {
+  font-weight: normal;
+}
+
+#amltqoytxr .gt_font_bold {
+  font-weight: bold;
+}
+
+#amltqoytxr .gt_font_italic {
+  font-style: italic;
+}
+
+#amltqoytxr .gt_super {
+  font-size: 65%;
+}
+
+#amltqoytxr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#amltqoytxr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#amltqoytxr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#amltqoytxr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#amltqoytxr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#amltqoytxr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#amltqoytxr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Sepal.Length">Sepal.Length</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Sepal.Width">Sepal.Width</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Petal.Length">Petal.Length</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Petal.Width">Petal.Width</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Species">Species</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">5.1</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.5</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.4</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.2</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">4.9</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.0</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.4</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.2</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">4.7</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.2</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.3</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.2</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">4.6</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.1</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.5</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.2</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">5.0</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.6</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.4</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.2</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+    <tr><td headers="Sepal.Length" class="gt_row gt_right">5.4</td>
+<td headers="Sepal.Width" class="gt_row gt_right">3.9</td>
+<td headers="Petal.Length" class="gt_row gt_right">1.7</td>
+<td headers="Petal.Width" class="gt_row gt_right">0.4</td>
+<td headers="Species" class="gt_row gt_center">setosa</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Sample/Observations = Row<br>
+</p></li>
+<li><p>Variable = Column</p></li>
+<li><p>Data objects that looks like this is often called a <strong>data frame</strong>.</p></li>
+<li><p>Fancier versions from the tidyverse are called <strong>tibbles</strong> (more on that soon!).</p></li>
+</ul>
+</section>
+<section id="function" class="level2">
+<h2 class="anchored" data-anchor-id="function">Function</h2>
+<ul>
+<li><p><strong>Function</strong> - a function is a particular piece of code that allows you to do something in R. You can write your own, use functions that come directly from installing R, or use functions from additional packages.</p></li>
+<li><p>A function might help you add numbers together, create a plot, or organize your data. More on that soon!</p></li>
+</ul>
+</section>
+<section id="argumentparameter" class="level2">
+<h2 class="anchored" data-anchor-id="argumentparameter">Argument/Parameter</h2>
+<p><strong>Argument/Parameter</strong> - what you pass to a function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">20234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20235</code></pre>
+</div>
+</div>
+<ul>
+<li>Can be data like the number 1 or 20234</li>
+<li>Can be options about how you want the function to work such as <code>digits</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.627</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.63</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.627</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+</section>
+<section id="package" class="level2">
+<h2 class="anchored" data-anchor-id="package">Package</h2>
+<ul>
+<li><p><strong>Package</strong> - a package in R is a bundle or “package” of code (and or possibly data) that can be loaded together for easy repeated use or for <strong>sharing</strong> with others.</p></li>
+<li><p>Packages are sort of analogous to a software application like Microsoft Word on your computer. Your operating system allows you to use it, just like having R installed (and other required packages) allows you to use packages.</p></li>
+</ul>
+</section>
+<section id="more-on-functions-and-packages" class="level2">
+<h2 class="anchored" data-anchor-id="more-on-functions-and-packages">More on Functions and Packages</h2>
+<ul>
+<li>When you download R, it has a “base” set of functions/packages (<strong>base R</strong>)<br>
+</li>
+<li>You can install additional packages for your uses from <a href="https://cran.r-project.org/">CRAN</a> or <a href="https://github.com/">GitHub</a></li>
+<li>These additional packages are written by RStudio or R users/developers (like us)</li>
+</ul>
+</section>
+<section id="using-packages" class="level2">
+<h2 class="anchored" data-anchor-id="using-packages">Using Packages</h2>
+<ul>
+<li>Not all packages available on CRAN or GitHub are trustworthy</li>
+<li>RStudio (the company) makes a lot of great packages</li>
+<li>Who wrote it? <strong>Hadley Wickham</strong> is a major authority on R (Employee and Developer at RStudio)</li>
+<li>How to <a href="http://simplystatistics.org/2015/11/06/how-i-decide-when-to-trust-an-r-package/">trust</a> an R package</li>
+<li>Install packages: <code>install.packages("package_name")</code></li>
+<li>Use packages: <code>library(package_name)</code></li>
+</ul>
+</section>
+<section id="tidyverse-ecosystem-and-base-r" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-ecosystem-and-base-r">Tidyverse Ecosystem and Base R</h2>
+<ul>
+<li><p>We will mostly show you how to use tidyverse packages and functions.</p></li>
+<li><p>This is a newer set of packages designed for data science that can make your code more <strong>intuitive</strong> as compared to the original older Base R.</p></li>
+<li><p><strong>Tidyverse advantages</strong>:</p>
+<ul>
+<li><strong>consistent structure</strong> - making it easier to learn how to use different packages<br>
+</li>
+<li>particularly good for <strong>wrangling</strong> (manipulating, cleaning, joining) data<br>
+</li>
+<li>more flexible for <strong>visualizing</strong> data</li>
+</ul></li>
+<li><p>Packages for the tidyverse are managed by a team of respected data scientists at RStudio.</p></li>
+</ul>
+</section>
+<section id="installation-and-use" class="level2">
+<h2 class="anchored" data-anchor-id="installation-and-use">Installation and Use</h2>
+<ul>
+<li><p>Install all the packages in the tidyverse by running <code>install.packages("tidyverse")</code>.</p></li>
+<li><p>Run <code>library(tidyverse)</code> to load the core tidyverse and make it available in your current R session.</p></li>
+<li><p>Learn more about the tidyverse package at <a href="https://tidyverse.tidyverse.org" class="uri">https://tidyverse.tidyverse.org</a>.</p></li>
+</ul>
+</section>
+<section id="core-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="core-tidyverse">Core tidyverse</h2>
+<ul>
+<li>The core tidyverse includes the packages that you’re likely to use in everyday data analyses.</li>
+<li>As of tidyverse 1.3.0, the following packages are included in the core tidyverse.</li>
+<li>The tidyverse also includes many other packages with more specialised usage.</li>
+<li>They are not loaded automatically with <code>library(tidyverse)</code>, so you’ll need to load each one with its own call to <code>library()</code>.</li>
+</ul>
+</section>
+<section id="data-import" class="level2">
+<h2 class="anchored" data-anchor-id="data-import">Data Import</h2>
+<ul>
+<li><p>As well as <a href="https://readr.tidyverse.org">readr</a>, for reading flat files, the tidyverse package installs a number of other packages for reading data:</p>
+<ul>
+<li><a href="https://github.com/rstats-db/DBI">DBI</a> for relational databases. (Maintained by <a href="https://www.cynkra.com">Kirill Müller</a>.) You’ll need to pair DBI with a database specific backends like <a href="https://rsqlite.r-dbi.org">RSQLite</a>, <a href="https://rmariadb.r-dbi.org">RMariaDB</a>, <a href="https://rpostgres.r-dbi.org">RPostgres</a>, or <a href="https://github.com/r-dbi/odbc">odbc</a>. Learn more at <a href="https://db.rstudio.com" class="uri">https://db.rstudio.com</a>.</li>
+</ul></li>
+<li><p><a href="https://haven.tidyverse.org">haven</a> for SPSS, Stata, and SAS data.</p></li>
+<li><p><a href="https://github.com/r-lib/httr">httr</a> for web APIs.</p></li>
+<li><p><a href="https://readxl.tidyverse.org">readxl</a> for <code>.xls</code> and <code>.xlsx</code> sheets.</p></li>
+<li><p><a href="https://github.com/tidyverse/rvest">rvest</a> for web scraping.</p></li>
+<li><p><a href="https://github.com/jeroen/jsonlite#jsonlite">jsonlite</a> for JSON. (Maintained by <a href="https://github.com/jeroen">Jeroen Ooms</a>.)</p></li>
+<li><p><a href="https://github.com/r-lib/xml2">xml2</a> for XML.</p></li>
+</ul>
+</section>
+<section id="data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h2>
+<p>In addition to <a href="https://tidyr.tidyverse.org">tidyr</a>, and <a href="https://dplyr.tidyverse.org">dplyr</a>, there are five packages (including <a href="https://stringr.tidyverse.org">stringr</a> and <a href="https://forcats.tidyverse.org">forcats</a>) which are designed to work with specific types of data:</p>
+<ul>
+<li><a href="https://lubridate.tidyverse.org">lubridate</a> for dates and date-times.</li>
+<li><a href="https://github.com/tidyverse/hms">hms</a> for time-of-day values.</li>
+<li><a href="https://github.com/tidyverse/blob">blob</a> for storing blob (binary) data.</li>
+</ul>
+</section>
+<section id="program" class="level2">
+<h2 class="anchored" data-anchor-id="program">Program</h2>
+<p>In addition to <a href="https://purrr.tidyverse.org">purrr</a>, which provides very consistent and natural methods for iterating on R objects, there are two additional tidyverse packages that help with general programming challenges:</p>
+<ul>
+<li><p><a href="https://magrittr.tidyverse.org">magrittr</a> provides the pipe, <code>%&gt;%</code> used throughout the tidyverse. It also provide a number of more specialised piping operators (like <code>%$%</code> and <code>%&lt;&gt;%</code>) that can be useful in other places.</p></li>
+<li><p><a href="https://github.com/tidyverse/glue">glue</a> provides an alternative to <code>paste()</code> that makes it easier to combine data and strings.</p></li>
+</ul>
+</section>
+<section id="useful-mostly-free-resources" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources">Useful (+ mostly Free) Resources</h2>
+<ul>
+<li><p>Tidyverse Skills for Data Science Book: <a href="https://jhudatascience.org/tidyversecourse/" class="uri">https://jhudatascience.org/tidyversecourse/</a> (more about the tidyverse, some modeling, and machine learning)</p></li>
+<li><p>Tidyverse Skills for Data Science Course: <a href="https://www.coursera.org/specializations/tidyverse-data-science-r" class="uri">https://www.coursera.org/specializations/tidyverse-data-science-r</a> (same content with quizzes, can get certificate with $)</p></li>
+<li><p>R for Data Science: <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a><br>
+(great general information)</p></li>
+<li><p>R basics by Rafael A. Irizarry: <a href="https://rafalab.github.io/dsbook/r-basics.html" class="uri">https://rafalab.github.io/dsbook/r-basics.html</a> (great general information)</p></li>
+<li><p>Open Case Studies: <a href="https://www.opencasestudies.org/" class="uri">https://www.opencasestudies.org/</a><br>
+(resource for specific public health cases with statistical implementation and interpretation)</p></li>
+</ul>
+</section>
+<section id="useful-mostly-free-resources-1" class="level2">
+<h2 class="anchored" data-anchor-id="useful-mostly-free-resources-1">Useful (+ mostly Free) Resources</h2>
+<ul>
+<li><p>Dataquest: <a href="https://www.dataquest.io/" class="uri">https://www.dataquest.io/</a><br>
+(general interactive resource)</p></li>
+<li><p>Various “Cheat Sheets”: <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a></p></li>
+<li><p>R reference card: <a href="http://cran.r-project.org/doc/contrib/Short-refcard.pdf" class="uri">http://cran.r-project.org/doc/contrib/Short-refcard.pdf</a></p></li>
+<li><p>R jargon: <a href="https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf" class="uri">https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</a></p></li>
+<li><p>R vs Stata: <a href="https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf" class="uri">https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf</a></p></li>
+<li><p>R terminology: <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf</a></p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">© Copyright 2023, Md. Jubayer Hossain</div>
+  </div>
+</footer>
+
+
+
+</body></html>

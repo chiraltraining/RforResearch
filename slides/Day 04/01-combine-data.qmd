@@ -1,0 +1,139 @@
+# Combine Data 
+
+## Joining in `dplyr`
+
+* Merging/joining data sets together - usually on key variables, usually "id"
+* `?join` - see different types of joining for `dplyr`
+* `inner_join(x, y)` - only rows that match for `x` and `y` are kept
+* `full_join(x, y)` - all rows of `x` and `y` are kept 
+* `left_join(x, y)` - all rows of `x` are kept even if not merged with `y`
+* `right_join(x, y)` - all rows of `y` are kept even if not merged with `x`
+* `anti_join(x, y)` - all rows from `x` not in `y` keeping just columns from `x`.
+
+
+## Left Join
+- The LEFT JOIN in R returns all records from the left dataframe (A), and the matched records from the right dataframe (B)
+- Returns all rows from the left dataset and the matching rows from the right dataset.
+- Syntax: `left_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform left join
+merged_data <- left_join(data1, data2, by = "key_column")
+```
+
+```{r, fig.alt="A gif showing the left joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/left_join.gif")
+```
+
+
+## Right Join
+- The RIGHT JOIN in R returns all records from the right dataframe (B), and the matched records from the left dataframe (A)
+- Returns all rows from the right dataset and the matching rows from the left dataset.
+- Syntax: `right_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform right join
+merged_data <- right_join(data1, data2, by = "key_column")
+```
+
+```{r, fig.alt="A gif showing the right joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/right_join.gif")
+```
+
+## Inner Join
+- Inner Join in R is the simplest and most common type of join. It is also known as simple join or Natural Join. Inner join returns the rows when matching condition is met.
+- Returns only the matching rows from both datasets.
+- Syntax: `inner_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform inner join
+merged_data <- inner_join(data1, data2, by = "key_column")
+```
+
+```{r, fig.alt="A gif showing the inner joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/inner_join.gif")
+```
+
+## Full Join
+- Returns all rows from both datasets, filling in missing values with NA where there are no matches.
+- Syntax: `full_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform full join
+merged_data <- full_join(data1, data2, by = "key_column")
+```
+
+```{r, fig.alt="A gif showing the full joining of two simple datasets.", out.width = "70%", echo = FALSE, align = "center"}
+knitr::include_graphics("images/full_join.gif")
+```
+
+## Semi Join
+- Returns only the rows from the left dataset that have matching values in the right dataset.
+- Syntax: `semi_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform semi join
+filtered_data <- semi_join(data1, data2, by = "key_column")
+```
+
+## Anti Join
+- Returns only the rows from the left dataset that do not have matching values in the right dataset.
+- Syntax: `anti_join(x, y, by = "key_column")`
+
+```{r, eval=FALSE}
+# Perform anti join
+filtered_data <- anti_join(data1, data2, by = "key_column")
+```
+
+## Set Operations
+Set operations in R allow you to perform operations on sets or vectors, such as finding unique elements, merging sets, and identifying common or distinct elements.
+
+## Intersect
+
+- The `intersect()` function in the dplyr package allows you to find the common elements between two data frames or tibbles. 
+- Syntax: `intersect(data1, data2)`
+
+```{r, eval=FALSE}
+# Find common elements between data frames y and z
+common_data <- intersect(y, z)
+```
+
+## Union
+- The `union()` function in the dplyr package allows you to combine two data frames or tibbles and return a new data frame containing all unique rows from both data frames. 
+- Syntax: `union(data1, data2)`
+
+```{r, eval=FALSE}
+# Combine data frames y and z and get unique rows
+combined_data <- union(y, z)
+
+```
+
+## Setdiff
+- The `setdiff()` function in the dplyr package allows you to find the rows in one data frame that are not present in another data frame. 
+- Syntax: `setdiff(data1, data2)`
+
+```{r, eval=FALSE}
+# Find rows in data frame y that are not present in data frame z
+diff_data <- setdiff(y, z)
+```
+
+## Binding Data 
+In R, you can combine data frames or vectors by binding them together either vertically or horizontally. This allows you to merge or append data from different sources into a single data structure.
+
+## Bind Rows 
+- The `bind_rows()` function in the dplyr package allows you to vertically bind or combine data frames or tibbles by matching column names. 
+- Syntax: `bind_rows(y, z)`
+
+```{r, eval=FALSE}
+# Vertically bind data frames y and z
+merged_data <- bind_rows(y, z)
+```
+
+## Bind Columns  
+- The `bind_cols()` function in the dplyr package allows you to horizontally bind or combine data frames or tibbles by matching row names. 
+- Syntax: `bind_cols(y, z)`
+
+```{r, eval=FALSE}
+# Horizontally bind data frames y and z
+merged_data <- bind_cols(y, z)
+```

@@ -1,0 +1,35 @@
+# Reshaping Data
+
+```{r, include=FALSE}
+# packages 
+library(tidyverse)
+library(readxl)
+```
+
+## Reshaping Data - Change the Layout of a Dataset 
+
+Reshaping data involves changing the layout of a dataset to make it more suitable for analysis or presentation. This typically includes transforming data between wide and long formats or converting between different types of data structures.
+
+## Reshaping from Wide to Long Format
+- `tidyr::gather()`: Converts wide data into long format by gathering columns into key-value pairs.
+- `pivot_longer()`: Similar to `gather()`, it transforms wide data into long format but provides more flexibility and options.
+
+```{r, wide-long}
+wide_data <- read_excel("data/Life_Expectancy_Wide.xlsx")
+
+# convert into long 
+long_data <- wide_data %>% 
+  tidyr::pivot_longer(cols = 2:75, names_to = "Year", values_to = "LifeExp")
+head(long_data)
+```
+
+## Reshaping from Long to Wide Format
+- `tidyr::spread()`: Converts long data into wide format by spreading values from a column into multiple columns based on unique identifiers.
+- `pivot_wider()`: Similar to spread(), it transforms long data into wide format but provides more flexibility and options.
+
+```{r, long-wide}
+# convert into wide 
+wide_data <- long_data %>% 
+  pivot_wider(names_from = "Year", values_from = "LifeExp")
+head(wide_data)
+```

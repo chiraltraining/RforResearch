@@ -1,0 +1,243 @@
+# Background 
+
+## What is R?
+- R is a language and environment for statistical computing and graphics developed in 1991.
+
+- R is the open source implementation of the [S language](https://en.wikipedia.org/wiki/S_(programming_language)), which was developed by [Bell laboratories](https://ca.slack-edge.com/T023TPZA8LF-U024EN26Q0L-113294823b2c-512) in the 70s.
+
+- The aim of the S language, as expressed by John Chambers, is "to turn ideas into software, quickly and faithfully"
+
+- R is both [open source](https://en.wikipedia.org/wiki/Open_source) and [open development](https://en.wikipedia.org/wiki/Open-source_software_development).
+- The aim of the S language, as expressed by John Chambers, is "to turn ideas into software, quickly and faithfully"
+
+
+```{r, fig.alt="Bell Labs old logo", out.width = "20%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Bell_Laboratories_logo.svg/2880px-Bell_Laboratories_logo.svg.png")
+```
+
+## More on R Programming  
+
+- R is a dialect of S(R is an implementation of the S programming language).  
+
+- R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New
+Zealand, and is developed by the R Development Core Team. 
+
+- R is a programming language and environment commonly used in statistical computing, data analytics and scientific research. 
+
+- R is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. 
+
+- The R language is widely used among statisticians and data miners for developing statistical software and data analysis.
+
+```{r, fig.alt="R logo", out.width = "20%", echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://www.r-project.org/Rlogo.png")
+```
+
+## Why R?
+
+* Free (open source)
+
+* High level language designed for statistical computing
+
+* Powerful and flexible - especially for data wrangling and visualization
+
+* Extensive add-on software (packages)
+* R is popular – and increasing in popularity. 
+* R runs on all platforms.(Windows, Linux and Mac) 
+* R is being used by the biggest tech giants(google, facebook, microsoft, twitter)
+* Strong community 
+
+## Reproducibility Crisis
+::: {.columns}
+::: {.column width="60%"}
+-   Quality of medical research is often low
+
+-   [Low quality code]{.emphasis} in medical research part of the problem
+
+-   Low quality code is more [likely to contain errors]{.emphasis}
+
+-   Reproducibility is often [cumbersome]{.emphasis} and [time-consuming]{.emphasis}
+:::
+
+::: {.column width="40%"}
+![](images/reproducibility-graphic-online1.jpeg)
+:::
+:::
+
+# Basic Terms
+## Variable and Sample
+- **Variable**: something measured or counted that is a characteristic about a sample
+  - *Examples:* temperature, length, count, color, category
+
+- **Sample**: individuals that you have data about. 
+
+  - *Examples:* people, houses, viruses etc.
+
+## Object
+**Object** - an object is something that can be worked with in R - can be lots of different things!
+
+  - a matrix of numbers
+  - a plot
+  - a function
+
+... many more
+
+## Columns and Rows
+```{r, echo=FALSE}
+library(gt)
+gt(head(iris))  
+```
+
+* Sample/Observations = Row  
+* Variable = Column
+
+* Data objects that looks like this is often called a **data frame**.
+
+* Fancier versions from the tidyverse are called **tibbles** (more on that soon!). 
+
+## Function
+* **Function** - a function is a particular piece of code that allows you to do something in R. You can write your own, use functions that come directly from installing R, or use functions from additional packages.
+
+* A function might help you add numbers together, create a plot, or organize your data. More on that soon!
+
+## Argument/Parameter
+**Argument/Parameter** - what you pass to a function
+
+```{r}
+sum(1, 20234)
+```
+
+- Can be data like the number 1 or 20234 
+- Can be options about how you want the function to work such as `digits`
+
+```{r}
+round(0.627, digits = 2)
+round(0.627, digits = 1)
+```
+
+## Package
+* **Package** - a package in R is a bundle or "package" of code (and or possibly data) that can be loaded together for easy repeated use or for **sharing** with others.
+
+* Packages are sort of analogous to a software application like Microsoft Word on your computer. Your operating system allows you to use it, just like having R installed (and other required packages) allows you to use packages.
+
+## More on Functions and Packages
+
+* When you download R, it has a "base" set of functions/packages (**base R**)  
+* You can install additional packages for your uses from [CRAN](https://cran.r-project.org/) or [GitHub](https://github.com/) 
+* These additional packages are written by RStudio or R users/developers (like us)
+
+## Using Packages
+
+* Not all packages available on CRAN or GitHub are trustworthy
+* RStudio (the company) makes a lot of great packages
+* Who wrote it? **Hadley Wickham** is a major authority on R (Employee and Developer at RStudio)
+* How to [trust](http://simplystatistics.org/2015/11/06/how-i-decide-when-to-trust-an-r-package/) an R package
+* Install packages: `install.packages("package_name")`
+* Use packages: `library(package_name)`
+
+## Tidyverse Ecosystem and Base R
+
+* We will mostly show you how to use tidyverse packages and functions. 
+* This is a newer set of packages designed for data science that can make your code more **intuitive** as compared to the original older Base R.
+
+* **Tidyverse advantages**:  
+   - **consistent structure** - making it easier to learn how to use different packages  
+   - particularly good for **wrangling** (manipulating, cleaning, joining) data  
+   - more flexible for **visualizing** data  
+
+* Packages for the tidyverse are managed by a team of respected data scientists at RStudio.
+
+
+## Installation and Use
+
+* Install all the packages in the tidyverse by running `install.packages("tidyverse")`.
+
+* Run `library(tidyverse)` to load the core tidyverse and make it available
+  in your current R session.
+
+* Learn more about the tidyverse package at <https://tidyverse.tidyverse.org>.
+
+## Core tidyverse
+
+* The core tidyverse includes the packages that you're likely to use in everyday data analyses. 
+* As of tidyverse 1.3.0, the following packages are included in the core tidyverse. 
+* The tidyverse also includes many other packages with more specialised usage. 
+* They are not loaded automatically with `library(tidyverse)`, so you'll need to load each one with its own call to `library()`.
+
+## Data Import
+* As well as [readr](https://readr.tidyverse.org), for reading flat files, the tidyverse package installs a number of other packages for reading data:
+  * [DBI](https://github.com/rstats-db/DBI) for relational databases.
+  (Maintained by [Kirill Müller](https://www.cynkra.com).)
+  You'll need to pair DBI with a database specific backends like 
+  [RSQLite](https://rsqlite.r-dbi.org), 
+  [RMariaDB](https://rmariadb.r-dbi.org),
+  [RPostgres](https://rpostgres.r-dbi.org), or 
+  [odbc](https://github.com/r-dbi/odbc). 
+  Learn more at <https://db.rstudio.com>.
+
+* [haven](https://haven.tidyverse.org) for SPSS, Stata, and SAS data.
+
+* [httr](https://github.com/r-lib/httr) for web APIs.
+
+* [readxl](https://readxl.tidyverse.org) for `.xls` and `.xlsx` sheets.
+
+* [rvest](https://github.com/tidyverse/rvest) for web scraping.
+
+* [jsonlite](https://github.com/jeroen/jsonlite#jsonlite)
+  for JSON. (Maintained by [Jeroen Ooms](https://github.com/jeroen).)
+
+* [xml2](https://github.com/r-lib/xml2) for XML.
+
+
+## Data Wrangling 
+
+In addition to [tidyr](https://tidyr.tidyverse.org), and [dplyr](https://dplyr.tidyverse.org), there are five packages (including [stringr](https://stringr.tidyverse.org) and [forcats](https://forcats.tidyverse.org)) which are designed to work with specific types of data:
+
+* [lubridate](https://lubridate.tidyverse.org) for dates and date-times.
+* [hms](https://github.com/tidyverse/hms) for time-of-day values.
+* [blob](https://github.com/tidyverse/blob) for storing blob (binary) data.
+
+
+## Program
+
+In addition to [purrr](https://purrr.tidyverse.org), which provides very consistent and natural methods for iterating on R objects, there are two additional tidyverse packages that help with general programming challenges:
+
+* [magrittr](https://magrittr.tidyverse.org) provides the pipe, `%>%` used
+  throughout the tidyverse. It also provide a number of more specialised
+  piping operators (like `%$%` and `%<>%`) that can be useful in other places.
+
+* [glue](https://github.com/tidyverse/glue) provides an alternative to
+  `paste()` that makes it easier to combine data and strings.
+
+## Useful (+ mostly Free) Resources
+
+- Tidyverse Skills for Data Science Book: <https://jhudatascience.org/tidyversecourse/>
+(more about the tidyverse, some modeling, and machine learning)
+
+- Tidyverse Skills for Data Science Course: <https://www.coursera.org/specializations/tidyverse-data-science-r> 
+(same content with quizzes, can get certificate with $)
+
+- R for Data Science: <http://r4ds.had.co.nz/>  
+(great general information)
+
+- R basics by Rafael A. Irizarry: <https://rafalab.github.io/dsbook/r-basics.html>
+(great general information)
+ 
+- Open Case Studies: <https://www.opencasestudies.org/>  
+(resource for specific public health cases with statistical implementation and interpretation)
+
+
+## Useful (+ mostly Free) Resources
+
+- Dataquest: <https://www.dataquest.io/>  
+(general interactive resource)
+
+- Various "Cheat Sheets": <https://www.rstudio.com/resources/cheatsheets/>   
+
+- R reference card: <http://cran.r-project.org/doc/contrib/Short-refcard.pdf>  
+
+- R jargon: <https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf>  
+
+- R vs Stata: <https://link.springer.com/content/pdf/bbm%3A978-1-4419-1318-0%2F1.pdf>  
+
+- R terminology: <https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf>
+
