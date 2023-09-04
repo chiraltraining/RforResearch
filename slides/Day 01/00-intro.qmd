@@ -1,18 +1,3 @@
-```{r}
-#| echo: false
-#| cache: false
-# fill for font awesome icons
-fa_fill <- "#606060"
-```
-
-## Agenda 
-* Introduction & Setup 
-* Background 
-* Basic Terms in R 
-* Getting Started With R
-* R Data Types
-* Operators in R
-
 # Introduction 
 
 ## About the Course  

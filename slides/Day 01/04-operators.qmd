@@ -178,12 +178,3 @@ Here, the output is the negation of the input.
 
 - We can use the ! operator with comparisons. 
 - For example, !(x > 12) is the same as x <= 12. This means that x is not greater than 12. Which means that x can be less than or equal to 12.
-
-# Questions? 
-`r fontawesome::fa("link", fill = fa_fill)` [hossainlab.github.io](https://hossainlab.github.io/)
-
-`r fontawesome::fa("twitter", fill = fa_fill)` [\@JHossain_28](https://twitter.com/JHossain_28)
-
-`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/hossainmj](https://www.linkedin.com/in/hossainmj/)
-
-`r fontawesome::fa("github", fill = fa_fill)` [github.com/hossainlab](https://github.com/hossainlab/)

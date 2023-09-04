@@ -64,12 +64,4 @@ random_numbers <- rnorm(5, mean = 0, sd = 1)
 set.seed(123)
 ```
 
-# Questions? 
-`r fontawesome::fa("link", fill = fa_fill)` [hossainlab.github.io](https://hossainlab.github.io/)
-
-`r fontawesome::fa("twitter", fill = fa_fill)` [\@JHossain_28](https://twitter.com/JHossain_28)
-
-`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/hossainmj](https://www.linkedin.com/in/hossainmj/)
-
-`r fontawesome::fa("github", fill = fa_fill)` [github.com/hossainlab](https://github.com/hossainlab/)
 

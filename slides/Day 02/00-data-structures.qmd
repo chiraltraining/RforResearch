@@ -1,19 +1,4 @@
-```{r}
-#| echo: false
-#| cache: false
-# fill for font awesome icons
-fa_fill <- "#606060"
-```
-
-
-## Agenda 
-* Data Structurs in R 
-* Subsetting R Objects 
-* Control Flow in R 
-* Functions 
-* Dates and Times 
-* Loop Functions 
-* Simulations - Generating Random Numbers 
+# Data Structure 
 
 ## What is Data Structure? 
 - Data structures are ways of organizing and storing data in a computer system.
