@@ -9,7 +9,7 @@ project:
 
 website:
   page-navigation: true
-  title: "R for Research - A Step by Step Guide for Beginners"
+  title: "R for Research"
   description: "Homepage for  R for Research - A Step by Step Guide for Beginners"
   site-url: "https://chiraltraining.github.io/RforResearch/"
   favicon: "images/logo.png"
