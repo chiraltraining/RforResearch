@@ -32,49 +32,70 @@
     "href": "index.html",
     "title": "R for Research: A Beginner’s Guide",
     "section": "",
-    "text": "🗓July 1 - July 15, 2023 | 9:00pm - 11:00pm (Bangladesh Time)\n🏨 Medium - Zoom\n💥 Register with Google Forms\n💥 Registration Fee: 1020BDT (for students), 1530BDT (for professionals)\n📝 To join private Telegram group for the course, follow instructions in the email you received after registration."
+    "text": "🗓February 16 - 30, 2024 | 9:00pm - 11:00pm (Bangladesh Time)\n🏨 Medium - Zoom\n💥 Register with Google Forms\n💥 Registration Fee: 1020BDT (for students), 1530BDT (for professionals)\n📝 To join private Telegram group for the course, follow instructions in the email you received after registration.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#what-is-r",
     "href": "index.html#what-is-r",
     "title": "R for Research: A Beginner’s Guide",
     "section": "What is R?",
-    "text": "What is R?\nR is an open source language and environment for statistical computing, data mining, modeling, and data graphics. It provides a wide variety of statistical and graphical techniques such as linear and non-linear modeling, statistical tests, time series analysis, classification, and clustering."
+    "text": "What is R?\nR is an open source language and environment for statistical computing, data mining, modeling, and data graphics. It provides a wide variety of statistical and graphical techniques such as linear and non-linear modeling, statistical tests, time series analysis, classification, and clustering.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#learning-outcomes",
     "href": "index.html#learning-outcomes",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Learning outcomes",
-    "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy data for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages."
+    "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy data for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#purpose-of-statistical-programming-software",
     "href": "index.html#purpose-of-statistical-programming-software",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Purpose of statistical programming software",
-    "text": "Purpose of statistical programming software\nUnlike spreadsheet applications (like Excel) or point-and-click statistical analysis software (SPSS), statistical programming software is based around a script-file where the user writes a series of commands to be performed,\nAdvantages of statistical programming software\n\nData analysis process is reproducible and transparent.\nDue to the open-ended nature of language-based programming, there is far more versatility and customizability in what you can do with data.\nTypically statistical programming software has a much more comprehensive range of built-in analysis functions than spreadsheets etc."
+    "text": "Purpose of statistical programming software\nUnlike spreadsheet applications (like Excel) or point-and-click statistical analysis software (SPSS), statistical programming software is based around a script-file where the user writes a series of commands to be performed,\nAdvantages of statistical programming software\n\nData analysis process is reproducible and transparent.\nDue to the open-ended nature of language-based programming, there is far more versatility and customizability in what you can do with data.\nTypically statistical programming software has a much more comprehensive range of built-in analysis functions than spreadsheets etc.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#why-do-we-need-analytics",
     "href": "index.html#why-do-we-need-analytics",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Why Do We Need Analytics?",
-    "text": "Why Do We Need Analytics?\nBefore an answer to above question, let us see some of the problems and their solutions in R in multiple domains.\n\nHealthcare\n\nProblem: Every year millions of people are admitted in hospital and billions are spent annually just in the admission process.\nSolution: Given the patient history and medical history, a predictive model can be built to identify who is at risk for hospitalization and to what extent the medical equipment should be scaled.\n\n\n\nInsurance\n\nProblem: Insurance extensively depends on forecasting. It is difficult to decide which policy to accept orreject.\nSolution: By using the continuous credit report as input, we can create a model in R that will not only assess risk appetite but also make a predictive forecast as well.\n\n\n\nBanking\n\nProblem: Large amount of customer data is generated every day in Banks. While dealing with millions of customers on regular basis, it becomes hard to track their mortgages.\nSolution: R builds a custom model that maintains the loans provided to every individual customer which helps us to decide the amount to be paid by the customer over time."
+    "text": "Why Do We Need Analytics?\nBefore an answer to above question, let us see some of the problems and their solutions in R in multiple domains.\n\nHealthcare\n\nProblem: Every year millions of people are admitted in hospital and billions are spent annually just in the admission process.\nSolution: Given the patient history and medical history, a predictive model can be built to identify who is at risk for hospitalization and to what extent the medical equipment should be scaled.\n\n\n\nInsurance\n\nProblem: Insurance extensively depends on forecasting. It is difficult to decide which policy to accept orreject.\nSolution: By using the continuous credit report as input, we can create a model in R that will not only assess risk appetite but also make a predictive forecast as well.\n\n\n\nBanking\n\nProblem: Large amount of customer data is generated every day in Banks. While dealing with millions of customers on regular basis, it becomes hard to track their mortgages.\nSolution: R builds a custom model that maintains the loans provided to every individual customer which helps us to decide the amount to be paid by the customer over time.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#why-r",
     "href": "index.html#why-r",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Why R?",
-    "text": "Why R?\n\nR is a programming and statistical language.\nR is used for data Analysis and Visualization.\nR is simple and easy to learn, read and write.\nR is an example of a FLOSS (Free Libre and Open Source Software) where one can freely distribute copies of this software, read its source code, modify it, etc."
+    "text": "Why R?\n\nR is a programming and statistical language.\nR is used for data Analysis and Visualization.\nR is simple and easy to learn, read and write.\nR is an example of a FLOSS (Free Libre and Open Source Software) where one can freely distribute copies of this software, read its source code, modify it, etc.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#who-uses-r",
     "href": "index.html#who-uses-r",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Who uses R?",
-    "text": "Who uses R?\n\nThe Consumer Financial Protection Bureau uses R for data analysis\nStatisticians at John Deere use R for time series modeling and geospatial analysis in a reliable and reproducible way.\nBank of America uses R for reporting.\nR is part of technology stack behind Foursquare’s famed recommendation engine.\nANZ, the fourth largest bank in Australia, using R for credit risk analysis.\nGoogle uses R to predict Economic Activity.\nMozilla, the foundation responsible for the Firefox web browser, uses R to visualize Web activity"
+    "text": "Who uses R?\n\nThe Consumer Financial Protection Bureau uses R for data analysis\nStatisticians at John Deere use R for time series modeling and geospatial analysis in a reliable and reproducible way.\nBank of America uses R for reporting.\nR is part of technology stack behind Foursquare’s famed recommendation engine.\nANZ, the fourth largest bank in Australia, using R for credit risk analysis.\nGoogle uses R to predict Economic Activity.\nMozilla, the foundation responsible for the Firefox web browser, uses R to visualize Web activity",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#evolution-of-r",
@@ -123,14 +144,20 @@
     "href": "index.html#required-software",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Required software",
-    "text": "Required software\n\nR: http://www.r-project.org/ (FREE)\nRStudio (additional libraries required): http://www.rstudio.com/ (FREE)"
+    "text": "Required software\n\nR: http://www.r-project.org/ (FREE)\nRStudio (additional libraries required): http://www.rstudio.com/ (FREE)",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#recording-of-classes",
     "href": "index.html#recording-of-classes",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Recording of classes",
-    "text": "Recording of classes\nClass lectures will be recorded automatically using cloud. The links will be posted to CHIRAL Classes when they are available."
+    "text": "Recording of classes\nClass lectures will be recorded automatically using cloud. The links will be posted to CHIRAL Classes when they are available.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#learning-resources",
@@ -151,7 +178,10 @@
     "href": "index.html#prework",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of the gtsummary and other packages used in workshop.\ninstll_pkgs &lt;- \n  c(\"gtsummary\", \"tidyverse\", \"gapminder\", \"ggpubr\", \n    \"likert\", \"skimr\", \"car\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of the gtsummary and other packages used in workshop.\ninstll_pkgs &lt;- \n  c(\"gtsummary\", \"tidyverse\", \"gapminder\", \"ggpubr\", \n    \"likert\", \"skimr\", \"car\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#zoom-working-virtually",
@@ -4869,28 +4899,40 @@
     "href": "index.html#blogs-for-r-programming-statistics-and-data-analyis",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Blogs for R Programming, Statistics, and Data Analyis",
-    "text": "Blogs for R Programming, Statistics, and Data Analyis\n\nProgramiz - https://www.datamentor.io/r-programming/\nPennState STAT 484 - https://online.stat.psu.edu/stat484/\nPennState Topics in R Statistical Language - https://online.stat.psu.edu/stat484/\nSimply Statistics - https://simplystatistics.org/\nTutorialPoint - https://www.tutorialspoint.com/r/index.htm\nR for Biologists - https://www.rforbiologists.org/\nComputational Genomics with R - https://compgenomr.github.io/book/\nStat and R - https://statsandr.com/\nRafa Lab - https://rafalab.github.io/pages/harvardx.html\nUniversity of Florida - https://bolt.mph.ufl.edu/software/r-phc-6055/"
+    "text": "Blogs for R Programming, Statistics, and Data Analyis\n\nProgramiz - https://www.datamentor.io/r-programming/\nPennState STAT 484 - https://online.stat.psu.edu/stat484/\nPennState Topics in R Statistical Language - https://online.stat.psu.edu/stat484/\nSimply Statistics - https://simplystatistics.org/\nTutorialPoint - https://www.tutorialspoint.com/r/index.htm\nR for Biologists - https://www.rforbiologists.org/\nComputational Genomics with R - https://compgenomr.github.io/book/\nStat and R - https://statsandr.com/\nRafa Lab - https://rafalab.github.io/pages/harvardx.html\nUniversity of Florida - https://bolt.mph.ufl.edu/software/r-phc-6055/",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#datasets",
     "href": "index.html#datasets",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Datasets",
-    "text": "Datasets\n\nMental Health and Suicide Rates\nWestern Africa Ebola Outbreak\nMERS Outbreaks 2012-2019\nH1N1 Swine Flu Pandemic 2009\nSARS Outbreak 2003"
+    "text": "Datasets\n\nMental Health and Suicide Rates\nWestern Africa Ebola Outbreak\nMERS Outbreaks 2012-2019\nH1N1 Swine Flu Pandemic 2009\nSARS Outbreak 2003",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#what-you-will-learn",
     "href": "index.html#what-you-will-learn",
     "title": "R for Research: A Beginner’s Guide",
     "section": "What you will learn?",
-    "text": "What you will learn?"
+    "text": "What you will learn?",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#publication-ready-tables",
     "href": "index.html#publication-ready-tables",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Publication-ready Tables",
-    "text": "Publication-ready Tables\nThe {gtsummary} package provides an elegant and flexible way to create publication-ready analytical and summary tables using the R programming language. The {gtsummary} package summarizes data sets, regression models, and more, using sensible defaults with highly customizable capabilities."
+    "text": "Publication-ready Tables\nThe {gtsummary} package provides an elegant and flexible way to create publication-ready analytical and summary tables using the R programming language. The {gtsummary} package summarizes data sets, regression models, and more, using sensible defaults with highly customizable capabilities.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#publication-ready-tables-1",
@@ -4904,21 +4946,30 @@
     "href": "index.html#publication-ready-figures",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Publication-ready Figures",
-    "text": "Publication-ready Figures\nThe {ggpubr} package provides some easy-to-use functions for creating and customizing ‘ggplot2’- based publication ready plots. ggplot2, by Hadley Wickham, is an excellent and flexible package for elegant data visualization in R. However the default generated plots requires some formatting before we can send them for publication. Furthermore, to customize a ggplot, the syntax is opaque and this raises the level of difficulty for researchers with no advanced R programming skills."
+    "text": "Publication-ready Figures\nThe {ggpubr} package provides some easy-to-use functions for creating and customizing ‘ggplot2’- based publication ready plots. ggplot2, by Hadley Wickham, is an excellent and flexible package for elegant data visualization in R. However the default generated plots requires some formatting before we can send them for publication. Furthermore, to customize a ggplot, the syntax is opaque and this raises the level of difficulty for researchers with no advanced R programming skills.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#analysis-and-visualization-likert-items",
     "href": "index.html#analysis-and-visualization-likert-items",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Analysis and Visualization Likert Items",
-    "text": "Analysis and Visualization Likert Items\nThe {Likert} is an R package designed to help analyzing and visualizing Likert type items. It has been developped by Jason Bryer and Kim Speerschneider. This barplot comes from the demo page and has been sent by Carlos Ortega. It allows to analyse the reading attitudes from a panel of people."
+    "text": "Analysis and Visualization Likert Items\nThe {Likert} is an R package designed to help analyzing and visualizing Likert type items. It has been developped by Jason Bryer and Kim Speerschneider. This barplot comes from the demo page and has been sent by Carlos Ortega. It allows to analyse the reading attitudes from a panel of people.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#reproducible-academic-writing-with-rmarkdown",
     "href": "index.html#reproducible-academic-writing-with-rmarkdown",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Reproducible Academic Writing with Rmarkdown",
-    "text": "Reproducible Academic Writing with Rmarkdown\nR Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL."
+    "text": "Reproducible Academic Writing with Rmarkdown\nR Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "q-and-a.html#is-this-course-for-me",
@@ -4981,7 +5032,10 @@
     "href": "index.html#instructor",
     "title": "R for Research: A Beginner’s Guide",
     "section": "Instructor",
-    "text": "Instructor\n\nBio\n Md. Jubayer Hossain is the Founder, Management Lead and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health, and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his website.\n\n\nSkills\nProgramming Languages: Python, R, SQL, Julia, JavaScript; Data Science: scikit-learn, PyCaret, Dask, PySpark; GIS & Remote Sensing: ArcGIS, Geopandas, Xarray, Giovani; Analytics Softwares: SPSS, PowerBI, Microsoft Excel; Survey Tools: RedCap, KoboToolBox, EpiCollect, Google Forms; Academic Writing Tools: Microsoft Word, LaTeX, Mendeley; Bioinformatics: BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; Miscellaneous Skills: UNIX, Version Control(Git), Web Scraping, APIs.\n\n\nPublications\n\nHossain, M.J., Islam, M.W., Munni, U.R. et al. Health-related quality of life among thalassemia patients in Bangladesh using the SF-36 questionnaire. Scientific Reports 13, 7734 (2023). https://doi.org/10.1038/s41598-023-34205-9\nTowhid, S. T., Hossain, M. J., Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community-Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. https://doi.org/10.24018/ejbio.2022.3.3.341\nHossain, M.J., Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh. Microbial Bioactives, 5(2), https://doi.org/10.25163/microbbioacts.526325."
+    "text": "Instructor\n\nBio\n Md. Jubayer Hossain is the Founder, Management Lead and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health, and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his website.\n\n\nSkills\nProgramming Languages: Python, R, SQL, Julia, JavaScript; Data Science: scikit-learn, PyCaret, Dask, PySpark; GIS & Remote Sensing: ArcGIS, Geopandas, Xarray, Giovani; Analytics Softwares: SPSS, PowerBI, Microsoft Excel; Survey Tools: RedCap, KoboToolBox, EpiCollect, Google Forms; Academic Writing Tools: Microsoft Word, LaTeX, Mendeley; Bioinformatics: BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; Miscellaneous Skills: UNIX, Version Control(Git), Web Scraping, APIs.\n\n\nPublications\n\nHossain, M.J., Islam, M.W., Munni, U.R. et al. Health-related quality of life among thalassemia patients in Bangladesh using the SF-36 questionnaire. Scientific Reports 13, 7734 (2023). https://doi.org/10.1038/s41598-023-34205-9\nTowhid, S. T., Hossain, M. J., Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community-Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. https://doi.org/10.24018/ejbio.2022.3.3.341\nHossain, M.J., Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh. Microbial Bioactives, 5(2), https://doi.org/10.25163/microbbioacts.526325.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#to-join-private-telegram-group-for-the-course-follow-instructions-in-the-email-you-received-after-registration.",
