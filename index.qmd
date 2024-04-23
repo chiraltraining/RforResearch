@@ -1,19 +1,18 @@
 ---
-title: "R for Research: A Beginner's Guide"
+title: "R for Research: A Beginner's Guide (Cohort 04)"
 subtitle: "[Center for Health Innovation, Research, Action and Learning – Bangladesh](https://www.chiralbd.org/) "
 editor: source
 ---
 
-
 ------------------------------------------------------------------------
 
-🗓February 16 - 30,  2024 \| 9:00pm - 11:00pm (Bangladesh Time)
+🗓May 16 - 30,  2024 \| 9:00pm - 11:00pm (Bangladesh Time)
 
 🏨 Medium - Zoom
 
-💥 **Register** with [Google Forms](https://forms.gle/VX58HJ7kQ265kkcs8) 
+💥 **Register** with [Google Forms](https://forms.gle/3ADuDtso6EDaiQWB7) 
 
-💥 **Registration Fee**: 1500BDT (for students), 2000BDT (for professionals)
+💥 **Registration Fee**: 2040BDT 
 
 📝 To join private Telegram group for the course, follow instructions in the email you received after registration.
 
@@ -204,13 +203,24 @@ Before attending the workshop please have the following installed and configured
 #### Bio
 
 ![](images/JHossain.jpg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Jubayer" width="200"}
-[Md. Jubayer Hossain](https://hossainlab.github.io/) is the Founder, Management Lead and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health,  and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his [website.](https://hossainlab.github.io/)  
+[Md. Jubayer Hossain](https://hossainlab.github.io/) is the Founder and Executive Director of [CHIRAL Bangladesh](https://chiralbd.org/). CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health,  and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his [website.](https://hossainlab.github.io/)  
 
 #### Skills 
 **Programming Languages:** Python, R, SQL, Julia, JavaScript; **Data Science:** scikit-learn, PyCaret, Dask, PySpark; **GIS & Remote Sensing:** ArcGIS, Geopandas, Xarray, Giovani; **Analytics Softwares:** SPSS, PowerBI, Microsoft Excel; **Survey Tools:** RedCap, KoboToolBox, EpiCollect, Google Forms; **Academic Writing Tools:** Microsoft Word, LaTeX, Mendeley; **Bioinformatics:** BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; **Miscellaneous Skills:** UNIX, Version Control(Git), Web Scraping, APIs. 
 
 #### Publications 
 
-1. **Hossain, M.J.**, Islam, M.W., Munni, U.R. et al. Health-related quality of life among thalassemia patients in Bangladesh using the SF-36 questionnaire. Scientific Reports 13, 7734 (2023). <https://doi.org/10.1038/s41598-023-34205-9>
-2. Towhid, S. T., **Hossain, M. J.**, Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community-Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. <https://doi.org/10.24018/ejbio.2022.3.3.341>
-3. **Hossain, M.J.**, Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). *Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh*. Microbial Bioactives, 5(2), <https://doi.org/10.25163/microbbioacts.526325>.
+- Islam, M.W., Shahjahan, M., Azad, A.K., **Hossain, M. J.** Factors contributing to antibiotic misuse among parents of school-going children in Dhaka City, Bangladesh. Sci Rep 14, 2318 (2024). <https://doi.org/10.1038/s41598-024-52313-y>
+
+- **Hossain, M. J.**, Islam, M. W., Munni, U. R., Gulshan, R., Mukta, S. A., Miah, M. S., Sultana, S., Karmakar, M., Ferdous, J., & Islam, M.A. (2023). Health‑related quality of life among thalassemia patients in Bangladesh using the SF‑36 questionnaire. Scientific Reports,13(1). <https://doi.org/10.1038/s41598-023-34205-9>
+
+- Towhid, S. T., **Hossain, M. J.**, Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community‑Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. <https://doi.org/10.24018/ejbio.2022.3.3.341>
+
+- **Hossain, M.J.**, Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). Knowledge and Attitudes towards
+Thalassemia among Public University Students in Bangladesh. Microbial Bioactives, 5(2), <https://doi.org/10.25163/microbbioacts.526325.>
+
+- **Hossain, M.J.**, Towhid, S. T., Akter, S., Shahjahan, M., Roy, T., Akter, B., & Nodee, T. A.(2023). Knowledge and Self-Management Practice Among Diabetic Patients from the Urban Areas in Bangladesh, Journal of Angiotherapy, 7(1), 1-10, <https://doi.org/10.25163/angiotherapy.717340>
+
+- **Hossain MJ**, Das M, Islam MW, Shahjahan M, Ferdous J. Community engagement and social participation in dengue prevention: A cross-sectional study in Dhaka City. Health Sci Rep. 2024; 7:e2022. <doi:10.1002/hsr2.2022>
+
+- **Hossain MJ**, Azad AK, Shahid MSB, Shahjahan M, Ferdous J. Prevalence, antibiotic resistance pattern for bacteriuria from patients with urinary tract infections. Health Sci Rep. 2024; 7:e2039. <doi:10.1002/hsr2.2039>

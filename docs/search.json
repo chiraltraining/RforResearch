@@ -4,7 +4,10 @@
     "href": "material.html",
     "title": "Material",
     "section": "",
-    "text": "Module\nCode\nLabs/Exercises\nHW\nCheatsheets/Giide\n\n\n\n\n00_Introduction\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n01_Setup\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n02_RStudio\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n03_Reproducibility\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n04_Basic_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n05_Data_Structures\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n06_Intermediate_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n07_Data_IO\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n08_Manipulating_Data_in_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n09_Data_Cleaning\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n10_Data_Summarization\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n11_Intro_Data_Visualization\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n12_Descriptive_Statistics\nTopic\nqmd\nLab01\nCheatsheet01"
+    "text": "These videos cover essential concepts of R programming that will be beneficial during the workshop Please take the time to view them at your convenience.",
+    "crumbs": [
+      "Material"
+    ]
   },
   {
     "objectID": "material.html#slides",
@@ -30,9 +33,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "",
-    "text": "🗓February 16 - 30, 2024 | 9:00pm - 11:00pm (Bangladesh Time)\n🏨 Medium - Zoom\n💥 Register with Google Forms\n💥 Registration Fee: 1500BDT (for students), 2000BDT (for professionals)\n📝 To join private Telegram group for the course, follow instructions in the email you received after registration.",
+    "text": "🗓May 16 - 30, 2024 | 9:00pm - 11:00pm (Bangladesh Time)\n🏨 Medium - Zoom\n💥 Register with Google Forms\n💥 Registration Fee: 2040BDT\n📝 To join private Telegram group for the course, follow instructions in the email you received after registration.",
     "crumbs": [
       "Home"
     ]
@@ -40,7 +43,7 @@
   {
     "objectID": "index.html#what-is-r",
     "href": "index.html#what-is-r",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "What is R?",
     "text": "What is R?\nR is an open source language and environment for statistical computing, data mining, modeling, and data graphics. It provides a wide variety of statistical and graphical techniques such as linear and non-linear modeling, statistical tests, time series analysis, classification, and clustering.",
     "crumbs": [
@@ -50,7 +53,7 @@
   {
     "objectID": "index.html#learning-outcomes",
     "href": "index.html#learning-outcomes",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Learning outcomes",
     "text": "Learning outcomes\nBy the end of the course students you shall be confident and equipped with all the knowledge required to perform analytical activities in R. Specifically,\n\nUnderstand the fundamental syntax of R through readings, practice exercises, demonstrations, and writing R code.\nApply critical programming language concepts such as data types, iteration, control structures, functions, and boolean operators by writing R programs and through examples\nImport a variety of data formats into R using RStudio\nPrepare or tidy data for in preparation for analysis\nQuery data using SQL and R\nAnalyze a data set in R and present findings using the appropriate R packages\nVisualize data attributes using ggplot2 and other R packages.",
     "crumbs": [
@@ -60,7 +63,7 @@
   {
     "objectID": "index.html#purpose-of-statistical-programming-software",
     "href": "index.html#purpose-of-statistical-programming-software",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Purpose of statistical programming software",
     "text": "Purpose of statistical programming software\nUnlike spreadsheet applications (like Excel) or point-and-click statistical analysis software (SPSS), statistical programming software is based around a script-file where the user writes a series of commands to be performed,\nAdvantages of statistical programming software\n\nData analysis process is reproducible and transparent.\nDue to the open-ended nature of language-based programming, there is far more versatility and customizability in what you can do with data.\nTypically statistical programming software has a much more comprehensive range of built-in analysis functions than spreadsheets etc.",
     "crumbs": [
@@ -70,7 +73,7 @@
   {
     "objectID": "index.html#why-do-we-need-analytics",
     "href": "index.html#why-do-we-need-analytics",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Why Do We Need Analytics?",
     "text": "Why Do We Need Analytics?\nBefore an answer to above question, let us see some of the problems and their solutions in R in multiple domains.\n\nHealthcare\n\nProblem: Every year millions of people are admitted in hospital and billions are spent annually just in the admission process.\nSolution: Given the patient history and medical history, a predictive model can be built to identify who is at risk for hospitalization and to what extent the medical equipment should be scaled.\n\n\n\nInsurance\n\nProblem: Insurance extensively depends on forecasting. It is difficult to decide which policy to accept orreject.\nSolution: By using the continuous credit report as input, we can create a model in R that will not only assess risk appetite but also make a predictive forecast as well.\n\n\n\nBanking\n\nProblem: Large amount of customer data is generated every day in Banks. While dealing with millions of customers on regular basis, it becomes hard to track their mortgages.\nSolution: R builds a custom model that maintains the loans provided to every individual customer which helps us to decide the amount to be paid by the customer over time.",
     "crumbs": [
@@ -80,7 +83,7 @@
   {
     "objectID": "index.html#why-r",
     "href": "index.html#why-r",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Why R?",
     "text": "Why R?\n\nR is a programming and statistical language.\nR is used for data Analysis and Visualization.\nR is simple and easy to learn, read and write.\nR is an example of a FLOSS (Free Libre and Open Source Software) where one can freely distribute copies of this software, read its source code, modify it, etc.",
     "crumbs": [
@@ -90,7 +93,7 @@
   {
     "objectID": "index.html#who-uses-r",
     "href": "index.html#who-uses-r",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Who uses R?",
     "text": "Who uses R?\n\nThe Consumer Financial Protection Bureau uses R for data analysis\nStatisticians at John Deere use R for time series modeling and geospatial analysis in a reliable and reproducible way.\nBank of America uses R for reporting.\nR is part of technology stack behind Foursquare’s famed recommendation engine.\nANZ, the fourth largest bank in Australia, using R for credit risk analysis.\nGoogle uses R to predict Economic Activity.\nMozilla, the foundation responsible for the Firefox web browser, uses R to visualize Web activity",
     "crumbs": [
@@ -142,7 +145,7 @@
   {
     "objectID": "index.html#required-software",
     "href": "index.html#required-software",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Required software",
     "text": "Required software\n\nR: http://www.r-project.org/ (FREE)\nRStudio (additional libraries required): http://www.rstudio.com/ (FREE)",
     "crumbs": [
@@ -152,7 +155,7 @@
   {
     "objectID": "index.html#recording-of-classes",
     "href": "index.html#recording-of-classes",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Recording of classes",
     "text": "Recording of classes\nClass lectures will be recorded automatically using cloud. The links will be posted to CHIRAL Classes when they are available.",
     "crumbs": [
@@ -176,7 +179,7 @@
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Prework",
     "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nMost recent release of the gtsummary and other packages used in workshop.\ninstll_pkgs &lt;- \n  c(\"gtsummary\", \"tidyverse\", \"gapminder\", \"ggpubr\", \n    \"likert\", \"skimr\", \"car\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.",
     "crumbs": [
@@ -235,9 +238,12 @@
   {
     "objectID": "sessions.html",
     "href": "sessions.html",
-    "title": "Sessions",
+    "title": "Schedule",
     "section": "",
-    "text": "View slides in Google Sheet"
+    "text": "View Full Screen in Google Sheet",
+    "crumbs": [
+      "Schedule"
+    ]
   },
   {
     "objectID": "license.html",
@@ -4897,7 +4903,7 @@
   {
     "objectID": "index.html#blogs-for-r-programming-statistics-and-data-analyis",
     "href": "index.html#blogs-for-r-programming-statistics-and-data-analyis",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Blogs for R Programming, Statistics, and Data Analyis",
     "text": "Blogs for R Programming, Statistics, and Data Analyis\n\nProgramiz - https://www.datamentor.io/r-programming/\nPennState STAT 484 - https://online.stat.psu.edu/stat484/\nPennState Topics in R Statistical Language - https://online.stat.psu.edu/stat484/\nSimply Statistics - https://simplystatistics.org/\nTutorialPoint - https://www.tutorialspoint.com/r/index.htm\nR for Biologists - https://www.rforbiologists.org/\nComputational Genomics with R - https://compgenomr.github.io/book/\nStat and R - https://statsandr.com/\nRafa Lab - https://rafalab.github.io/pages/harvardx.html\nUniversity of Florida - https://bolt.mph.ufl.edu/software/r-phc-6055/",
     "crumbs": [
@@ -4907,7 +4913,7 @@
   {
     "objectID": "index.html#datasets",
     "href": "index.html#datasets",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Datasets",
     "text": "Datasets\n\nMental Health and Suicide Rates\nWestern Africa Ebola Outbreak\nMERS Outbreaks 2012-2019\nH1N1 Swine Flu Pandemic 2009\nSARS Outbreak 2003",
     "crumbs": [
@@ -4917,7 +4923,7 @@
   {
     "objectID": "index.html#what-you-will-learn",
     "href": "index.html#what-you-will-learn",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "What you will learn?",
     "text": "What you will learn?",
     "crumbs": [
@@ -4927,7 +4933,7 @@
   {
     "objectID": "index.html#publication-ready-tables",
     "href": "index.html#publication-ready-tables",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Publication-ready Tables",
     "text": "Publication-ready Tables\nThe {gtsummary} package provides an elegant and flexible way to create publication-ready analytical and summary tables using the R programming language. The {gtsummary} package summarizes data sets, regression models, and more, using sensible defaults with highly customizable capabilities.",
     "crumbs": [
@@ -4944,7 +4950,7 @@
   {
     "objectID": "index.html#publication-ready-figures",
     "href": "index.html#publication-ready-figures",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Publication-ready Figures",
     "text": "Publication-ready Figures\nThe {ggpubr} package provides some easy-to-use functions for creating and customizing ‘ggplot2’- based publication ready plots. ggplot2, by Hadley Wickham, is an excellent and flexible package for elegant data visualization in R. However the default generated plots requires some formatting before we can send them for publication. Furthermore, to customize a ggplot, the syntax is opaque and this raises the level of difficulty for researchers with no advanced R programming skills.",
     "crumbs": [
@@ -4954,7 +4960,7 @@
   {
     "objectID": "index.html#analysis-and-visualization-likert-items",
     "href": "index.html#analysis-and-visualization-likert-items",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Analysis and Visualization Likert Items",
     "text": "Analysis and Visualization Likert Items\nThe {Likert} is an R package designed to help analyzing and visualizing Likert type items. It has been developped by Jason Bryer and Kim Speerschneider. This barplot comes from the demo page and has been sent by Carlos Ortega. It allows to analyse the reading attitudes from a panel of people.",
     "crumbs": [
@@ -4964,7 +4970,7 @@
   {
     "objectID": "index.html#reproducible-academic-writing-with-rmarkdown",
     "href": "index.html#reproducible-academic-writing-with-rmarkdown",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Reproducible Academic Writing with Rmarkdown",
     "text": "Reproducible Academic Writing with Rmarkdown\nR Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL.",
     "crumbs": [
@@ -4990,28 +4996,40 @@
     "href": "setup.html",
     "title": "Install R and RStudio",
     "section": "",
-    "text": "R is a powerful analytical language and contains a number of useful packages for analyzing data.\nRStudio is a free and open-source integrated development environment (IDE) for R. RStudio provides comprehensive facilities to R programmers and is highly recommended in this class."
+    "text": "R is a powerful analytical language and contains a number of useful packages for analyzing data.\nRStudio is a free and open-source integrated development environment (IDE) for R. RStudio provides comprehensive facilities to R programmers and is highly recommended in this class.",
+    "crumbs": [
+      "Setup"
+    ]
   },
   {
     "objectID": "setup.html#installing-r",
     "href": "setup.html#installing-r",
     "title": "Install R and RStudio",
     "section": "Installing R",
-    "text": "Installing R\nWe recommend installing the most recent version or R – 4.2.3 as of March 18, 2023 If you have had installed R already some time ago, we recommend updating/reinstalling it to the most recent version. Use a link below to launch download of R installers (if the download does not start, a fix may be to copy-paste the below link to your browser):\n\nFor Mac users: https://cran.r-project.org/bin/macosx/\nFor Windows users: https://cran.r-project.org/bin/windows/base/R-4.2.3-win.exe\nFor Ubuntu users: https://cran.r-project.org/bin/linux/ubuntu/\n\nFor other operating systems, or if you prefer to access the download link from the official website, visit http://cran.us.r-project.org and select Download R for Linux, Download R for macOS or Download R for Windows based on which device you have.\nOnce the proper installation package has been selected, run the package and follow the on-screen directions. This installation includes the R language and a graphical user interface (GUI). Rather using the GUI, we recommend installing RStudio - an integrated development environment (IDE) that lets you interact with R with some added benefits."
+    "text": "Installing R\nWe recommend installing the most recent version or R – 4.2.3 as of March 18, 2023 If you have had installed R already some time ago, we recommend updating/reinstalling it to the most recent version. Use a link below to launch download of R installers (if the download does not start, a fix may be to copy-paste the below link to your browser):\n\nFor Mac users: https://cran.r-project.org/bin/macosx/\nFor Windows users: https://cran.r-project.org/bin/windows/base/R-4.2.3-win.exe\nFor Ubuntu users: https://cran.r-project.org/bin/linux/ubuntu/\n\nFor other operating systems, or if you prefer to access the download link from the official website, visit http://cran.us.r-project.org and select Download R for Linux, Download R for macOS or Download R for Windows based on which device you have.\nOnce the proper installation package has been selected, run the package and follow the on-screen directions. This installation includes the R language and a graphical user interface (GUI). Rather using the GUI, we recommend installing RStudio - an integrated development environment (IDE) that lets you interact with R with some added benefits.",
+    "crumbs": [
+      "Setup"
+    ]
   },
   {
     "objectID": "setup.html#installing-rstudio",
     "href": "setup.html#installing-rstudio",
     "title": "Install R and RStudio",
     "section": "Installing RStudio",
-    "text": "Installing RStudio\nTo install RStudio, visit https://posit.co/download/rstudio-desktop/. Once on the website, select DOWNLOAD tab (upper left corner), scroll down and click Download under the RStudio Desktop – Free version (1st out of 4 columns), and select the proper installation file for your platform (Windows or Mac).\nWhen you open up RStudio, it should look like this:\n\nClick the top left button to create a new script:\n\nRStudio, should now look like this:\n\nThere are four main windows.\n\nThe console is the lower-left window where you can run lines of code and see the output.\nThe script window is the upper-left window where you can edit and write scripts or markdown documents. From the script window, you can run the current line of code in your script (or multiple lines if you highlight multiple rows) by pressing\n\nCMD + Return on Mac\nCTRL + Enter on Windows\n\nThe workspace is the upper-right window where you can manage your data and variables and see previous commands entered (under the history tab).\nThe plots window allows you to see the output of plots. On the other tabs, you can also look at directories, install packages, and look at help files for various R commands.\n\nYou can customize the look of your RStudio IDE in Tools > Global Options...."
+    "text": "Installing RStudio\nTo install RStudio, visit https://posit.co/download/rstudio-desktop/. Once on the website, select DOWNLOAD tab (upper left corner), scroll down and click Download under the RStudio Desktop – Free version (1st out of 4 columns), and select the proper installation file for your platform (Windows or Mac).\nWhen you open up RStudio, it should look like this:\n\nClick the top left button to create a new script:\n\nRStudio, should now look like this:\n\nThere are four main windows.\n\nThe console is the lower-left window where you can run lines of code and see the output.\nThe script window is the upper-left window where you can edit and write scripts or markdown documents. From the script window, you can run the current line of code in your script (or multiple lines if you highlight multiple rows) by pressing\n\nCMD + Return on Mac\nCTRL + Enter on Windows\n\nThe workspace is the upper-right window where you can manage your data and variables and see previous commands entered (under the history tab).\nThe plots window allows you to see the output of plots. On the other tabs, you can also look at directories, install packages, and look at help files for various R commands.\n\nYou can customize the look of your RStudio IDE in Tools &gt; Global Options....",
+    "crumbs": [
+      "Setup"
+    ]
   },
   {
     "objectID": "setup.html#r-packages",
     "href": "setup.html#r-packages",
     "title": "Install R and RStudio",
     "section": "R Packages",
-    "text": "R Packages\nPackages are the fundamental units of reproducible R code. They are collections of R code that typically share some common purpose. Examples:\n\ndplyr - package of functions for fast data set manipulation (subsetting, summarizing, rearranging, and joining together data sets);\nggplot2 - “R’s famous package for making beautiful graphics”; allows to build multiple-layers, highly customizable plots."
+    "text": "R Packages\nPackages are the fundamental units of reproducible R code. They are collections of R code that typically share some common purpose. Examples:\n\ndplyr - package of functions for fast data set manipulation (subsetting, summarizing, rearranging, and joining together data sets);\nggplot2 - “R’s famous package for making beautiful graphics”; allows to build multiple-layers, highly customizable plots.",
+    "crumbs": [
+      "Setup"
+    ]
   },
   {
     "objectID": "setup.html#installing-r-package",
@@ -5025,14 +5043,17 @@
     "href": "setup.html#installing-and-loading-r-packages",
     "title": "Install R and RStudio",
     "section": "Installing and Loading R Packages",
-    "text": "Installing and Loading R Packages\n\nTo install an R package, type in the RStudio console\ninstall.packages(\"replace_with_package_name\")\nand press enter to execute the command.\nOnce a package is installed, to use its contents in current R session, we run in the RStudio console the command\nlibrary(replace_with_package_name)\n\n(Note the difference in presence of the quotation mark in the two above commands.)"
+    "text": "Installing and Loading R Packages\n\nTo install an R package, type in the RStudio console\ninstall.packages(\"replace_with_package_name\")\nand press enter to execute the command.\nOnce a package is installed, to use its contents in current R session, we run in the RStudio console the command\nlibrary(replace_with_package_name)\n\n(Note the difference in presence of the quotation mark in the two above commands.)",
+    "crumbs": [
+      "Setup"
+    ]
   },
   {
     "objectID": "index.html#instructor",
     "href": "index.html#instructor",
-    "title": "R for Research: A Beginner’s Guide",
+    "title": "R for Research: A Beginner’s Guide (Cohort 04)",
     "section": "Instructor",
-    "text": "Instructor\n\nBio\n Md. Jubayer Hossain is the Founder, Management Lead and Data Analyst at CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health, and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his website.\n\n\nSkills\nProgramming Languages: Python, R, SQL, Julia, JavaScript; Data Science: scikit-learn, PyCaret, Dask, PySpark; GIS & Remote Sensing: ArcGIS, Geopandas, Xarray, Giovani; Analytics Softwares: SPSS, PowerBI, Microsoft Excel; Survey Tools: RedCap, KoboToolBox, EpiCollect, Google Forms; Academic Writing Tools: Microsoft Word, LaTeX, Mendeley; Bioinformatics: BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; Miscellaneous Skills: UNIX, Version Control(Git), Web Scraping, APIs.\n\n\nPublications\n\nHossain, M.J., Islam, M.W., Munni, U.R. et al. Health-related quality of life among thalassemia patients in Bangladesh using the SF-36 questionnaire. Scientific Reports 13, 7734 (2023). https://doi.org/10.1038/s41598-023-34205-9\nTowhid, S. T., Hossain, M. J., Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community-Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. https://doi.org/10.24018/ejbio.2022.3.3.341\nHossain, M.J., Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh. Microbial Bioactives, 5(2), https://doi.org/10.25163/microbbioacts.526325.",
+    "text": "Instructor\n\nBio\n Md. Jubayer Hossain is the Founder and Executive Director of CHIRAL Bangladesh. CHIRAL Bangladesh is a non-profit organization dedicated to health research to improve lives in Bangladesh. He aspires to maximize the quality of life of people around him by working at the intersection of education, technology, and health research. His research interests include public health, health data science, remote sensing, GIS applications in health, and machine learning in healthcare. He has been teaching programming, data analysis, data science, and research methodology since 2020 in CHIRAL Bangladesh. Detailed research and teaching activities were found on his website.\n\n\nSkills\nProgramming Languages: Python, R, SQL, Julia, JavaScript; Data Science: scikit-learn, PyCaret, Dask, PySpark; GIS & Remote Sensing: ArcGIS, Geopandas, Xarray, Giovani; Analytics Softwares: SPSS, PowerBI, Microsoft Excel; Survey Tools: RedCap, KoboToolBox, EpiCollect, Google Forms; Academic Writing Tools: Microsoft Word, LaTeX, Mendeley; Bioinformatics: BioPython, Bioconductor, BioPandas, Galaxy, NGS, RNASeq, ssRNASeq; Miscellaneous Skills: UNIX, Version Control(Git), Web Scraping, APIs.\n\n\nPublications\n\nIslam, M.W., Shahjahan, M., Azad, A.K., Hossain, M. J. Factors contributing to antibiotic misuse among parents of school-going children in Dhaka City, Bangladesh. Sci Rep 14, 2318 (2024). https://doi.org/10.1038/s41598-024-52313-y\nHossain, M. J., Islam, M. W., Munni, U. R., Gulshan, R., Mukta, S. A., Miah, M. S., Sultana, S., Karmakar, M., Ferdous, J., & Islam, M.A. (2023). Health‑related quality of life among thalassemia patients in Bangladesh using the SF‑36 questionnaire. Scientific Reports,13(1). https://doi.org/10.1038/s41598-023-34205-9\nTowhid, S. T., Hossain, M. J., Sammo, M. A. S., & Akter, S. (2022). Perception of Students on Antibiotic Resistance and Prevention: An Online, Community‑Based Case Study from Dhaka, Bangladesh. European Journal of Biology and Biotechnology, 3(3), 14–19. https://doi.org/10.24018/ejbio.2022.3.3.341\nHossain, M.J., Towhid ST, Sultana S, Mukta SA, Gulshan R, Miah MS (2022). Knowledge and Attitudes towards Thalassemia among Public University Students in Bangladesh. Microbial Bioactives, 5(2), https://doi.org/10.25163/microbbioacts.526325.\nHossain, M.J., Towhid, S. T., Akter, S., Shahjahan, M., Roy, T., Akter, B., & Nodee, T. A.(2023). Knowledge and Self-Management Practice Among Diabetic Patients from the Urban Areas in Bangladesh, Journal of Angiotherapy, 7(1), 1-10, https://doi.org/10.25163/angiotherapy.717340\nHossain MJ, Das M, Islam MW, Shahjahan M, Ferdous J. Community engagement and social participation in dengue prevention: A cross-sectional study in Dhaka City. Health Sci Rep. 2024; 7:e2022. doi:10.1002/hsr2.2022\nHossain MJ, Azad AK, Shahid MSB, Shahjahan M, Ferdous J. Prevalence, antibiotic resistance pattern for bacteriuria from patients with urinary tract infections. Health Sci Rep. 2024; 7:e2039. doi:10.1002/hsr2.2039",
     "crumbs": [
       "Home"
     ]
@@ -5043,5 +5064,35 @@
     "title": "R for Research: A Beginner’s Guide",
     "section": "📝 To join private Telegram group for the course, follow instructions in the email you received after registration.",
     "text": "📝 To join private Telegram group for the course, follow instructions in the email you received after registration."
+  },
+  {
+    "objectID": "sessions.html#workshop-detailed-schedule",
+    "href": "sessions.html#workshop-detailed-schedule",
+    "title": "Schedule",
+    "section": "",
+    "text": "View Full Screen in Google Sheet",
+    "crumbs": [
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "material.html#videos",
+    "href": "material.html#videos",
+    "title": "Material",
+    "section": "Videos",
+    "text": "Videos\n\nWelcome to the “R for Research” series! In this video, we will dive into the fundamentals of R, a powerful programming language and environment widely used in research and data analysis.R provides comprehensive tools and packages for statistical analysis, data visualization, and data manipulation. Whether you’re a biologist, social scientist, or any researcher looking to harness the power of data, this series will equip you with the necessary skills to leverage R for your research projects.! Check it out: \nIn Part 2, we will continue our exploration of the fundamentals of R, building upon the knowledge gained in Part 1. This video will cover additional essential topics to further enhance your skills in using R for research and data analysis. Check it out:",
+    "crumbs": [
+      "Material"
+    ]
+  },
+  {
+    "objectID": "material.html#cheatsheets",
+    "href": "material.html#cheatsheets",
+    "title": "Material",
+    "section": "Cheatsheets",
+    "text": "Cheatsheets\n\n\n\nModule\nCode\nLabs/Exercises\nHW\nCheatsheets/Giide\n\n\n\n\n00_Introduction\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n01_Setup\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n02_RStudio\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n03_Reproducibility\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n04_Basic_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n05_Data_Structures\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n06_Intermediate_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n07_Data_IO\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n08_Manipulating_Data_in_R\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n09_Data_Cleaning\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n10_Data_Summarization\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n11_Intro_Data_Visualization\nTopic\nqmd\nLab01\nCheatsheet01\n\n\n12_Descriptive_Statistics\nTopic\nqmd\nLab01\nCheatsheet01",
+    "crumbs": [
+      "Material"
+    ]
   }
 ]

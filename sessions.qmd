@@ -6,7 +6,7 @@ editor: source
 
 ## Workshop Detailed Schedule 
 
-[View Full Screen in Google Sheet](https://docs.google.com/spreadsheets/d/1N6ly81sK4IP85kakqE3h8Mjp_iP5P_IIxwoZewLi4ro/edit?usp=sharing)
+[View Full Screen in Google Sheet](https://docs.google.com/spreadsheets/d/10ADN-CaHQ4-u-AoP2ELuCv72dldA2_MbEaBt5jWzzDQ/edit?usp=sharing)
 
 
 ```{=html}
