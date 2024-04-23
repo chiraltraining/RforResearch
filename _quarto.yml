@@ -55,7 +55,7 @@ website:
      - href: material.qmd
      - href: sessions.qmd
      - href: q-and-a.qmd
-       text: Workshop Q & A
+       text: Q & A
      - href: license.qmd
        text: License
 
